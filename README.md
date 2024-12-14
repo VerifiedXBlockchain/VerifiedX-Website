@@ -1,4 +1,6 @@
-# <img src="/assets/images/vfx-cube.png" width="72" height="72" /> VerifiedX-Website
+# VerifiedX-Website
+
+
 
 
 ### Project structure
