@@ -1,0 +1,212 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --gradient-direction: to right;
+  --color-btc: var(--aw-color-btc);
+}
+
+@layer utilities {
+  .bg-page {
+    background-color: var(--aw-color-bg-page);
+  }
+
+  .bg-dark {
+    background-color: var(--aw-color-bg-page-dark);
+  }
+
+  .bg-light {
+    background-color: var(--aw-color-bg-page);
+  }
+
+  .text-page {
+    color: var(--aw-color-text-page);
+  }
+
+  .text-muted {
+    color: var(--aw-color-text-muted);
+  }
+
+  .text-btc {
+    color: var(--aw-color-btc);
+  }
+
+  .border-btc {
+    border-color: var(--aw-color-btc);
+  }
+
+
+  .bg-btc {
+    background-color: var(--aw-color-btc);
+  }
+
+  .fun-gradient {
+    background: linear-gradient(var(--gradient-direction),
+        lch(75.565% 37.748 247.537) 0%,
+        oklch(70% 0.17 280 / 0.7) 40%,
+        /* Approx. conversion of rgba(144, 115, 255, 0.5) */
+        oklch(75% 0.23 300 / 0.7) 100%
+        /* Approx. conversion of rgba(204, 138, 255, 0.7) */
+      );
+  }
+
+  .fun-gradient:hover {
+    background: linear-gradient(var(--gradient-direction),
+        lch(75.565% 37.748 247.537) 0%,
+        oklch(70% 0.17 280 / 0.9) 40%,
+        /* Approx. conversion of rgba(144, 115, 255, 0.9) */
+        oklch(75% 0.23 300 / 1) 100%
+        /* Approx. conversion of rgba(204, 138, 255, 1) */
+      );
+  }
+
+  .background-1,
+  .background-2 {
+    position: relative;
+    background-size: cover;
+    position: relative;
+
+    &::before {
+      content: '';
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background: radial-gradient(circle, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, .9) 90%);
+    }
+
+    &.background-1 {
+      background-image: url(~/assets/images/background-1.jpg);
+
+    }
+
+    &.background-2 {
+      background-image: url(~/assets/images/background-2.jpg);
+
+    }
+  }
+
+
+  .styled-content-box {
+    position: relative;
+    background-color: rgba(21, 22, 24, 0.9);
+    @apply rounded-xl;
+    border: 1px solid #192835;
+    box-shadow: 0px 0px 10px #192834;
+
+
+
+  }
+
+
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center rounded-full border-gray-400 border bg-transparent font-medium text-center text-base leading-snug transition py-2.5 px-4 md:px-6 ease-in duration-200 focus:ring-blue-500 focus:ring-offset-blue-200 focus:ring-2 focus:ring-offset-2 hover:border-gray-600 text-slate-300 dark:border-slate-500 hover:bg-slate-800 dark:hover:border-slate-800 cursor-pointer;
+  }
+
+  .btn-primary {
+    @apply btn bg-primary text-black border border-primary hover:text-white hover:bg-secondary hover:border-white;
+  }
+
+  .btn-btc {
+    @apply btn bg-btc text-black border border-black hover:text-white hover:bg-secondary hover:border-white;
+  }
+
+  .btn-secondary {
+    @apply btn
+  }
+
+  .btn-tertiary {
+    @apply btn border-none shadow-none text-muted hover:text-gray-900 dark:text-gray-400 dark:hover:text-white;
+  }
+
+  .btn-outline-dark {
+    @apply btn outline outline-1 outline-black text-black hover:text-white;
+    ;
+  }
+}
+
+#header.scroll>div:first-child {
+  @apply bg-page md:bg-white/90 md:backdrop-blur-md;
+
+  box-shadow: 0 0.375rem 1.5rem 0 rgb(140 152 164 / 13%);
+}
+
+.dark #header.scroll>div:first-child,
+#header.scroll.dark>div:first-child {
+  @apply bg-page md:bg-black border-b border-gray-500/20;
+  box-shadow: none;
+}
+
+.dark #header .logo,
+#header.dark .logo {
+  transform: translateX(-22px);
+  transition: all .3s;
+
+}
+
+.dark #header .logo-cube,
+#header.dark .logo-cube {
+  opacity: 0;
+  transition: all .3s;
+
+}
+
+.dark #header.scroll .logo,
+#header.scroll.dark .logo {
+  transform: translateX(0);
+}
+
+.dark #header.scroll .logo-cube,
+#header.scroll.dark .logo-cube {
+  opacity: 1;
+}
+
+/* #header.scroll > div:last-child {
+  @apply py-3;
+} */
+
+#header.expanded nav {
+  position: fixed;
+  top: 70px;
+  left: 0;
+  right: 0;
+  bottom: 70px !important;
+  padding: 0 5px;
+}
+
+.dropdown:focus .dropdown-menu,
+.dropdown:focus-within .dropdown-menu,
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+[astro-icon].icon-light>* {
+  stroke-width: 1.2;
+}
+
+[astro-icon].icon-bold>* {
+  stroke-width: 2.4;
+}
+
+[data-aw-toggle-menu] path {
+  @apply transition;
+}
+
+[data-aw-toggle-menu].expanded g>path:first-child {
+  @apply -rotate-45 translate-y-[15px] translate-x-[-3px];
+}
+
+[data-aw-toggle-menu].expanded g>path:last-child {
+  @apply rotate-45 translate-y-[-8px] translate-x-[14px];
+}
+
+/* To deprecated */
+
+.dd *:first-child {
+  margin-top: 0;
+}
