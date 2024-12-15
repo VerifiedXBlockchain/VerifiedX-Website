@@ -300,3 +300,15 @@ export interface Content extends Omit<Headline, 'classes'>, Widget {
 }
 
 export interface Contact extends Omit<Headline, 'classes'>, Form, Widget { }
+
+
+export interface ZoomableImage {
+  url: string;
+  title: string;
+  description: string;
+}
+
+
+export interface ZoomableImageGallery {
+  images: ZoomableImage[];
+}

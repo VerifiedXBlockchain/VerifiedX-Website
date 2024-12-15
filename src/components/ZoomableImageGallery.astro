@@ -1,0 +1,80 @@
+---
+import type { ZoomableImageGallery as Props } from '~/types';
+import Image from '~/components/common/Image.astro';
+
+const { images } = Astro.props;
+---
+
+<div class="grid gap-6 row-gap-5 md:grid-cols-2 lg:grid-cols-4 -mb-6">
+  {
+    images.map(({ url, title, description }) => (
+      <article class="mb-1 transition intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade">
+        <Image src={url} alt={title} loading="lazy" decoding="async" onclick="openModal(this)" />
+        <h3 class="text-lg font-bold leading-tight mb-2 font-heading dark:text-slate-300 mt-2">{title}</h3>
+        <p class="text-muted dark:text-slate-400 text-lg">{description}</p>
+      </article>
+    ))
+  }
+</div>
+
+<div
+  id="imageModal"
+  class="fixed inset-0 bg-black bg-opacity-75 flex justify-center items-center opacity-0 pointer-events-none transition-opacity duration-300 z-50"
+  onclick="closeModal()"
+>
+  <img
+    id="modalImage"
+    src=""
+    alt="Full Image"
+    class="max-w-full max-h-full transition-transform duration-300 scale-95"
+  />
+</div>
+
+<script is:inline>
+  let timer;
+
+  function openModal(imageElement) {
+    if (timer) {
+      clearTimeout(timer);
+    }
+    const modal = document.getElementById('imageModal');
+    const modalImage = document.getElementById('modalImage');
+
+    if (!modal || !modalImage) {
+      console.error('Modal elements not found.');
+      return;
+    }
+
+    modalImage.src = imageElement.src;
+
+    // Add classes to make the modal visible with a fade-in effect
+    modal.classList.remove('opacity-0', 'pointer-events-none');
+    modal.classList.add('opacity-100', 'pointer-events-auto');
+
+    // Animate the image to scale up slightly
+    modalImage.classList.remove('scale-95');
+    modalImage.classList.add('scale-100');
+  }
+
+  function closeModal() {
+    const modal = document.getElementById('imageModal');
+    const modalImage = document.getElementById('modalImage');
+
+    if (!modal || !modalImage) {
+      console.error('Modal elements not found.');
+      return;
+    }
+
+    // Hide the modal
+    modal.classList.remove('opacity-100', 'pointer-events-auto');
+    modal.classList.add('opacity-0', 'pointer-events-none');
+
+    // Animate the image to scale down slightly
+    modalImage.classList.remove('scale-100');
+    modalImage.classList.add('scale-95');
+
+    timer = setTimeout(() => {
+      modalImage.src = '';
+    }, 300);
+  }
+</script>

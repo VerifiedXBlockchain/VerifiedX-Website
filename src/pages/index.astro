@@ -1,28 +1,28 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
-
 import Hero from '~/components/widgets/Hero.astro';
-import Note from '~/components/widgets/Note.astro';
-import Features from '~/components/widgets/Features.astro';
-import Features2 from '~/components/widgets/Features2.astro';
-import Steps from '~/components/widgets/Steps.astro';
 import Content from '~/components/widgets/Content.astro';
-import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
-import FAQs from '~/components/widgets/FAQs.astro';
-import StatsMini from '~/components/widgets/StatsMini.astro';
-import CallToAction from '~/components/widgets/CallToAction.astro';
 import Stats from '~/components/widgets/Stats.astro';
 import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
-
-import bg1Image from '~/assets/images/background-1.jpg';
+import Image from '~/components/common/Image.astro';
 import ItemGrid from '~/components/ui/ItemGrid.astro';
 import Button from '~/components/ui/Button.astro';
 import ItemGrid2 from '~/components/ui/ItemGrid2.astro';
+import ZoomableImageGallery from '~/components/ZoomableImageGallery.astro';
 
 const metadata = {
-  title: 'AstroWind — Free template for creating websites with Astro + Tailwind CSS',
+  title: 'VerifiedX — Tokenized Commerce and Self-Custody for Everyone.',
   ignoreTitleTemplate: true,
 };
+
+const guiFeatures = [
+  {
+    image: '~/assets/images/gui/1.jpg',
+    title: 'Test 123',
+    link: null,
+    description: 'lorem ipsum',
+  },
+];
 ---
 
 <Layout metadata={metadata}>
@@ -77,14 +77,13 @@ const metadata = {
     />
   </div>
 
-  <section class="bg-[#030621e6] not-prose shadow-lg shadow-[rgba(0,0,0,.2)]">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-4 text-3xl text-center font-light text-gray-300">
-      What Does It All Mean and Why Should We Care?
-    </div>
-  </section>
-
-  <section class="background-1">
-    <WidgetWrapper containerClass={`max-w-6xl mx-auto`}>
+  <section class="background-1 border-t border-gray-800" id="section-discover">
+    <WidgetWrapper containerClass={`max-w-6xl mx-auto pt-0 mt-0`}>
+      <h2 class={'font-light font-heading text-heading text-5xl text-center tracking-tight '}>
+        What Does It All Mean?
+      </h2>
+      <p class="mt-5 text-base text-center text-primary font-bold tracking-wide uppercase">(And why should we care?)</p>
+      <div class="py-5"></div>
       <div class="styled-content-box">
         <div class="font-light text-xl text-white p-5">
           <h3 class="text-3xl text-primary">Blockchain can be intimidating for most.</h3>
@@ -127,13 +126,15 @@ const metadata = {
     </WidgetWrapper>
   </section>
 
-  <section class="border-gray-800 border-t border-b">
+  <section class="border-gray-800 border-t border-b" id="section-vfx">
     <WidgetWrapper containerClass={`max-w-6xl mx-auto`}>
       <div>
         <h2 class={'font-bold font-heading text-heading text-5xl text-center tracking-tight '}>For The People</h2>
-        <p class="mt-5 text-base text-center text-secondary text-blue-200 font-bold tracking-wide uppercase">
+        <p class="mt-5 text-base text-center text-primary font-bold tracking-wide uppercase">
           <span class="text-white">&ldquo;</span>The people who are crazy enough to think<br />they can change the
-          world, are the ones who do.<span class="text-white">&rdquo;</span><br />&hyphen; Steve Jobs
+          world, are the ones who do.<span class="text-white">&rdquo;</span><br /><span class="text-white"
+            >&hyphen; Steve Jobs</span
+          >
         </p>
         <p class="mt-8 text-center text-xl max-w-4xl mx-auto">
           VerifiedX is the first open-source and completely decentralized universal layer 1 blockchain AND utility
@@ -211,13 +212,15 @@ const metadata = {
     </WidgetWrapper>
   </section>
 
-  <section class="background-2">
+  <section class="background-2" id="section-bitcoin">
     <WidgetWrapper containerClass={`max-w-6xl mx-auto`}>
-      <h2 class={'font-bold font-heading text-heading text-5xl text-center tracking-tight '}>Why Bitcoin?</h2>
-      <p class="mt-5 text-base text-center text-secondary dark:text-white font-bold tracking-wide uppercase">
+      <h2 class={'font-bold font-heading text-heading text-5xl text-center tracking-tight '}>
+        Why <span class="text-btc">Bitcoin</span>?
+      </h2>
+      <p class="mt-5 text-base text-center text-white font-bold tracking-wide uppercase">
         <span class="text-white">&ldquo;</span>It's better to be a pirate than join the Navy!<span class="text-white"
           >&rdquo;</span
-        ><br /><span class="font-light">&hyphen; Steve Jobs</span>
+        ><br /><span class="font-light text-white">&hyphen; Steve Jobs</span>
       </p>
       <div class="py-4"></div>
       <div class="styled-content-box">
@@ -261,7 +264,7 @@ const metadata = {
     </WidgetWrapper>
   </section>
 
-  <section class="border-gray-800 border-t border-b">
+  <section class="border-gray-800 border-t border-b" id="section-vbtc">
     <WidgetWrapper containerClass={`max-w-6xl mx-auto`}>
       <div>
         <h2 class={'font-bold font-heading text-heading text-5xl text-center tracking-tight '}>
@@ -333,14 +336,14 @@ const metadata = {
     </WidgetWrapper>
   </section>
 
-  <section class="background-1">
+  <section class="background-1" id="section-validators">
     <WidgetWrapper containerClass={`max-w-6xl mx-auto`}>
       <h2 class={'font-bold font-heading text-heading text-5xl text-center tracking-tight '}>
         Validators With Full Governance
       </h2>
-      <p class="mt-5 text-base text-center text-secondary text-blue-200 font-bold tracking-wide uppercase">
+      <p class="mt-5 text-base text-center text-primary font-bold tracking-wide uppercase">
         <span class="text-white">&ldquo;</span>If people are good because they fear punishment,<br />and hope for
-        reward, then we are a sorry lot indeed<span class="text-white">&rdquo;</span><br /><span class=""
+        reward, then we are a sorry lot indeed<span class="text-white">&rdquo;</span><br /><span class="text-white"
           >&hyphen; Albert Einstein</span
         >
       </p>
@@ -397,107 +400,160 @@ const metadata = {
   </section>
   <!-- Content Widget **************** -->
 
-  <section class="border-t border-b border-gray-800 bg-black">
-    <Content
-      isReversed
-      title="Introducing The VFX SwitchBlade"
-      subtitle="The Next-Gen For Native Asset Ownership, Commerce and Security"
-      items={[
-        {
-          title: 'On/Off-Chain Media Assets',
-          description:
-            'Media is stored within the network and transferred to the new owners wallet when the token is transfered or purchased.',
-        },
-        {
-          title: 'Smart Contracts',
-          description:
-            'Write feature-rich programmable smart contracts in Trilliam OR using the graphical interface with no coding knowledge needed.',
-        },
-        {
-          title: 'Tokenize Assets',
-          description:
-            'Mint and deploy NFTs, Fungible Tokens, and Bitcoin with ease. Include  functionality like on-chain enforced royalties and smart contracts that can evolve at by control of the minter.',
-        },
-        {
-          title: 'Domains',
-          description:
-            'Register unique domain aliases for your VFX addresses and Bitcoin addresses - making it easier to receive funds and tokens.',
-        },
-        {
-          title: 'Vault Accounts',
-          description: 'Store assets / funds in user generated vaults with on-chain recovery functionalty.',
-        },
-        {
-          title: 'Auction Houses',
-          description: 'Launch published auctions, shops, and social galleries completely peer-to-peer.',
-        },
-        {
-          title: 'Easy On/Off Ramp',
-          description:
-            'The Switchblade additionally provides on and off-ramps for both VFX and BTC through integrated solutions via Apple Pay and Google Pay providing seamless immediate interaction with the network!',
-        },
-      ]}
-      image={{
-        src: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
-        alt: 'Colorful Image',
-      }}
-    >
-      <Fragment slot="content">
-        <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
-          MacOS, Windows, Linux CLI, and Web
-        </h3>
-        VFX Switchblade is the first layer 1 non-custodial wallet that provides for sending and receiving both VFX and BTC
-        natively.
-      </Fragment>
+  <section class="border-t border-b border-gray-800 bg-black" id="section-switchblade">
+    <WidgetWrapper containerClass={`max-w-6xl mx-auto`}>
+      <Content
+        isReversed
+        title="Introducing The VFX Switchblade"
+        subtitle="The Next-Gen For Native Asset Ownership, Commerce and Security"
+        items={[
+          {
+            title: 'On/Off-Chain Media Assets',
+            description:
+              'Media is stored within the network and transferred to the new owners wallet when the token is transfered or purchased.',
+          },
+          {
+            title: 'Smart Contracts',
+            description:
+              'Write feature-rich programmable smart contracts in Trillium OR using the graphical interface with no coding knowledge needed.',
+          },
+          {
+            title: 'Tokenize Assets',
+            description:
+              'Mint and deploy NFTs, Fungible Tokens, and Bitcoin with ease. Include  functionality like on-chain enforced royalties and smart contracts that can evolve at by control of the minter.',
+          },
+          {
+            title: 'Domains',
+            description:
+              'Register unique domain aliases for your VFX addresses and Bitcoin addresses - making it easier to receive funds and tokens.',
+          },
+          {
+            title: 'Vault Accounts',
+            description: 'Store assets / funds in user generated vaults with on-chain recovery functionalty.',
+          },
+          {
+            title: 'Auction Houses',
+            description: 'Launch published auctions, shops, and social galleries completely peer-to-peer.',
+          },
+          {
+            title: 'Easy On/Off Ramp',
+            description:
+              'The Switchblade additionally provides on and off-ramps for both VFX and BTC through integrated solutions via Apple Pay and Google Pay providing seamless immediate interaction with the network!',
+          },
+        ]}
+        image={{
+          src: '~/assets/images/gui/1.jpg',
+          alt: 'Colorful Image',
+        }}
+      >
+        <Fragment slot="content">
+          <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+            MacOS, Windows, Linux CLI, and Web
+          </h3>
+          VFX Switchblade is the first layer 1 non-custodial wallet that provides for sending and receiving both VFX and
+          BTC natively.
+        </Fragment>
 
-      <Fragment slot="bg">
-        <div class="absolute inset-0 bg-transparent"></div>
-      </Fragment>
-    </Content>
+        <Fragment slot="bg">
+          <div class="absolute inset-0 bg-transparent"></div>
+        </Fragment>
+      </Content>
 
-    <div class={`max-w-6xl mx-auto pb-8 `}>
-      <div class="font-light text-xl text-white">
-        <p>
-          The <span class="font-semibold text-primary">Switchblade</span> is the first layer 1 non-custodial wallet that
-          provides for sending and receiving both VFX and BTC natively including on / off chain media, view transaction history,
-          write on-chain feature rich programmable smart contracts, tokenize assets including Bitcoin, own, manage, and transfer
-          domain names for any VFX and BTC address, borrow, lend, and store assets / funds in user generated vaults with
-          on-chain recovery, and launch published auctions, shops, and social galleries completely peer-to-peer! The <span
-            class="font-semibold">Switchblade</span
-          >
-          additionally provides on and off-ramps for both VFX and BTC through integrated solutions via Apple Pay and Google
-          Pay providing seamless immediate interaction with the network!
-        </p>
-        <div class="py-2"></div>
-        <p>
-          Having access to a <span class="font-semibold">Switchblade</span> wallet is without a doubt a mainstream accelerator
-          with simple password and login accounts without sacrificing on-chain security at all. In fact, <span
-            class="font-semibold">Switchblade</span
-          > is the first native layer 1 wallet where a user can immediately participate in Defi, commerce, DePin, decentralized
-          voting, tokenization, and storage without the need for a third party app or authority. It was built for everyday
-          use and to solve everyday problems, the way it should be.
-        </p>
-        <div class="pt-8 flex justify-center items-center gap-2 flex-wrap">
-          <Button variant="primary" href="#">Install and Operating Instructions</Button>
-        </div>
-        <div class="pt-8 flex justify-center items-center gap-2 flex-wrap">
-          <Button variant="secondary" href="#">Download for MacOS</Button>
-          <Button variant="secondary" href="#">Download for Windows</Button>
-          <Button variant="secondary" href="#">Launch Web Wallet</Button>
-          <Button variant="secondary" href="#">Download CLI</Button>
+      <div class={`max-w-6xl mx-auto pb-8 `}>
+        <div class="font-light text-xl text-white">
+          <p>
+            The <span class="font-semibold text-primary">Switchblade</span> is the first layer 1 non-custodial wallet that
+            provides for sending and receiving both VFX and BTC natively including on / off chain media, view transaction
+            history, write on-chain feature rich programmable smart contracts, tokenize assets including Bitcoin, own, manage,
+            and transfer domain names for any VFX and BTC address, borrow, lend, and store assets / funds in user generated
+            vaults with on-chain recovery, and launch published auctions, shops, and social galleries completely peer-to-peer!
+          </p>
+          <div class="py-2"></div>
+          <p>
+            The <span class="font-semibold">Switchblade</span>
+            additionally provides on and off-ramps for both VFX and BTC through integrated solutions via Apple Pay and Google
+            Pay providing seamless immediate interaction with the network!
+          </p>
+          <div class="py-4"></div>
+
+          <ZoomableImageGallery
+            images={[
+              {
+                url: '~/assets/images/gui/1.jpg',
+                title: "Switchblade's Dashboard",
+                description: 'View all your account information in one place.',
+              },
+              {
+                url: '~/assets/images/gui/3.jpg',
+                title: 'vBTC',
+                description: 'Tokenize Bitcoin and transfer to others instantly with near zero fees.',
+              },
+              {
+                url: '~/assets/images/gui/5.jpg',
+                title: 'Vault Accounts',
+                description: 'Secure your funds and assets with recovery features.',
+              },
+              {
+                url: '~/assets/images/gui/6.jpg',
+                title: 'Domains',
+                description: 'Create verified aliases for your addresses on-chain.',
+              },
+              {
+                url: '~/assets/images/gui/7.jpg',
+                title: 'Fungible Tokens',
+                description: 'Mint and deploy your own fungible tokens with fixed or unlimitted supply.',
+              },
+              {
+                url: '~/assets/images/gui/8.jpg',
+                title: 'Non Fungible Tokens',
+                description: 'Deploy smart contracts with media and real on-chain utility.',
+              },
+              {
+                url: '~/assets/images/gui/10.jpg',
+                title: 'P2P Auctions',
+                description: 'List your NFTs for auction, buy now, or just to show off in a gallery.',
+              },
+              {
+                url: '~/assets/images/gui/11.jpg',
+                title: 'BTC Transactions',
+                description: 'View all Bitcoin transactions for your BTC addresses.',
+              },
+            ]}
+          />
+
+          <div class="py-8"></div>
+
+          <p>
+            Having access to a <span class="font-semibold">Switchblade</span> wallet is without a doubt a mainstream accelerator
+            with simple password and login accounts without sacrificing on-chain security at all. In fact, <span
+              class="font-semibold">Switchblade</span
+            > is the first native layer 1 wallet where a user can immediately participate in Defi, commerce, DePin, decentralized
+            voting, tokenization, and storage without the need for a third party app or authority. It was built for everyday
+            use and to solve everyday problems, the way it should be.
+          </p>
+          <div class="pt-8 flex justify-center items-center gap-2 flex-wrap">
+            <Button variant="primary" href="#">Install and Operating Instructions</Button>
+          </div>
+          <div class="pt-8 flex justify-center items-center gap-2 flex-wrap">
+            <Button variant="secondary" href="#">Download for MacOS</Button>
+            <Button variant="secondary" href="#">Download for Windows</Button>
+            <Button variant="secondary" href="#">Launch Web Wallet</Button>
+            <Button variant="secondary" href="#">Download CLI</Button>
+          </div>
         </div>
       </div>
-    </div>
+    </WidgetWrapper>
   </section>
 
-  <section class="border-gray-800 border-t border-b">
+  <section class="border-gray-800 border-t border-b" id="section-ecosystem">
     <WidgetWrapper containerClass={`max-w-6xl mx-auto`}>
       <div>
         <h2 class={'font-bold font-heading text-heading text-5xl text-center tracking-tight '}>
           The Verified<span class="text-primary">X</span> Gateway
         </h2>
-        <p class="mt-5 text-base text-center text-secondary text-blue-200 font-bold tracking-wide uppercase">
-          <span class="text-white">&ldquo;</span>If you want to find the secrets of the universe,think in terms of<br />
+        <p class="mt-5 text-base text-center text-secondary text-white font-bold tracking-wide uppercase">
+          <span class="text-white">&ldquo;</span>If you want to find the secrets of the universe, think in terms of<br
+          />
           energy, frequency and vibration<span class="text-white">&rdquo;</span><br />&hyphen; Nikola Tesla
         </p>
       </div>
@@ -509,57 +565,63 @@ const metadata = {
         items={[
           {
             title: 'VFX Spyglass',
-            description: "View VFX's transaction explorer.",
+            description: "View blocks, TXs, domains, tokens in real-time on VFX's transaction explorer.",
             callToAction: {
               variant: 'secondary',
-              text: 'Launch',
+              text: 'Open',
               href: '',
+              target: '_blank',
             },
           },
           {
             title: 'Web Wallet',
-            description: "View VFX's transaction explorer.",
+            description: 'Interact with the network through the Switchblade Web Wallet. No syncing required!',
             callToAction: {
               variant: 'secondary',
-              text: 'Launch',
+              text: 'Sign In',
               href: '',
+              target: '_blank',
             },
           },
           {
             title: 'Source Code',
-            description: "View VFX's transaction explorer.",
+            description: 'View the code, create pull requests, and report issues on our Github.',
             callToAction: {
               variant: 'secondary',
-              text: 'Launch',
+              text: 'View',
               href: '',
+              target: '_blank',
             },
           },
           {
-            title: 'Trilliam IDE',
-            description: "View VFX's transaction explorer.",
+            title: 'Trillium IDE',
+            description: 'Write smart contracts in your web browser with the Trillium IDE and REPL.',
             callToAction: {
               variant: 'secondary',
-              text: 'Launch',
+              text: 'Try Out',
               href: '',
+              target: '_blank',
             },
           },
           {
             title: 'Integration Playground',
-            description: "View VFX's transaction explorer.",
+            description: 'Open and interact with the swagger docs for the CLI and Spyglass.',
             callToAction: {
               variant: 'secondary',
-              text: 'Launch',
+              text: 'Play Around',
               href: '',
+              target: '_blank',
             },
           },
 
           {
             title: 'Whitepaper',
-            description: "View VFX's transaction explorer.",
+            description: 'Read our latest whitepaper and dig deep into the technology.',
             callToAction: {
               variant: 'secondary',
-              text: 'Launch',
+              text: 'Read',
               href: '',
+              target: '_blank',
             },
           },
         ]}
@@ -580,150 +642,141 @@ const metadata = {
     </WidgetWrapper>
   </section>
 
-  <Features2
-    title="Most used widgets"
-    subtitle="Provides frequently used components for building websites using Tailwind CSS"
-    tagline="Components"
-    items={[
-      {
-        title: 'Headers',
-        description: "Ever tried driving without GPS? Boom! That's why websites need headers for direction.",
-        icon: 'flat-color-icons:template',
-      },
-      {
-        title: 'Heros',
-        description:
-          "Picture a superhero landing – epic, right? That's the job of a Hero section, making grand entrances!",
-        icon: 'flat-color-icons:gallery',
-      },
-      {
-        title: 'Features',
-        description:
-          'Where websites strut their stuff and show off superpowers. No holding back on the bragging rights here!',
-        icon: 'flat-color-icons:approval',
-      },
-      {
-        title: 'Content',
-        description:
-          "Dive into the meat and potatoes of a site; without it, you'd just be window shopping. Content is king.",
-        icon: 'flat-color-icons:document',
-      },
-      {
-        title: 'Call-to-Action',
-        description:
-          'That enthusiastic friend who\'s always urging, "Do it! Do it!"? Yeah, that\'s this button nudging you towards adventure.',
-        icon: 'flat-color-icons:advertising',
-      },
-      {
-        title: 'Pricing',
-        description: 'Behold the dessert menu of the website world. Tempting choices await, can you resist?',
-        icon: 'flat-color-icons:currency-exchange',
-      },
-      {
-        title: 'Testimonial',
-        description: 'Step into the gossip corner! Here, other visitors spill the beans and share the juicy details.',
-        icon: 'flat-color-icons:voice-presentation',
-      },
-      {
-        title: 'Contact',
-        description:
-          'Like a digital mailbox, but faster! Drop a line, ask a question, or send a virtual high-five. Ding! Message in.',
-        icon: 'flat-color-icons:business-contact',
-      },
-      {
-        title: 'Footers',
-        description: "The footer's like the credits of a movie but sprinkled with easter eggs. Time to hunt!",
-        icon: 'flat-color-icons:database',
-      },
-    ]}
-  >
-    <Fragment slot="bg">
-      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
-    </Fragment>
-  </Features2>
+  <section class="border-gray-800 border-t border-b bg-gray-900" id="section-build">
+    <WidgetWrapper containerClass={`max-w-6xl mx-auto`}>
+      <div>
+        <h2 class={'font-bold font-heading text-heading text-5xl text-center tracking-tight '}>Build & Integrate</h2>
+        <p class="mt-5 text-base text-center text-secondary text-white font-bold tracking-wide uppercase">
+          Globally Capable For Everyday Use
+        </p>
+      </div>
 
-  <!-- HighlightedPosts Widget ******* -->
+      <div class="py-8"></div>
+      <ItemGrid2
+        columns={3}
+        ,
+        items={[
+          {
+            title: 'Integration Docs',
+            description: 'Learn about how to integrate your project with the VerifiedX network.',
+            callToAction: {
+              variant: 'secondary',
+              text: 'Open',
+              href: '',
+              target: '_blank',
+            },
+          },
+          {
+            title: 'vBTC Integration',
+            description: 'Learn how to integrate your project with Verified Bitcoin.',
+            callToAction: {
+              variant: 'secondary',
+              text: 'Sign In',
+              href: '',
+              target: '_blank',
+            },
+          },
+          {
+            title: 'Config Docs',
+            description: 'View the CLI/GUI core configration documentation.',
+            callToAction: {
+              variant: 'secondary',
+              text: 'View',
+              href: '',
+              target: '_blank',
+            },
+          },
+          {
+            title: 'Testnet and Faucet',
+            description: "Test on VerifiedX's Testnet and how to get TVFX.",
+            callToAction: {
+              variant: 'secondary',
+              text: 'Try Out',
+              href: '',
+              target: '_blank',
+            },
+          },
 
-  <BlogLatestPosts
-    title="Find out more content in our Blog"
-    information={`The blog is used to display AstroWind documentation.
-                        Each new article will be an important step that you will need to know to be an expert in creating a website using Astro + Tailwind CSS.
-                        Astro is a very interesting technology. Thanks.
-                `}
-  />
+          {
+            title: 'The Road Ahead',
+            description: "See what's on our roadmap and suggest your own ideas.",
+            callToAction: {
+              variant: 'secondary',
+              text: 'Read',
+              href: '',
+              target: '_blank',
+            },
+          },
+          {
+            title: 'Bug Bounty Program',
+            description: 'Activating soon.',
+            callToAction: {
+              variant: 'secondary',
+              text: 'Play Around',
+              href: '',
+              target: '_blank',
+            },
+          },
+        ]}
+        classes={{
+          container: 'gap-4 md:gap-6',
+          panel:
+            'rounded-lg shadow-[0_4px_30px_rgba(0,0,0,0.1)] dark:shadow-[0_4px_30px_rgba(0,0,0,0.1)] backdrop-blur border border-[#ffffff29] bg-slate-700 p-6',
 
-  <!-- FAQs Widget ******************* -->
+          icon: 'w-12 h-12 mb-6 text-primary',
+        }}
+      />
 
-  <FAQs
-    title="Frequently Asked Questions"
-    subtitle="Dive into the following questions to gain insights into the powerful features that AstroWind offers and how it can elevate your web development journey."
-    tagline="FAQs"
-    classes={{ container: 'max-w-6xl' }}
-    items={[
-      {
-        title: 'Why AstroWind?',
-        description:
-          "Michael Knight a young loner on a crusade to champion the cause of the innocent. The helpless. The powerless in a world of criminals who operate above the law. Here he comes Here comes Speed Racer. He's a demon on wheels.",
-      },
-      {
-        title: 'What do I need to start?',
-        description:
-          'Space, the final frontier. These are the voyages of the Starship Enterprise. Its five-year mission: to explore strange new worlds. Many say exploration is part of our destiny, but it’s actually our duty to future generations.',
-      },
-      {
-        title: 'How to install the Astro + Tailwind CSS template?',
-        description:
-          "Well, the way they make shows is, they make one show. That show's called a pilot. Then they show that show to the people who make shows, and on the strength of that one show they decide if they're going to make more shows.",
-      },
-      {
-        title: "What's something that you don't understand?",
-        description:
-          "A flower in my garden, a mystery in my panties. Heart attack never stopped old Big Bear. I didn't even know we were calling him Big Bear.",
-      },
-      {
-        title: 'What is something that you would like to try again?',
-        description:
-          "A business big enough that it could be listed on the NASDAQ goes belly up. Disappears! It ceases to exist without me. No, you clearly don't know who you're talking to, so let me clue you in.",
-      },
-      {
-        title: 'If you could only ask one question to each person you meet, what would that question be?',
-        description:
-          "This is not about revenge. This is about justice. A lot of things can change in twelve years, Admiral. Well, that's certainly good to know. About four years. I got tired of hearing how young I looked.",
-      },
-    ]}
-  />
+      <div class="pt-12 flex justify-center items-center gap-4">
+        <Button variant="primary" href="#">View Docs</Button>
+        <div class="w-16 h-0.5 bg-primary opacity-40"></div>
+        <Button variant="secondary" href="#">Read Whitepaper</Button>
+      </div>
+    </WidgetWrapper>
+  </section>
+  <section id="section-connect">
+    <WidgetWrapper containerClass={`max-w-6xl mx-auto py-6 my-0`}>
+      <div class="flex justify-center">
+        <Image src="~/assets/images/vfx-wordmark-light.png" alt="VerifiedX" width={400} />
+      </div>
+      <div class="py-2"></div>
 
-  <!-- Stats Widget ****************** -->
+      <p class="text-center text-3xl text-light">
+        Tokenized Commerce and<br />Self-Custody for <span class="text-accent dark:text-primary highlight"
+          >Everyone</span
+        >.
+      </p>
 
-  <StatsMini
-    stats={[
-      { title: 'Downloads', amount: '132K' },
-      { title: 'Stars', amount: '24.8K' },
-      { title: 'Forks', amount: '10.3K' },
-      { title: 'Users', amount: '48.4K' },
-    ]}
-  />
+      <div class="py-4"></div>
 
-  <!-- CallToAction Widget *********** -->
+      <div class="flex justify-center gap-3 max-w-2xl mx-auto flex-wrap">
+        <Button variant="secondary">Follow us on X</Button>
+        <Button variant="secondary">Join our Discord</Button>
+        <Button variant="secondary">Contribute on Github</Button>
+        <Button variant="secondary">Contact Devs</Button>
+      </div>
 
-  <CallToAction
-    actions={[
-      {
-        variant: 'primary',
-        text: 'Get template',
-        href: 'https://github.com/onwidget/astrowind',
-        target: '_blank',
-        icon: 'tabler:download',
-      },
-    ]}
-  >
-    <Fragment slot="title">
-      Astro&nbsp;+&nbsp;<br class="block sm:hidden" /><span class="sm:whitespace-nowrap">Tailwind CSS</span>
-    </Fragment>
+      <div class="py-4"></div>
 
-    <Fragment slot="subtitle">
-      Be very surprised by these huge fake numbers you are seeing on this page. <br class="hidden md:inline" />Don't
-      waste more time! :P
-    </Fragment>
-  </CallToAction>
+      <h4 class="text-center font-semibold text-lg tracking-wide uppercase">The Foundation</h4>
+      <div class="py-2"></div>
+
+      <div class="max-w-3xl mx-auto">
+        <div class="styled-content-box p-4">
+          <p class="font-extralight">
+            VerifiedX was conceptualized and developed as a founding collaboration of validators by <span
+              class="font-semibold">Texoware</span
+            >, <span class="font-semibold">The Reserve Label</span>, and <a
+              class="hover:underline font-semibold"
+              href="https://theyoungastronauts.com/"
+              target="_blank">The Young Astronauts</a
+            > for the purpose of advancing a completely decentralized solution to enhance self-custody and self-sovereignty
+            for tokenized assets and p2p commerce within a layer1 network for simple use by the everyday user while solving
+            everyday issues efficiently. To date, the entire project has been completely self-funded by the group and operates
+            under an on-chain governance mechanism as to be devoid of any centralized control whatsoever.
+          </p>
+        </div>
+      </div>
+    </WidgetWrapper>
+  </section>
 </Layout>
