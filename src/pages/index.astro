@@ -61,22 +61,23 @@ const guiFeatures = [
         { title: 'Latest Block', amount: '2,976,494' },
         { title: 'Block Time', amount: '10s' },
         { title: 'TXs', amount: '1,024 /s' },
-        // { title: 'Fees Burned', amount: '1,004.06 VFX' },
-        // { title: 'Circulating Supply', amount: '173,502,020 VFX' },
-        // { title: 'Active Validators', amount: '670' },
+        { title: 'Fees Burned', amount: '1,004.06 VFX' },
+        { title: 'Circulating Supply', amount: '173,502,020 VFX', smaller: true },
+        { title: 'Active Validators', amount: '670' },
+        { title: 'Latest Block', amount: '2,976,494' },
       ]}
     />
     <Stats
       stats={[
-        // {
-        //   title: 'Latest Block',
-        //   value: '2,976,494',
-        //   ctaTitle: 'Open Spyglass',
-        //   ctaHref: 'https://spyglass-testnet.verifiedx.io/',
-        //   gradientDirection: 'to bottom right',
-        // },
-        // { title: 'Block Time', value: '10', metric: 'seconds', gradientDirection: 'to bottom' },
-        // { title: 'TXs', value: '1,024', metric: 'per second', gradientDirection: 'to bottom left' },
+        {
+          title: 'Latest Block',
+          value: '2,976,494',
+          ctaTitle: 'Open Spyglass',
+          ctaHref: 'https://spyglass-testnet.verifiedx.io/',
+          gradientDirection: 'to bottom right',
+        },
+        { title: 'Block Time', value: '10', metric: 'seconds', gradientDirection: 'to bottom' },
+        { title: 'TXs', value: '1,024', metric: 'per second', gradientDirection: 'to bottom left' },
         { title: 'Fees Burned', value: '1,004.06', metric: 'VFX', gradientDirection: 'to top right' },
         { title: 'Circulating Supply', value: '173,502,020', metric: 'VFX', gradientDirection: 'to top' },
         {

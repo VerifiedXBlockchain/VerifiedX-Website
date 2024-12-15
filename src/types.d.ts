@@ -140,6 +140,7 @@ export interface StatMini {
   amount?: number | string;
   title?: string;
   icon?: string;
+  smaller?: boolean;
 }
 
 export interface Item {

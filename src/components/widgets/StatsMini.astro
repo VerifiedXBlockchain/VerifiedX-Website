@@ -20,14 +20,14 @@ const {
 <WidgetWrapper
   id={id}
   isDark={isDark}
-  containerClass={`max-w-6xl mx-auto mb-0 pb-0 ${classes?.container ?? ''}`}
+  containerClass={`max-w-6xl mx-auto mb-0 pb-0  ${classes?.container ?? ''}`}
   bg={bg}
 >
   <Headline title={title} subtitle={subtitle} tagline={tagline} />
   <div class="flex flex-wrap justify-center text-center gap-y-4">
     {
       stats &&
-        stats.map(({ amount, title, icon }) => (
+        stats.map(({ amount, title, smaller, icon }) => (
           <div class="p-4 md:w-1/4 sm:w-1/2 w-full min-w-[220px] text-center md:border-r md:last:border-none dark:md:border-slate-500 intersect-once motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade intersect-quarter">
             {icon && (
               <div class="flex items-center justify-center mx-auto mb-4 text-primary">
@@ -35,7 +35,11 @@ const {
               </div>
             )}
             {amount && (
-              <div class="font-heading text-primary font-bold dark:text-white text-xl lg:text-3xl">{amount}</div>
+              <div
+                class={`font-heading text-primary font-bold dark:text-white ${smaller ? 'text-lg lg:text-xl' : 'text-xl lg:text-3xl'}`}
+              >
+                {amount}
+              </div>
             )}
             {title && (
               <div class="text-sm mt-1 font-medium uppercase tracking-widest text-gray-800 dark:text-slate-400 lg:text-base">
