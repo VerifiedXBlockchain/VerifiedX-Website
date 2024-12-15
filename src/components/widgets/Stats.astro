@@ -7,7 +7,12 @@ import Button from '~/components/ui/Button.astro';
 const { stats = [], id, isDark = false, classes = {}, bg = await Astro.slots.render('bg') } = Astro.props;
 ---
 
-<WidgetWrapper id={id} isDark={isDark} containerClass={`max-w-6xl mx-auto ${classes?.container ?? ''}`} bg={bg}>
+<WidgetWrapper
+  id={id}
+  isDark={isDark}
+  containerClass={`max-w-6xl mx-auto mt-0 pt-0 md:pt-0 lg:pt-0  ${classes?.container ?? ''}`}
+  bg={bg}
+>
   <div class="flex items-stretch justify-center">
     <div class="grid grid-cols-3 gap-6 dark:text-white sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3">
       {

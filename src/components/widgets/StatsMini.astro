@@ -17,9 +17,14 @@ const {
 } = Astro.props;
 ---
 
-<WidgetWrapper id={id} isDark={isDark} containerClass={`max-w-6xl mx-auto ${classes?.container ?? ''}`} bg={bg}>
+<WidgetWrapper
+  id={id}
+  isDark={isDark}
+  containerClass={`max-w-6xl mx-auto mb-0 pb-0 ${classes?.container ?? ''}`}
+  bg={bg}
+>
   <Headline title={title} subtitle={subtitle} tagline={tagline} />
-  <div class="flex flex-wrap justify-center -m-4 text-center">
+  <div class="flex flex-wrap justify-center text-center gap-y-4">
     {
       stats &&
         stats.map(({ amount, title, icon }) => (
@@ -30,12 +35,10 @@ const {
               </div>
             )}
             {amount && (
-              <div class="font-heading text-primary text-[2.6rem] font-bold dark:text-white lg:text-5xl xl:text-6xl">
-                {amount}
-              </div>
+              <div class="font-heading text-primary font-bold dark:text-white text-xl lg:text-3xl">{amount}</div>
             )}
             {title && (
-              <div class="text-sm font-medium uppercase tracking-widest text-gray-800 dark:text-slate-400 lg:text-base">
+              <div class="text-sm mt-1 font-medium uppercase tracking-widest text-gray-800 dark:text-slate-400 lg:text-base">
                 {title}
               </div>
             )}
