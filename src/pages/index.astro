@@ -10,6 +10,8 @@ import Button from '~/components/ui/Button.astro';
 import ItemGrid2 from '~/components/ui/ItemGrid2.astro';
 import ZoomableImageGallery from '~/components/ZoomableImageGallery.astro';
 import StatsMini from '~/components/widgets/StatsMini.astro';
+import Quote from '~/components/ui/Quote.astro';
+import { YouTube } from 'astro-embed';
 
 const metadata = {
   title: 'VerifiedX — Tokenized Commerce and Self-Custody for Everyone.',
@@ -28,34 +30,40 @@ const guiFeatures = [
 
 <Layout metadata={metadata}>
   <!-- Hero Widget ******************* -->
+  <section class="spy-section">
+    <Hero actions={[{ text: 'Download Wallet', href: '#section-download', variant: 'primary' }]}>
+      <Fragment slot="title">
+        Tokenized Commerce and<br />Self-Custody for <span class="text-accent dark:text-primary highlight"
+          >Everyone</span
+        >.
+      </Fragment>
 
-  <Hero actions={[{ text: 'Learn more', href: '#features', variant: 'primary' }]}>
-    <Fragment slot="title">
-      Tokenized Commerce and<br />Self-Custody for <span class="text-accent dark:text-primary highlight">Everyone</span
-      >.
-    </Fragment>
-
-    <Fragment slot="subtitle">
-      <span class="inline font-extralight">
-        <span class="font-medium">VerifiedX (<span class="text-primary font-bold">VFX</span>)</span> is an open-source decentralized
-        network that is both a <span class="text-primary font-medium">universal layer 1</span> and a <span
-          class="text-btc font-medium">Bitcoin sidechain</span
-        > for the purpose of tokenized self-custody, on-chain storage, and peer-to-peer commerce of both <span
-          class="font-medium">digital</span
-        > & <span class="font-medium">physical assets</span>.</span
-      >
-    </Fragment>
-  </Hero>
+      <Fragment slot="subtitle">
+        <span class="inline font-extralight">
+          <span class="font-medium">VerifiedX (<span class="text-primary font-bold">VFX</span>)</span> is an open-source
+          decentralized network that is both a <span class="text-primary font-medium">universal layer 1</span> and a <span
+            class="text-btc font-medium">Bitcoin sidechain</span
+          > for the purpose of tokenized self-custody, on-chain storage, and peer-to-peer commerce of both <span
+            class="font-medium">digital</span
+          > & <span class="font-medium">physical assets</span>.</span
+        >
+      </Fragment>
+    </Hero>
+  </section>
 
   <!-- Note Widget ******************* -->
 
   <!-- Features Widget *************** -->
-  <div class="bg-gradient-to-b from-gray-900 to-black">
+  <div class="relative" class="spy-section">
+    <video autoplay muted loop playsinline class="background-video">
+      <source src="/tech.mp4" type="video/mp4" />
+    </video>
+
     <h2 class="block font-light text-white text-center text-2xl py-5 bg-gray-900 border-gray-700 border-solid border-t">
       The Verified<span class="text-primary font-bold">X</span> Network
     </h2>
 
-    <StatsMini
+    <!-- <StatsMini
       title=""
       stats={[
         { title: 'Latest Block', amount: '2,976,494' },
@@ -66,7 +74,8 @@ const guiFeatures = [
         { title: 'Active Validators', amount: '670' },
         { title: 'Latest Block', amount: '2,976,494' },
       ]}
-    />
+    /> -->
+    <div class="py-8"></div>
     <Stats
       stats={[
         {
@@ -91,12 +100,12 @@ const guiFeatures = [
     />
   </div>
 
-  <section class="background-1 border-t border-gray-800" id="section-discover">
+  <section class="background-1 border-t border-gray-800 spy-section" id="section-discover">
     <WidgetWrapper containerClass={`max-w-6xl mx-auto pt-0 mt-0`}>
       <h2 class={'font-light font-heading text-heading text-5xl text-center tracking-tight '}>
         What Does It All Mean?
       </h2>
-      <p class="mt-5 text-base text-center text-primary font-bold tracking-wide uppercase">(And why should we care?)</p>
+      <p class="mt-5 text-center text-primary font-bold tracking-wide uppercase text-lg">And why should we care?</p>
       <div class="py-5"></div>
       <div class="styled-content-box">
         <div class="font-light text-xl text-white p-5">
@@ -140,16 +149,20 @@ const guiFeatures = [
     </WidgetWrapper>
   </section>
 
-  <section class="border-gray-800 border-t border-b" id="section-vfx">
+  <section class="border-gray-800 border-t border-b spy-section relative" id="section-vfx">
+    <video autoplay muted loop playsinline class="background-video">
+      <source src="/network.mp4" type="video/mp4" />
+    </video>
     <WidgetWrapper containerClass={`max-w-6xl mx-auto`}>
       <div>
         <h2 class={'font-bold font-heading text-heading text-5xl text-center tracking-tight '}>For The People</h2>
-        <p class="mt-5 text-base text-center text-primary font-bold tracking-wide uppercase">
-          <span class="text-white">&ldquo;</span>The people who are crazy enough to think<br />they can change the
-          world, are the ones who do.<span class="text-white">&rdquo;</span><br /><span class="text-white"
-            >&hyphen; Steve Jobs</span
-          >
-        </p>
+
+        <Quote attribute="Steve Jobs" btc={false}>
+          <Fragment slot="body">
+            The people who are crazy enough to think<br />they can change the world, are the ones who do.
+          </Fragment>
+        </Quote>
+
         <p class="mt-8 text-center text-xl max-w-4xl mx-auto">
           VerifiedX is the first open-source and completely decentralized universal layer 1 blockchain AND utility
           sidechain for the Bitcoin network. VFX enables tokenized self-custody, data, and peer-to-peer commerce of both
@@ -165,49 +178,49 @@ const guiFeatures = [
             title: 'VFX and BTC',
             description:
               'Send and Receive both VFX and BTC natively. Supports all Bitcoin addresses with a full non-custodial "one-click" user interface!',
-            icon: 'tabler:brand-tailwind',
+            icon: 'tabler:coins',
           },
           {
             title: 'Validate for Governance',
             description:
               'Validate by liquid staking in exchange for complete governance. One CPU one vote, with on-chain proposals / voting deployed, actionable, and viewable all through wallets!',
-            icon: 'tabler:components',
+            icon: 'tabler:gavel',
           },
           {
             title: 'Vault Accounts',
             description:
               ' On-chain Vault accounts, just like a safe deposit box, providing users with the ability to store funds and assets with a "first ever" on-chain recovery and escrow feature eliminating the need for hardware wallets!',
-            icon: 'tabler:list-check',
+            icon: 'tabler:lock',
           },
           {
             title: 'Tokenize',
             description:
               'Tokenize any asset, including Bitcoin, and program real on-chain features without any technical knowledge. Mint Non-Fungible (VFX10) and Fungible Tokens (VFX20) with on-chain features by using simple one-click options through self-executing and automated smart contracts for near zero cost, yes gasless!',
-            icon: 'tabler:rocket',
+            icon: 'tabler:wand',
           },
           {
             title: 'P2P Commerce',
             description:
               'Trade, lend, borrow, or exhibit directly with anyone anytime through self-custodial published auction houses, shops, bulletins, and galleries with p2p chat and generate direct links to any social media account!',
-            icon: 'tabler:arrows-right-left',
+            icon: 'tabler:building-store',
           },
           {
             title: 'On-Chain Domains',
             description:
               'Domain name service for all VFX and BTC addresses, simplifying sending and receiving funds and assets that are also transferrable!',
-            icon: 'tabler:bulb',
+            icon: 'tabler:link',
           },
           {
             title: 'Media Beacons',
             description:
               'Complete p2p media and document transfer with privacy and beacon hosting, without the need for third party services!',
-            icon: 'tabler:bulb',
+            icon: 'tabler:wifi',
           },
           {
             title: 'Easy On/Off Ramps',
             description:
               'Easy in-wallet on / off-ramp for VFX and BTC funds with Apple Pay and Google Pay with integrated providers!',
-            icon: 'tabler:bulb',
+            icon: 'tabler:arrows-diff',
           },
         ]}
         columns={2}
@@ -226,16 +239,16 @@ const guiFeatures = [
     </WidgetWrapper>
   </section>
 
-  <section class="background-2" id="section-bitcoin">
+  <section class="background-2 spy-section" id="section-bitcoin">
     <WidgetWrapper containerClass={`max-w-6xl mx-auto`}>
       <h2 class={'font-bold font-heading text-heading text-5xl text-center tracking-tight '}>
         Why <span class="text-btc">Bitcoin</span>?
       </h2>
-      <p class="mt-5 text-base text-center text-white font-bold tracking-wide uppercase">
-        <span class="text-white">&ldquo;</span>It's better to be a pirate than join the Navy!<span class="text-white"
-          >&rdquo;</span
-        ><br /><span class="font-light text-white">&hyphen; Steve Jobs</span>
-      </p>
+
+      <Quote attribute="Steve Jobs" btc={true}>
+        <Fragment slot="body"> It's better to be a pirate than join the Navy! </Fragment>
+      </Quote>
+
       <div class="py-4"></div>
       <div class="styled-content-box">
         <div class="font-light text-xl text-white p-5">
@@ -278,15 +291,32 @@ const guiFeatures = [
     </WidgetWrapper>
   </section>
 
-  <section class="border-gray-800 border-t border-b" id="section-vbtc">
+  <section class="border-gray-800 border-t border-b spy-section relative" id="section-vbtc">
+    <video autoplay muted loop playsinline class="background-video">
+      <source src="/btc-charts.mp4" type="video/mp4" />
+    </video>
     <WidgetWrapper containerClass={`max-w-6xl mx-auto`}>
       <div>
         <h2 class={'font-bold font-heading text-heading text-5xl text-center tracking-tight '}>
           Enter Verified Bitcoin
         </h2>
-        <p class="mt-5 text-base text-center text-secondary text-btc font-bold tracking-wide uppercase">
-          <span class="text-white">&ldquo;</span>Not Your Daddy's Wrapper<span class="text-white">&rdquo;</span>
-        </p>
+        <Quote btc={true}>
+          <Fragment slot="body"> Not Your Daddy's Wrapper! </Fragment>
+        </Quote>
+
+        <video
+          class="block mx-auto mt-8"
+          style={'border-radius: 128px'}
+          autoplay
+          muted
+          playsinline
+          loop
+          width={256}
+          height={256}
+        >
+          <source src="/vbtc.mp4" type="video/mp4" />
+        </video>
+
         <p class="mt-8 text-center text-xl max-w-4xl mx-auto">
           VerifiedX is the first open-source and completely decentralized universal layer 1 blockchain AND utility
           sidechain for the Bitcoin network. VFX enables tokenized self-custody, data, and peer-to-peer commerce of both
@@ -302,36 +332,36 @@ const guiFeatures = [
             title: 'Self-custodial Bitcoin token',
             description:
               'The first-ever non-custodial Bitcoin Token minted by a simple text smart contract with actual features, and with an evergreen 1:1 decentralized peg. This means 1 vBTC = 1 BTC ALWAYS!',
-            icon: 'tabler:brand-tailwind',
+            icon: 'tabler:key',
           },
           {
             title: 'Transfer BTC with near zero fees',
             description:
               'Tokenize Bitcoin and send any denomination to anyone, anywhere in the world, for near zero fees and with near instant finality!',
-            icon: 'tabler:components',
+            icon: 'tabler:send',
           },
           {
             title: 'Mint with on-chain media',
             description:
               'Mint any vBTC token with inscribed media on-chain which automatically transfers with any transaction! ',
-            icon: 'tabler:list-check',
+            icon: 'tabler:photo',
           },
           {
             title: 'Support Documents',
             description:
               'Mint any vBTC token with documents such as a Will or a Trust for estate planning that transfers to the appropriate recipient completely p2p!',
-            icon: 'tabler:rocket',
+            icon: 'tabler:checklist',
           },
           {
             title: 'Store in vault',
             description:
               'Store vBTC / BTC funds in your self-custodial Vault with on-chain recovery and escrow payment features. Set it and forget it!',
-            icon: 'tabler:arrows-right-left',
+            icon: 'tabler:shield-lock',
           },
           {
             title: 'Native BTC Deposits and Withdrawls',
             description: 'All Tokenized BTC deposits and withdrawals settle natively on the Bitcoin Network! ',
-            icon: 'tabler:bulb',
+            icon: 'tabler:currency-bitcoin',
           },
         ]}
         columns={2}
@@ -350,17 +380,17 @@ const guiFeatures = [
     </WidgetWrapper>
   </section>
 
-  <section class="background-1" id="section-validators">
+  <section class="background-1 spy-section" id="section-validators">
     <WidgetWrapper containerClass={`max-w-6xl mx-auto`}>
       <h2 class={'font-bold font-heading text-heading text-5xl text-center tracking-tight '}>
         Validators With Full Governance
       </h2>
-      <p class="mt-5 text-base text-center text-primary font-bold tracking-wide uppercase">
-        <span class="text-white">&ldquo;</span>If people are good because they fear punishment,<br />and hope for
-        reward, then we are a sorry lot indeed<span class="text-white">&rdquo;</span><br /><span class="text-white"
-          >&hyphen; Albert Einstein</span
+
+      <Quote btc={false} attribute="Albert Einstein">
+        <Fragment slot="body"
+          >If people are good because they fear punishment,<br />and hope for reward, then we are a sorry lot indeed.</Fragment
         >
-      </p>
+      </Quote>
       <div class="py-4"></div>
 
       <div class="styled-content-box">
@@ -414,8 +444,8 @@ const guiFeatures = [
   </section>
   <!-- Content Widget **************** -->
 
-  <section class="border-t border-b border-gray-800 bg-black" id="section-switchblade">
-    <WidgetWrapper containerClass={`max-w-6xl mx-auto`}>
+  <section class="border-t border-gray-800 bg-black spy-section" id="section-switchblade">
+    <WidgetWrapper containerClass={`max-w-6xl mx-auto lg:pb-0`}>
       <Content
         isReversed
         title="Introducing The VFX Switchblade"
@@ -537,6 +567,7 @@ const guiFeatures = [
 
           <div class="py-8"></div>
 
+          <div id="section-download"></div>
           <p>
             Having access to a <span class="font-semibold">Switchblade</span> wallet is without a doubt a mainstream accelerator
             with simple password and login accounts without sacrificing on-chain security at all. In fact, <span
@@ -545,11 +576,13 @@ const guiFeatures = [
             voting, tokenization, and storage without the need for a third party app or authority. It was built for everyday
             use and to solve everyday problems, the way it should be.
           </p>
+
           <div class="pt-8 flex justify-center items-center gap-2 flex-wrap">
             <Button variant="primary" href="#">Install and Operating Instructions</Button>
           </div>
           <div class="pt-8 flex justify-center items-center gap-2 flex-wrap">
-            <Button variant="secondary" href="#">Download for MacOS</Button>
+            <Button variant="secondary" href="#">Download for MacOS (ARM)</Button>
+            <Button variant="secondary" href="#">Download for MacOS (Intel)</Button>
             <Button variant="secondary" href="#">Download for Windows</Button>
             <Button variant="secondary" href="#">Launch Web Wallet</Button>
             <Button variant="secondary" href="#">Download CLI</Button>
@@ -559,17 +592,28 @@ const guiFeatures = [
     </WidgetWrapper>
   </section>
 
-  <section class="border-gray-800 border-t border-b" id="section-ecosystem">
+  <section class="p-8 bg-black">
+    <h2 class="text-center text-white font-light text-4xl">Overview <span class="text-primary">Video</span></h2>
+
+    <YouTube id="hgp9nlsWFv8" class="block mx-auto w-full" />
+  </section>
+
+  <section class="border-gray-800 border-t border-b spy-section relative" id="section-ecosystem">
+    <video autoplay muted loop playsinline class="background-video">
+      <source src="/shield-lock.mp4" type="video/mp4" />
+    </video>
+
     <WidgetWrapper containerClass={`max-w-6xl mx-auto`}>
       <div>
         <h2 class={'font-bold font-heading text-heading text-5xl text-center tracking-tight '}>
           The Verified<span class="text-primary">X</span> Gateway
         </h2>
-        <p class="mt-5 text-base text-center text-secondary text-white font-bold tracking-wide uppercase">
-          <span class="text-white">&ldquo;</span>If you want to find the secrets of the universe, think in terms of<br
-          />
-          energy, frequency and vibration<span class="text-white">&rdquo;</span><br />&hyphen; Nikola Tesla
-        </p>
+
+        <Quote btc={false} attribute="Nikola Tesla">
+          <Fragment slot="body"
+            >If you want to find the secrets of the universe,<br />think in terms of energy, frequency and vibration.</Fragment
+          >
+        </Quote>
       </div>
 
       <div class="py-8"></div>
@@ -599,7 +643,7 @@ const guiFeatures = [
           },
           {
             title: 'Source Code',
-            description: 'View the code, create pull requests, and report issues on our Github.',
+            description: 'View the code, create pull requests, and report issues on Github.',
             callToAction: {
               variant: 'secondary',
               text: 'View',
@@ -630,7 +674,7 @@ const guiFeatures = [
 
           {
             title: 'Whitepaper',
-            description: 'Read our latest whitepaper and dig deep into the technology.',
+            description: 'Read the latest whitepaper and dig deep into the technology.',
             callToAction: {
               variant: 'secondary',
               text: 'Read',
@@ -642,7 +686,7 @@ const guiFeatures = [
         classes={{
           container: 'gap-4 md:gap-6',
           panel:
-            'rounded-lg shadow-[0_4px_30px_rgba(0,0,0,0.1)] dark:shadow-[0_4px_30px_rgba(0,0,0,0.1)] backdrop-blur border border-[#ffffff29] bg-white dark:bg-slate-900 p-6',
+            'rounded-lg shadow-[0_4px_30px_rgba(0,0,0,0.1)] backdrop-blur border border-[#ffffff29] bg-[rgba(15,23,42,0.75)] p-6',
 
           icon: 'w-12 h-12 mb-6 text-primary',
         }}
@@ -656,7 +700,11 @@ const guiFeatures = [
     </WidgetWrapper>
   </section>
 
-  <section class="border-gray-800 border-t border-b bg-gray-900" id="section-build">
+  <section class="border-gray-800 border-t border-b spy-section relative" id="section-build">
+    <video autoplay muted loop playsinline class="background-video">
+      <source src="/secure-lock.mp4" type="video/mp4" />
+    </video>
+
     <WidgetWrapper containerClass={`max-w-6xl mx-auto`}>
       <div>
         <h2 class={'font-bold font-heading text-heading text-5xl text-center tracking-tight '}>Build & Integrate</h2>
@@ -713,7 +761,7 @@ const guiFeatures = [
 
           {
             title: 'The Road Ahead',
-            description: "See what's on our roadmap and suggest your own ideas.",
+            description: "See what's on the roadmap and suggest your own ideas.",
             callToAction: {
               variant: 'secondary',
               text: 'Read',
@@ -735,7 +783,7 @@ const guiFeatures = [
         classes={{
           container: 'gap-4 md:gap-6',
           panel:
-            'rounded-lg shadow-[0_4px_30px_rgba(0,0,0,0.1)] dark:shadow-[0_4px_30px_rgba(0,0,0,0.1)] backdrop-blur border border-[#ffffff29] bg-slate-700 p-6',
+            'rounded-lg  shadow-[0_4px_30px_rgba(0,0,0,0.1)] backdrop-blur border border-[#ffffff29] bg-[rgba(51,65,85,0.7)] p-6',
 
           icon: 'w-12 h-12 mb-6 text-primary',
         }}
@@ -748,12 +796,13 @@ const guiFeatures = [
       </div>
     </WidgetWrapper>
   </section>
-  <section id="section-connect">
+  <section class="spy-section min-h-screen flex flex-col justify-center bg-black" id="section-connect">
     <WidgetWrapper containerClass={`max-w-6xl mx-auto py-6 my-0`}>
       <div class="flex justify-center">
-        <Image src="~/assets/images/vfx-wordmark-light.png" alt="VerifiedX" width={400} />
+        <Image src="~/assets/images/vfx-wordmark-light.png" alt="VerifiedX" width={600} />
       </div>
-      <div class="py-2"></div>
+
+      <div class="py-4"></div>
 
       <p class="text-center text-3xl text-light">
         Tokenized Commerce and<br />Self-Custody for <span class="text-accent dark:text-primary highlight"
@@ -761,36 +810,16 @@ const guiFeatures = [
         >.
       </p>
 
-      <div class="py-4"></div>
+      <div class="py-8"></div>
 
       <div class="flex justify-center gap-3 max-w-2xl mx-auto flex-wrap">
         <Button variant="secondary">Follow us on X</Button>
-        <Button variant="secondary">Join our Discord</Button>
+        <Button variant="secondary">Join Discord</Button>
         <Button variant="secondary">Contribute on Github</Button>
         <Button variant="secondary">Contact Devs</Button>
       </div>
 
       <div class="py-4"></div>
-
-      <h4 class="text-center font-semibold text-lg tracking-wide uppercase">The Foundation</h4>
-      <div class="py-2"></div>
-
-      <div class="max-w-3xl mx-auto">
-        <div class="styled-content-box p-4">
-          <p class="font-extralight">
-            VerifiedX was conceptualized and developed as a founding collaboration of validators by <span
-              class="font-semibold">Texoware</span
-            >, <span class="font-semibold">The Reserve Label</span>, and <a
-              class="hover:underline font-semibold"
-              href="https://theyoungastronauts.com/"
-              target="_blank">The Young Astronauts</a
-            > for the purpose of advancing a completely decentralized solution to enhance self-custody and self-sovereignty
-            for tokenized assets and p2p commerce within a layer1 network for simple use by the everyday user while solving
-            everyday issues efficiently. To date, the entire project has been completely self-funded by the group and operates
-            under an on-chain governance mechanism as to be devoid of any centralized control whatsoever.
-          </p>
-        </div>
-      </div>
     </WidgetWrapper>
   </section>
 </Layout>

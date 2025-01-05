@@ -1,0 +1,15 @@
+---
+import type { Quote as Props } from '~/types';
+const { body = Astro.slots.render('body'), btc = false, attribute } = Astro.props;
+---
+
+<div class="text-center mt-5">
+  <div class={`p-4 pb-3 inline-block mx-auto ${btc ? 'styled-content-box-btc' : 'styled-content-box'}`}>
+    <p class={`text-base text-center font-bold tracking-wide uppercase ${btc ? 'text-btc' : 'text-primary'}`}>
+      <Fragment set:html={body} />
+      <br />
+
+      {attribute && <span class="text-white mt-2 inline-block">&hyphen; {attribute}</span>}
+    </p>
+  </div>
+</div>

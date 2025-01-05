@@ -28,4 +28,30 @@ const { metadata } = Astro.props;
   <slot name="footer">
     <Footer {...footerData} />
   </slot>
+
+  <script type="module">
+    // Scroll Spy Logic
+    const sections = document.querySelectorAll('.spy-section');
+    const menuLinks = document.querySelectorAll('.main-header-link');
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            // Remove active class from all links
+            menuLinks.forEach((link) => link.classList.remove('main-header-link-active'));
+
+            // Add active class to the corresponding link
+            const activeLink = document.querySelector(`a[href="#${entry.target.id}"]`);
+            activeLink.classList.add('main-header-link-active');
+          }
+        });
+      },
+      {
+        threshold: 0.5, // Adjust based on when you want the section to activate
+      }
+    );
+
+    sections.forEach((section) => observer.observe(section));
+  </script>
 </Layout>

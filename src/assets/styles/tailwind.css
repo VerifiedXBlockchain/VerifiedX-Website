@@ -88,6 +88,12 @@
     }
   }
 
+  .main-header-link:hover,
+  .main-header-link-active {
+    @apply text-primary underline !important;
+  }
+
+
 
   .styled-content-box {
     position: relative;
@@ -97,10 +103,37 @@
     box-shadow: 0px 0px 10px #192834;
 
 
+  }
+
+  .styled-content-box-btc {
+    position: relative;
+    background-color: rgba(21, 22, 24, 0.9);
+    @apply rounded-xl;
+    border: 1px solid var(--aw-color-btc-muted);
+    box-shadow: 0px 0px 10px var(--aw-color-btc-muted);
+
+
+  }
+
+  .background-video {
+    position: absolute;
+
+    object-fit: cover;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0.2;
+
 
   }
 
 
+}
+
+lite-youtube {
+  max-width: 1024px !important;
 }
 
 @layer components {

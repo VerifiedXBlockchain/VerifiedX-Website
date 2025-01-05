@@ -200,6 +200,12 @@ export interface CallToAction extends Omit<HTMLAttributes<'a'>, 'slot'> {
   type?: 'button' | 'submit' | 'reset';
 }
 
+export interface Quote {
+  body?: string;
+  btc: boolean;
+  attribute?: string;
+}
+
 export interface ItemGrid {
   items?: Array<Item>;
   columns?: number;

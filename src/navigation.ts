@@ -7,11 +7,11 @@ export const headerData = {
       href: "#section-discover",
     },
     {
-      text: "Why VFX?",
+      text: "Why VFX",
       href: "#section-vfx",
     },
     {
-      text: "Why Bitcoin?",
+      text: "Why Bitcoin",
       href: "#section-bitcoin",
     },
     {
