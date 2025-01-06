@@ -44,7 +44,7 @@
   .fun-gradient {
     background: linear-gradient(var(--gradient-direction),
         lch(75.565% 37.748 247.537) 0%,
-        oklch(70% 0.17 280 / 0.7) 40%,
+        oklch(70% 0.17 280 / 0.7) 60%,
         /* Approx. conversion of rgba(144, 115, 255, 0.5) */
         oklch(75% 0.23 300 / 0.7) 100%
         /* Approx. conversion of rgba(204, 138, 255, 0.7) */
