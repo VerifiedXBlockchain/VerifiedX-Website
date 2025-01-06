@@ -1,0 +1,26 @@
+---
+import Stats from '../widgets/Stats.astro';
+---
+
+<Stats
+  stats={[
+    {
+      title: 'Latest Block',
+      value: '2,976,494',
+      ctaTitle: 'Open Spyglass',
+      ctaHref: 'https://spyglass-testnet.verifiedx.io/',
+      gradientDirection: 'to bottom right',
+    },
+    { title: 'Block Time', value: '10', metric: 'seconds', gradientDirection: 'to bottom' },
+    { title: 'TXs', value: '1,024', metric: 'total', gradientDirection: 'to bottom left' },
+    { title: 'Fees Burned', value: '1,004.06', metric: 'VFX', gradientDirection: 'to top right' },
+    { title: 'Circulating Supply', value: '173,502,020', metric: 'VFX', gradientDirection: 'to top' },
+    {
+      title: 'Active Validators',
+      value: '670',
+      ctaHref: '#',
+      ctaTitle: 'Start Validating',
+      gradientDirection: 'to top left',
+    },
+  ]}
+/>

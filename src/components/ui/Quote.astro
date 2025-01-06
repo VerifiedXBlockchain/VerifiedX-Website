@@ -4,7 +4,9 @@ const { body = Astro.slots.render('body'), btc = false, attribute } = Astro.prop
 ---
 
 <div class="text-center mt-5">
-  <div class={`p-4 pb-3 inline-block mx-auto ${btc ? 'styled-content-box-btc' : 'styled-content-box'}`}>
+  <div
+    class={`p-4 ${attribute ? 'pb-3' : ''} inline-block mx-auto ${btc ? 'styled-content-box-btc' : 'styled-content-box'}`}
+  >
     <p class={`text-base text-center font-bold tracking-wide uppercase ${btc ? 'text-btc' : 'text-primary'}`}>
       <Fragment set:html={body} />
       <br />

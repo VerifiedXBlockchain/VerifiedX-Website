@@ -12,26 +12,23 @@ import ZoomableImageGallery from '~/components/ZoomableImageGallery.astro';
 import StatsMini from '~/components/widgets/StatsMini.astro';
 import Quote from '~/components/ui/Quote.astro';
 import { YouTube } from 'astro-embed';
+import NetworkStats from '~/components/ui/NetworkStats.astro';
 
 const metadata = {
   title: 'VerifiedX — Tokenized Commerce and Self-Custody for Everyone.',
   ignoreTitleTemplate: true,
 };
-
-const guiFeatures = [
-  {
-    image: '~/assets/images/gui/1.jpg',
-    title: 'Test 123',
-    link: null,
-    description: 'lorem ipsum',
-  },
-];
 ---
 
 <Layout metadata={metadata}>
   <!-- Hero Widget ******************* -->
   <section class="spy-section">
-    <Hero actions={[{ text: 'Download Wallet', href: '#section-download', variant: 'primary' }]}>
+    <Hero
+      actions={[
+        { text: 'Download Wallet', href: '#section-download', variant: 'primary' },
+        { text: 'Open Deck', href: '#section-download', variant: 'secondary' },
+      ]}
+    >
       <Fragment slot="title">
         Tokenized Commerce and<br />Self-Custody for <span class="text-accent dark:text-primary highlight"
           >Everyone</span
@@ -48,59 +45,15 @@ const guiFeatures = [
           > & <span class="font-medium">physical assets</span>.</span
         >
       </Fragment>
+
+      <Fragment slot="content">
+        <div class="py-5"></div>
+        <NetworkStats client:load />
+      </Fragment>
     </Hero>
   </section>
 
-  <!-- Note Widget ******************* -->
-
-  <!-- Features Widget *************** -->
-  <div class="relative" class="spy-section">
-    <video autoplay muted loop playsinline class="background-video">
-      <source src="/tech.mp4" type="video/mp4" />
-    </video>
-
-    <h2 class="block font-light text-white text-center text-2xl py-5 bg-gray-900 border-gray-700 border-solid border-t">
-      The Verified<span class="text-primary font-bold">X</span> Network
-    </h2>
-
-    <!-- <StatsMini
-      title=""
-      stats={[
-        { title: 'Latest Block', amount: '2,976,494' },
-        { title: 'Block Time', amount: '10s' },
-        { title: 'TXs', amount: '1,024 /s' },
-        { title: 'Fees Burned', amount: '1,004.06 VFX' },
-        { title: 'Circulating Supply', amount: '173,502,020 VFX', smaller: true },
-        { title: 'Active Validators', amount: '670' },
-        { title: 'Latest Block', amount: '2,976,494' },
-      ]}
-    /> -->
-    <div class="py-8"></div>
-    <Stats
-      stats={[
-        {
-          title: 'Latest Block',
-          value: '2,976,494',
-          ctaTitle: 'Open Spyglass',
-          ctaHref: 'https://spyglass-testnet.verifiedx.io/',
-          gradientDirection: 'to bottom right',
-        },
-        { title: 'Block Time', value: '10', metric: 'seconds', gradientDirection: 'to bottom' },
-        { title: 'TXs', value: '1,024', metric: 'per second', gradientDirection: 'to bottom left' },
-        { title: 'Fees Burned', value: '1,004.06', metric: 'VFX', gradientDirection: 'to top right' },
-        { title: 'Circulating Supply', value: '173,502,020', metric: 'VFX', gradientDirection: 'to top' },
-        {
-          title: 'Active Validators',
-          value: '670',
-          ctaHref: '#',
-          ctaTitle: 'Start Validating',
-          gradientDirection: 'to top left',
-        },
-      ]}
-    />
-  </div>
-
-  <section class="background-1 border-t border-gray-800 spy-section" id="section-discover">
+  <section class="spy-section" id="section-discover">
     <WidgetWrapper containerClass={`max-w-6xl mx-auto pt-0 mt-0`}>
       <h2 class={'font-light font-heading text-heading text-5xl text-center tracking-tight '}>
         What Does It All Mean?
@@ -149,10 +102,7 @@ const guiFeatures = [
     </WidgetWrapper>
   </section>
 
-  <section class="border-gray-800 border-t border-b spy-section relative" id="section-vfx">
-    <video autoplay muted loop playsinline class="background-video">
-      <source src="/network.mp4" type="video/mp4" />
-    </video>
+  <section class="spy-section relative pt-16" id="section-vfx">
     <WidgetWrapper containerClass={`max-w-6xl mx-auto`}>
       <div>
         <h2 class={'font-bold font-heading text-heading text-5xl text-center tracking-tight '}>For The People</h2>
@@ -234,12 +184,12 @@ const guiFeatures = [
       <div class="flex flex-row justify-center items-center align-middle mt-16">
         <Button variant="primary" href={'#'} class="mx-2">Read Docs</Button>
         <div class="w-16 h-0.5 bg-primary opacity-40"></div>
-        <Button variant="secondary" href={'#'} class="mx-2">Open Deck</Button>
+        <Button variant="secondary" href={'#'} class="mx-2">View Tutorials</Button>
       </div>
     </WidgetWrapper>
   </section>
 
-  <section class="background-2 spy-section" id="section-bitcoin">
+  <section class="spy-section pt-12" id="section-bitcoin">
     <WidgetWrapper containerClass={`max-w-6xl mx-auto`}>
       <h2 class={'font-bold font-heading text-heading text-5xl text-center tracking-tight '}>
         Why <span class="text-btc">Bitcoin</span>?
@@ -291,10 +241,7 @@ const guiFeatures = [
     </WidgetWrapper>
   </section>
 
-  <section class="border-gray-800 border-t border-b spy-section relative" id="section-vbtc">
-    <video autoplay muted loop playsinline class="background-video">
-      <source src="/btc-charts.mp4" type="video/mp4" />
-    </video>
+  <section class="pt-16 spy-section relative" id="section-vbtc">
     <WidgetWrapper containerClass={`max-w-6xl mx-auto`}>
       <div>
         <h2 class={'font-bold font-heading text-heading text-5xl text-center tracking-tight '}>
@@ -380,7 +327,7 @@ const guiFeatures = [
     </WidgetWrapper>
   </section>
 
-  <section class="background-1 spy-section" id="section-validators">
+  <section class="spy-section pt-16" id="section-validators">
     <WidgetWrapper containerClass={`max-w-6xl mx-auto`}>
       <h2 class={'font-bold font-heading text-heading text-5xl text-center tracking-tight '}>
         Validators With Full Governance
@@ -444,7 +391,7 @@ const guiFeatures = [
   </section>
   <!-- Content Widget **************** -->
 
-  <section class="border-t border-gray-800 bg-black spy-section" id="section-switchblade">
+  <section class="pt-16 spy-section" id="section-switchblade">
     <WidgetWrapper containerClass={`max-w-6xl mx-auto lg:pb-0`}>
       <Content
         isReversed
@@ -595,14 +542,10 @@ const guiFeatures = [
   <section class="p-8 bg-black">
     <h2 class="text-center text-white font-light text-4xl">Overview <span class="text-primary">Video</span></h2>
 
-    <YouTube id="hgp9nlsWFv8" class="block mx-auto w-full" />
+    <YouTube id="hgp9nlsWFv8" class="block mx-auto w-full" posterQuality="max" />
   </section>
 
-  <section class="border-gray-800 border-t border-b spy-section relative" id="section-ecosystem">
-    <video autoplay muted loop playsinline class="background-video">
-      <source src="/shield-lock.mp4" type="video/mp4" />
-    </video>
-
+  <section class="pt-8 spy-section relative" id="section-ecosystem">
     <WidgetWrapper containerClass={`max-w-6xl mx-auto`}>
       <div>
         <h2 class={'font-bold font-heading text-heading text-5xl text-center tracking-tight '}>
@@ -700,11 +643,7 @@ const guiFeatures = [
     </WidgetWrapper>
   </section>
 
-  <section class="border-gray-800 border-t border-b spy-section relative" id="section-build">
-    <video autoplay muted loop playsinline class="background-video">
-      <source src="/secure-lock.mp4" type="video/mp4" />
-    </video>
-
+  <section class="pt-16 spy-section relative" id="section-build">
     <WidgetWrapper containerClass={`max-w-6xl mx-auto`}>
       <div>
         <h2 class={'font-bold font-heading text-heading text-5xl text-center tracking-tight '}>Build & Integrate</h2>
@@ -792,28 +731,24 @@ const guiFeatures = [
       <div class="pt-12 flex justify-center items-center gap-4">
         <Button variant="primary" href="#">View Docs</Button>
         <div class="w-16 h-0.5 bg-primary opacity-40"></div>
-        <Button variant="secondary" href="#">Read Whitepaper</Button>
+        <Button variant="secondary" href="#">API Playground</Button>
       </div>
     </WidgetWrapper>
   </section>
-  <section class="spy-section min-h-screen flex flex-col justify-center bg-black" id="section-connect">
+  <section class="pt-16 spy-section flex flex-col justify-center bg-black" id="section-connect">
     <WidgetWrapper containerClass={`max-w-6xl mx-auto py-6 my-0`}>
       <div class="flex justify-center">
-        <Image src="~/assets/images/vfx-wordmark-light.png" alt="VerifiedX" width={600} />
+        <Image src="~/assets/images/vfx-wordmark-orange-no-cube.png" alt="VerifiedX" width={300} />
       </div>
 
       <div class="py-4"></div>
 
-      <p class="text-center text-3xl text-light">
-        Tokenized Commerce and<br />Self-Custody for <span class="text-accent dark:text-primary highlight"
-          >Everyone</span
-        >.
-      </p>
+      <p class="text-center text-3xl text-light">Connect & Contribute</p>
 
-      <div class="py-8"></div>
+      <div class="py-4"></div>
 
       <div class="flex justify-center gap-3 max-w-2xl mx-auto flex-wrap">
-        <Button variant="secondary">Follow us on X</Button>
+        <Button variant="secondary">Follow on X</Button>
         <Button variant="secondary">Join Discord</Button>
         <Button variant="secondary">Contribute on Github</Button>
         <Button variant="secondary">Contact Devs</Button>

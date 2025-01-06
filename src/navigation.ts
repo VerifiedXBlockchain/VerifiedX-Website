@@ -17,6 +17,7 @@ export const headerData = {
     {
       text: "vBTC",
       href: "#section-vbtc",
+      btc: true,
     },
     {
       text: "Validators",
