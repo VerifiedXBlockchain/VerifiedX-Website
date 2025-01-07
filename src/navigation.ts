@@ -1,5 +1,42 @@
 import { getPermalink, getBlogPermalink, getAsset } from './utils/permalinks';
 
+
+// const DOCS_BASE_URL = 'https://docs.verifiedx.io';
+const DOCS_BASE_URL = 'https://verified-x-docs.vercel.app';
+
+export const externalLinks = {
+
+  docs: `${DOCS_BASE_URL}/`,
+  deck: 'https://vfx-resources.s3.us-east-1.amazonaws.com/VerifiedX.pdf',
+  whitepaper: 'https://vfx-resources.s3.us-east-1.amazonaws.com/VFXBlockchainWhitePaper2024.pdf',
+  vbtcFlow: 'https://vfx-resources.s3.us-east-1.amazonaws.com/vBTC-TechAndFlow.pdf',
+  spyglass: 'https://spyglass.verifiedx.io',
+  validatingDocs: `${DOCS_BASE_URL}/docs/validating`,
+  videoTutorials: `${DOCS_BASE_URL}/docs/tutorials/video-tutorials`,
+  guiDocs: `${DOCS_BASE_URL}/docs/gui`,
+  cliDocs: `${DOCS_BASE_URL}/docs/core`,
+  vbtcDocs: `${DOCS_BASE_URL}/docs/gui/gui-vbtc`,
+  installDocs: `${DOCS_BASE_URL}/docs/gui/gui-installation`,
+  integrationDocs: `${DOCS_BASE_URL}/docs/integration`,
+  integrationSwaggerDocs: `${DOCS_BASE_URL}/docs/integration/swagger`,
+
+  webWallet: `https://wallet.verifiedx.io`,
+  downloadGuiMacArm: '#',
+  downloadGuiMacIntel: '#',
+  downloadGuiWindows: '#',
+  downloadCli: 'https://github.com/VerifiedXBlockchain/VerifiedX-Core',
+  trilliumIde: 'https://trillium.verifiedx.io',
+  githubOrg: 'https://github.com/VerifiedXBlockchain',
+  configDocs: `${DOCS_BASE_URL}/docs/core/config`,
+  vbtcIntegrationDocs: `${DOCS_BASE_URL}/docs/core/vbtc`,
+  roadmap: '#',
+  testnetDocs: `${DOCS_BASE_URL}/docs/integration/testnet`,
+
+  twitter: 'https://x.com/VFXBlockchain',
+  discord: 'https://discord.gg/7cd5ebDQCj',
+  email: 'mailto:dev@verifiedx.io'
+}
+
 export const headerData = {
   links: [
     {
@@ -154,7 +191,7 @@ export const headerData = {
   //     href: '#',
   //   },
   // ],
-  actions: [{ text: 'Docs', href: 'https://docs.verifiedx.io', target: '_blank' }],
+  actions: [{ text: 'Docs', href: externalLinks.docs, target: '_blank' }],
 };
 
 export const footerData = {
@@ -162,46 +199,49 @@ export const footerData = {
     {
       title: 'Ecosystem',
       links: [
-        { text: 'VFX Spyglass', href: '#' },
-        { text: 'Web Wallet', href: '#' },
-        { text: 'Source Code', href: '#' },
-        { text: 'Trillium IDE', href: '#' },
-        { text: 'Integration Playground', href: '#' },
-        { text: 'Whitepaper', href: '#' },
+        { text: 'VFX Spyglass', href: externalLinks.spyglass },
+        { text: 'Web Wallet', href: externalLinks.webWallet },
+        { text: 'Source Code', href: externalLinks.githubOrg },
+        { text: 'Trillium IDE', href: externalLinks.trilliumIde },
+        { text: 'Integration Playground', href: externalLinks.integrationSwaggerDocs },
+        { text: 'Whitepaper', href: externalLinks.whitepaper },
       ],
     },
     {
       title: 'Docs',
       links: [
-        { text: 'Tutorials', href: '#' },
-        { text: 'GUI', href: '#' },
-        { text: 'CLI', href: '#' },
-        { text: 'Integrations', href: '#' },
-        { text: 'vBTC', href: '#' },
+        { text: 'Tutorials', href: externalLinks.videoTutorials },
+        { text: 'GUI', href: externalLinks.guiDocs },
+        { text: 'CLI', href: externalLinks.cliDocs },
+        { text: 'Integrations', href: externalLinks.integrationDocs },
+        { text: 'vBTC', href: externalLinks.vbtcDocs },
       ],
     },
     {
       title: 'Community',
       links: [
-        { text: 'X', href: '#' },
-        { text: 'Discord', href: '#' },
-        { text: 'Github', href: '#' },
-        { text: 'dev@verifiedx.io', href: 'mailto:dev@verifiedx.io' },
+        { text: 'X', href: externalLinks.twitter },
+        { text: 'Discord', href: externalLinks.discord },
+        { text: 'Github', href: externalLinks.githubOrg },
+        { text: 'dev@verifiedx.io', href: externalLinks.email },
       ],
     },
 
   ],
-  secondaryLinks: [
-    { text: 'Terms', href: getPermalink('/terms') },
-    { text: 'Privacy Policy', href: getPermalink('/privacy') },
-  ],
+  // secondaryLinks: [
+  //   { text: 'Terms', href: getPermalink('/terms') },
+  //   { text: 'Privacy Policy', href: getPermalink('/privacy') },
+  // ],
   socialLinks: [
-    { ariaLabel: 'X', icon: 'tabler:brand-x', href: '#' },
-    { ariaLabel: 'Github', icon: 'tabler:brand-github', href: 'https://github.com/verifiedxblockchain' },
-    { ariaLabel: 'Discord', icon: 'tabler:brand-discord', href: '#' },
-    { ariaLabel: 'Email', icon: 'tabler:mail', href: 'mailto:dev@verifiedx.io' },
+    { ariaLabel: 'X', icon: 'tabler:brand-x', href: externalLinks.twitter },
+    { ariaLabel: 'Github', icon: 'tabler:brand-github', href: externalLinks.githubOrg },
+    { ariaLabel: 'Discord', icon: 'tabler:brand-discord', href: externalLinks.discord },
+    { ariaLabel: 'Email', icon: 'tabler:mail', href: externalLinks.email },
   ],
   footNote: `
    Copyright ${(new Date()).getFullYear()} VerifiedX · All rights reserved.
   `,
 };
+
+
+

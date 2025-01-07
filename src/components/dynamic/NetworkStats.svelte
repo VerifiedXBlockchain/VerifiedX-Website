@@ -1,6 +1,7 @@
 <script>
   import { onMount } from 'svelte';
   import NetworkStat from './NetworkStat.svelte';
+  import { externalLinks } from '~/navigation';
 
   let timer;
 
@@ -16,9 +17,11 @@
       if (!response.ok) throw new Error('Failed to fetch data');
       const result = await response.json();
 
-      result['latest_block'] = result['latest_block'] + Math.round(Math.random() * 1000);
-
-      data = { ...result };
+      if (result && result['latest_block']) {
+        data = { ...result };
+      } else {
+        error = true;
+      }
     } catch (error) {
       console.error(error);
       error = true;
@@ -41,9 +44,9 @@
 </script>
 
 {#if loading}
-  <div>...</div>
+  <div></div>
 {:else if error}
-  <div>error</div>
+  <div></div>
 {:else}
   <div
     class="relative px-4 md:px-6 py-4 text-default intersect-once intersect-quarter intercept-no-queue motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade max-w-6xl mx-auto mt-0 pt-0 md:pt-0 lg:pt-0"
@@ -54,7 +57,7 @@
           title="Latest Block"
           value={data['latest_block']}
           ctaTitle="Open Spyglass"
-          ctaHref="https://spyglass.verifiedx.io"
+          ctaHref={externalLinks.spyglass}
           gradientDirection="to bottom right"
         />
         <NetworkStat
@@ -83,7 +86,7 @@
           title="Active Validators"
           value={data['active_validators']}
           gradientDirection="to top left"
-          ctaHref="#"
+          ctaHref={externalLinks.validatingDocs}
           ctaTitle="Start Validating"
         />
       </div>

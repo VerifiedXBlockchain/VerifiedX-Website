@@ -13,6 +13,7 @@ import StatsMini from '~/components/widgets/StatsMini.astro';
 import Quote from '~/components/ui/Quote.astro';
 import { YouTube } from 'astro-embed';
 import NetworkStats from '~/components/dynamic/NetworkStats.svelte';
+import { externalLinks } from '~/navigation';
 
 const metadata = {
   title: 'VerifiedX — Tokenized Commerce and Self-Custody for Everyone.',
@@ -26,7 +27,7 @@ const metadata = {
     <Hero
       actions={[
         { text: 'Download Wallet', href: '#section-download', variant: 'primary' },
-        { text: 'Open Deck', href: '#section-download', variant: 'secondary' },
+        { text: 'Open Deck', href: externalLinks.deck, target: '_blank', variant: 'secondary' },
       ]}
     >
       <Fragment slot="title">
@@ -182,9 +183,11 @@ const metadata = {
       />
 
       <div class="flex flex-row justify-center items-center align-middle mt-16">
-        <Button variant="primary" href={'#'} class="mx-2">Read Docs</Button>
+        <Button variant="primary" href={externalLinks.docs} class="mx-2" target={'_blank'}>Read Docs</Button>
         <div class="w-16 h-0.5 bg-primary opacity-40"></div>
-        <Button variant="secondary" href={'#'} class="mx-2">View Tutorials</Button>
+        <Button variant="secondary" href={externalLinks.videoTutorials} class="mx-2" target={'_blank'}
+          >View Tutorials</Button
+        >
       </div>
     </WidgetWrapper>
   </section>
@@ -320,9 +323,9 @@ const metadata = {
       />
 
       <div class="flex flex-row justify-center items-center align-middle mt-16">
-        <Button variant="btc" href={'#'} class="mx-2">Let's Dig In</Button>
+        <Button variant="btc" href={externalLinks.vbtcDocs} target={'_blank'} class="mx-2">Let's Dig In</Button>
         <div class="w-16 h-0.5 bg-btc opacity-40"></div>
-        <Button variant="secondary" href={'#'} class="mx-2">Flow Document</Button>
+        <Button variant="secondary" href={externalLinks.vbtcFlow} target={'_blank'} class="mx-2">Flow Document</Button>
       </div>
     </WidgetWrapper>
   </section>
@@ -525,14 +528,22 @@ const metadata = {
           </p>
 
           <div class="pt-8 flex justify-center items-center gap-2 flex-wrap">
-            <Button variant="primary" href="#">Install and Operating Instructions</Button>
+            <Button variant="primary" href={externalLinks.installDocs} target="_blank"
+              >Install and Operating Instructions</Button
+            >
           </div>
           <div class="pt-8 flex justify-center items-center gap-2 flex-wrap">
-            <Button variant="secondary" href="#">Download for MacOS (ARM)</Button>
-            <Button variant="secondary" href="#">Download for MacOS (Intel)</Button>
-            <Button variant="secondary" href="#">Download for Windows</Button>
-            <Button variant="secondary" href="#">Launch Web Wallet</Button>
-            <Button variant="secondary" href="#">Download CLI</Button>
+            <Button variant="secondary" href={externalLinks.downloadGuiMacArm} target="_blank"
+              >Download for MacOS (ARM)</Button
+            >
+            <Button variant="secondary" href={externalLinks.downloadGuiMacIntel} target="_blank"
+              >Download for MacOS (Intel)</Button
+            >
+            <Button variant="secondary" href={externalLinks.downloadGuiWindows} target="_blank"
+              >Download for Windows</Button
+            >
+            <Button variant="secondary" href={externalLinks.webWallet} target="_blank">Launch Web Wallet</Button>
+            <Button variant="secondary" href={externalLinks.downloadCli} target="_blank">Download CLI</Button>
           </div>
         </div>
       </div>
@@ -570,7 +581,7 @@ const metadata = {
             callToAction: {
               variant: 'secondary',
               text: 'Open',
-              href: '',
+              href: externalLinks.spyglass,
               target: '_blank',
             },
           },
@@ -580,7 +591,7 @@ const metadata = {
             callToAction: {
               variant: 'secondary',
               text: 'Sign In',
-              href: '',
+              href: externalLinks.webWallet,
               target: '_blank',
             },
           },
@@ -590,7 +601,7 @@ const metadata = {
             callToAction: {
               variant: 'secondary',
               text: 'View',
-              href: '',
+              href: externalLinks.githubOrg,
               target: '_blank',
             },
           },
@@ -600,7 +611,7 @@ const metadata = {
             callToAction: {
               variant: 'secondary',
               text: 'Try Out',
-              href: '',
+              href: externalLinks.trilliumIde,
               target: '_blank',
             },
           },
@@ -610,7 +621,7 @@ const metadata = {
             callToAction: {
               variant: 'secondary',
               text: 'Play Around',
-              href: '',
+              href: externalLinks.integrationSwaggerDocs,
               target: '_blank',
             },
           },
@@ -621,7 +632,7 @@ const metadata = {
             callToAction: {
               variant: 'secondary',
               text: 'Read',
-              href: '',
+              href: externalLinks.whitepaper,
               target: '_blank',
             },
           },
@@ -663,7 +674,7 @@ const metadata = {
             callToAction: {
               variant: 'secondary',
               text: 'Open',
-              href: '',
+              href: externalLinks.integrationDocs,
               target: '_blank',
             },
           },
@@ -672,8 +683,8 @@ const metadata = {
             description: 'Learn how to integrate your project with Verified Bitcoin.',
             callToAction: {
               variant: 'secondary',
-              text: 'Sign In',
-              href: '',
+              text: 'Read',
+              href: externalLinks.vbtcIntegrationDocs,
               target: '_blank',
             },
           },
@@ -682,8 +693,8 @@ const metadata = {
             description: 'View the CLI/GUI core configration documentation.',
             callToAction: {
               variant: 'secondary',
-              text: 'View',
-              href: '',
+              text: 'Review',
+              href: externalLinks.configDocs,
               target: '_blank',
             },
           },
@@ -692,8 +703,8 @@ const metadata = {
             description: "Test on VerifiedX's Testnet and how to get TVFX.",
             callToAction: {
               variant: 'secondary',
-              text: 'Try Out',
-              href: '',
+              text: 'Try it Out',
+              href: externalLinks.testnetDocs,
               target: '_blank',
             },
           },
@@ -703,20 +714,20 @@ const metadata = {
             description: "See what's on the roadmap and suggest your own ideas.",
             callToAction: {
               variant: 'secondary',
-              text: 'Read',
-              href: '',
+              text: 'Learn More',
+              href: externalLinks.roadmap,
               target: '_blank',
             },
           },
           {
             title: 'Bug Bounty Program',
             description: 'Activating soon.',
-            callToAction: {
-              variant: 'secondary',
-              text: 'Play Around',
-              href: '',
-              target: '_blank',
-            },
+            // callToAction: {
+            //   variant: 'secondary',
+            //   text: 'Play Around',
+            //   href: '',
+            //   target: '_blank',
+            // },
           },
         ]}
         classes={{
@@ -729,9 +740,9 @@ const metadata = {
       />
 
       <div class="pt-12 flex justify-center items-center gap-4">
-        <Button variant="primary" href="#">View Docs</Button>
+        <Button variant="primary" href={externalLinks.docs} target="_blank">View Docs</Button>
         <div class="w-16 h-0.5 bg-primary opacity-40"></div>
-        <Button variant="secondary" href="#">API Playground</Button>
+        <Button variant="secondary" href={externalLinks.integrationSwaggerDocs} target="_blank">API Playground</Button>
       </div>
     </WidgetWrapper>
   </section>
@@ -748,10 +759,10 @@ const metadata = {
       <div class="py-4"></div>
 
       <div class="flex justify-center gap-3 max-w-2xl mx-auto flex-wrap">
-        <Button variant="secondary">Follow on X</Button>
-        <Button variant="secondary">Join Discord</Button>
-        <Button variant="secondary">Contribute on Github</Button>
-        <Button variant="secondary">Contact Devs</Button>
+        <Button variant="secondary" target="_blank" href={externalLinks.twitter}>Follow on X</Button>
+        <Button variant="secondary" target="_blank" href={externalLinks.discord}>Join Discord</Button>
+        <Button variant="secondary" target="_blank" href={externalLinks.githubOrg}>Contribute on Github</Button>
+        <Button variant="secondary" target="_blank" href={externalLinks.email}>Contact Devs</Button>
       </div>
 
       <div class="py-4"></div>
