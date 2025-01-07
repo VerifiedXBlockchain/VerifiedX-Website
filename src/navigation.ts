@@ -11,7 +11,7 @@ export const externalLinks = {
   whitepaper: 'https://vfx-resources.s3.us-east-1.amazonaws.com/VFXBlockchainWhitePaper2024.pdf',
   vbtcFlow: 'https://vfx-resources.s3.us-east-1.amazonaws.com/vBTC-TechAndFlow.pdf',
   spyglass: 'https://spyglass.verifiedx.io',
-  validatingDocs: `${DOCS_BASE_URL}/docs/validating`,
+  validatingDocs: `${DOCS_BASE_URL}/docs/gui-validating`,
   videoTutorials: `${DOCS_BASE_URL}/docs/tutorials/video-tutorials`,
   guiDocs: `${DOCS_BASE_URL}/docs/gui`,
   cliDocs: `${DOCS_BASE_URL}/docs/core`,
@@ -29,7 +29,7 @@ export const externalLinks = {
   githubOrg: 'https://github.com/VerifiedXBlockchain',
   configDocs: `${DOCS_BASE_URL}/docs/core/config`,
   vbtcIntegrationDocs: `${DOCS_BASE_URL}/docs/core/vbtc`,
-  roadmap: '#',
+  roadmap: `${DOCS_BASE_URL}/docs/roadmap`,
   testnetDocs: `${DOCS_BASE_URL}/docs/integration/testnet`,
 
   twitter: 'https://x.com/VFXBlockchain',
@@ -228,10 +228,10 @@ export const footerData = {
     },
 
   ],
-  // secondaryLinks: [
-  //   { text: 'Terms', href: getPermalink('/terms') },
-  //   { text: 'Privacy Policy', href: getPermalink('/privacy') },
-  // ],
+  secondaryLinks: [
+    // { text: 'Terms', href: getPermalink('/terms') },
+    // { text: 'Privacy Policy', href: getPermalink('/privacy') },
+  ],
   socialLinks: [
     { ariaLabel: 'X', icon: 'tabler:brand-x', href: externalLinks.twitter },
     { ariaLabel: 'Github', icon: 'tabler:brand-github', href: externalLinks.githubOrg },

@@ -9,8 +9,6 @@
   let loading = true;
   let error = false;
 
-  let value = 1234;
-
   async function fetchData() {
     try {
       const response = await fetch('https://data-testnet.verifiedx.io/api/metrics/');
