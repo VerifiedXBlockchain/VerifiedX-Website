@@ -50,6 +50,7 @@ const { socialLinks = [], secondaryLinks = [], links = [], footNote = '', theme 
                   class=" hover:text-btc text-gray-400 hover:underline transition duration-150 ease-in-out"
                   href={href}
                   set:html={text}
+                  target="_blank"
                 />
               </>
             ))
@@ -68,6 +69,7 @@ const { socialLinks = [], secondaryLinks = [], links = [], footNote = '', theme 
                       class="hover:underline text-gray-400 transition duration-150 ease-in-out hover:text-btc"
                       href={href}
                       aria-label={ariaLabel}
+                      target="_blank"
                     >
                       <Fragment set:html={text} />
                     </a>
@@ -89,6 +91,7 @@ const { socialLinks = [], secondaryLinks = [], links = [], footNote = '', theme 
                   class="text-muted dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center"
                   aria-label={ariaLabel}
                   href={href}
+                  target="_blank"
                 >
                   {icon && <Icon name={icon} class="w-5 h-5" />}
                   <Fragment set:html={text} />
