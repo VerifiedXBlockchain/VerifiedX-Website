@@ -58,12 +58,7 @@
           ctaHref={externalLinks.spyglass}
           gradientDirection="to bottom right"
         />
-        <NetworkStat
-          title="Block Time"
-          value={data['block_time'] / 1000}
-          metric="Seconds"
-          gradientDirection="to bottom"
-        />
+        <NetworkStat title="Block Time" value={10} metric="Seconds" gradientDirection="to bottom" />
         <NetworkStat
           title="Transactions"
           value={data['total_transactions']}
