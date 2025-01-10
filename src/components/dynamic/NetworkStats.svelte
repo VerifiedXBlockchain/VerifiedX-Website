@@ -84,5 +84,6 @@
         />
       </div>
     </div>
+    <div class="py-4 text-lg italic text-white font-semibold tracking-wide">Testnet Illustration</div>
   </div>
 {/if}
