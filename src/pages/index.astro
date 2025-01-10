@@ -19,6 +19,8 @@ const metadata = {
   title: 'VerifiedX — Tokenized Commerce and Self-Custody for Everyone.',
   ignoreTitleTemplate: true,
 };
+
+const showMetrics = false;
 ---
 
 <Layout metadata={metadata}>
@@ -46,11 +48,12 @@ const metadata = {
           > & <span class="font-medium">physical assets</span>.</span
         >
       </Fragment>
-
       <Fragment slot="content">
+        { showMetrics ? (
         <div class="py-5"></div>
-        <NetworkStats client:load />
+        <NetworkStats client:load />) : null }
       </Fragment>
+
     </Hero>
   </section>
 
