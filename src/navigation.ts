@@ -1,8 +1,7 @@
 import { getPermalink, getBlogPermalink, getAsset } from './utils/permalinks';
 
 
-// const DOCS_BASE_URL = 'https://docs.verifiedx.io';
-const DOCS_BASE_URL = 'https://verified-x-docs.vercel.app';
+const DOCS_BASE_URL = 'https://docs.verifiedx.io';
 
 export const externalLinks = {
 
