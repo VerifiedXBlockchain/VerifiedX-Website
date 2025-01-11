@@ -11,7 +11,7 @@
 
   async function fetchData() {
     try {
-      const response = await fetch('https://data-testnet.verifiedx.io/api/metrics/');
+      const response = await fetch('https://data.verifiedx.io/api/metrics/');
       if (!response.ok) throw new Error('Failed to fetch data');
       const result = await response.json();
 
