@@ -10,7 +10,7 @@ export const externalLinks = {
   whitepaper: 'https://vfx-resources.s3.us-east-1.amazonaws.com/VFXBlockchainWhitePaper2024.pdf',
   vbtcFlow: 'https://vfx-resources.s3.us-east-1.amazonaws.com/vBTC-TechAndFlow.pdf',
   spyglass: 'https://spyglass.verifiedx.io',
-  validatingDocs: `${DOCS_BASE_URL}/docs/gui-validating`,
+  validatingDocs: `${DOCS_BASE_URL}/docs/gui/gui-validating`,
   videoTutorials: `${DOCS_BASE_URL}/docs/tutorials/video-tutorials`,
   guiDocs: `${DOCS_BASE_URL}/docs/gui`,
   cliDocs: `${DOCS_BASE_URL}/docs/core`,
