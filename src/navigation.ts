@@ -20,9 +20,9 @@ export const externalLinks = {
   integrationSwaggerDocs: `${DOCS_BASE_URL}/docs/integration/swagger`,
 
   webWallet: `https://wallet.verifiedx.io`,
-  downloadGuiMacArm: 'https://github.com/VerifiedXBlockchain/VerifiedX-GUI/releases/download/5.0.1/VFX-OSX-ARM-Installer.dmg',
-  downloadGuiMacIntel: 'https://github.com/VerifiedXBlockchain/VerifiedX-GUI/releases/download/5.0.1/VFX-OSX-Intel-Installer.dmg',
-  downloadGuiWindows: 'https://github.com/VerifiedXBlockchain/VerifiedX-GUI/releases/download/5.0.1/VFXWalletSetup-64.exe',
+  downloadGuiMacArm: 'https://github.com/VerifiedXBlockchain/VerifiedX-GUI/releases/download/5.0.2/VFX-OSX-ARM-Installer.dmg',
+  downloadGuiMacIntel: 'https://github.com/VerifiedXBlockchain/VerifiedX-GUI/releases/download/5.0.2/VFX-OSX-Intel-Installer.dmg',
+  downloadGuiWindows: 'https://github.com/VerifiedXBlockchain/VerifiedX-GUI/releases/download/5.0.2/VFXWalletSetup-64.exe',
   downloadCli: 'https://github.com/VerifiedXBlockchain/VerifiedX-Core/releases/tag/beta5.0.1',
   trilliumIde: 'https://trillium.verifiedx.io',
   githubOrg: 'https://github.com/VerifiedXBlockchain',
