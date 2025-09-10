@@ -1,0 +1,27 @@
+---
+import Layout from "~/layouts/PageLayout.astro";
+
+const metadata = {
+    title: "VerifiedX — Terms & Conditions",
+    ignoreTitleTemplate: true,
+};
+---
+
+<Layout metadata={metadata}>
+    <div class="max-w-5xl mx-auto px-4">
+        <div name="termly-embed" data-id="f8776737-4f28-4b7c-ae9f-eade0f936d6f">
+        </div>
+    </div>
+</Layout>
+
+<script type="text/javascript">
+    (function (d, s, id) {
+        var js,
+            tjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "https://app.termly.io/embed-policy.min.js";
+        tjs.parentNode.insertBefore(js, tjs);
+    })(document, "script", "termly-jssdk");
+</script>

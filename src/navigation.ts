@@ -40,40 +40,40 @@ export const headerData = {
   links: [
     {
       text: "Discover",
-      href: "#section-discover",
+      href: "/#section-discover",
     },
     {
       text: "Why VFX",
-      href: "#section-vfx",
+      href: "/#section-vfx",
     },
     {
       text: "Why Bitcoin",
-      href: "#section-bitcoin",
+      href: "/#section-bitcoin",
     },
     {
       text: "vBTC",
-      href: "#section-vbtc",
+      href: "/#section-vbtc",
       btc: true,
     },
     {
       text: "Validators",
-      href: "#section-validators",
+      href: "/#section-validators",
     },
     {
       text: "Switchblade",
-      href: "#section-switchblade",
+      href: "/#section-switchblade",
     },
     {
       text: "Ecosystem",
-      href: "#section-ecosystem",
+      href: "/#section-ecosystem",
     },
     {
       text: "Build",
-      href: "#section-build",
+      href: "/#section-build",
     },
     {
       text: "Connect",
-      href: "#section-connect",
+      href: "/#section-connect",
     }
   ],
   // links: [
