@@ -1,0 +1,56 @@
+---
+import Image from '~/components/common/Image.astro';
+const cryptoDotCom = '~/assets/images/partners/crypto-dot-com-logo-white.png';
+const merkle = '~/assets/images/partners/merkle-logo-white.png';
+const moonpay = '~/assets/images/partners/moonpay-logo-white.png';
+const bitcoin = '~/assets/images/partners/bitcoin-logo-white.png';
+const halborn = '~/assets/images/partners/halborn-logo-white.png';
+
+const partners = [
+  {
+    image: cryptoDotCom,
+    title: 'Crypto.com',
+    href: 'https://crypto.com/',
+  },
+  {
+    image: merkle,
+    title: 'Merkle Science',
+    href: 'https://www.merklescience.com/',
+  },
+  {
+    image: moonpay,
+    title: 'Moonpay',
+    href: 'https://www.moonpay.com/',
+  },
+  {
+    image: bitcoin,
+    title: 'Bitcoin',
+    href: 'https://bitcoin.org/',
+    height: 30,
+  },
+  //   {
+  //     image: halborn,
+  //     title: 'Halborn',
+  //     href: 'https://www.halborn.com/',
+  //   },
+];
+---
+
+<div class="mt-4">
+  <h2 class={'font-bold font-heading text-heading text-3xl text-center tracking-tight '}>Partners</h2>
+  <div class="mt-6 flex flex-col md:flex-row gap-4 md:gap-0 justify-evenly items-center">
+    {
+      partners.map((partner) => (
+        <a href={partner.href} target="_blank" class="hover:opacity-70 transition-opacity duration-300">
+          <Image
+            src={partner.image}
+            alt={partner.title}
+            height={partner.height ?? 40}
+            width={300}
+            style="object-fit: contain"
+          />
+        </a>
+      ))
+    }
+  </div>
+</div>
