@@ -5,6 +5,7 @@ const merkle = '~/assets/images/partners/merkle-logo-white.png';
 const moonpay = '~/assets/images/partners/moonpay-logo-white.png';
 const bitcoin = '~/assets/images/partners/bitcoin-logo-white.png';
 const halborn = '~/assets/images/partners/halborn-logo-white.png';
+const banxa = '~/assets/images/partners/banxa-logo.png';
 
 const partners = [
   {
@@ -29,6 +30,12 @@ const partners = [
     href: 'https://www.moonpay.com/',
   },
   {
+    image: banxa,
+    title: 'Banxa',
+    href: 'https://banxa.com/',
+    height: 26,
+  },
+  {
     image: bitcoin,
     title: 'Bitcoin',
     href: 'https://bitcoin.org/',
@@ -39,7 +46,7 @@ const partners = [
 
 <div class="mt-4">
   <h2 class={'font-bold font-heading text-heading text-3xl text-center tracking-tight '}>Integrations</h2>
-  <div class="mt-6 flex flex-col md:flex-row gap-4 md:gap-0 justify-evenly items-center">
+  <div class="mt-6 flex flex-col md:flex-row gap-6 md:gap-0 justify-evenly items-center">
     {
       partners.map((partner) => (
         <a href={partner.href} target="_blank" class="hover:opacity-70 transition-opacity duration-300">
