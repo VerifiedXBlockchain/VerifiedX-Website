@@ -30,6 +30,7 @@ export const externalLinks = {
   vbtcIntegrationDocs: `${DOCS_BASE_URL}/docs/core/vbtc`,
   roadmap: `${DOCS_BASE_URL}/docs/roadmap`,
   testnetDocs: `${DOCS_BASE_URL}/docs/integration/testnet`,
+  sync: "https://sync.verifiedx.io",
 
   twitter: 'https://x.com/VFXBlockchain',
   discord: 'https://discord.gg/7cd5ebDQCj',
