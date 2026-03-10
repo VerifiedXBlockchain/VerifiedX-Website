@@ -1,6 +1,7 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
 import Hero from '~/components/widgets/Hero.astro';
+import SecurityTrustStrip from '~/components/widgets/SecurityTrustStrip.astro';
 import Content from '~/components/widgets/Content.astro';
 import Stats from '~/components/widgets/Stats.astro';
 import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
@@ -17,45 +18,19 @@ import { externalLinks } from '~/navigation';
 import Partners from '~/components/Partners.astro';
 
 const metadata = {
-  title: 'VerifiedX — Tokenized Commerce and Self-Custody for Everyone.',
+  title: 'VerifiedX — The Financial Operating System for Bitcoin.',
   ignoreTitleTemplate: true,
 };
 ---
 
 <Layout metadata={metadata}>
-  <!-- Hero Widget ******************* -->
+  <!-- Section 3: Hero -->
   <section class="spy-section">
-    <Hero
-      actions={[
-        { text: 'Download Wallet', href: '#section-download', variant: 'primary' },
-        { text: 'Open Deck', href: externalLinks.deck, target: '_blank', variant: 'secondary' },
-      ]}
-    >
-      <Fragment slot="title">
-        Tokenized Commerce and<br />Self-Custody for <span class="text-accent dark:text-primary highlight"
-          >Everyone</span
-        >.
-      </Fragment>
-
-      <Fragment slot="subtitle">
-        <span class="inline font-extralight">
-          <span class="font-medium">VerifiedX (<span class="text-primary font-bold">VFX</span>)</span> is the people's network
-          and an open-source decentralized blockchain that is both a <span class="text-primary font-medium"
-            >universal layer 1</span
-          > and a <span class="text-btc font-medium">Bitcoin sidechain</span> for the purpose of tokenized self-custody,
-          on-chain storage, and peer-to-peer commerce of both <span class="font-medium">digital</span> & <span
-            class="font-medium">physical assets</span
-          >.</span
-        >
-      </Fragment>
-      <Fragment slot="content">
-        <div class="py-5"></div>
-        <NetworkStats client:load />
-
-        <Partners />
-      </Fragment>
-    </Hero>
+    <Hero />
   </section>
+
+  <!-- Section 4: Security Trust Strip -->
+  <SecurityTrustStrip />
 
   <section class="spy-section" id="section-discover">
     <WidgetWrapper containerClass={`max-w-6xl mx-auto pt-0 mt-0`}>

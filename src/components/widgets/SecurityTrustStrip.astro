@@ -1,0 +1,25 @@
+---
+import { Icon } from 'astro-icon/components';
+
+const items = [
+  { icon: 'tabler:shield-check', label: 'Halborn Security Audits' },
+  { icon: 'tabler:search', label: 'Merkle Science Compliance' },
+  { icon: 'tabler:server', label: 'Battle-Tested Mainnet' },
+  { icon: 'tabler:users-group', label: 'Validator Governance' },
+];
+---
+
+<section class="bg-black border-y border-gray-800 py-6">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <div class="flex flex-wrap justify-center md:justify-between items-center gap-6 md:gap-4">
+      {
+        items.map(({ icon, label }) => (
+          <div class="flex items-center gap-2.5 text-gray-400">
+            <Icon name={icon} class="w-5 h-5 text-primary flex-shrink-0" />
+            <span class="text-sm font-medium whitespace-nowrap">{label}</span>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
