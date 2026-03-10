@@ -4,6 +4,7 @@ import Hero from '~/components/widgets/Hero.astro';
 import SecurityTrustStrip from '~/components/widgets/SecurityTrustStrip.astro';
 import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
 import ItemGrid from '~/components/ui/ItemGrid.astro';
+import ItemGrid2 from '~/components/ui/ItemGrid2.astro';
 import Button from '~/components/ui/Button.astro';
 import NetworkStats from '~/components/dynamic/NetworkStats.svelte';
 import { externalLinks } from '~/navigation';
@@ -108,6 +109,157 @@ const metadata = {
           container: 'gap-6',
           title: 'md:text-[1.1rem]',
           icon: 'text-white bg-primary rounded-full w-10 h-10 p-2 md:w-12 md:h-12 md:p-3 mr-4 rtl:ml-4 rtl:mr-0',
+        }}
+      />
+    </WidgetWrapper>
+  </section>
+
+  <!-- Section 9: VerifiedX Infrastructure -->
+  <section class="spy-section pt-16" id="section-infrastructure">
+    <WidgetWrapper containerClass={`max-w-7xl mx-auto`}>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        <!-- Left: Layered Stack Diagram -->
+        <div class="intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade">
+          <div
+            class="rounded-lg border border-gray-700 bg-[#0a0a0a] p-6 md:p-8 font-mono text-sm md:text-base shadow-2xl"
+          >
+            <div class="space-y-4">
+              <div class="border border-gray-600 rounded p-3 text-center">
+                <div class="text-primary font-bold mb-1">Applications</div>
+                <div class="text-gray-400 text-xs">Butterfly | Wallet | PulseXAI (Agentic Markets)</div>
+              </div>
+              <div class="border border-gray-600 rounded p-3 text-center">
+                <div class="text-primary font-bold mb-1">Financial Infrastructure</div>
+                <div class="text-gray-400 text-xs">vBTC | Stablecoins | Smart Contracts</div>
+              </div>
+              <div class="border border-primary/40 rounded p-3 text-center bg-primary/5">
+                <div class="text-primary font-bold">VerifiedX Network</div>
+              </div>
+              <div class="border border-btc/40 rounded p-3 text-center bg-btc/5">
+                <div class="text-btc font-bold">Bitcoin</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Copy -->
+        <div class="intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade">
+          <h2 class="text-4xl md:text-5xl font-bold font-heading text-heading tracking-tight mb-6">
+            Global Financial Infrastructure Built on Bitcoin
+          </h2>
+          <p class="text-xl text-muted mb-8">
+            VerifiedX connects Bitcoin to a programmable financial infrastructure layer that powers payments,
+            decentralized finance, and financial applications.
+          </p>
+          <div class="flex flex-wrap gap-3">
+            <Button variant="primary" href={externalLinks.docs} target="_blank">Explore Architecture</Button>
+            <Button variant="secondary" href={externalLinks.docs} target="_blank">Developer Platform</Button>
+          </div>
+        </div>
+      </div>
+    </WidgetWrapper>
+  </section>
+
+  <!-- Section 10: vBTC -->
+  <section class="spy-section pt-16" id="section-vbtc">
+    <WidgetWrapper containerClass={`max-w-7xl mx-auto`}>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        <!-- Left: Copy -->
+        <div class="intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade">
+          <h2 class="text-4xl md:text-5xl font-bold font-heading text-heading tracking-tight mb-6">
+            Unlock the Financial Utility of <span class="text-btc">Bitcoin</span>
+          </h2>
+          <p class="text-xl text-muted mb-8">
+            vBTC enables Bitcoin holders to participate in financial markets while maintaining full collateralization
+            and self custody. Each vBTC is backed 1:1 by Bitcoin.
+          </p>
+
+          <div class="mb-4">
+            <p class="text-xs uppercase tracking-widest text-gray-500 mb-2 font-semibold">Retail</p>
+            <div class="flex flex-wrap gap-2">
+              <Button variant="primary" href="#">Mint vBTC</Button>
+              <Button variant="secondary" href={externalLinks.vbtcDocs} target="_blank">How vBTC Works</Button>
+            </div>
+          </div>
+
+          <div>
+            <p class="text-xs uppercase tracking-widest text-gray-500 mb-2 font-semibold">Institutional</p>
+            <div class="flex flex-wrap gap-2">
+              <Button variant="secondary" href="#">Institutional Overview</Button>
+              <Button variant="secondary" href="#">Custody Integration</Button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Security Flow Diagram -->
+        <div class="intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade">
+          <div
+            class="rounded-lg border border-gray-700 bg-[#0a0a0a] p-6 md:p-8 font-mono text-sm md:text-base shadow-2xl"
+          >
+            <div class="flex items-center gap-2 mb-4 pb-3 border-b border-gray-800">
+              <div class="w-3 h-3 rounded-full bg-red-500/80"></div>
+              <div class="w-3 h-3 rounded-full bg-yellow-500/80"></div>
+              <div class="w-3 h-3 rounded-full bg-green-500/80"></div>
+              <span class="ml-2 text-gray-500 text-xs">vbtc://flow</span>
+            </div>
+            <pre
+              class="text-green-400 leading-relaxed whitespace-pre"><span class="text-btc font-bold">BTC Deposit</span>
+   &darr;
+<span class="text-gray-300">FROST MPC Validators</span>
+   &darr;
+<span class="text-btc font-bold">vBTC Mint</span>
+   &darr;
+<span class="text-gray-300">DeFi</span> / <span class="text-gray-300">Payments</span> / <span class="text-gray-300">Agentic Markets</span></pre>
+          </div>
+        </div>
+      </div>
+    </WidgetWrapper>
+  </section>
+
+  <!-- Section 11: Self-Custodial Financial Applications -->
+  <section class="spy-section pt-16" id="section-applications">
+    <WidgetWrapper containerClass={`max-w-6xl mx-auto`}>
+      <h2 class="font-bold font-heading text-heading text-5xl text-center tracking-tight mb-10">
+        Self-Custodial Financial Applications
+      </h2>
+
+      <ItemGrid2
+        columns={3}
+        items={[
+          {
+            title: 'Butterfly',
+            description: 'Global payments and earning powered by the VerifiedX network.',
+            callToAction: {
+              variant: 'primary',
+              text: 'Open Butterfly',
+              href: '#',
+            },
+          },
+          {
+            title: 'Switchblade Wallet',
+            description: 'Native wallet for interacting with VerifiedX and vBTC.',
+            callToAction: {
+              variant: 'primary',
+              text: 'Download Wallet',
+              href: externalLinks.webWallet,
+              target: '_blank',
+            },
+          },
+          {
+            title: 'PulseXAI (Agentic Marketplaces)',
+            description: 'AI agents interacting with financial markets and data.',
+            callToAction: {
+              variant: 'primary',
+              text: 'Open PulseXAI',
+              href: '#',
+            },
+          },
+        ]}
+        classes={{
+          container: 'gap-4 md:gap-6',
+          panel:
+            'rounded-lg shadow-[0_4px_30px_rgba(0,0,0,0.1)] backdrop-blur border border-[#ffffff29] bg-[rgba(15,23,42,0.75)] p-6',
+          icon: 'w-12 h-12 mb-6 text-primary',
         }}
       />
     </WidgetWrapper>
