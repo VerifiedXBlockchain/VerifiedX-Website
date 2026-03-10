@@ -1,10 +1,6 @@
-import { getPermalink, getBlogPermalink, getAsset } from './utils/permalinks';
-
-
 const DOCS_BASE_URL = 'https://docs.verifiedx.io';
 
 export const externalLinks = {
-
   docs: `${DOCS_BASE_URL}/`,
   deck: 'https://vfx-resources.s3.us-east-1.amazonaws.com/VerifiedX.pdf',
   whitepaper: 'https://vfx-resources.s3.us-east-1.amazonaws.com/VFXBlockchainWhitePaper2024.pdf',
@@ -20,9 +16,12 @@ export const externalLinks = {
   integrationSwaggerDocs: `${DOCS_BASE_URL}/docs/integration/swagger`,
 
   webWallet: `https://wallet.verifiedx.io`,
-  downloadGuiMacArm: 'https://github.com/VerifiedXBlockchain/VerifiedX-GUI/releases/download/5.3.0/VFX-OSX-ARM-Installer.dmg',
-  downloadGuiMacIntel: 'https://github.com/VerifiedXBlockchain/VerifiedX-GUI/releases/download/5.3.0/VFX-OSX-Intel-Installer.dmg',
-  downloadGuiWindows: 'https://github.com/VerifiedXBlockchain/VerifiedX-GUI/releases/download/5.3.0/VFXWalletSetup-64.exe',
+  downloadGuiMacArm:
+    'https://github.com/VerifiedXBlockchain/VerifiedX-GUI/releases/download/5.3.0/VFX-OSX-ARM-Installer.dmg',
+  downloadGuiMacIntel:
+    'https://github.com/VerifiedXBlockchain/VerifiedX-GUI/releases/download/5.3.0/VFX-OSX-Intel-Installer.dmg',
+  downloadGuiWindows:
+    'https://github.com/VerifiedXBlockchain/VerifiedX-GUI/releases/download/5.3.0/VFXWalletSetup-64.exe',
   downloadCli: 'https://github.com/VerifiedXBlockchain/VerifiedX-Core/releases/tag/beta5.3.0',
   trilliumIde: 'https://trillium.verifiedx.io',
   githubOrg: 'https://github.com/VerifiedXBlockchain',
@@ -30,208 +29,83 @@ export const externalLinks = {
   vbtcIntegrationDocs: `${DOCS_BASE_URL}/docs/core/vbtc`,
   roadmap: `${DOCS_BASE_URL}/docs/roadmap`,
   testnetDocs: `${DOCS_BASE_URL}/docs/integration/testnet`,
-  sync: "https://sync.verifiedx.io",
+  sync: 'https://sync.verifiedx.io',
 
   twitter: 'https://x.com/VFXBlockchain',
   discord: 'https://discord.gg/7cd5ebDQCj',
-  email: 'mailto:dev@verifiedx.io'
-}
+  email: 'mailto:dev@verifiedx.io',
+};
 
 export const headerData = {
   links: [
     {
-      text: "Discover",
-      href: "/#section-discover",
+      text: 'Products',
+      links: [
+        { text: 'PulseXAI', href: '#' },
+        { text: 'Butterfly', href: '#' },
+        { text: 'Switchblade Wallet', href: externalLinks.webWallet },
+        { text: 'vBTC', href: '#' },
+      ],
     },
     {
-      text: "Why VFX",
-      href: "/#section-vfx",
+      text: 'Solutions',
+      links: [
+        { text: 'Institutions', href: '#' },
+        { text: 'Developers', href: externalLinks.docs },
+      ],
     },
     {
-      text: "Why Bitcoin",
-      href: "/#section-bitcoin",
+      text: 'Resources',
+      links: [
+        { text: 'Docs', href: externalLinks.docs },
+        { text: 'Security', href: '#' },
+        { text: 'Blog', href: '#' },
+      ],
     },
-    {
-      text: "vBTC",
-      href: "/#section-vbtc",
-      btc: true,
-    },
-    {
-      text: "Validators",
-      href: "/#section-validators",
-    },
-    {
-      text: "Switchblade",
-      href: "/#section-switchblade",
-    },
-    {
-      text: "Ecosystem",
-      href: "/#section-ecosystem",
-    },
-    {
-      text: "Build",
-      href: "/#section-build",
-    },
-    {
-      text: "Connect",
-      href: "/#section-connect",
-    }
   ],
-  // links: [
-  //   {
-  //     text: 'Homes',
-  //     links: [
-  //       {
-  //         text: 'SaaS',
-  //         href: getPermalink('/homes/saas'),
-  //       },
-  //       {
-  //         text: 'Startup',
-  //         href: getPermalink('/homes/startup'),
-  //       },
-  //       {
-  //         text: 'Mobile App',
-  //         href: getPermalink('/homes/mobile-app'),
-  //       },
-  //       {
-  //         text: 'Personal',
-  //         href: getPermalink('/homes/personal'),
-  //       },
-  //     ],
-  //   },
-  //   {
-  //     text: 'Pages',
-  //     links: [
-  //       {
-  //         text: 'Features (Anchor Link)',
-  //         href: getPermalink('/#features'),
-  //       },
-  //       {
-  //         text: 'Services',
-  //         href: getPermalink('/services'),
-  //       },
-  //       {
-  //         text: 'Pricing',
-  //         href: getPermalink('/pricing'),
-  //       },
-  //       {
-  //         text: 'About us',
-  //         href: getPermalink('/about'),
-  //       },
-  //       {
-  //         text: 'Contact',
-  //         href: getPermalink('/contact'),
-  //       },
-  //       {
-  //         text: 'Terms',
-  //         href: getPermalink('/terms'),
-  //       },
-  //       {
-  //         text: 'Privacy policy',
-  //         href: getPermalink('/privacy'),
-  //       },
-  //     ],
-  //   },
-  //   {
-  //     text: 'Landing',
-  //     links: [
-  //       {
-  //         text: 'Lead Generation',
-  //         href: getPermalink('/landing/lead-generation'),
-  //       },
-  //       {
-  //         text: 'Long-form Sales',
-  //         href: getPermalink('/landing/sales'),
-  //       },
-  //       {
-  //         text: 'Click-Through',
-  //         href: getPermalink('/landing/click-through'),
-  //       },
-  //       {
-  //         text: 'Product Details (or Services)',
-  //         href: getPermalink('/landing/product'),
-  //       },
-  //       {
-  //         text: 'Coming Soon or Pre-Launch',
-  //         href: getPermalink('/landing/pre-launch'),
-  //       },
-  //       {
-  //         text: 'Subscription',
-  //         href: getPermalink('/landing/subscription'),
-  //       },
-  //     ],
-  //   },
-  //   {
-  //     text: 'Blog',
-  //     links: [
-  //       {
-  //         text: 'Blog List',
-  //         href: getBlogPermalink(),
-  //       },
-  //       {
-  //         text: 'Article',
-  //         href: getPermalink('get-started-website-with-astro-tailwind-css', 'post'),
-  //       },
-  //       {
-  //         text: 'Article (with MDX)',
-  //         href: getPermalink('markdown-elements-demo-post', 'post'),
-  //       },
-  //       {
-  //         text: 'Category Page',
-  //         href: getPermalink('tutorials', 'category'),
-  //       },
-  //       {
-  //         text: 'Tag Page',
-  //         href: getPermalink('astro', 'tag'),
-  //       },
-  //     ],
-  //   },
-  //   {
-  //     text: 'Widgets',
-  //     href: '#',
-  //   },
-  // ],
-  actions: [{ text: 'Docs', href: externalLinks.docs, target: '_blank' }],
+  actions: [
+    { text: 'Open Butterfly', href: '#', target: '_blank' },
+    { text: 'Open PulseXAI', href: '#', target: '_blank' },
+    { text: 'Open Switchblade', href: externalLinks.webWallet, target: '_blank' },
+    { text: 'Start Building', href: externalLinks.docs, target: '_blank' },
+  ],
 };
 
 export const footerData = {
   links: [
     {
-      title: 'Ecosystem',
+      title: 'Products',
       links: [
-        { text: 'VFX Spyglass', href: externalLinks.spyglass },
-        { text: 'Web Wallet', href: externalLinks.webWallet },
-        { text: 'Source Code', href: externalLinks.githubOrg },
-        { text: 'Trillium IDE', href: externalLinks.trilliumIde },
-        { text: 'Integration Playground', href: externalLinks.integrationSwaggerDocs },
-        { text: 'Whitepaper', href: externalLinks.whitepaper },
+        { text: 'Butterfly', href: '#' },
+        { text: 'PulseXAI', href: '#' },
+        { text: 'Wallet', href: externalLinks.webWallet },
+        { text: 'vBTC', href: '#' },
       ],
     },
     {
-      title: 'Docs',
+      title: 'Solutions',
       links: [
-        { text: 'Tutorials', href: externalLinks.videoTutorials },
-        { text: 'GUI', href: externalLinks.guiDocs },
-        { text: 'CLI', href: externalLinks.cliDocs },
-        { text: 'Integrations', href: externalLinks.integrationDocs },
-        { text: 'vBTC', href: externalLinks.vbtcDocs },
+        { text: 'Institutions', href: '#' },
+        { text: 'Developers', href: externalLinks.docs },
       ],
     },
     {
-      title: 'Community',
+      title: 'Resources',
       links: [
-        { text: 'X', href: externalLinks.twitter },
-        { text: 'Discord', href: externalLinks.discord },
-        { text: 'Github', href: externalLinks.githubOrg },
-        { text: 'dev@verifiedx.io', href: externalLinks.email },
+        { text: 'Docs', href: externalLinks.docs },
+        { text: 'Security', href: '#' },
+        { text: 'Blog', href: '#' },
       ],
     },
-
+    {
+      title: 'Foundation',
+      links: [
+        { text: 'About', href: '#' },
+        { text: 'Contact', href: externalLinks.email },
+      ],
+    },
   ],
-  secondaryLinks: [
-    // { text: 'Terms', href: getPermalink('/terms') },
-    // { text: 'Privacy Policy', href: getPermalink('/privacy') },
-  ],
+  secondaryLinks: [],
   socialLinks: [
     { ariaLabel: 'X', icon: 'tabler:brand-x', href: externalLinks.twitter },
     { ariaLabel: 'Github', icon: 'tabler:brand-github', href: externalLinks.githubOrg },
@@ -239,9 +113,6 @@ export const footerData = {
     { ariaLabel: 'Email', icon: 'tabler:mail', href: externalLinks.email },
   ],
   footNote: `
-   Copyright ${(new Date()).getFullYear()} VerifiedX · All rights reserved.
+   Copyright ${new Date().getFullYear()} VerifiedX &middot; All rights reserved.
   `,
 };
-
-
-

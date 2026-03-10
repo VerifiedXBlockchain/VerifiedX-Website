@@ -154,9 +154,9 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
         </div>
         {
           actions?.length ? (
-            <span class="ml-4 rtl:ml-0 rtl:mr-4">
+            <span class="ml-4 rtl:ml-0 rtl:mr-4 flex gap-1.5">
               {actions.map((btnProps) => (
-                <Button {...btnProps} class="ml-2 py-2.5 px-5.5 md:px-6 font-semibold shadow-none text-sm w-auto" />
+                <Button {...btnProps} class="py-1.5 px-3 font-semibold shadow-none text-xs w-auto" />
               ))}
             </span>
           ) : (
