@@ -1,5 +1,6 @@
 ---
 import Image from '~/components/common/Image.astro';
+
 const cryptoDotCom = '~/assets/images/partners/crypto-dot-com-logo-white.png';
 const blockdaemon = '~/assets/images/partners/blockdaemon-white.png';
 const merkle = '~/assets/images/partners/merkle-logo-white.png';
@@ -8,63 +9,61 @@ const bitcoin = '~/assets/images/partners/bitcoin-logo-white.png';
 const halborn = '~/assets/images/partners/halborn-logo-white.png';
 const banxa = '~/assets/images/partners/banxa-logo.png';
 
-const partners = [
+const categories = [
   {
-    image: cryptoDotCom,
-    title: 'Crypto.com',
-    href: 'https://crypto.com/',
+    title: 'Infrastructure Providers',
+    partners: [
+      { image: blockdaemon, title: 'Blockdaemon', href: 'https://blockdaemon.com/' },
+      { image: bitcoin, title: 'Bitcoin', href: 'https://bitcoin.org/', height: 30 },
+    ],
   },
   {
-    image: blockdaemon,
-    title: 'Blockdaemon',
-    href: 'https://blockdaemon.com/',
+    title: 'Custody Integrations',
+    partners: [{ image: cryptoDotCom, title: 'Crypto.com', href: 'https://crypto.com/' }],
   },
   {
-    image: merkle,
-    title: 'Merkle Science',
-    href: 'https://www.merklescience.com/',
-  },
-  {
-    image: halborn,
-    title: 'Halborn',
-    href: 'https://www.halborn.com/',
-    height: 24,
-  },
-  {
-    image: moonpay,
-    title: 'Moonpay',
-    href: 'https://www.moonpay.com/',
-  },
-  {
-    image: banxa,
-    title: 'Banxa',
-    href: 'https://banxa.com/',
-    height: 26,
-  },
-  {
-    image: bitcoin,
-    title: 'Bitcoin',
-    href: 'https://bitcoin.org/',
-    height: 30,
+    title: 'Institutional Partners',
+    partners: [
+      { image: halborn, title: 'Halborn', href: 'https://www.halborn.com/', height: 24 },
+      { image: merkle, title: 'Merkle Science', href: 'https://www.merklescience.com/' },
+      { image: moonpay, title: 'Moonpay', href: 'https://www.moonpay.com/' },
+      { image: banxa, title: 'Banxa', href: 'https://banxa.com/', height: 26 },
+    ],
   },
 ];
 ---
 
-<div class="mt-4">
-  <h2 class={'font-bold font-heading text-heading text-3xl text-center tracking-tight '}>Integrations</h2>
-  <div class="mt-6 flex flex-col md:flex-row md:flex-wrap gap-8 md:gap-x-8 md:gap-y-8 justify-center items-center">
-    {
-      partners.map((partner) => (
-        <a href={partner.href} target="_blank" class="hover:opacity-70 transition-opacity duration-300 md:w-1/5 flex justify-center">
-          <Image
-            src={partner.image}
-            alt={partner.title}
-            height={partner.height ?? 40}
-            width={300}
-            style="object-fit: contain"
-          />
-        </a>
-      ))
-    }
-  </div>
+<div>
+  <h2 class="font-bold font-heading text-heading text-4xl text-center tracking-tight mb-4">
+    Ecosystem Partners & Integrations
+  </h2>
+  <p class="text-center text-muted mb-10 max-w-2xl mx-auto">
+    Trusted by leading infrastructure providers, custody platforms, and institutional partners.
+  </p>
+
+  {
+    categories.map(({ title, partners }) => (
+      <div class="mb-10">
+        <h3 class="text-sm uppercase tracking-widest text-gray-500 font-semibold text-center mb-6">{title}</h3>
+        <div class="flex flex-wrap gap-8 justify-center items-center">
+          {partners.map((partner) => (
+            <a
+              href={partner.href}
+              target="_blank"
+              rel="noopener"
+              class="hover:opacity-70 transition-opacity duration-300 flex justify-center"
+            >
+              <Image
+                src={partner.image}
+                alt={partner.title}
+                height={partner.height ?? 40}
+                width={300}
+                style="object-fit: contain"
+              />
+            </a>
+          ))}
+        </div>
+      </div>
+    ))
+  }
 </div>

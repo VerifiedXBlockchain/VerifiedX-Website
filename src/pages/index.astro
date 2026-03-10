@@ -2,17 +2,9 @@
 import Layout from '~/layouts/PageLayout.astro';
 import Hero from '~/components/widgets/Hero.astro';
 import SecurityTrustStrip from '~/components/widgets/SecurityTrustStrip.astro';
-import Content from '~/components/widgets/Content.astro';
-import Stats from '~/components/widgets/Stats.astro';
 import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
-import Image from '~/components/common/Image.astro';
 import ItemGrid from '~/components/ui/ItemGrid.astro';
 import Button from '~/components/ui/Button.astro';
-import ItemGrid2 from '~/components/ui/ItemGrid2.astro';
-import ZoomableImageGallery from '~/components/ZoomableImageGallery.astro';
-import StatsMini from '~/components/widgets/StatsMini.astro';
-import Quote from '~/components/ui/Quote.astro';
-import { YouTube } from 'astro-embed';
 import NetworkStats from '~/components/dynamic/NetworkStats.svelte';
 import { externalLinks } from '~/navigation';
 import Partners from '~/components/Partners.astro';
@@ -32,716 +24,92 @@ const metadata = {
   <!-- Section 4: Security Trust Strip -->
   <SecurityTrustStrip />
 
-  <section class="spy-section" id="section-discover">
-    <WidgetWrapper containerClass={`max-w-6xl mx-auto pt-0 mt-0`}>
-      <h2 class={'font-light font-heading text-heading text-5xl text-center tracking-tight '}>
-        What Does It All Mean?
-      </h2>
-      <p class="mt-5 text-center text-primary font-bold tracking-wide uppercase text-lg">And why should we care?</p>
-      <div class="py-5"></div>
-      <div class="styled-content-box">
-        <div class="font-light text-xl text-white p-5">
-          <h3 class="text-3xl text-primary">Blockchain can be intimidating for most.</h3>
-          <div class="py-2"></div>
+  <!-- Section 5: Ecosystem Partners / Integrations -->
+  <section class="spy-section pt-16" id="section-ecosystem">
+    <WidgetWrapper containerClass={`max-w-6xl mx-auto`}>
+      <Partners />
+    </WidgetWrapper>
+  </section>
 
-          <p>
-            It is certainly confusing for the unfamiliar and even the moderately familiar. For starters we need
-            technologies that reduce reliance on third parties and help solve everyday problems efficiently with reduced
-            costs.
-          </p>
-          <div class="py-2"></div>
-          <p>
-            They should provide for seamless everyday interaction by anyone globally and not be reliant on centralized
-            authorities to administer them or be based on economic status. Even so, third parties and builders should
-            also be empowered to integrate them, with any individual user having the choice to move freely on or off any
-            platform and reside completely natively without complication.
-          </p>
-          <div class="py-2"></div>
+  <!-- Section 6: Network Stats -->
+  <section class="spy-section pt-8" id="section-stats">
+    <NetworkStats client:load />
+  </section>
 
-          <p>
-            Being permissionless, trustless, transparent, and self-sovereign should be as simple and instant as clicking
-            a button… this should mean something, this should actually do more than just "something". It should empower
-            us to manage our own assets freely, securely, and transact with anyone easily, not just rinse and repeat the
-            same solutions with a different skin.
-          </p>
-          <div class="py-2"></div>
+  <!-- Section 7: How VerifiedX Works -->
+  <section class="spy-section pt-16" id="section-how-it-works">
+    <WidgetWrapper containerClass={`max-w-6xl mx-auto`}>
+      <h2 class="font-bold font-heading text-heading text-5xl text-center tracking-tight">How VerifiedX Works</h2>
+      <p class="mt-4 text-center text-xl text-muted max-w-3xl mx-auto">
+        Bitcoin becomes programmable financial capital through the VerifiedX network.
+      </p>
 
-          <h3 class="text-3xl text-primary">Welcome to your blockchain, your freedom, your independence...</h3>
-          <div class="py-2"></div>
-
-          <p>
-            <span class="font-semibold text-primary">VerifiedX</span> is the "people's network", it is an intuitive on-chain
-            utility in everyone's hands. <span class="font-semibold text-primary">VFX</span> takes the mysticism and technicalities
-            out of the blockchain and simplifies it for anyone, anytime, and anywhere on any device. It enables simple one-click
-            and interactive features and provides simple and immediate on-boarding for any user with a login and password,
-            just like any other web app, all while maintaining the highest level of security. Yes, it is plug and play!
-          </p>
+      <div class="py-10 flex justify-center">
+        <div
+          class="rounded-lg border border-gray-700 bg-[#0a0a0a] p-8 md:p-10 font-mono text-base md:text-lg text-center shadow-2xl max-w-md w-full"
+        >
+          <pre
+            class="text-green-400 leading-loose whitespace-pre"><span class="text-primary font-bold">Bitcoin</span>
+   &darr;
+<span class="text-gray-300">VerifiedX Infrastructure</span>
+   &darr;
+<span class="text-gray-300">vBTC</span> &bull; <span class="text-gray-300">Stablecoins</span> &bull; <span class="text-gray-300">Smart Contracts</span>
+   &darr;
+<span class="text-gray-300">Payments</span> &bull; <span class="text-gray-300">Markets</span> &bull; <span class="text-gray-300">Applications</span>
+   &darr;
+<span class="text-primary font-bold">Users + AI Agents</span></pre>
         </div>
+      </div>
+
+      <div class="flex flex-row justify-center items-center gap-4">
+        <Button variant="primary" href={externalLinks.docs} target="_blank">Network Architecture</Button>
+        <div class="w-16 h-0.5 bg-primary opacity-40"></div>
+        <Button variant="secondary" href={externalLinks.docs} target="_blank">Technical Documentation</Button>
       </div>
     </WidgetWrapper>
   </section>
 
-  <section class="spy-section relative pt-16" id="section-vfx">
+  <!-- Section 8: Use Bitcoin as Financial Capital -->
+  <section class="spy-section pt-16" id="section-capital">
     <WidgetWrapper containerClass={`max-w-6xl mx-auto`}>
-      <div>
-        <h2 class={'font-bold font-heading text-heading text-5xl text-center tracking-tight '}>For The People</h2>
-
-        <Quote attribute="Steve Jobs" btc={false}>
-          <Fragment slot="body">
-            The people who are crazy enough to think<br />they can change the world, are the ones who do.
-          </Fragment>
-        </Quote>
-
-        <p class="mt-8 text-center text-xl max-w-4xl mx-auto">
-          VerifiedX is the first open-source and completely decentralized universal layer 1 blockchain AND utility
-          sidechain for the Bitcoin network. VFX enables tokenized self-custody, data, and peer-to-peer commerce of both
-          digital and physical assets. It's built for us, it's built for everyone!
-        </p>
-      </div>
-
-      <div class="py-7"></div>
+      <h2 class="font-bold font-heading text-heading text-5xl text-center tracking-tight mb-10">
+        Use Bitcoin as Financial Capital
+      </h2>
 
       <ItemGrid
         items={[
           {
-            title: 'VFX and BTC',
-            description:
-              'Send and Receive both VFX and BTC natively. Supports all Bitcoin addresses with a full non-custodial "one-click" user interface!',
-            icon: 'tabler:coins',
+            title: 'Send Global Payments',
+            description: 'Send digital assets instantly anywhere in the world using Butterfly.',
+            icon: 'tabler:send',
+            callToAction: { text: 'Open Butterfly', href: '#' },
           },
           {
-            title: 'Validate for Governance',
-            description:
-              'Validate by liquid staking in exchange for complete governance. One CPU-one vote, with on-chain proposals / voting deployed, actionable, and viewable all through wallets!',
-            icon: 'tabler:gavel',
+            title: 'Earn Yield on Bitcoin',
+            description: 'Use vBTC to participate in decentralized financial markets.',
+            icon: 'tabler:chart-line',
+            callToAction: { text: 'Learn About vBTC', href: '#' },
           },
           {
-            title: 'Vault Accounts',
-            description:
-              ' On-chain Vault accounts, just like a safe deposit box, providing users with the ability to store funds and assets with a "first ever" on-chain recovery and escrow feature, eliminating the need for hardware wallets!',
-            icon: 'tabler:lock',
+            title: 'Own Your Money',
+            description: 'Self-custodial wallets ensure users control their assets.',
+            icon: 'tabler:shield-lock',
+            callToAction: { text: 'Download Wallet', href: externalLinks.webWallet },
           },
           {
-            title: 'Tokenize',
-            description:
-              'Tokenize any asset, including Bitcoin, and program real on-chain features without any technical knowledge. Mint Non-Fungible (VFX10) and Fungible Tokens (VFX20) with on-chain features by using simple one-click options through self-executing and automated smart contracts for near zero cost. Yes gasless!',
-            icon: 'tabler:wand',
-          },
-          {
-            title: 'P2P Commerce',
-            description:
-              'Trade, lend, borrow, or exhibit directly with anyone anytime through self-custodial published auction houses, shops, bulletins, and galleries with p2p chat and generate direct links to any social media account!',
-            icon: 'tabler:building-store',
-          },
-          {
-            title: 'On-Chain Domains',
-            description:
-              'Domain name service for all VFX and BTC addresses, simplifying sending and receiving funds and assets with domains that are themselves transferrable!',
-            icon: 'tabler:link',
-          },
-          {
-            title: 'Media Beacons',
-            description:
-              'Complete p2p media and document transfer with privacy and beacon hosting, without the need for third party services!',
-            icon: 'tabler:wifi',
-          },
-          {
-            title: 'Easy On/Off Ramps',
-            description:
-              'Easy in-wallet on / off-ramp for VFX and BTC funds, including using Apple Pay and Google Pay!',
-            icon: 'tabler:arrows-diff',
+            title: 'Build Financial Applications',
+            description: 'Developers can build financial tools, marketplaces, and decentralized apps.',
+            icon: 'tabler:code',
+            callToAction: { text: 'Developer Docs', href: externalLinks.docs },
           },
         ]}
-        columns={2}
+        columns={4}
         classes={{
-          container: '',
-          title: 'md:text-[1.3rem]',
+          container: 'gap-6',
+          title: 'md:text-[1.1rem]',
           icon: 'text-white bg-primary rounded-full w-10 h-10 p-2 md:w-12 md:h-12 md:p-3 mr-4 rtl:ml-4 rtl:mr-0',
         }}
       />
-
-      <div class="flex flex-row justify-center items-center align-middle mt-16">
-        <Button variant="primary" href={externalLinks.docs} class="mx-2" target={'_blank'}>Read Docs</Button>
-        <div class="w-16 h-0.5 bg-primary opacity-40"></div>
-        <Button variant="secondary" href={externalLinks.videoTutorials} class="mx-2" target={'_blank'}
-          >View Tutorials</Button
-        >
-      </div>
-    </WidgetWrapper>
-  </section>
-
-  <section class="spy-section pt-12" id="section-bitcoin">
-    <WidgetWrapper containerClass={`max-w-6xl mx-auto`}>
-      <h2 class={'font-bold font-heading text-heading text-5xl text-center tracking-tight '}>
-        Why <span class="text-btc">Bitcoin</span>?
-      </h2>
-
-      <Quote attribute="Steve Jobs" btc={true}>
-        <Fragment slot="body"> It's better to be a pirate than join the Navy! </Fragment>
-      </Quote>
-
-      <div class="py-4"></div>
-      <div class="styled-content-box">
-        <div class="font-light text-xl text-white p-5">
-          <h3 class="text-3xl text-btc">Perfected digital capital, digital gold, apolitical property...</h3>
-          <div class="py-2"></div>
-
-          <p>
-            or however you wish to classify Bitcoin, most can agree it has garnered initial critical mass and adoption
-            by many… but we are just scratching the surface and getting started! While <span class="font-semibold"
-              >VerifiedX</span
-            > was built with the same exact ethos and principles of the Bitcoin Network, it isn't a copy of it at all. In
-            fact, it has adopted a lot of Bitcoin's security and its philosophy, but it has iterated over it and added smart
-            contract functionalities that have real on-chain features.
-          </p>
-          <div class="py-2"></div>
-          <h3 class="text-3xl text-btc">These automated features actually solve everyday frictions...</h3>
-          <div class="py-2"></div>
-          <p>
-            and open up doors to many additional self-sovereign possibilities today. <span class="font-semibold"
-              >VFX</span
-            > not only provides a non-custodial vertically integrated gateway for Bitcoin, but it also serves as a fully
-            decentralized sidechain as well. This means that native wallets support all native Bitcoin functions, while also
-            helping advance it with true on-chain utility.
-          </p>
-          <div class="py-2"></div>
-
-          <h3 class="text-3xl text-btc">Think of VerifiedX as a public mall...</h3>
-
-          <div class="py-2"></div>
-
-          <p>
-            that is owned by its vendors with Bitcoin as the premier department store. Every single shopper in the
-            Bitcoin department store continues to use all the same services and products it always has, except now they
-            can walk through the mall and access a host of additional services without leaving their own environment.
-            This all happens within one's own control while enhancing the self-sovereign experience, helping scale
-            Bitcoin with utility, while dramatically reducing user latency and cost.
-          </p>
-        </div>
-      </div>
-    </WidgetWrapper>
-  </section>
-
-  <section class="pt-16 spy-section relative" id="section-vbtc">
-    <WidgetWrapper containerClass={`max-w-6xl mx-auto`}>
-      <div>
-        <h2 class={'font-bold font-heading text-heading text-5xl text-center tracking-tight '}>
-          Enter Verified Bitcoin
-        </h2>
-        <Quote btc={true}>
-          <Fragment slot="body"> Not Your Daddy's Wrapper! </Fragment>
-        </Quote>
-
-        <video
-          class="block mx-auto mt-8"
-          style={'border-radius: 128px'}
-          autoplay
-          muted
-          playsinline
-          loop
-          width={256}
-          height={256}
-        >
-          <source src="/vbtc.mp4" type="video/mp4" />
-        </video>
-
-        <p class="mt-8 text-center text-xl max-w-4xl mx-auto">
-          VerifiedX is the first open-source and completely decentralized universal layer 1 blockchain AND utility
-          sidechain for the Bitcoin network. VFX enables tokenized self-custody, data, and peer-to-peer commerce of both
-          digital and physical assets. It's built for us, it's built for everyone!
-        </p>
-      </div>
-
-      <div class="py-7"></div>
-
-      <ItemGrid
-        items={[
-          {
-            title: 'Self-custodial Bitcoin token',
-            description:
-              'The first-ever non-custodial Bitcoin Token minted by a simple text smart contract with actual features, and with an evergreen 1:1 decentralized peg. This means 1 vBTC = 1 BTC ALWAYS!',
-            icon: 'tabler:key',
-          },
-          {
-            title: 'Transfer BTC with near zero fees',
-            description:
-              'Tokenize Bitcoin and send any denomination to anyone, anywhere in the world, for near zero fees and with near instant finality!',
-            icon: 'tabler:send',
-          },
-          {
-            title: 'Mint with on-chain media',
-            description:
-              'Mint any vBTC token with inscribed media on-chain which automatically transfers with any transaction! ',
-            icon: 'tabler:photo',
-          },
-          {
-            title: 'Support Documents',
-            description:
-              'Mint any vBTC token with documents such as a Will or a Trust for estate planning that transfers to the appropriate recipient completely p2p!',
-            icon: 'tabler:checklist',
-          },
-          {
-            title: 'Store in vault',
-            description:
-              'Store vBTC / BTC funds in your self-custodial Vault with on-chain recovery and escrow payment features. Set it and forget it!',
-            icon: 'tabler:shield-lock',
-          },
-          {
-            title: 'Native BTC Deposits and Withdrawls',
-            description: 'All Tokenized BTC deposits and withdrawals settle natively on the Bitcoin Network! ',
-            icon: 'tabler:currency-bitcoin',
-          },
-        ]}
-        columns={2}
-        classes={{
-          container: '',
-          title: 'md:text-[1.3rem]',
-          icon: 'text-white bg-btc rounded-full w-10 h-10 p-2 md:w-12 md:h-12 md:p-3 mr-4 rtl:ml-4 rtl:mr-0',
-        }}
-      />
-
-      <div class="flex flex-row justify-center items-center align-middle mt-16">
-        <Button variant="btc" href={externalLinks.vbtcDocs} target={'_blank'} class="mx-2">Let's Dig In</Button>
-        <div class="w-16 h-0.5 bg-btc opacity-40"></div>
-        <Button variant="secondary" href={externalLinks.vbtcFlow} target={'_blank'} class="mx-2">Flow Document</Button>
-      </div>
-    </WidgetWrapper>
-  </section>
-
-  <section class="spy-section pt-16" id="section-validators">
-    <WidgetWrapper containerClass={`max-w-6xl mx-auto`}>
-      <h2 class={'font-bold font-heading text-heading text-5xl text-center tracking-tight '}>
-        Validators With Full Governance
-      </h2>
-
-      <Quote btc={false} attribute="Albert Einstein">
-        <Fragment slot="body"
-          >If people are good because they fear punishment,<br />and hope for reward, then we are a sorry lot indeed.</Fragment
-        >
-      </Quote>
-      <div class="py-4"></div>
-
-      <div class="styled-content-box">
-        <div class="font-light text-xl text-white p-5">
-          <h3 class="text-3xl text-primary">VerifiedX Validators are enabled with full on-chain governance...</h3>
-          <div class="py-2"></div>
-
-          <p>
-            with an in-wallet user interface. Governance is the reward for validating, rather than a block reward from
-            mining activities or traditional staking. Why? Because reward structures for validators and mining
-            infrastructures have proven to be parasitic and create an inflationary environment, which tend to not align
-            with the best interest of a network and its community members. In many cases, they seem to favor the
-            wealthiest of holders and / or the most dominant and are more pseudo- decentralized… not very different from
-            some of the more traditional systems right?
-          </p>
-          <div class="py-2"></div>
-
-          <h3 class="text-3xl text-primary">
-            One can think of a VFX Validator similar to that of a Bitcoin Full Node.
-          </h3>
-          <div class="py-2"></div>
-
-          <p>
-            It doesn't generate any income from the network and its primary purpose is to verify transactions and
-            contribute to the network's security. VFX takes this even further to ensure true altruistic decentralization
-            by upholding a Zero Knowledge Proof of Assurance (PoA) consensus… anyone may join and become a validator at
-            anytime, so long as they hold the minimum required native VFX coin in their non-custodial wallet using any
-            machine with the minimum specs, a unique IP address, and run the wallet in validator mode.
-          </p>
-          <div class="py-2"></div>
-          <p>
-            There are no lockups or holding periods, it is that simple. As a tradeoff for the work a validator does, it
-            immediately earns governance rights to put forth proposals, changes, enhancements, and cast votes all
-            through the wallet with a 'one-click' interface, upholding a one CPU-one vote methodology.
-          </p>
-          <div class="py-2"></div>
-
-          <p>
-            The economic incentive here is by participating in helping advance the network and contributing to its
-            growth. This is further enhanced with a truly deflationary native coin, where every transaction and network
-            service fee is burned at the time of its occurrence creating additional rarity as utilization increases over
-            time.
-          </p>
-        </div>
-      </div>
-    </WidgetWrapper>
-  </section>
-  <!-- Content Widget **************** -->
-
-  <section class="pt-16 spy-section" id="section-switchblade">
-    <!-- <WidgetWrapper containerClass={`max-w-6xl mx-auto lg:pb-0`}> -->
-
-    <div class="px-4">
-      <Content
-        isReversed
-        title="Introducing The VFX Switchblade"
-        subtitle="Next-Gen Native Asset Ownership, Commerce and Security"
-        items={[
-          {
-            title: 'On/Off-Chain Media Assets',
-            description:
-              "Media is stored within the network and transferred to the new owner's wallet when the token is transfered or purchased.",
-          },
-          {
-            title: 'Smart Contracts',
-            description:
-              'Write feature-rich programmable smart contracts in Trillium OR using the graphical interface with no coding knowledge needed.',
-          },
-          {
-            title: 'Tokenize Assets',
-            description:
-              'Mint and deploy NFTs, Fungible Tokens, and Bitcoin with ease. Include  functionality like on-chain enforced royalties and smart contracts that can evolve under the control of the minter.',
-          },
-          {
-            title: 'Domains',
-            description:
-              'Register unique domain aliases for your VFX addresses and Bitcoin addresses - making it easier to receive funds and tokens.',
-          },
-          {
-            title: 'Vault Accounts',
-            description: 'Store assets / funds in user generated vaults with on-chain recovery functionalty.',
-          },
-          {
-            title: 'Auction Houses',
-            description: 'Launch published auctions, shops, and social galleries completely peer-to-peer.',
-          },
-          {
-            title: 'Easy On/Off Ramp',
-            description:
-              'The Switchblade additionally provides on-ramps and off-ramps for both VFX and BTC through integrated solutions via Apple Pay and Google Pay providing seamless immediate interaction with the network!',
-          },
-        ]}
-        image={{
-          src: '~/assets/images/gui/1.jpg',
-          alt: 'Colorful Image',
-        }}
-      >
-        <Fragment slot="content">
-          <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
-            MacOS, Windows, Linux CLI, and Web
-          </h3>
-          VFX Switchblade is the first layer 1 non-custodial wallet that provides for sending and receiving both VFX and
-          BTC natively.
-        </Fragment>
-
-        <Fragment slot="bg">
-          <div class="absolute inset-0 bg-transparent"></div>
-        </Fragment>
-      </Content>
-
-      <div class={`max-w-6xl mx-auto pb-8 `}>
-        <div class="font-light text-xl text-white">
-          <p>
-            The <span class="font-semibold text-primary">Switchblade</span> is the first layer 1 non-custodial wallet that
-            provides for sending and receiving both VFX and BTC natively including on-chain and off-chain media, view transaction
-            history, write on-chain feature rich programmable smart contracts, tokenize assets including Bitcoin, own, manage,
-            and transfer domain names for any VFX and BTC address, borrow, lend, and store assets / funds in user generated
-            vaults with on-chain recovery, and launch published auctions, shops, and social galleries completely peer-to-peer!
-          </p>
-          <div class="py-2"></div>
-          <p>
-            The <span class="font-semibold">Switchblade</span>
-            additionally provides on and off-ramps for both VFX and BTC through integrated solutions via Apple Pay and Google
-            Pay providing seamless immediate interaction with the network!
-          </p>
-          <div class="py-4"></div>
-
-          <ZoomableImageGallery
-            images={[
-              {
-                url: '~/assets/images/gui/1.jpg',
-                title: "Switchblade's Dashboard",
-                description: 'View all your account information in one place.',
-              },
-              {
-                url: '~/assets/images/gui/3.jpg',
-                title: 'vBTC',
-                description: 'Tokenize Bitcoin and transfer to others instantly with near zero fees.',
-              },
-              {
-                url: '~/assets/images/gui/5.jpg',
-                title: 'Vault Accounts',
-                description: 'Secure your funds and assets with recovery features.',
-              },
-              {
-                url: '~/assets/images/gui/6.jpg',
-                title: 'Domains',
-                description: 'Create verified aliases for your addresses on-chain.',
-              },
-              {
-                url: '~/assets/images/gui/7.jpg',
-                title: 'Fungible Tokens',
-                description: 'Mint and deploy your own fungible tokens with fixed or unlimitted supply.',
-              },
-              {
-                url: '~/assets/images/gui/8.jpg',
-                title: 'Non Fungible Tokens',
-                description: 'Deploy smart contracts with media and real on-chain utility.',
-              },
-              {
-                url: '~/assets/images/gui/10.jpg',
-                title: 'P2P Auctions',
-                description: 'List your NFTs for auction, Buy Now, or just to show off in a gallery.',
-              },
-              {
-                url: '~/assets/images/gui/11.jpg',
-                title: 'BTC Transactions',
-                description: 'View all Bitcoin transactions for your BTC addresses.',
-              },
-            ]}
-          />
-
-          <div class="py-8"></div>
-
-          <div id="section-download"></div>
-          <p>
-            Having access to a <span class="font-semibold">Switchblade</span> wallet is without a doubt a mainstream accelerator
-            with simple password and login accounts without sacrificing on-chain security at all. In fact, <span
-              class="font-semibold">Switchblade</span
-            > is the first native layer 1 wallet in which a user can immediately participate in Defi, commerce, DePin, decentralized
-            voting, tokenization, and storage without the need for a third party app or authority. It was built for everyday
-            use and to solve everyday problems, the way it should be.
-          </p>
-
-          <div class="pt-8 flex justify-center items-center gap-2 flex-wrap">
-            <Button variant="primary" href={externalLinks.installDocs} target="_blank"
-              >Install and Operating Instructions</Button
-            >
-          </div>
-          <div class="pt-8 flex justify-center items-center gap-2 flex-wrap">
-            <Button variant="secondary" href={externalLinks.downloadGuiMacArm} target="_blank"
-              >Download for MacOS (ARM)</Button
-            >
-            <Button variant="secondary" href={externalLinks.downloadGuiMacIntel} target="_blank"
-              >Download for MacOS (Intel)</Button
-            >
-            <Button variant="secondary" href={externalLinks.downloadGuiWindows} target="_blank"
-              >Download for Windows</Button
-            >
-            <Button variant="secondary" href={externalLinks.webWallet} target="_blank">Launch Web Wallet</Button>
-            <Button variant="secondary" href={externalLinks.downloadCli} target="_blank">Download CLI</Button>
-            <Button variant="secondary" href={externalLinks.sync} target="_blank">Get Snapshot</Button>
-          </div>
-        </div>
-      </div>
-      <!-- </WidgetWrapper> -->
-    </div>
-  </section>
-
-  <section class="p-8 bg-black">
-    <h2 class="text-center text-white font-light text-4xl">Overview <span class="text-primary">Video</span></h2>
-
-    <YouTube id="eK56EPLQD4E" class="block mx-auto w-full" posterQuality="max" />
-  </section>
-
-  <section class="pt-8 spy-section relative" id="section-ecosystem">
-    <WidgetWrapper containerClass={`max-w-6xl mx-auto`}>
-      <div>
-        <h2 class={'font-bold font-heading text-heading text-5xl text-center tracking-tight '}>
-          The Verified<span class="text-primary">X</span> Gateway
-        </h2>
-
-        <Quote btc={false} attribute="Nikola Tesla">
-          <Fragment slot="body"
-            >If you want to find the secrets of the universe,<br />think in terms of energy, frequency and vibration.</Fragment
-          >
-        </Quote>
-      </div>
-
-      <div class="py-8"></div>
-      <ItemGrid2
-        columns={3}
-        items={[
-          {
-            title: 'VFX Spyglass',
-            description: "View blocks, transactions, domains and tokens in real-time on VFX's transaction explorer.",
-            callToAction: {
-              variant: 'secondary',
-              text: 'Open',
-              href: externalLinks.spyglass,
-              target: '_blank',
-            },
-          },
-          {
-            title: 'Web Wallet',
-            description: 'Interact with the network through the Switchblade Web Wallet. No syncing required!',
-            callToAction: {
-              variant: 'secondary',
-              text: 'Sign In',
-              href: externalLinks.webWallet,
-              target: '_blank',
-            },
-          },
-          {
-            title: 'Source Code',
-            description: 'View the code, create pull requests, and report issues on Github.',
-            callToAction: {
-              variant: 'secondary',
-              text: 'View',
-              href: externalLinks.githubOrg,
-              target: '_blank',
-            },
-          },
-          {
-            title: 'Trillium IDE',
-            description: 'Write smart contracts in your web browser with the Trillium IDE and REPL.',
-            callToAction: {
-              variant: 'secondary',
-              text: 'Try Out',
-              href: externalLinks.trilliumIde,
-              target: '_blank',
-            },
-          },
-          {
-            title: 'Integration Playground',
-            description: 'Open and interact with the swagger docs for the CLI and Spyglass.',
-            callToAction: {
-              variant: 'secondary',
-              text: 'Play Around',
-              href: externalLinks.integrationSwaggerDocs,
-              target: '_blank',
-            },
-          },
-
-          {
-            title: 'Whitepaper',
-            description: 'Read the latest whitepaper and dig deep into the technology.',
-            callToAction: {
-              variant: 'secondary',
-              text: 'Read',
-              href: externalLinks.whitepaper,
-              target: '_blank',
-            },
-          },
-        ]}
-        classes={{
-          container: 'gap-4 md:gap-6',
-          panel:
-            'rounded-lg shadow-[0_4px_30px_rgba(0,0,0,0.1)] backdrop-blur border border-[#ffffff29] bg-[rgba(15,23,42,0.75)] p-6',
-
-          icon: 'w-12 h-12 mb-6 text-primary',
-        }}
-      />
-
-      <div class="pt-12 flex justify-center items-center gap-4">
-        <Button variant="primary" href={externalLinks.docs} target="_blank">View Docs</Button>
-        <div class="w-16 h-0.5 bg-primary opacity-40"></div>
-        <Button variant="secondary" href={externalLinks.whitepaper} target="_blank">Read Whitepaper</Button>
-      </div>
-    </WidgetWrapper>
-  </section>
-
-  <section class="pt-16 spy-section relative" id="section-build">
-    <WidgetWrapper containerClass={`max-w-6xl mx-auto`}>
-      <div>
-        <h2 class={'font-bold font-heading text-heading text-5xl text-center tracking-tight '}>Build & Integrate</h2>
-        <p class="mt-5 text-base text-center text-secondary text-white font-bold tracking-wide uppercase">
-          Globally Capable For Everyday Use
-        </p>
-      </div>
-
-      <div class="py-8"></div>
-      <ItemGrid2
-        columns={3}
-        items={[
-          {
-            title: 'Integration Docs',
-            description: 'Learn about how to integrate your project with the VerifiedX network.',
-            callToAction: {
-              variant: 'secondary',
-              text: 'Open',
-              href: externalLinks.integrationDocs,
-              target: '_blank',
-            },
-          },
-          {
-            title: 'vBTC Integration',
-            description: 'Learn how to integrate your project with Verified Bitcoin.',
-            callToAction: {
-              variant: 'secondary',
-              text: 'Read',
-              href: externalLinks.vbtcIntegrationDocs,
-              target: '_blank',
-            },
-          },
-          {
-            title: 'Config Docs',
-            description: 'View the CLI/GUI core configration documentation.',
-            callToAction: {
-              variant: 'secondary',
-              text: 'Review',
-              href: externalLinks.configDocs,
-              target: '_blank',
-            },
-          },
-          {
-            title: 'Testnet and Faucet',
-            description: "Test on VerifiedX's Testnet and learn how to get tVFX.",
-            callToAction: {
-              variant: 'secondary',
-              text: 'Try it Out',
-              href: externalLinks.testnetDocs,
-              target: '_blank',
-            },
-          },
-
-          {
-            title: 'The Road Ahead',
-            description: "See what's on the roadmap and suggest your own ideas.",
-            callToAction: {
-              variant: 'secondary',
-              text: 'Learn More',
-              href: externalLinks.roadmap,
-              target: '_blank',
-            },
-          },
-          {
-            title: 'Bug Bounty Program',
-            description: 'Activating soon.',
-            // callToAction: {
-            //   variant: 'secondary',
-            //   text: 'Play Around',
-            //   href: '',
-            //   target: '_blank',
-            // },
-          },
-        ]}
-        classes={{
-          container: 'gap-4 md:gap-6',
-          panel:
-            'rounded-lg  shadow-[0_4px_30px_rgba(0,0,0,0.1)] backdrop-blur border border-[#ffffff29] bg-[rgba(51,65,85,0.7)] p-6',
-
-          icon: 'w-12 h-12 mb-6 text-primary',
-        }}
-      />
-
-      <div class="pt-12 flex justify-center items-center gap-4">
-        <Button variant="primary" href={externalLinks.docs} target="_blank">View Docs</Button>
-        <div class="w-16 h-0.5 bg-primary opacity-40"></div>
-        <Button variant="secondary" href={externalLinks.integrationSwaggerDocs} target="_blank">API Playground</Button>
-      </div>
-    </WidgetWrapper>
-  </section>
-  <section class="pt-16 spy-section flex flex-col justify-center bg-black" id="section-connect">
-    <WidgetWrapper containerClass={`max-w-6xl mx-auto py-6 my-0`}>
-      <div class="flex justify-center">
-        <Image src="~/assets/images/vfx-wordmark-orange-no-cube.png" alt="VerifiedX" width={300} />
-      </div>
-
-      <div class="py-4"></div>
-
-      <p class="text-center text-3xl text-light">Connect & Contribute</p>
-
-      <div class="py-4"></div>
-
-      <div class="flex justify-center gap-3 max-w-2xl mx-auto flex-wrap">
-        <Button variant="secondary" target="_blank" href={externalLinks.twitter}>Follow on X</Button>
-        <Button variant="secondary" target="_blank" href={externalLinks.discord}>Join Discord</Button>
-        <Button variant="secondary" target="_blank" href={externalLinks.githubOrg}>Contribute on Github</Button>
-        <Button variant="secondary" target="_blank" href={externalLinks.email}>Contact Devs</Button>
-      </div>
-
-      <div class="py-4"></div>
     </WidgetWrapper>
   </section>
 </Layout>
