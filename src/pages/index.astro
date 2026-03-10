@@ -2,6 +2,7 @@
 import Layout from '~/layouts/PageLayout.astro';
 import Hero from '~/components/widgets/Hero.astro';
 import SecurityTrustStrip from '~/components/widgets/SecurityTrustStrip.astro';
+import { Icon } from 'astro-icon/components';
 import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
 import ItemGrid from '~/components/ui/ItemGrid.astro';
 import ItemGrid2 from '~/components/ui/ItemGrid2.astro';
@@ -262,6 +263,130 @@ const metadata = {
           icon: 'w-12 h-12 mb-6 text-primary',
         }}
       />
+    </WidgetWrapper>
+  </section>
+
+  <!-- Section 12: Security & Institutional Infrastructure -->
+  <section class="spy-section pt-16" id="section-security">
+    <WidgetWrapper containerClass={`max-w-7xl mx-auto`}>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        <!-- Left: Copy -->
+        <div class="intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade">
+          <h2 class="text-4xl md:text-5xl font-bold font-heading text-heading tracking-tight mb-6">
+            Institutional-Grade Infrastructure
+          </h2>
+
+          <ul class="space-y-4 mb-8">
+            <li class="flex items-start gap-3">
+              <Icon name="tabler:shield-check" class="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+              <span class="text-muted">Halborn security audits</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <Icon name="tabler:search" class="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+              <span class="text-muted">Merkle Science compliance & block tracing tools</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <Icon name="tabler:users-group" class="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+              <span class="text-muted">Validator consensus</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <Icon name="tabler:key" class="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+              <span class="text-muted">Self-custodial architecture</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <Icon name="tabler:code" class="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+              <span class="text-muted">Open source protocol with a unified framework</span>
+            </li>
+          </ul>
+
+          <div class="flex flex-wrap gap-2">
+            <Button variant="primary" href="#">Security Overview</Button>
+            <Button variant="secondary" href="#">Audit Reports</Button>
+            <Button variant="secondary" href={externalLinks.validatingDocs} target="_blank">Run Validator</Button>
+            <Button variant="secondary" href="#">Institutional Solutions</Button>
+          </div>
+        </div>
+
+        <!-- Right: Network Security Diagram -->
+        <div class="intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade">
+          <div
+            class="rounded-lg border border-gray-700 bg-[#0a0a0a] p-6 md:p-8 font-mono text-sm md:text-base shadow-2xl"
+          >
+            <div class="flex items-center gap-2 mb-4 pb-3 border-b border-gray-800">
+              <div class="w-3 h-3 rounded-full bg-red-500/80"></div>
+              <div class="w-3 h-3 rounded-full bg-yellow-500/80"></div>
+              <div class="w-3 h-3 rounded-full bg-green-500/80"></div>
+              <span class="ml-2 text-gray-500 text-xs">security://network</span>
+            </div>
+            <pre
+              class="text-green-400 leading-relaxed whitespace-pre"><span class="text-primary font-bold">Validators</span>
+   &darr;
+<span class="text-gray-300">Consensus</span>
+   &darr;
+<span class="text-primary font-bold">Asset Security</span></pre>
+          </div>
+        </div>
+      </div>
+    </WidgetWrapper>
+  </section>
+
+  <!-- Section 13: The Bitcoin Financial Flywheel -->
+  <section class="spy-section pt-16" id="section-flywheel">
+    <WidgetWrapper containerClass={`max-w-6xl mx-auto`}>
+      <h2 class="font-bold font-heading text-heading text-5xl text-center tracking-tight">
+        The Bitcoin Financial Flywheel
+      </h2>
+
+      <div class="py-10 flex justify-center">
+        <div
+          class="rounded-lg border border-gray-700 bg-[#0a0a0a] p-8 md:p-10 font-mono text-base md:text-lg text-center shadow-2xl max-w-md w-full"
+        >
+          <pre
+            class="text-green-400 leading-loose whitespace-pre"><span class="text-btc font-bold">Bitcoin Deposits</span>
+   &darr;
+<span class="text-gray-300">vBTC Minting</span>
+   &darr;
+<span class="text-gray-300">Financial Activity</span>
+   &darr;
+<span class="text-gray-300">Liquidity Growth</span>
+   &darr;
+<span class="text-gray-300">More Applications</span>
+   &darr;
+<span class="text-primary font-bold">More Users</span>
+   &#8634;
+
+<span class="text-gray-500 text-sm">Deflationary Economics</span></pre>
+        </div>
+      </div>
+
+      <p class="text-center text-xl text-muted max-w-3xl mx-auto mb-8">
+        As more Bitcoin enters the VerifiedX ecosystem, financial activity increases, attracting more applications,
+        developers, and users.
+      </p>
+
+      <div class="flex flex-row justify-center items-center gap-4">
+        <Button variant="primary" href={externalLinks.docs} target="_blank">Ecosystem Overview</Button>
+        <div class="w-16 h-0.5 bg-primary opacity-40"></div>
+        <Button variant="secondary" href={externalLinks.docs} target="_blank">Developer Platform</Button>
+      </div>
+    </WidgetWrapper>
+  </section>
+
+  <!-- Section 14: Closing CTA -->
+  <section class="spy-section pt-16 pb-20" id="section-cta">
+    <WidgetWrapper containerClass={`max-w-4xl mx-auto text-center`}>
+      <h2 class="font-bold font-heading text-heading text-5xl tracking-tight mb-6">
+        The Future of Self-Custodial Finance
+      </h2>
+      <p class="text-xl text-muted max-w-3xl mx-auto mb-10">
+        VerifiedX is building the infrastructure that enables Bitcoin to power a global self-custodial financial
+        ecosystem.
+      </p>
+      <div class="flex flex-wrap justify-center gap-3">
+        <Button variant="primary" href="#">Open Butterfly</Button>
+        <Button variant="secondary" href={externalLinks.docs} target="_blank">Start Building</Button>
+        <Button variant="secondary" href="#">Institutional Infrastructure</Button>
+      </div>
     </WidgetWrapper>
   </section>
 </Layout>
