@@ -117,7 +117,7 @@ lite-youtube {
   }
 
   .btn-primary {
-    @apply btn bg-primary text-black font-bold border border-primary hover:text-white hover:bg-secondary hover:border-white;
+    @apply btn bg-primary text-black font-bold border border-[#a86208] dark:border-[#a86208] hover:text-white hover:bg-secondary hover:border-white;
   }
 
   .btn-btc {

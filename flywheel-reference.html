@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VerifiedX: Bitcoin's Financial Operating System</title>
+<link href="https://fonts.googleapis.com/css2?family=Mukta:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ice-blue:    #73C4FA;
+    --vault-purple:#839DDB;
+    --btc-orange:  #F7931A;
+    --blue-light:  #A5D5FB;
+    --blue-dark:   #497C9F;
+    --bg:          #080c14;
+    --surface:     #0d1420;
+    --surface2:    #111b2e;
+    --border:      rgba(115,196,250,0.12);
+    --glow-blue:   rgba(115,196,250,0.25);
+    --glow-orange: rgba(247,147,26,0.25);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Mukta', sans-serif;
+    background: var(--bg);
+    color: #e8edf5;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 24px;
+    overflow-x: hidden;
+  }
+
+  /* Ambient background glow */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 40% at 20% 50%, rgba(73,124,159,0.08) 0%, transparent 70%),
+      radial-gradient(ellipse 50% 40% at 80% 50%, rgba(247,147,26,0.05) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .wrapper {
+    width: 100%;
+    max-width: 1100px;
+  }
+
+  /* ── Header ── */
+  .header {
+    text-align: center;
+    margin-bottom: 52px;
+  }
+  .header img.wordmark {
+    height: 36px;
+    margin-bottom: 14px;
+    filter: drop-shadow(0 0 12px rgba(115,196,250,0.4));
+  }
+  .header h1 {
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--blue-dark);
+  }
+  .header h1 span {
+    color: var(--ice-blue);
+  }
+
+  /* ── Two-column layout ── */
+  .diagram {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    align-items: center;
+  }
+
+  /* ── LEFT: Stack ── */
+  .stack {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    position: relative;
+  }
+
+  .layer {
+    position: relative;
+    border-radius: 10px;
+    padding: 14px 20px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    transition: border-color 0.3s, box-shadow 0.3s;
+    z-index: 1;
+  }
+  .layer:hover {
+    border-color: rgba(115,196,250,0.35);
+    box-shadow: 0 0 20px rgba(115,196,250,0.1);
+  }
+
+  /* Connector arrows between layers */
+  .connector {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 28px;
+    position: relative;
+    z-index: 0;
+  }
+  .connector::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+    width: 1px;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(115,196,250,0.2), rgba(115,196,250,0.5));
+  }
+  .connector-arrow {
+    width: 20px;
+    height: 20px;
+    position: relative;
+    z-index: 1;
+  }
+  .connector-arrow svg {
+    width: 20px;
+    height: 20px;
+    animation: pulse-arrow 2s ease-in-out infinite;
+  }
+  @keyframes pulse-arrow {
+    0%, 100% { opacity: 0.4; transform: translateY(0); }
+    50%       { opacity: 1;   transform: translateY(3px); }
+  }
+
+  /* Layer: Applications */
+  .layer-apps {
+    border-color: rgba(131,157,219,0.3);
+    background: linear-gradient(135deg, rgba(131,157,219,0.08) 0%, var(--surface) 100%);
+  }
+  .layer-apps .layer-label { color: var(--vault-purple); }
+
+  /* Layer: Financial */
+  .layer-finance {
+    border-color: rgba(115,196,250,0.25);
+    background: linear-gradient(135deg, rgba(115,196,250,0.06) 0%, var(--surface) 100%);
+  }
+  .layer-finance .layer-label { color: var(--ice-blue); }
+
+  /* Layer: VFX Network */
+  .layer-vfx {
+    border-color: rgba(115,196,250,0.4);
+    background: linear-gradient(135deg, rgba(73,124,159,0.15) 0%, rgba(13,20,32,0.9) 100%);
+    box-shadow: 0 0 30px rgba(115,196,250,0.08);
+  }
+  .layer-vfx .layer-label { color: var(--ice-blue); }
+
+  /* Layer: Bitcoin */
+  .layer-btc {
+    border-color: rgba(247,147,26,0.35);
+    background: linear-gradient(135deg, rgba(247,147,26,0.08) 0%, var(--surface) 100%);
+  }
+  .layer-btc .layer-label { color: var(--btc-orange); }
+
+  /* Layer: Users */
+  .layer-users {
+    border-color: rgba(165,213,251,0.15);
+    background: var(--surface);
+    text-align: center;
+  }
+  .layer-users .layer-label { color: var(--blue-light); }
+
+  .layer-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    opacity: 0.7;
+  }
+
+  /* App chips row */
+  .chips {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .chip {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    border: 1px solid;
+    white-space: nowrap;
+  }
+  .chip-purple {
+    background: rgba(131,157,219,0.1);
+    border-color: rgba(131,157,219,0.3);
+    color: var(--vault-purple);
+  }
+  .chip-blue {
+    background: rgba(115,196,250,0.08);
+    border-color: rgba(115,196,250,0.25);
+    color: var(--ice-blue);
+  }
+  .chip-orange {
+    background: rgba(247,147,26,0.1);
+    border-color: rgba(247,147,26,0.3);
+    color: var(--btc-orange);
+  }
+  .chip svg, .chip img { width: 14px; height: 14px; }
+
+  /* VFX layer center content */
+  .vfx-inner {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .vfx-inner img.cube {
+    height: 44px;
+    filter: drop-shadow(0 0 10px rgba(115,196,250,0.5));
+  }
+  .vfx-inner img.wordmark {
+    height: 22px;
+    filter: drop-shadow(0 0 8px rgba(115,196,250,0.4));
+  }
+
+  /* BTC inner */
+  .btc-inner {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .btc-icon {
+    width: 36px;
+    height: 36px;
+    background: var(--btc-orange);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: 700;
+    color: #fff;
+    box-shadow: 0 0 16px rgba(247,147,26,0.4);
+    flex-shrink: 0;
+  }
+  .btc-text {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--btc-orange);
+    letter-spacing: 0.04em;
+  }
+  .btc-sub {
+    font-size: 11px;
+    color: rgba(247,147,26,0.55);
+    font-weight: 400;
+  }
+
+  /* Users row */
+  .users-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+  }
+  .user-icon {
+    width: 28px;
+    height: 28px;
+    opacity: 0.6;
+  }
+  .users-label {
+    font-size: 12px;
+    color: var(--blue-light);
+    font-weight: 500;
+    opacity: 0.7;
+    text-align: center;
+    margin-top: 6px;
+  }
+
+  /* ── RIGHT: Flywheel ── */
+  .flywheel-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+  .flywheel-title {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--blue-dark);
+    text-align: center;
+  }
+  .flywheel-title span { color: var(--ice-blue); }
+
+  .flywheel-svg-wrap {
+    position: relative;
+    width: 340px;
+    height: 340px;
+  }
+
+  #flywheel-svg {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+  }
+
+  /* Flywheel node labels */
+  .fw-node-group { cursor: default; }
+  .fw-node-circle {
+    transition: r 0.3s;
+  }
+  .fw-node-text {
+    font-family: 'Mukta', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    text-anchor: middle;
+    dominant-baseline: middle;
+    pointer-events: none;
+    letter-spacing: 0.03em;
+  }
+  .fw-node-sub {
+    font-family: 'Mukta', sans-serif;
+    font-size: 9.5px;
+    font-weight: 400;
+    text-anchor: middle;
+    dominant-baseline: middle;
+    pointer-events: none;
+    opacity: 0.6;
+  }
+
+  /* Deflationary badge */
+  .deflation-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    border-radius: 20px;
+    background: rgba(247,147,26,0.08);
+    border: 1px solid rgba(247,147,26,0.25);
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--btc-orange);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .deflation-badge::before {
+    content: '↓';
+    font-size: 13px;
+  }
+
+  /* ── Connecting arrow between panels ── */
+  .panel-arrow {
+    display: none; /* shown at larger sizes via grid */
+  }
+
+  /* ── Caption ── */
+  .caption {
+    margin-top: 40px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+  .caption-item {
+    font-size: 12px;
+    color: rgba(232,237,245,0.45);
+    font-weight: 400;
+    letter-spacing: 0.06em;
+  }
+  .caption-item strong {
+    color: rgba(232,237,245,0.75);
+    font-weight: 600;
+  }
+
+  @media (max-width: 720px) {
+    .diagram { grid-template-columns: 1fr; }
+    .flywheel-svg-wrap { width: 300px; height: 300px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrapper">
+
+  <!-- Header -->
+  <div class="header">
+    <img class="wordmark" src="https://docs.verifiedx.io/network-assets/vfx-wordmark-light.png" alt="VerifiedX">
+    <h1>Bitcoin's <span>Financial Operating System</span></h1>
+  </div>
+
+  <!-- Main diagram -->
+  <div class="diagram">
+
+    <!-- LEFT: Stack -->
+    <div class="stack">
+
+      <!-- Applications -->
+      <div class="layer layer-apps">
+        <div class="layer-label">Applications</div>
+        <div class="chips">
+          <div class="chip chip-purple">
+            <!-- Butterfly SVG -->
+            <svg viewBox="0 0 24 24" fill="none"><path d="M12 12C10 8 6 5 3 6c0 3 2 6 5 7.5C6 15 5 17 5 19c2.5 0 5-2 7-4.5 2 2.5 4.5 4.5 7 4.5 0-2-1-4-3-5.5C19 12 21 9 21 6c-3-1-7 2-9 6z" fill="currentColor"/></svg>
+            Butterfly
+          </div>
+          <div class="chip chip-blue">
+            <!-- Wallet SVG -->
+            <svg viewBox="0 0 24 24" fill="none"><rect x="2" y="6" width="20" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M16 13a1 1 0 1 1 2 0 1 1 0 0 1-2 0z" fill="currentColor"/><path d="M2 9h20" stroke="currentColor" stroke-width="1.5"/></svg>
+            Switchblade
+          </div>
+          <div class="chip chip-purple">
+            <!-- Agent SVG -->
+            <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.5"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="18" cy="6" r="2" fill="currentColor" opacity="0.6"/></svg>
+            PulseXAI
+          </div>
+        </div>
+      </div>
+
+      <div class="connector">
+        <div class="connector-arrow">
+          <svg viewBox="0 0 20 20" fill="none"><path d="M10 2v14M4 11l6 7 6-7" stroke="#73C4FA" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+      </div>
+
+      <!-- Financial Layer -->
+      <div class="layer layer-finance">
+        <div class="layer-label">Financial Layer</div>
+        <div class="chips">
+          <div class="chip chip-blue">
+            <img src="https://docs.verifiedx.io/network-assets/vbtc.jpg" alt="vBTC" style="border-radius:3px;">
+            vBTC
+          </div>
+          <div class="chip chip-blue">
+            <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"/><path d="M9 12h6M12 9v6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            Stablecoins
+          </div>
+          <div class="chip chip-blue">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M4 6h16M4 12h10M4 18h7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="18" cy="15" r="3" stroke="currentColor" stroke-width="1.5"/></svg>
+            Smart Contracts
+          </div>
+        </div>
+      </div>
+
+      <div class="connector">
+        <div class="connector-arrow">
+          <svg viewBox="0 0 20 20" fill="none"><path d="M10 2v14M4 11l6 7 6-7" stroke="#73C4FA" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+      </div>
+
+      <!-- VFX Network -->
+      <div class="layer layer-vfx">
+        <div class="layer-label">VerifiedX Network</div>
+        <div class="vfx-inner">
+          <img class="cube" src="https://docs.verifiedx.io/network-assets/vfx-cube-animated.gif" alt="">
+          <img class="wordmark" src="https://docs.verifiedx.io/network-assets/vfx-wordmark-light.png" alt="VerifiedX">
+        </div>
+      </div>
+
+      <div class="connector">
+        <div class="connector-arrow">
+          <svg viewBox="0 0 20 20" fill="none"><path d="M10 2v14M4 11l6 7 6-7" stroke="#F7931A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+      </div>
+
+      <!-- Bitcoin -->
+      <div class="layer layer-btc">
+        <div class="layer-label">Base Layer</div>
+        <div class="btc-inner">
+          <div class="btc-icon">₿</div>
+          <div>
+            <div class="btc-text">Bitcoin</div>
+            <div class="btc-sub">Proof of Work · Decentralized</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="connector">
+        <div class="connector-arrow">
+          <svg viewBox="0 0 20 20" fill="none"><path d="M10 2v14M4 11l6 7 6-7" stroke="#F7931A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+      </div>
+
+      <!-- Users -->
+      <div class="layer layer-users">
+        <div class="users-row">
+          <!-- 5 user silhouettes -->
+          <svg class="user-icon" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="7" r="4" stroke="#A5D5FB" stroke-width="1.5"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" stroke="#A5D5FB" stroke-width="1.5" stroke-linecap="round"/></svg>
+          <svg class="user-icon" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="7" r="4" stroke="#A5D5FB" stroke-width="1.5"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" stroke="#A5D5FB" stroke-width="1.5" stroke-linecap="round"/></svg>
+          <svg class="user-icon" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="7" r="4" stroke="#A5D5FB" stroke-width="1.5"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" stroke="#A5D5FB" stroke-width="1.5" stroke-linecap="round"/></svg>
+          <!-- AI Agent icon -->
+          <svg class="user-icon" viewBox="0 0 24 24" fill="none"><rect x="5" y="7" width="14" height="10" rx="3" stroke="#73C4FA" stroke-width="1.5"/><circle cx="9" cy="12" r="1.5" fill="#73C4FA"/><circle cx="15" cy="12" r="1.5" fill="#73C4FA"/><path d="M12 4v3M9 17v2M15 17v2" stroke="#73C4FA" stroke-width="1.5" stroke-linecap="round"/></svg>
+          <svg class="user-icon" viewBox="0 0 24 24" fill="none"><rect x="5" y="7" width="14" height="10" rx="3" stroke="#73C4FA" stroke-width="1.5"/><circle cx="9" cy="12" r="1.5" fill="#73C4FA"/><circle cx="15" cy="12" r="1.5" fill="#73C4FA"/><path d="M12 4v3M9 17v2M15 17v2" stroke="#73C4FA" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <div class="users-label">Users &amp; AI Agents</div>
+      </div>
+
+    </div><!-- /stack -->
+
+    <!-- RIGHT: Flywheel -->
+    <div class="flywheel-wrap">
+      <div class="flywheel-title">The Bitcoin<br><span>Financial Flywheel</span></div>
+
+      <div class="flywheel-svg-wrap">
+        <svg id="flywheel-svg" viewBox="-10 -10 360 360">
+          <defs>
+            <!-- Glow filters -->
+            <filter id="glow-blue" x="-50%" y="-50%" width="200%" height="200%">
+              <feGaussianBlur in="SourceGraphic" stdDeviation="4" result="blur"/>
+              <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+            <filter id="glow-orange" x="-50%" y="-50%" width="200%" height="200%">
+              <feGaussianBlur in="SourceGraphic" stdDeviation="4" result="blur"/>
+              <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+            <filter id="glow-strong" x="-80%" y="-80%" width="260%" height="260%">
+              <feGaussianBlur in="SourceGraphic" stdDeviation="7" result="blur"/>
+              <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+
+            <!-- Arc gradient -->
+            <linearGradient id="arcGrad1" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#F7931A" stop-opacity="0.8"/>
+              <stop offset="100%" stop-color="#73C4FA" stop-opacity="0.8"/>
+            </linearGradient>
+            <linearGradient id="arcGrad2" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#73C4FA" stop-opacity="0.8"/>
+              <stop offset="100%" stop-color="#839DDB" stop-opacity="0.8"/>
+            </linearGradient>
+          </defs>
+
+          <!-- Center glow circle -->
+          <circle cx="170" cy="170" r="55" fill="rgba(115,196,250,0.03)" stroke="rgba(115,196,250,0.08)" stroke-width="1"/>
+          <circle cx="170" cy="170" r="35" fill="rgba(115,196,250,0.04)" stroke="rgba(115,196,250,0.06)" stroke-width="1"/>
+
+          <!-- Center text -->
+          <text x="170" y="165" text-anchor="middle" dominant-baseline="middle" font-family="Mukta,sans-serif" font-size="13" font-weight="700" fill="#73C4FA" opacity="0.7">FLYWHEEL</text>
+          <text x="170" y="182" text-anchor="middle" dominant-baseline="middle" font-family="Mukta,sans-serif" font-size="10" font-weight="400" fill="#497C9F" opacity="0.8">self-reinforcing</text>
+
+          <!-- Rotating arc ring -->
+          <g id="rotating-ring">
+            <circle cx="170" cy="170" r="105" fill="none" stroke="rgba(115,196,250,0.07)" stroke-width="18"/>
+          </g>
+
+          <!-- Arc segments between nodes — drawn as thick arcs -->
+          <g id="arcs" opacity="0.6">
+            <!-- These are decorative arcs, animation highlights them -->
+          </g>
+
+          <!-- Nodes group — will be built by JS -->
+          <g id="nodes"></g>
+
+          <!-- Animated dot on the ring -->
+          <circle id="travel-dot" r="5" fill="#F7931A" filter="url(#glow-orange)">
+            <animateMotion dur="6s" repeatCount="indefinite" rotate="auto">
+              <mpath href="#ring-path"/>
+            </animateMotion>
+          </circle>
+
+          <!-- Invisible path for dot animation -->
+          <path id="ring-path" d="
+            M 170 65
+            A 105 105 0 1 1 169.9 65
+            Z
+          " fill="none"/>
+
+        </svg>
+      </div>
+
+      <!-- Deflationary badge -->
+      <div class="deflation-badge">Deflationary Economics</div>
+
+    </div><!-- /flywheel-wrap -->
+
+  </div><!-- /diagram -->
+
+  <!-- Caption -->
+  <div class="caption">
+    <div class="caption-item"><strong>Bitcoin</strong> is the asset</div>
+    <div class="caption-item" style="color:rgba(115,196,250,0.3)">→</div>
+    <div class="caption-item"><strong>VerifiedX</strong> is the financial operating system</div>
+    <div class="caption-item" style="color:rgba(115,196,250,0.3)">→</div>
+    <div class="caption-item"><strong>Applications</strong> unlock financial activity</div>
+  </div>
+
+</div><!-- /wrapper -->
+
+<script>
+// ── Flywheel nodes ──────────────────────────────────────────────────────────
+const cx = 170, cy = 170, R = 105;
+const nodes = [
+  { label: "Bitcoin",    sub: "Deposits",    color: "#F7931A", angle: -90  },
+  { label: "vBTC",       sub: "Minting",     color: "#73C4FA", angle: -30  },
+  { label: "Financial",  sub: "Activity",    color: "#73C4FA", angle: 30   },
+  { label: "Liquidity",  sub: "Growth",      color: "#839DDB", angle: 90   },
+  { label: "More",       sub: "Applications",color: "#839DDB", angle: 150  },
+  { label: "More",       sub: "Users",       color: "#A5D5FB", angle: -150 },
+];
+
+const svg   = document.getElementById('flywheel-svg');
+const nodesG = document.getElementById('nodes');
+
+const toRad = d => d * Math.PI / 180;
+
+// Draw arc segments between nodes
+const arcsG = document.getElementById('arcs');
+nodes.forEach((n, i) => {
+  const next = nodes[(i + 1) % nodes.length];
+  const a1 = toRad(n.angle), a2 = toRad(next.angle);
+  const x1 = cx + R * Math.cos(a1), y1 = cy + R * Math.sin(a1);
+  const x2 = cx + R * Math.cos(a2), y2 = cy + R * Math.sin(a2);
+
+  // Determine large-arc
+  let dAngle = next.angle - n.angle;
+  if (dAngle < 0) dAngle += 360;
+  const large = dAngle > 180 ? 1 : 0;
+
+  const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+  path.setAttribute('d', `M${x1},${y1} A${R},${R} 0 ${large} 1 ${x2},${y2}`);
+  path.setAttribute('fill', 'none');
+  path.setAttribute('stroke', n.color);
+  path.setAttribute('stroke-width', '2');
+  path.setAttribute('stroke-linecap', 'round');
+  path.setAttribute('class', `arc-seg arc-${i}`);
+  arcsG.appendChild(path);
+});
+
+// Draw node circles + labels
+nodes.forEach((n, i) => {
+  const a = toRad(n.angle);
+  const nx = cx + R * Math.cos(a);
+  const ny = cy + R * Math.sin(a);
+
+  const g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+  g.setAttribute('class', 'fw-node-group');
+  g.setAttribute('id', `node-${i}`);
+
+  // Outer glow circle
+  const outerCircle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+  outerCircle.setAttribute('cx', nx);
+  outerCircle.setAttribute('cy', ny);
+  outerCircle.setAttribute('r', 22);
+  outerCircle.setAttribute('fill', n.color + '14');
+  outerCircle.setAttribute('stroke', n.color + '30');
+  outerCircle.setAttribute('stroke-width', '1');
+  outerCircle.setAttribute('class', 'node-outer');
+  g.appendChild(outerCircle);
+
+  // Inner circle
+  const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+  circle.setAttribute('cx', nx);
+  circle.setAttribute('cy', ny);
+  circle.setAttribute('r', 16);
+  circle.setAttribute('fill', n.color + '22');
+  circle.setAttribute('stroke', n.color + '88');
+  circle.setAttribute('stroke-width', '1.5');
+  circle.setAttribute('class', 'node-inner');
+  g.appendChild(circle);
+
+  // Label
+  const text1 = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+  text1.setAttribute('x', nx);
+  text1.setAttribute('y', ny - 3.5);
+  text1.setAttribute('class', 'fw-node-text');
+  text1.setAttribute('fill', n.color);
+  text1.textContent = n.label;
+  g.appendChild(text1);
+
+  const text2 = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+  text2.setAttribute('x', nx);
+  text2.setAttribute('y', ny + 8.5);
+  text2.setAttribute('class', 'fw-node-sub');
+  text2.setAttribute('fill', n.color);
+  text2.textContent = n.sub;
+  g.appendChild(text2);
+
+  nodesG.appendChild(g);
+});
+
+// ── Animate nodes sequentially ──────────────────────────────────────────────
+let current = 0;
+const INTERVAL = 1000; // ms per node
+
+function activateNode(idx) {
+  nodes.forEach((_, i) => {
+    const g     = document.getElementById(`node-${i}`);
+    const inner = g.querySelector('.node-inner');
+    const outer = g.querySelector('.node-outer');
+    const arc   = document.querySelector(`.arc-${i}`);
+    const n     = nodes[i];
+
+    if (i === idx) {
+      inner.setAttribute('fill', n.color + '55');
+      inner.setAttribute('stroke', n.color);
+      inner.setAttribute('stroke-width', '2.5');
+      inner.setAttribute('filter', 'url(#glow-strong)');
+      outer.setAttribute('fill', n.color + '28');
+      outer.setAttribute('stroke', n.color + '60');
+      if (arc) {
+        arc.setAttribute('stroke-width', '3');
+        arc.setAttribute('opacity', '1');
+      }
+    } else {
+      inner.setAttribute('fill', n.color + '22');
+      inner.setAttribute('stroke', n.color + '88');
+      inner.setAttribute('stroke-width', '1.5');
+      inner.removeAttribute('filter');
+      outer.setAttribute('fill', n.color + '14');
+      outer.setAttribute('stroke', n.color + '30');
+      if (arc) {
+        arc.setAttribute('stroke-width', '2');
+        arc.setAttribute('opacity', '0.6');
+      }
+    }
+  });
+}
+
+activateNode(0);
+setInterval(() => {
+  current = (current + 1) % nodes.length;
+  activateNode(current);
+}, INTERVAL);
+
+// ── Subtle entrance animation for stack layers ──────────────────────────────
+document.querySelectorAll('.layer').forEach((el, i) => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(12px)';
+  el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+  setTimeout(() => {
+    el.style.opacity = '1';
+    el.style.transform = 'translateY(0)';
+  }, 100 + i * 120);
+});
+</script>
+</body>
+</html>

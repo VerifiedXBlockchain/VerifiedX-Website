@@ -8,6 +8,7 @@ import ItemGrid from '~/components/ui/ItemGrid.astro';
 import ItemGrid2 from '~/components/ui/ItemGrid2.astro';
 import Button from '~/components/ui/Button.astro';
 import NetworkStats from '~/components/dynamic/NetworkStats.svelte';
+import EcosystemDiagram from '~/components/dynamic/EcosystemDiagram.svelte';
 import { externalLinks } from '~/navigation';
 import Partners from '~/components/Partners.astro';
 
@@ -38,37 +39,9 @@ const metadata = {
     <NetworkStats client:load />
   </section>
 
-  <!-- Section 7: How VerifiedX Works -->
+  <!-- Section 7: Ecosystem Diagram (Architecture Stack + Flywheel) -->
   <section class="spy-section pt-16" id="section-how-it-works">
-    <WidgetWrapper containerClass={`max-w-6xl mx-auto`}>
-      <h2 class="font-bold font-heading text-heading text-5xl text-center tracking-tight">How VerifiedX Works</h2>
-      <p class="mt-4 text-center text-xl text-muted max-w-3xl mx-auto">
-        Bitcoin becomes programmable financial capital through the VerifiedX network.
-      </p>
-
-      <div class="py-10 flex justify-center">
-        <div
-          class="rounded-lg border border-gray-700 bg-[#0a0a0a] p-8 md:p-10 font-mono text-base md:text-lg text-center shadow-2xl max-w-md w-full"
-        >
-          <pre
-            class="text-green-400 leading-loose whitespace-pre"><span class="text-primary font-bold">Bitcoin</span>
-   &darr;
-<span class="text-gray-300">VerifiedX Infrastructure</span>
-   &darr;
-<span class="text-gray-300">vBTC</span> &bull; <span class="text-gray-300">Stablecoins</span> &bull; <span class="text-gray-300">Smart Contracts</span>
-   &darr;
-<span class="text-gray-300">Payments</span> &bull; <span class="text-gray-300">Markets</span> &bull; <span class="text-gray-300">Applications</span>
-   &darr;
-<span class="text-primary font-bold">Users + AI Agents</span></pre>
-        </div>
-      </div>
-
-      <div class="flex flex-row justify-center items-center gap-4">
-        <Button variant="primary" href={externalLinks.docs} target="_blank">Network Architecture</Button>
-        <div class="w-16 h-0.5 bg-primary opacity-40"></div>
-        <Button variant="secondary" href={externalLinks.docs} target="_blank">Technical Documentation</Button>
-      </div>
-    </WidgetWrapper>
+    <EcosystemDiagram client:visible />
   </section>
 
   <!-- Section 8: Use Bitcoin as Financial Capital -->
@@ -112,52 +85,6 @@ const metadata = {
           icon: 'text-white bg-primary rounded-full w-10 h-10 p-2 md:w-12 md:h-12 md:p-3 mr-4 rtl:ml-4 rtl:mr-0',
         }}
       />
-    </WidgetWrapper>
-  </section>
-
-  <!-- Section 9: VerifiedX Infrastructure -->
-  <section class="spy-section pt-16" id="section-infrastructure">
-    <WidgetWrapper containerClass={`max-w-7xl mx-auto`}>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-        <!-- Left: Layered Stack Diagram -->
-        <div class="intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade">
-          <div
-            class="rounded-lg border border-gray-700 bg-[#0a0a0a] p-6 md:p-8 font-mono text-sm md:text-base shadow-2xl"
-          >
-            <div class="space-y-4">
-              <div class="border border-gray-600 rounded p-3 text-center">
-                <div class="text-primary font-bold mb-1">Applications</div>
-                <div class="text-gray-400 text-xs">Butterfly | Wallet | PulseXAI (Agentic Markets)</div>
-              </div>
-              <div class="border border-gray-600 rounded p-3 text-center">
-                <div class="text-primary font-bold mb-1">Financial Infrastructure</div>
-                <div class="text-gray-400 text-xs">vBTC | Stablecoins | Smart Contracts</div>
-              </div>
-              <div class="border border-primary/40 rounded p-3 text-center bg-primary/5">
-                <div class="text-primary font-bold">VerifiedX Network</div>
-              </div>
-              <div class="border border-btc/40 rounded p-3 text-center bg-btc/5">
-                <div class="text-btc font-bold">Bitcoin</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Right: Copy -->
-        <div class="intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade">
-          <h2 class="text-4xl md:text-5xl font-bold font-heading text-heading tracking-tight mb-6">
-            Global Financial Infrastructure Built on Bitcoin
-          </h2>
-          <p class="text-xl text-muted mb-8">
-            VerifiedX connects Bitcoin to a programmable financial infrastructure layer that powers payments,
-            decentralized finance, and financial applications.
-          </p>
-          <div class="flex flex-wrap gap-3">
-            <Button variant="primary" href={externalLinks.docs} target="_blank">Explore Architecture</Button>
-            <Button variant="secondary" href={externalLinks.docs} target="_blank">Developer Platform</Button>
-          </div>
-        </div>
-      </div>
     </WidgetWrapper>
   </section>
 
@@ -326,48 +253,6 @@ const metadata = {
 <span class="text-primary font-bold">Asset Security</span></pre>
           </div>
         </div>
-      </div>
-    </WidgetWrapper>
-  </section>
-
-  <!-- Section 13: The Bitcoin Financial Flywheel -->
-  <section class="spy-section pt-16" id="section-flywheel">
-    <WidgetWrapper containerClass={`max-w-6xl mx-auto`}>
-      <h2 class="font-bold font-heading text-heading text-5xl text-center tracking-tight">
-        The Bitcoin Financial Flywheel
-      </h2>
-
-      <div class="py-10 flex justify-center">
-        <div
-          class="rounded-lg border border-gray-700 bg-[#0a0a0a] p-8 md:p-10 font-mono text-base md:text-lg text-center shadow-2xl max-w-md w-full"
-        >
-          <pre
-            class="text-green-400 leading-loose whitespace-pre"><span class="text-btc font-bold">Bitcoin Deposits</span>
-   &darr;
-<span class="text-gray-300">vBTC Minting</span>
-   &darr;
-<span class="text-gray-300">Financial Activity</span>
-   &darr;
-<span class="text-gray-300">Liquidity Growth</span>
-   &darr;
-<span class="text-gray-300">More Applications</span>
-   &darr;
-<span class="text-primary font-bold">More Users</span>
-   &#8634;
-
-<span class="text-gray-500 text-sm">Deflationary Economics</span></pre>
-        </div>
-      </div>
-
-      <p class="text-center text-xl text-muted max-w-3xl mx-auto mb-8">
-        As more Bitcoin enters the VerifiedX ecosystem, financial activity increases, attracting more applications,
-        developers, and users.
-      </p>
-
-      <div class="flex flex-row justify-center items-center gap-4">
-        <Button variant="primary" href={externalLinks.docs} target="_blank">Ecosystem Overview</Button>
-        <div class="w-16 h-0.5 bg-primary opacity-40"></div>
-        <Button variant="secondary" href={externalLinks.docs} target="_blank">Developer Platform</Button>
       </div>
     </WidgetWrapper>
   </section>
