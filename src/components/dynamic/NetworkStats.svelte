@@ -58,7 +58,7 @@
         ] as card}
           <div class="col-span-3 mx-auto flex w-full sm:col-span-1 md:col-span-1 lg:col-span-1 xl:col-span-1">
             <div
-              class="rounded-lg border border-btc border-solid border-1 fun-gradient px-6 py-8 flex w-full max-w-sm flex-col justify-between text-center"
+              class="rounded-lg border border-vfx-purple/40 border-solid border-1 fun-gradient px-6 py-8 flex w-full max-w-sm flex-col justify-between text-center"
               style="box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.3); --gradient-direction: to bottom"
             >
               <div class="px-2 py-0 flex flex-col justify-evenly">

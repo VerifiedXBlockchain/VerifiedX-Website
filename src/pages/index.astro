@@ -34,17 +34,7 @@ const metadata = {
     </WidgetWrapper>
   </section>
 
-  <!-- Section 6: Network Stats -->
-  <section class="spy-section pt-8" id="section-stats">
-    <NetworkStats client:load />
-  </section>
-
-  <!-- Section 7: Ecosystem Diagram (Architecture Stack + Flywheel) -->
-  <section class="spy-section pt-16" id="section-how-it-works">
-    <EcosystemDiagram client:visible />
-  </section>
-
-  <!-- Section 8: Use Bitcoin as Financial Capital -->
+  <!-- Section 6: Use Bitcoin as Financial Capital -->
   <section class="spy-section pt-16" id="section-capital">
     <WidgetWrapper containerClass={`max-w-6xl mx-auto`}>
       <h2 class="font-bold font-heading text-heading text-5xl text-center tracking-tight mb-10">
@@ -58,24 +48,28 @@ const metadata = {
             description: 'Send digital assets instantly anywhere in the world using Butterfly.',
             icon: 'tabler:send',
             callToAction: { text: 'Open Butterfly', href: '#' },
+            classes: { icon: 'text-white bg-vfx-blue rounded-full w-10 h-10 p-2 md:w-12 md:h-12 md:p-3 mr-4 rtl:ml-4 rtl:mr-0' },
           },
           {
             title: 'Earn Yield on Bitcoin',
             description: 'Use vBTC to participate in decentralized financial markets.',
             icon: 'tabler:chart-line',
             callToAction: { text: 'Learn About vBTC', href: '#' },
+            classes: { icon: 'text-white bg-primary rounded-full w-10 h-10 p-2 md:w-12 md:h-12 md:p-3 mr-4 rtl:ml-4 rtl:mr-0' },
           },
           {
             title: 'Own Your Money',
             description: 'Self-custodial wallets ensure users control their assets.',
             icon: 'tabler:shield-lock',
             callToAction: { text: 'Download Wallet', href: externalLinks.webWallet },
+            classes: { icon: 'text-white bg-vfx-green rounded-full w-10 h-10 p-2 md:w-12 md:h-12 md:p-3 mr-4 rtl:ml-4 rtl:mr-0' },
           },
           {
             title: 'Build Financial Applications',
             description: 'Developers can build financial tools, marketplaces, and decentralized apps.',
             icon: 'tabler:code',
             callToAction: { text: 'Developer Docs', href: externalLinks.docs },
+            classes: { icon: 'text-white bg-vfx-purple rounded-full w-10 h-10 p-2 md:w-12 md:h-12 md:p-3 mr-4 rtl:ml-4 rtl:mr-0' },
           },
         ]}
         columns={4}
@@ -88,10 +82,10 @@ const metadata = {
     </WidgetWrapper>
   </section>
 
-  <!-- Section 10: vBTC -->
+  <!-- Section 7: vBTC -->
   <section class="spy-section pt-16" id="section-vbtc">
     <WidgetWrapper containerClass={`max-w-7xl mx-auto`}>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+      <div class="grid grid-cols-1 md:grid-cols-[3fr_2fr] gap-12 items-center">
         <!-- Left: Copy -->
         <div class="intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade">
           <h2 class="text-4xl md:text-5xl font-bold font-heading text-heading tracking-tight mb-6">
@@ -102,19 +96,21 @@ const metadata = {
             and self custody. Each vBTC is backed 1:1 by Bitcoin.
           </p>
 
-          <div class="mb-4">
-            <p class="text-xs uppercase tracking-widest text-gray-500 mb-2 font-semibold">Retail</p>
-            <div class="flex flex-wrap gap-2">
-              <Button variant="primary" href="#">Mint vBTC</Button>
-              <Button variant="secondary" href={externalLinks.vbtcDocs} target="_blank">How vBTC Works</Button>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-0">
+            <div>
+              <p class="text-xs uppercase tracking-widest text-gray-500 mb-2 font-semibold">Retail</p>
+              <div class="flex flex-wrap gap-2">
+                <Button variant="primary" href="#">Mint vBTC</Button>
+                <Button variant="secondary" href={externalLinks.vbtcDocs} target="_blank">How vBTC Works</Button>
+              </div>
             </div>
-          </div>
 
-          <div>
-            <p class="text-xs uppercase tracking-widest text-gray-500 mb-2 font-semibold">Institutional</p>
-            <div class="flex flex-wrap gap-2">
-              <Button variant="secondary" href="#">Institutional Overview</Button>
-              <Button variant="secondary" href="#">Custody Integration</Button>
+            <div>
+              <p class="text-xs uppercase tracking-widest text-gray-500 mb-2 font-semibold">Institutional</p>
+              <div class="flex flex-wrap gap-2">
+                <Button variant="secondary" href="#" class="px-3 md:px-4">Institutional Overview</Button>
+                <Button variant="secondary" href="#" class="px-3 md:px-4">Custody Integration</Button>
+              </div>
             </div>
           </div>
         </div>
@@ -133,9 +129,9 @@ const metadata = {
             <pre
               class="text-green-400 leading-relaxed whitespace-pre"><span class="text-btc font-bold">BTC Deposit</span>
    &darr;
-<span class="text-gray-300">FROST MPC Validators</span>
+<span class="text-vfx-blue">FROST MPC Validators</span>
    &darr;
-<span class="text-btc font-bold">vBTC Mint</span>
+<span class="text-vfx-green font-bold">vBTC Mint</span>
    &darr;
 <span class="text-gray-300">DeFi</span> / <span class="text-gray-300">Payments</span> / <span class="text-gray-300">Agentic Markets</span></pre>
           </div>
@@ -144,7 +140,7 @@ const metadata = {
     </WidgetWrapper>
   </section>
 
-  <!-- Section 11: Self-Custodial Financial Applications -->
+  <!-- Section 8: Self-Custodial Financial Applications -->
   <section class="spy-section pt-16" id="section-applications">
     <WidgetWrapper containerClass={`max-w-6xl mx-auto`}>
       <h2 class="font-bold font-heading text-heading text-5xl text-center tracking-tight mb-10">
@@ -158,29 +154,31 @@ const metadata = {
             title: 'Butterfly',
             description: 'Global payments and earning powered by the VerifiedX network.',
             callToAction: {
-              variant: 'primary',
+              variant: 'blue',
               text: 'Open Butterfly',
               href: '#',
             },
           },
           {
-            title: 'Switchblade Wallet',
+            title: 'SwitchBlade Wallet',
             description: 'Native wallet for interacting with VerifiedX and vBTC.',
             callToAction: {
-              variant: 'primary',
+              variant: 'purple',
               text: 'Download Wallet',
               href: externalLinks.webWallet,
               target: '_blank',
             },
+            classes: { icon: 'w-12 h-12 mb-6 text-vfx-purple' },
           },
           {
             title: 'PulseXAI (Agentic Marketplaces)',
             description: 'AI agents interacting with financial markets and data.',
             callToAction: {
-              variant: 'primary',
+              variant: 'green',
               text: 'Open PulseXAI',
               href: '#',
             },
+            classes: { icon: 'w-12 h-12 mb-6 text-vfx-blue' },
           },
         ]}
         classes={{
@@ -193,51 +191,58 @@ const metadata = {
     </WidgetWrapper>
   </section>
 
-  <!-- Section 12: Security & Institutional Infrastructure -->
+  <!-- Section 9: Ecosystem Diagram (Architecture Stack + Flywheel) -->
+  <section class="spy-section pt-16" id="section-how-it-works">
+    <WidgetWrapper containerClass={`max-w-6xl mx-auto`}>
+      <h2 class="font-bold font-heading text-heading text-5xl text-center tracking-tight mb-10">
+        How It All Connects
+      </h2>
+    </WidgetWrapper>
+    <EcosystemDiagram client:visible />
+  </section>
+
+  <!-- Section 10: Security & Institutional Infrastructure -->
   <section class="spy-section pt-16" id="section-security">
     <WidgetWrapper containerClass={`max-w-7xl mx-auto`}>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+      <h2 class="text-4xl md:text-5xl font-bold font-heading text-heading tracking-tight mb-8">
+        Institutional-Grade<br />Infrastructure
+      </h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 md:items-stretch">
         <!-- Left: Copy -->
-        <div class="intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade">
-          <h2 class="text-4xl md:text-5xl font-bold font-heading text-heading tracking-tight mb-6">
-            Institutional-Grade Infrastructure
-          </h2>
-
-          <ul class="space-y-4 mb-8">
-            <li class="flex items-start gap-3">
-              <Icon name="tabler:shield-check" class="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-              <span class="text-muted">Halborn security audits</span>
-            </li>
-            <li class="flex items-start gap-3">
-              <Icon name="tabler:search" class="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-              <span class="text-muted">Merkle Science compliance & block tracing tools</span>
-            </li>
-            <li class="flex items-start gap-3">
-              <Icon name="tabler:users-group" class="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-              <span class="text-muted">Validator consensus</span>
-            </li>
-            <li class="flex items-start gap-3">
-              <Icon name="tabler:key" class="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-              <span class="text-muted">Self-custodial architecture</span>
-            </li>
-            <li class="flex items-start gap-3">
-              <Icon name="tabler:code" class="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-              <span class="text-muted">Open source protocol with a unified framework</span>
-            </li>
-          </ul>
-
-          <div class="flex flex-wrap gap-2">
-            <Button variant="primary" href="#">Security Overview</Button>
-            <Button variant="secondary" href="#">Audit Reports</Button>
-            <Button variant="secondary" href={externalLinks.validatingDocs} target="_blank">Run Validator</Button>
-            <Button variant="secondary" href="#">Institutional Solutions</Button>
+        <div class="intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade flex flex-col">
+          <div class="styled-content-box p-5 flex-1">
+            <p class="text-xs uppercase tracking-widest text-gray-500 font-semibold mb-4">Secured by Industry-Leading Infrastructure</p>
+            <ul class="space-y-4">
+              <li class="flex items-start gap-3">
+                <Icon name="tabler:shield-check" class="w-5 h-5 text-vfx-green flex-shrink-0 mt-0.5" />
+                <span class="text-muted">Halborn security audits</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <Icon name="tabler:search" class="w-5 h-5 text-vfx-blue flex-shrink-0 mt-0.5" />
+                <span class="text-muted">Merkle Science compliance & block tracing tools</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <Icon name="tabler:users-group" class="w-5 h-5 text-vfx-purple flex-shrink-0 mt-0.5" />
+                <span class="text-muted">Validator consensus</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <Icon name="tabler:key" class="w-5 h-5 text-vfx-green flex-shrink-0 mt-0.5" />
+                <span class="text-muted">Self-custodial architecture</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <Icon name="tabler:code" class="w-5 h-5 text-vfx-blue flex-shrink-0 mt-0.5" />
+                <span class="text-muted">Open source protocol with a unified framework</span>
+              </li>
+            </ul>
           </div>
+
         </div>
 
         <!-- Right: Network Security Diagram -->
-        <div class="intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade">
+        <div class="intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade md:flex md:flex-col md:justify-center">
           <div
-            class="rounded-lg border border-gray-700 bg-[#0a0a0a] p-6 md:p-8 font-mono text-sm md:text-base shadow-2xl"
+            class="rounded-lg border border-gray-700 bg-[#0a0a0a] p-6 md:p-8 font-mono text-sm md:text-base shadow-2xl h-full flex flex-col justify-center"
           >
             <div class="flex items-center gap-2 mb-4 pb-3 border-b border-gray-800">
               <div class="w-3 h-3 rounded-full bg-red-500/80"></div>
@@ -246,18 +251,35 @@ const metadata = {
               <span class="ml-2 text-gray-500 text-xs">security://network</span>
             </div>
             <pre
-              class="text-green-400 leading-relaxed whitespace-pre"><span class="text-primary font-bold">Validators</span>
+              class="text-green-400 leading-relaxed whitespace-pre"><span class="text-vfx-purple font-bold">Validators</span>
    &darr;
 <span class="text-gray-300">Consensus</span>
    &darr;
-<span class="text-primary font-bold">Asset Security</span></pre>
+<span class="text-vfx-green font-bold">Asset Security</span></pre>
           </div>
         </div>
+      </div>
+
+      <div class="flex flex-wrap gap-2 mt-8">
+        <Button variant="purple" href="#">Security Overview</Button>
+        <Button variant="secondary" href="#">Audit Reports</Button>
+        <Button variant="secondary" href={externalLinks.validatingDocs} target="_blank">Run Validator</Button>
+        <Button variant="secondary" href="#">Institutional Solutions</Button>
       </div>
     </WidgetWrapper>
   </section>
 
-  <!-- Section 14: Closing CTA -->
+  <!-- Section 11: Network Activity -->
+  <section class="spy-section pt-16" id="section-stats">
+    <WidgetWrapper containerClass={`max-w-6xl mx-auto`}>
+      <h2 class="font-bold font-heading text-heading text-5xl text-center tracking-tight mb-10">
+        Network Activity
+      </h2>
+    </WidgetWrapper>
+    <NetworkStats client:load />
+  </section>
+
+  <!-- Section 12: Closing CTA -->
   <section class="spy-section pt-16 pb-20" id="section-cta">
     <WidgetWrapper containerClass={`max-w-4xl mx-auto text-center`}>
       <h2 class="font-bold font-heading text-heading text-5xl tracking-tight mb-6">
@@ -268,7 +290,7 @@ const metadata = {
         ecosystem.
       </p>
       <div class="flex flex-wrap justify-center gap-3">
-        <Button variant="primary" href="#">Open Butterfly</Button>
+        <Button variant="blue" href="#">Open Butterfly</Button>
         <Button variant="secondary" href={externalLinks.docs} target="_blank">Start Building</Button>
         <Button variant="secondary" href="#">Institutional Infrastructure</Button>
       </div>

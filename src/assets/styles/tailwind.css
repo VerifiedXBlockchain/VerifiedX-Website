@@ -41,11 +41,19 @@
   }
 
   .fun-gradient {
-    background: linear-gradient(var(--gradient-direction), #f7931a 0%, #e8850f 60%, #d4780a 100%);
+    background: linear-gradient(var(--gradient-direction),
+        lch(75.565% 37.748 247.537) 0%,
+        oklch(70% 0.17 280 / 0.7) 60%,
+        oklch(75% 0.23 300 / 0.7) 100%
+      );
   }
 
   .fun-gradient:hover {
-    background: linear-gradient(var(--gradient-direction), #ffae42 0%, #f7931a 40%, #e8850f 100%);
+    background: linear-gradient(var(--gradient-direction),
+        lch(75.565% 37.748 247.537) 0%,
+        oklch(70% 0.17 280 / 0.9) 40%,
+        oklch(75% 0.23 300 / 1) 100%
+      );
   }
 
   .background-1,
@@ -113,11 +121,23 @@ lite-youtube {
 
 @layer components {
   .btn {
-    @apply inline-flex items-center justify-center rounded-full border-gray-400 border bg-transparent font-medium text-center text-base leading-snug transition py-2.5 px-4 md:px-6 ease-in duration-200 focus:ring-blue-500 focus:ring-offset-blue-200 focus:ring-2 focus:ring-offset-2 hover:border-gray-600 text-slate-300 dark:border-slate-500 hover:bg-slate-800 dark:hover:border-slate-800 cursor-pointer;
+    @apply inline-flex items-center justify-center rounded-full border-gray-400 border bg-transparent font-medium text-center text-base leading-none transition py-3 px-4 md:px-6 ease-in duration-200 focus:ring-blue-500 focus:ring-offset-blue-200 focus:ring-2 focus:ring-offset-2 hover:border-gray-600 text-slate-300 dark:border-slate-500 hover:bg-slate-800 dark:hover:border-slate-800 cursor-pointer;
   }
 
   .btn-primary {
     @apply btn bg-primary text-black font-bold border border-[#a86208] dark:border-[#a86208] hover:text-white hover:bg-secondary hover:border-white;
+  }
+
+  .btn-blue {
+    @apply btn bg-vfx-blue text-black font-bold border border-[#4a9cd4] dark:border-[#4a9cd4] hover:text-white hover:bg-secondary hover:border-white;
+  }
+
+  .btn-green {
+    @apply btn bg-vfx-green text-black font-bold border border-[#2a9d6e] dark:border-[#2a9d6e] hover:text-white hover:bg-secondary hover:border-white;
+  }
+
+  .btn-purple {
+    @apply btn bg-vfx-purple text-black font-bold border border-[#7c5fbf] dark:border-[#7c5fbf] hover:text-white hover:bg-secondary hover:border-white;
   }
 
   .btn-btc {
@@ -137,6 +157,11 @@ lite-youtube {
   }
 }
 
+#header > div:first-child {
+  @apply border-b border-transparent;
+  transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, backdrop-filter 0.3s ease;
+}
+
 #header.scroll > div:first-child {
   @apply bg-page md:bg-white/90 md:backdrop-blur-md;
 
@@ -149,26 +174,9 @@ lite-youtube {
   box-shadow: none;
 }
 
-.dark #header .logo,
-#header.dark .logo {
-  transform: translateX(-22px);
-  transition: all 0.3s;
-}
-
 .dark #header .logo-cube,
 #header.dark .logo-cube {
-  opacity: 0;
-  transition: all 0.3s;
-}
-
-.dark #header.scroll .logo,
-#header.scroll.dark .logo {
-  transform: translateX(0);
-}
-
-.dark #header.scroll .logo-cube,
-#header.scroll.dark .logo-cube {
-  opacity: 1;
+  mix-blend-mode: screen;
 }
 
 /* #header.scroll > div:last-child {

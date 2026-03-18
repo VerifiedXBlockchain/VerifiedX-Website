@@ -53,7 +53,7 @@ const {
               )}
               {callToAction && (
                 <div class={twMerge(`${title || description ? 'mt-3' : ''} mt-auto pt-4`, actionClass, itemClasses?.actionClass)}>
-                  <Button variant="link" {...callToAction} />
+                  <Button variant={callToAction.variant || 'secondary'} {...callToAction} />
                 </div>
               )}
             </div>

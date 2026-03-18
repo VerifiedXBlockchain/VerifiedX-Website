@@ -43,7 +43,7 @@ export const headerData = {
       links: [
         { text: 'PulseXAI', href: '#' },
         { text: 'Butterfly', href: '#' },
-        { text: 'Switchblade Wallet', href: externalLinks.webWallet },
+        { text: 'SwitchBlade Wallet', href: externalLinks.webWallet },
         { text: 'vBTC', href: '#' },
       ],
     },
@@ -66,7 +66,7 @@ export const headerData = {
   actions: [
     { text: 'Open Butterfly', href: '#', target: '_blank' },
     { text: 'Open PulseXAI', href: '#', target: '_blank' },
-    { text: 'Open Switchblade', href: externalLinks.webWallet, target: '_blank' },
+    { text: 'Open SwitchBlade', href: externalLinks.webWallet, target: '_blank' },
     { text: 'Start Building', href: externalLinks.docs, target: '_blank' },
   ],
 };
