@@ -15,6 +15,7 @@ interface Link {
   ariaLabel?: string;
   icon?: string;
   btc?: boolean;
+  color?: string;
 }
 
 interface MenuLink extends Link {
@@ -99,14 +100,16 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
                     <Icon name="tabler:chevron-down" class="w-3.5 h-3.5 ml-0.5 rtl:ml-0 rtl:mr-0.5 hidden md:inline" />
                   </button>
                   <ul class="dropdown-menu md:backdrop-blur-md rounded md:absolute pl-4 md:pl-0 md:hidden font-medium md:min-w-[200px] drop-shadow-xl md:bg-[#0a0a0a] md:border md:border-gray-700/50">
-                    {links.map(({ text: text2, href: href2 }) => (
+                    {links.map(({ text: text2, href: href2, color }) => (
                       <li>
                         <a
                           class:list={[
-                            'first:rounded-t last:rounded-b md:hover:bg-gray-800 hover:text-white py-2 px-5 block whitespace-no-wrap',
+                            'first:rounded-t last:rounded-b md:hover:bg-gray-800 py-2 px-5 block whitespace-no-wrap',
                             { 'aw-link-active': href2 === currentPath },
+                            color ? `${color} hover:brightness-125` : 'hover:text-white',
                           ]}
                           href={href2}
+                          style={color ? 'text-decoration: none !important;' : undefined}
                         >
                           {text2}
                         </a>

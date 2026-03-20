@@ -119,26 +119,36 @@
     <!-- LEFT: Architecture Stack -->
     <div class="stack">
 
-      <!-- Applications Layer -->
-      <div class="layer layer-apps">
-        <div class="layer-label">Applications</div>
-        <div class="chips">
-          <div class="chip chip-purple">
-            <svg viewBox="0 0 24 24" fill="none" width="18" height="18"><path d="M12 12C10 8 6 5 3 6c0 3 2 6 5 7.5C6 15 5 17 5 19c2.5 0 5-2 7-4.5 2 2.5 4.5 4.5 7 4.5 0-2-1-4-3-5.5C19 12 21 9 21 6c-3-1-7 2-9 6z" fill="currentColor"/></svg>
-            Butterfly
-          </div>
-          <div class="chip chip-purple">
-            <svg viewBox="0 0 24 24" fill="none" width="18" height="18"><rect x="2" y="6" width="20" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M16 13a1 1 0 1 1 2 0 1 1 0 0 1-2 0z" fill="currentColor"/><path d="M2 9h20" stroke="currentColor" stroke-width="1.5"/></svg>
-            SwitchBlade
-          </div>
-          <div class="chip chip-purple">
-            <svg viewBox="0 0 24 24" fill="none" width="18" height="18"><circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.5"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="18" cy="6" r="2" fill="currentColor" opacity="0.6"/></svg>
-            PulseXAI
+      <!-- Bitcoin Layer -->
+      <div class="layer layer-btc">
+        <div class="layer-label">Global Asset</div>
+        <div class="btc-inner">
+          <div class="btc-icon">&#8383;</div>
+          <div>
+            <div class="btc-text">Bitcoin</div>
+            <div class="btc-sub">Proof of Work &middot; Decentralized</div>
           </div>
         </div>
       </div>
 
-      <!-- Connector -->
+      <!-- Connector (orange) -->
+      <div class="connector">
+        <div class="connector-arrow">
+          <svg viewBox="0 0 20 20" fill="none" width="22" height="22"><path d="M10 2v14M4 11l6 7 6-7" stroke="#F7931A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+      </div>
+
+      <!-- VerifiedX Network Layer -->
+      <div class="layer layer-vfx">
+        <div class="layer-label">VerifiedX Network</div>
+        <div class="vfx-inner">
+          <img class="cube" src={cubeGif} alt="" width="56" height="56" />
+          <img class="wordmark" src={wordmarkImg} alt="VerifiedX" height="28" />
+        </div>
+        <div class="vfx-sub">The Financial Operating System</div>
+      </div>
+
+      <!-- Connector (blue) -->
       <div class="connector">
         <div class="connector-arrow">
           <svg viewBox="0 0 20 20" fill="none" width="22" height="22"><path d="M10 2v14M4 11l6 7 6-7" stroke="#73C4FA" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -164,45 +174,36 @@
         </div>
       </div>
 
-      <!-- Connector -->
+      <!-- Connector (blue) -->
       <div class="connector">
         <div class="connector-arrow">
           <svg viewBox="0 0 20 20" fill="none" width="22" height="22"><path d="M10 2v14M4 11l6 7 6-7" stroke="#73C4FA" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
       </div>
 
-      <!-- VerifiedX Network Layer -->
-      <div class="layer layer-vfx">
-        <div class="layer-label">VerifiedX Network</div>
-        <div class="vfx-inner">
-          <img class="cube" src={cubeGif} alt="" width="56" height="56" />
-          <img class="wordmark" src={wordmarkImg} alt="VerifiedX" height="28" />
-        </div>
-      </div>
-
-      <!-- Connector (orange) -->
-      <div class="connector">
-        <div class="connector-arrow">
-          <svg viewBox="0 0 20 20" fill="none" width="22" height="22"><path d="M10 2v14M4 11l6 7 6-7" stroke="#F7931A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </div>
-      </div>
-
-      <!-- Bitcoin Layer -->
-      <div class="layer layer-btc">
-        <div class="layer-label">Base Layer</div>
-        <div class="btc-inner">
-          <div class="btc-icon">&#8383;</div>
-          <div>
-            <div class="btc-text">Bitcoin</div>
-            <div class="btc-sub">Proof of Work &middot; Decentralized</div>
+      <!-- Applications Layer -->
+      <div class="layer layer-apps">
+        <div class="layer-label">Applications</div>
+        <div class="chips">
+          <div class="chip chip-purple">
+            <svg viewBox="0 0 24 24" fill="none" width="18" height="18"><path d="M12 12C10 8 6 5 3 6c0 3 2 6 5 7.5C6 15 5 17 5 19c2.5 0 5-2 7-4.5 2 2.5 4.5 4.5 7 4.5 0-2-1-4-3-5.5C19 12 21 9 21 6c-3-1-7 2-9 6z" fill="currentColor"/></svg>
+            Butterfly
+          </div>
+          <div class="chip chip-purple">
+            <svg viewBox="0 0 24 24" fill="none" width="18" height="18"><rect x="2" y="6" width="20" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M16 13a1 1 0 1 1 2 0 1 1 0 0 1-2 0z" fill="currentColor"/><path d="M2 9h20" stroke="currentColor" stroke-width="1.5"/></svg>
+            SwitchBlade
+          </div>
+          <div class="chip chip-purple">
+            <svg viewBox="0 0 24 24" fill="none" width="18" height="18"><circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.5"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="18" cy="6" r="2" fill="currentColor" opacity="0.6"/></svg>
+            PulseXAI
           </div>
         </div>
       </div>
 
-      <!-- Connector (orange) -->
+      <!-- Connector (blue) -->
       <div class="connector">
         <div class="connector-arrow">
-          <svg viewBox="0 0 20 20" fill="none" width="22" height="22"><path d="M10 2v14M4 11l6 7 6-7" stroke="#F7931A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <svg viewBox="0 0 20 20" fill="none" width="22" height="22"><path d="M10 2v14M4 11l6 7 6-7" stroke="#73C4FA" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
       </div>
 
@@ -252,10 +253,6 @@
           <!-- Center cube (blend mode on foreignObject so it composites against SVG bg) -->
           <foreignObject x={CX - 44} y={CY - 44} width="88" height="88" style="mix-blend-mode: screen;">
             <img src={cubeGif} alt="VFX" width="88" height="88" style="display: block;" />
-          </foreignObject>
-          <!-- Center label (separate so blend mode doesn't affect text) -->
-          <foreignObject x={CX - 60} y={CY - 10} width="120" height="24">
-            <div class="center-badge">VFX Ecosystem</div>
           </foreignObject>
 
           <!-- Ring bg -->
@@ -507,6 +504,13 @@
     font-size: 14px;
     color: rgba(247,147,26,0.55);
     font-weight: 400;
+  }
+
+  .vfx-sub {
+    font-size: 14px;
+    color: rgba(115,196,250,0.55);
+    font-weight: 400;
+    margin-top: 6px;
   }
 
   /* ── Users row — scaled up ── */

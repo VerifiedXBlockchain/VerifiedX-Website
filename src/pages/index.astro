@@ -45,37 +45,46 @@ const metadata = {
         items={[
           {
             title: 'Send Global Payments',
-            description: 'Send digital assets instantly anywhere in the world using Butterfly.',
+            description: 'Send digital assets instantly anywhere in the world.',
             icon: 'tabler:send',
-            callToAction: { text: 'Open Butterfly', href: '#' },
+            callToAction: { text: 'Launch Application', href: '#', class: 'text-sm px-3 md:px-4' },
             classes: { icon: 'text-white bg-vfx-blue rounded-full w-10 h-10 p-2 md:w-12 md:h-12 md:p-3 mr-4 rtl:ml-4 rtl:mr-0' },
           },
           {
             title: 'Earn Yield on Bitcoin',
             description: 'Use vBTC to participate in decentralized financial markets.',
             icon: 'tabler:chart-line',
-            callToAction: { text: 'Learn About vBTC', href: '#' },
+            callToAction: { text: 'Learn About vBTC', href: '#', class: 'text-sm px-3 md:px-4' },
             classes: { icon: 'text-white bg-primary rounded-full w-10 h-10 p-2 md:w-12 md:h-12 md:p-3 mr-4 rtl:ml-4 rtl:mr-0' },
+          },
+          {
+            title: 'Transfer Bitcoin Privately',
+            description: 'Move funds via a consensus embedded privacy layer.',
+            icon: 'tabler:shield-lock',
+            callToAction: { text: 'Activating Soon', variant: 'secondary', class: 'text-sm px-3 md:px-4 opacity-50 pointer-events-none' },
+            classes: { icon: 'text-white bg-vfx-green rounded-full w-10 h-10 p-2 md:w-12 md:h-12 md:p-3 mr-4 rtl:ml-4 rtl:mr-0' },
           },
           {
             title: 'Own Your Money',
             description: 'Self-custodial wallets ensure users control their assets.',
-            icon: 'tabler:shield-lock',
-            callToAction: { text: 'Download Wallet', href: externalLinks.webWallet },
-            classes: { icon: 'text-white bg-vfx-green rounded-full w-10 h-10 p-2 md:w-12 md:h-12 md:p-3 mr-4 rtl:ml-4 rtl:mr-0' },
+            icon: 'tabler:fingerprint',
+            callToAction: { text: 'Download Wallet', href: externalLinks.webWallet, class: 'text-sm px-3 md:px-4' },
+            classes: { icon: 'text-white bg-[#1e3a8a] rounded-full w-10 h-10 p-2 md:w-12 md:h-12 md:p-3 mr-4 rtl:ml-4 rtl:mr-0' },
           },
           {
             title: 'Build Financial Applications',
             description: 'Developers can build financial tools, marketplaces, and decentralized apps.',
             icon: 'tabler:code',
-            callToAction: { text: 'Developer Docs', href: externalLinks.docs },
+            callToAction: { text: 'Developer Docs', href: externalLinks.docs, class: 'text-sm px-3 md:px-4' },
             classes: { icon: 'text-white bg-vfx-purple rounded-full w-10 h-10 p-2 md:w-12 md:h-12 md:p-3 mr-4 rtl:ml-4 rtl:mr-0' },
           },
         ]}
-        columns={4}
+        columns={5}
         classes={{
           container: 'gap-6',
-          title: 'md:text-[1.1rem]',
+          title: 'md:text-[1.1rem] min-h-[3.5rem] flex items-start leading-tight',
+          description: 'text-sm',
+          action: 'text-sm',
           icon: 'text-white bg-primary rounded-full w-10 h-10 p-2 md:w-12 md:h-12 md:p-3 mr-4 rtl:ml-4 rtl:mr-0',
         }}
       />
@@ -93,7 +102,7 @@ const metadata = {
           </h2>
           <p class="text-xl text-muted mb-8">
             vBTC enables Bitcoin holders to participate in financial markets while maintaining full collateralization
-            and self custody. Each vBTC is backed 1:1 by Bitcoin.
+            and self custody. Each vBTC is backed 1:1 by Bitcoin and is non-synthetic.
           </p>
 
           <div class="grid grid-cols-1 md:grid-cols-2 gap-0">
@@ -108,8 +117,8 @@ const metadata = {
             <div>
               <p class="text-xs uppercase tracking-widest text-gray-500 mb-2 font-semibold">Institutional</p>
               <div class="flex flex-wrap gap-2">
-                <Button variant="secondary" href="#" class="px-3 md:px-4">Institutional Overview</Button>
-                <Button variant="secondary" href="#" class="px-3 md:px-4">Custody Integration</Button>
+                <Button variant="secondary" href="#" class="px-2 md:px-3">Institutional Overview</Button>
+                <Button variant="secondary" href="#" class="px-2 md:px-3">Custody Integration</Button>
               </div>
             </div>
           </div>
@@ -118,7 +127,7 @@ const metadata = {
         <!-- Right: Security Flow Diagram -->
         <div class="intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade">
           <div
-            class="rounded-lg border border-gray-700 bg-[#0a0a0a] p-6 md:p-8 font-mono text-sm md:text-base shadow-2xl"
+            class="rounded-lg border border-gray-700 bg-[#0a0a0a] p-6 md:p-8 font-mono text-sm md:text-[15px] shadow-2xl"
           >
             <div class="flex items-center gap-2 mb-4 pb-3 border-b border-gray-800">
               <div class="w-3 h-3 rounded-full bg-red-500/80"></div>
@@ -129,11 +138,11 @@ const metadata = {
             <pre
               class="text-green-400 leading-relaxed whitespace-pre"><span class="text-btc font-bold">BTC Deposit</span>
    &darr;
-<span class="text-vfx-blue">FROST MPC Validators</span>
+<span class="text-vfx-blue">FROST MPC Threshold Signatures</span>
    &darr;
 <span class="text-vfx-green font-bold">vBTC Mint</span>
    &darr;
-<span class="text-gray-300">DeFi</span> / <span class="text-gray-300">Payments</span> / <span class="text-gray-300">Agentic Markets</span></pre>
+<span class="text-gray-300">DeFi</span> / <span class="text-gray-300">Payments</span> / <span class="text-gray-300">Tokenized Agents</span> / <span class="text-gray-300">Agentic Markets</span></pre>
           </div>
         </div>
       </div>
@@ -171,8 +180,8 @@ const metadata = {
             classes: { icon: 'w-12 h-12 mb-6 text-vfx-purple' },
           },
           {
-            title: 'PulseXAI (Agentic Marketplaces)',
-            description: 'AI agents interacting with financial markets and data.',
+            title: 'PulseXAI: Tokenized Intelligence',
+            description: 'Tokenized AI agents and markets executing strategies with generative intelligence.',
             callToAction: {
               variant: 'green',
               text: 'Open PulseXAI',
@@ -198,7 +207,7 @@ const metadata = {
         How It All Connects
       </h2>
     </WidgetWrapper>
-    <EcosystemDiagram client:visible />
+    <EcosystemDiagram client:load />
   </section>
 
   <!-- Section 10: Security & Institutional Infrastructure -->
@@ -223,6 +232,10 @@ const metadata = {
                 <span class="text-muted">Merkle Science compliance & block tracing tools</span>
               </li>
               <li class="flex items-start gap-3">
+                <Icon name="tabler:file-code" class="w-5 h-5 text-vfx-purple flex-shrink-0 mt-0.5" />
+                <span class="text-muted">Consensus embedded smart contract features</span>
+              </li>
+              <li class="flex items-start gap-3">
                 <Icon name="tabler:users-group" class="w-5 h-5 text-vfx-purple flex-shrink-0 mt-0.5" />
                 <span class="text-muted">Validator consensus</span>
               </li>
@@ -240,9 +253,9 @@ const metadata = {
         </div>
 
         <!-- Right: Network Security Diagram -->
-        <div class="intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade md:flex md:flex-col md:justify-center">
+        <div class="intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade md:flex md:flex-col">
           <div
-            class="rounded-lg border border-gray-700 bg-[#0a0a0a] p-6 md:p-8 font-mono text-sm md:text-base shadow-2xl h-full flex flex-col justify-center"
+            class="rounded-lg border border-gray-700 bg-[#0a0a0a] p-6 md:p-8 font-mono text-sm md:text-base shadow-2xl h-full flex flex-col"
           >
             <div class="flex items-center gap-2 mb-4 pb-3 border-b border-gray-800">
               <div class="w-3 h-3 rounded-full bg-red-500/80"></div>
@@ -277,6 +290,9 @@ const metadata = {
       </h2>
     </WidgetWrapper>
     <NetworkStats client:load />
+    <div class="text-center mt-8">
+      <Button variant="blue" href={externalLinks.spyglass} target="_blank">Launch Spyglass Explorer</Button>
+    </div>
   </section>
 
   <!-- Section 12: Closing CTA -->
@@ -286,11 +302,11 @@ const metadata = {
         The Future of Self-Custodial Finance
       </h2>
       <p class="text-xl text-muted max-w-3xl mx-auto mb-10">
-        VerifiedX is building the infrastructure that enables Bitcoin to power a global self-custodial financial
+        <span class="text-vfx-blue font-semibold">VerifiedX</span> is building the infrastructure that enables <span class="text-btc font-semibold">Bitcoin</span> to power a global self-custodial financial
         ecosystem.
       </p>
       <div class="flex flex-wrap justify-center gap-3">
-        <Button variant="blue" href="#">Open Butterfly</Button>
+        <Button variant="blue" href="#">Applications</Button>
         <Button variant="secondary" href={externalLinks.docs} target="_blank">Start Building</Button>
         <Button variant="secondary" href="#">Institutional Infrastructure</Button>
       </div>

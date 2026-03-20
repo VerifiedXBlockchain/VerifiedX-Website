@@ -14,22 +14,28 @@
     class="text-muted hover:underline dark:text-slate-400 font-medium relative inline-block"
     style="top: 1px;">SwitchBlade Wallet v5.3.0 now available &raquo;</a
   >
-  <div class="ml-auto flex justify-center">
-    <a
-      target="_blank"
-      class="text-btc hover:underline mr-3 mt-0.5 text-xs"
-      rel="noopener"
-      href="https://vfx-resources.s3.us-east-1.amazonaws.com/VFXBlockchainWhitePaper2024.pdf"
-    >
-      Read Whitepaper
-    </a>
-    <a
-      target="_blank"
-      rel="noopener"
-      class="w-[5.6rem] h-[1.25rem] ml-auto bg-contain bg-no-repeat inline-block bg-[url(https://img.shields.io/github/stars/VerifiedXBlockchain/VerifiedX-Core.svg?style=social&label=Stars&maxAge=86400)]"
-      title="Star VerifiedX on GitHub"
-      href="https://github.com/VerifiedXBlockchain/VerifiedX-Core"
-    >
-    </a>
+  <div class="ml-auto flex items-center" id="block-height-wrap" style="display:none;">
+    <span class="text-xs font-medium text-slate-400">
+      Current Block Height: <span id="block-height" class="text-[#73C4FA] font-semibold"></span>
+    </span>
   </div>
 </div>
+
+<script>
+  async function fetchBlockHeight() {
+    try {
+      const res = await fetch('https://data.verifiedx.io/api/metrics/');
+      const data = await res.json();
+      const el = document.getElementById('block-height');
+      const wrap = document.getElementById('block-height-wrap');
+      if (el && wrap && data.latest_block != null) {
+        el.textContent = Number(data.latest_block).toLocaleString();
+        wrap.style.display = '';
+      }
+    } catch {
+      // silently fail — don't show anything
+    }
+  }
+  fetchBlockHeight();
+  setInterval(fetchBlockHeight, 10000);
+</script>

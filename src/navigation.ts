@@ -41,25 +41,26 @@ export const headerData = {
     {
       text: 'Products',
       links: [
-        { text: 'PulseXAI', href: '#' },
-        { text: 'Butterfly', href: '#' },
-        { text: 'SwitchBlade Wallet', href: externalLinks.webWallet },
-        { text: 'vBTC', href: '#' },
+        { text: 'PulseXAI', href: '#', color: 'text-primary' },
+        { text: 'Butterfly', href: '#', color: 'text-vfx-green' },
+        { text: 'SwitchBlade Wallet', href: externalLinks.webWallet, color: 'text-vfx-blue' },
+        { text: 'vBTC', href: '#', color: 'text-primary' },
       ],
     },
     {
       text: 'Solutions',
       links: [
+        { text: 'Everyday Users', href: `${DOCS_BASE_URL}/docs/tutorials/video-tutorials/` },
         { text: 'Institutions', href: '#' },
-        { text: 'Developers', href: externalLinks.docs },
+        { text: 'Developers', href: `${DOCS_BASE_URL}/docs/integration/` },
       ],
     },
     {
       text: 'Resources',
       links: [
         { text: 'Docs', href: externalLinks.docs },
-        { text: 'Security', href: '#' },
-        { text: 'Blog', href: '#' },
+        { text: 'Security', href: `${DOCS_BASE_URL}/docs/documents/` },
+        { text: 'GitHub', href: externalLinks.githubOrg },
       ],
     },
   ],
@@ -85,16 +86,17 @@ export const footerData = {
     {
       title: 'Solutions',
       links: [
+        { text: 'Everyday Users', href: `${DOCS_BASE_URL}/docs/tutorials/video-tutorials/` },
         { text: 'Institutions', href: '#' },
-        { text: 'Developers', href: externalLinks.docs },
+        { text: 'Developers', href: `${DOCS_BASE_URL}/docs/integration/` },
       ],
     },
     {
       title: 'Resources',
       links: [
         { text: 'Docs', href: externalLinks.docs },
-        { text: 'Security', href: '#' },
-        { text: 'Blog', href: '#' },
+        { text: 'Security', href: `${DOCS_BASE_URL}/docs/documents/` },
+        { text: 'GitHub', href: externalLinks.githubOrg },
       ],
     },
     {

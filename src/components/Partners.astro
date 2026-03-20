@@ -1,38 +1,16 @@
 ---
 import Image from '~/components/common/Image.astro';
 
-const cryptoDotCom = '~/assets/images/partners/crypto-dot-com-logo-white.png';
-const blockdaemon = '~/assets/images/partners/blockdaemon-white.png';
-const merkle = '~/assets/images/partners/merkle-logo-white.png';
-const moonpay = '~/assets/images/partners/moonpay-logo-white.png';
-const bitcoin = '~/assets/images/partners/bitcoin-logo-white.png';
-const halborn = '~/assets/images/partners/halborn-logo-white.png';
-const banxa = '~/assets/images/partners/banxa-logo.png';
-
-const topRow = [
-  {
-    title: 'Infrastructure Providers',
-    partners: [
-      { image: blockdaemon, title: 'Blockdaemon', href: 'https://blockdaemon.com/' },
-      { image: bitcoin, title: 'Bitcoin', href: 'https://bitcoin.org/', height: 30 },
-    ],
-  },
-  {
-    title: 'Custody Integrations',
-    partners: [{ image: cryptoDotCom, title: 'Crypto.com', href: 'https://crypto.com/' }],
-  },
-];
-
-const bottomRow = [
-  {
-    title: 'Institutional Partners',
-    partners: [
-      { image: halborn, title: 'Halborn', href: 'https://www.halborn.com/', height: 24 },
-      { image: merkle, title: 'Merkle Science', href: 'https://www.merklescience.com/' },
-      { image: moonpay, title: 'Moonpay', href: 'https://www.moonpay.com/' },
-      { image: banxa, title: 'Banxa', href: 'https://banxa.com/', height: 26 },
-    ],
-  },
+const partners = [
+  { image: '~/assets/images/partners/blockdaemon-white.png', title: 'Blockdaemon', href: 'https://blockdaemon.com/', height: 32 },
+  { image: '~/assets/images/partners/bitcoin-logo-white.png', title: 'Bitcoin', href: 'https://bitcoin.org/', height: 26 },
+  { image: '~/assets/images/partners/crypto-dot-com-logo-white.png', title: 'Crypto.com', href: 'https://crypto.com/', height: 32 },
+  { image: '~/assets/images/partners/halborn-logo-white.png', title: 'Halborn', href: 'https://www.halborn.com/', height: 22 },
+  { image: '~/assets/images/partners/merkle-logo-white.png', title: 'Merkle Science', href: 'https://www.merklescience.com/', height: 32 },
+  { image: '~/assets/images/partners/moonpay-logo-white.png', title: 'Moonpay', href: 'https://www.moonpay.com/', height: 32 },
+  { image: '~/assets/images/partners/banxa-logo.png', title: 'Banxa', href: 'https://banxa.com/', height: 22 },
+  { image: '~/assets/images/partners/x402.svg', title: 'x402', href: '#', height: 26 },
+  { image: '~/assets/images/partners/stripe.svg', title: 'Stripe', href: 'https://stripe.com/', height: 26 },
 ];
 ---
 
@@ -44,59 +22,22 @@ const bottomRow = [
     Trusted by leading infrastructure providers, custody platforms, and institutional partners.
   </p>
 
-  <!-- Infrastructure + Custody: side-by-side on desktop -->
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
-    {
-      topRow.map(({ title, partners }) => (
-        <div>
-          <h3 class="text-sm uppercase tracking-widest text-gray-500 font-semibold text-center mb-6">{title}</h3>
-          <div class="flex flex-wrap gap-8 justify-center items-center">
-            {partners.map((partner) => (
-              <a
-                href={partner.href}
-                target="_blank"
-                rel="noopener"
-                class="hover:opacity-70 transition-opacity duration-300 flex justify-center"
-              >
-                <Image
-                  src={partner.image}
-                  alt={partner.title}
-                  height={partner.height ?? 40}
-                  width={300}
-                  style="object-fit: contain"
-                />
-              </a>
-            ))}
-          </div>
-        </div>
-      ))
-    }
+  <div class="flex flex-wrap gap-x-10 gap-y-6 justify-center items-center">
+    {partners.map((partner) => (
+      <a
+        href={partner.href}
+        target="_blank"
+        rel="noopener"
+        class="hover:opacity-70 transition-opacity duration-300 flex justify-center"
+      >
+        <Image
+          src={partner.image}
+          alt={partner.title}
+          height={partner.height ?? 32}
+          width={200}
+          style="object-fit: contain"
+        />
+      </a>
+    ))}
   </div>
-
-  <!-- Institutional Partners: full-width row -->
-  {
-    bottomRow.map(({ title, partners }) => (
-      <div class="mb-10">
-        <h3 class="text-sm uppercase tracking-widest text-gray-500 font-semibold text-center mb-6">{title}</h3>
-        <div class="flex flex-wrap gap-8 justify-center items-center">
-          {partners.map((partner) => (
-            <a
-              href={partner.href}
-              target="_blank"
-              rel="noopener"
-              class="hover:opacity-70 transition-opacity duration-300 flex justify-center"
-            >
-              <Image
-                src={partner.image}
-                alt={partner.title}
-                height={partner.height ?? 40}
-                width={300}
-                style="object-fit: contain"
-              />
-            </a>
-          ))}
-        </div>
-      </div>
-    ))
-  }
 </div>
