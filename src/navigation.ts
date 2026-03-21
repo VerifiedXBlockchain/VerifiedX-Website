@@ -42,16 +42,16 @@ export const headerData = {
       text: 'Products',
       links: [
         { text: 'PulseXAI', href: '#', color: 'text-primary' },
-        { text: 'Butterfly', href: '#', color: 'text-vfx-green' },
+        { text: 'Butterfly', href: 'https://www.befree.io', color: 'text-vfx-green' },
         { text: 'SwitchBlade Wallet', href: externalLinks.webWallet, color: 'text-vfx-blue' },
-        { text: 'vBTC', href: '#', color: 'text-primary' },
+        { text: 'vBTC', href: `${DOCS_BASE_URL}/docs/about-vbtc/about-vbtc`, color: 'text-primary' },
       ],
     },
     {
       text: 'Solutions',
       links: [
         { text: 'Everyday Users', href: `${DOCS_BASE_URL}/docs/tutorials/video-tutorials/` },
-        { text: 'Institutions', href: '#' },
+        { text: 'Institutions', href: `${DOCS_BASE_URL}/docs/introduction/institutional` },
         { text: 'Developers', href: `${DOCS_BASE_URL}/docs/integration/` },
       ],
     },
@@ -65,7 +65,7 @@ export const headerData = {
     },
   ],
   actions: [
-    { text: 'Open Butterfly', href: '#', target: '_blank' },
+    { text: 'Open Butterfly', href: 'https://www.befree.io', target: '_blank' },
     { text: 'Open PulseXAI', href: '#', target: '_blank' },
     { text: 'Open SwitchBlade', href: externalLinks.webWallet, target: '_blank' },
     { text: 'Start Building', href: externalLinks.docs, target: '_blank' },
@@ -77,17 +77,17 @@ export const footerData = {
     {
       title: 'Products',
       links: [
-        { text: 'Butterfly', href: '#' },
+        { text: 'Butterfly', href: 'https://www.befree.io' },
         { text: 'PulseXAI', href: '#' },
         { text: 'Wallet', href: externalLinks.webWallet },
-        { text: 'vBTC', href: '#' },
+        { text: 'vBTC', href: `${DOCS_BASE_URL}/docs/about-vbtc/about-vbtc` },
       ],
     },
     {
       title: 'Solutions',
       links: [
         { text: 'Everyday Users', href: `${DOCS_BASE_URL}/docs/tutorials/video-tutorials/` },
-        { text: 'Institutions', href: '#' },
+        { text: 'Institutions', href: `${DOCS_BASE_URL}/docs/introduction/institutional` },
         { text: 'Developers', href: `${DOCS_BASE_URL}/docs/integration/` },
       ],
     },
@@ -102,7 +102,7 @@ export const footerData = {
     {
       title: 'Foundation',
       links: [
-        { text: 'About', href: '#' },
+        { text: 'About', href: `${DOCS_BASE_URL}/docs/introduction/about` },
         { text: 'Contact', href: externalLinks.email },
       ],
     },
