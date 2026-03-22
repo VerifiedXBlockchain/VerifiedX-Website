@@ -33,7 +33,7 @@ export const externalLinks = {
 
   twitter: 'https://x.com/VFXBlockchain',
   discord: 'https://discord.gg/7cd5ebDQCj',
-  email: 'mailto:dev@verifiedx.io',
+  email: 'mailto:info@verifiedx.io',
 };
 
 export const headerData = {
@@ -44,7 +44,7 @@ export const headerData = {
         { text: 'PulseXAI', href: '#', color: 'text-primary' },
         { text: 'Butterfly', href: 'https://www.befree.io', color: 'text-vfx-green' },
         { text: 'SwitchBlade Wallet', href: externalLinks.webWallet, color: 'text-vfx-blue' },
-        { text: 'vBTC', href: `${DOCS_BASE_URL}/docs/about-vbtc/about-vbtc`, color: 'text-primary' },
+        { text: 'vBTC', href: `${DOCS_BASE_URL}/docs/introduction/about-vbtc`, color: 'text-primary' },
       ],
     },
     {
@@ -80,7 +80,7 @@ export const footerData = {
         { text: 'Butterfly', href: 'https://www.befree.io' },
         { text: 'PulseXAI', href: '#' },
         { text: 'Wallet', href: externalLinks.webWallet },
-        { text: 'vBTC', href: `${DOCS_BASE_URL}/docs/about-vbtc/about-vbtc` },
+        { text: 'vBTC', href: `${DOCS_BASE_URL}/docs/introduction/about-vbtc` },
       ],
     },
     {
@@ -102,7 +102,7 @@ export const footerData = {
     {
       title: 'Foundation',
       links: [
-        { text: 'About', href: `${DOCS_BASE_URL}/docs/introduction/about` },
+        { text: 'About', href: `${DOCS_BASE_URL}/docs/introduction/` },
         { text: 'Contact', href: externalLinks.email },
       ],
     },
