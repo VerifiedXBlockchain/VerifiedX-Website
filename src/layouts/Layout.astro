@@ -94,10 +94,10 @@ const { language, textDirection } = I18N;
           const text = link.textContent?.trim() || '';
           const href = link.getAttribute('href') || '';
 
-          const isPulseXAI = text.includes('PulseXAI') && (href === '#' || href === '');
-          if (isPulseXAI) {
+          const isActivatingSoon = (text.includes('PulseXAI') || text.includes('Prism')) && (href === '#' || href === '');
+          if (isActivatingSoon) {
             e.preventDefault();
-            showToast('PulseXAI is activating soon');
+            showToast(`${text.includes('Prism') ? 'Prism Privacy' : 'PulseXAI'} is activating soon`);
           }
         });
       }

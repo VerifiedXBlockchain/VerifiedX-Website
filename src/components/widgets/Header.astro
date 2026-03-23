@@ -9,6 +9,7 @@ import { getHomePermalink } from '~/utils/permalinks';
 import { trimSlash, getAsset } from '~/utils/permalinks';
 import type { CallToAction } from '~/types';
 
+
 interface Link {
   text?: string;
   href?: string;
@@ -106,10 +107,10 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
                           class:list={[
                             'first:rounded-t last:rounded-b md:hover:bg-gray-800 py-2 px-5 block whitespace-no-wrap',
                             { 'aw-link-active': href2 === currentPath },
-                            color ? `${color} hover:brightness-125` : 'hover:text-white',
+                            color ? 'hover:brightness-125' : 'hover:text-white',
                           ]}
                           href={href2}
-                          style={color ? 'text-decoration: none !important;' : undefined}
+                          style={color ? 'text-decoration:none!important;color:' + color + '!important' : undefined}
                         >
                           {text2}
                         </a>

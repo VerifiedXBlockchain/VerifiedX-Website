@@ -41,10 +41,11 @@ export const headerData = {
     {
       text: 'Products',
       links: [
-        { text: 'PulseXAI', href: '#', color: 'text-primary' },
-        { text: 'Butterfly', href: 'https://www.befree.io', color: 'text-vfx-green' },
-        { text: 'SwitchBlade Wallet', href: externalLinks.webWallet, color: 'text-vfx-blue' },
-        { text: 'vBTC', href: `${DOCS_BASE_URL}/docs/introduction/about-vbtc`, color: 'text-primary' },
+        { text: 'vBTC', href: `${DOCS_BASE_URL}/docs/introduction/about-vbtc`, color: '#f7931a' },
+        { text: 'Prism Privacy', href: '#', color: '#a78bfa' },
+        { text: 'SwitchBlade Wallet', href: externalLinks.webWallet, color: '#73C4FA' },
+        { text: 'Butterfly', href: 'https://www.befree.io', color: '#34d399' },
+        { text: 'PulseXAI', href: '#', color: '#f7931a' },
       ],
     },
     {
