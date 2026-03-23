@@ -1,5 +1,10 @@
 ---
 import Image from '~/components/common/Image.astro';
+import x402Logo from '~/assets/images/partners/x402.svg';
+import stripeLogo from '~/assets/images/partners/stripe.svg';
+
+const x402Src = typeof x402Logo === 'string' ? x402Logo : x402Logo.src;
+const stripeSrc = typeof stripeLogo === 'string' ? stripeLogo : stripeLogo.src;
 
 const partners = [
   { image: '~/assets/images/partners/blockdaemon-white.png', title: 'Blockdaemon', href: 'https://blockdaemon.com/', height: 32 },
@@ -9,8 +14,8 @@ const partners = [
   { image: '~/assets/images/partners/merkle-logo-white.png', title: 'Merkle Science', href: 'https://www.merklescience.com/', height: 32 },
   { image: '~/assets/images/partners/moonpay-logo-white.png', title: 'Moonpay', href: 'https://www.moonpay.com/', height: 32 },
   { image: '~/assets/images/partners/banxa-logo.png', title: 'Banxa', href: 'https://banxa.com/', height: 22 },
-  { image: '~/assets/images/partners/x402.svg', title: 'x402', href: '#', height: 32 },
-  { image: '~/assets/images/partners/stripe.svg', title: 'Stripe', href: 'https://stripe.com/', height: 40 },
+  { isSvg: true, src: x402Src, title: 'x402', href: '#', width: 70, height: 27 },
+  { isSvg: true, src: stripeSrc, title: 'Stripe', href: 'https://stripe.com/', width: 63, height: 27 },
 ];
 ---
 
@@ -28,15 +33,25 @@ const partners = [
         href={partner.href}
         target="_blank"
         rel="noopener"
-        class="hover:opacity-70 transition-opacity duration-300 flex justify-center"
+        class="hover:opacity-70 transition-opacity duration-300 flex justify-center md:min-w-[120px]"
       >
-        <Image
-          src={partner.image}
-          alt={partner.title}
-          height={partner.height ?? 32}
-          width={200}
-          style="object-fit: contain"
-        />
+        {partner.isSvg ? (
+          <img
+            src={partner.src}
+            alt={partner.title}
+            width={partner.width}
+            height={partner.height}
+            style={`width: ${partner.width}px; height: ${partner.height}px; min-width: ${partner.width}px;`}
+          />
+        ) : (
+          <Image
+            src={partner.image}
+            alt={partner.title}
+            height={partner.height ?? 32}
+            width={200}
+            style="object-fit: contain"
+          />
+        )}
       </a>
     ))}
   </div>
