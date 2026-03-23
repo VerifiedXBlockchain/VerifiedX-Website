@@ -1,5 +1,5 @@
 <script>
-  import { onMount } from 'svelte';
+  import { onMount, onDestroy } from 'svelte';
   import NetworkStat from './NetworkStat.svelte';
   import { externalLinks } from '~/navigation';
 
@@ -11,33 +11,31 @@
 
   async function fetchData() {
     try {
-      const response = await fetch('https://data.verifiedx.io/api/metrics/');
+      const response = await fetch('https://data.verifiedx.io/api/metrics/', { cache: 'no-store' });
       if (!response.ok) throw new Error('Failed to fetch data');
       const result = await response.json();
 
       if (result && result['latest_block']) {
         data = { ...result };
+        loading = false;
+        error = false;
       } else {
         error = true;
+        loading = false;
       }
     } catch (e) {
       console.error(e);
       error = true;
-    } finally {
       loading = false;
     }
   }
 
   onMount(() => {
     fetchData();
-
-    timer = window.setInterval(() => {
-      fetchData();
-    }, 5000);
-
-    // setInterval(() => {
-    //   value = Math.floor(Math.random() * 9999);
-    // }, 2000);
+    timer = window.setInterval(fetchData, 5000);
+    return () => {
+      if (timer) clearInterval(timer);
+    };
   });
 </script>
 

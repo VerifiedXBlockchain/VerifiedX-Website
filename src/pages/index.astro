@@ -290,7 +290,7 @@ const metadata = {
         Network Activity
       </h2>
     </WidgetWrapper>
-    <NetworkStats client:load />
+    <NetworkStats client:only="svelte" />
     <div class="text-center mt-8">
       <Button variant="blue" href={externalLinks.spyglass} target="_blank">Launch Spyglass Explorer</Button>
     </div>
