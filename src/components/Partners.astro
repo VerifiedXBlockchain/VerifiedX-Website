@@ -9,7 +9,7 @@ const partners = [
   { image: '~/assets/images/partners/merkle-logo-white.png', title: 'Merkle Science', href: 'https://www.merklescience.com/', height: 32 },
   { image: '~/assets/images/partners/moonpay-logo-white.png', title: 'Moonpay', href: 'https://www.moonpay.com/', height: 32 },
   { image: '~/assets/images/partners/banxa-logo.png', title: 'Banxa', href: 'https://banxa.com/', height: 22 },
-  { image: '~/assets/images/partners/x402.svg', title: 'x402', href: '#', height: 40 },
+  { image: '~/assets/images/partners/x402.svg', title: 'x402', href: '#', height: 32 },
   { image: '~/assets/images/partners/stripe.svg', title: 'Stripe', href: 'https://stripe.com/', height: 40 },
 ];
 ---
@@ -22,13 +22,13 @@ const partners = [
     Trusted by leading infrastructure providers, custody platforms, and institutional partners.
   </p>
 
-  <div class="flex flex-wrap gap-x-6 gap-y-6 justify-center items-center max-w-5xl mx-auto">
+  <div class="flex flex-col md:flex-row md:flex-wrap gap-6 items-center md:justify-center max-w-5xl mx-auto">
     {partners.map((partner) => (
       <a
         href={partner.href}
         target="_blank"
         rel="noopener"
-        class="hover:opacity-70 transition-opacity duration-300 flex justify-center flex-shrink-0 min-w-[80px]"
+        class="hover:opacity-70 transition-opacity duration-300 flex justify-center"
       >
         <Image
           src={partner.image}
