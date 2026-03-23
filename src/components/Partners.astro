@@ -22,13 +22,13 @@ const partners = [
     Trusted by leading infrastructure providers, custody platforms, and institutional partners.
   </p>
 
-  <div class="flex flex-wrap gap-x-8 gap-y-6 justify-center items-center max-w-4xl mx-auto">
+  <div class="flex flex-wrap gap-x-6 gap-y-6 justify-center items-center max-w-5xl mx-auto">
     {partners.map((partner) => (
       <a
         href={partner.href}
         target="_blank"
         rel="noopener"
-        class="hover:opacity-70 transition-opacity duration-300 flex justify-center"
+        class="hover:opacity-70 transition-opacity duration-300 flex justify-center flex-shrink-0"
       >
         <Image
           src={partner.image}
