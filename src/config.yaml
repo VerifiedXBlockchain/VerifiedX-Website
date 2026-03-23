@@ -9,22 +9,22 @@ site:
 # Default SEO metadata
 metadata:
   title:
-    default: VerifiedX
+    default: "VerifiedX — The Financial Operating System for Bitcoin"
     template: "%s — VerifiedX"
-  description: "Tokenized Commerce and Self-Custody for Everyone."
+  description: "VerifiedX is the financial operating system that turns Bitcoin into programmable financial capital. Self-custodial payments, DeFi, vBTC, tokenized agents, and institutional-grade infrastructure powered by a decentralized network."
   robots:
     index: true
     follow: true
   openGraph:
     site_name: VerifiedX
     images:
-      - url: "~/assets/images/default.jpg?v=2"
+      - url: "~/assets/images/og-v2.jpg"
         width: 1200
         height: 628
     type: website
   twitter:
-    handle: "@verifiedx"
-    site: "@verifiedx"
+    handle: "@VFXBlockchain"
+    site: "@VFXBlockchain"
     cardType: summary_large_image
 
 i18n:
