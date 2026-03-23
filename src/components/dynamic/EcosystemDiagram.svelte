@@ -60,49 +60,58 @@
 
   const CYCLE_DURATION = 6; // seconds — one node per second, 6 nodes
 
-  let activeNode = 0;
-  let dotCx = CX + R * Math.cos(toRad(-90));
-  let dotCy = CY + R * Math.sin(toRad(-90));
-  let dotColor = fwNodes[0].color;
-  let centerGlow = fwNodes[0].color;
+  let activeNode = $state(0);
+  let dotCx = $state(CX + R * Math.cos(toRad(-90)));
+  let dotCy = $state(CY + R * Math.sin(toRad(-90)));
+  let dotColor = $state(fwNodes[0].color);
+  let centerGlow = $state(fwNodes[0].color);
   let rafId;
-  let layers = [];
+  let wrapperEl;
 
   onMount(() => {
-    // Staggered layer entrance
-    layers = document.querySelectorAll('.layer');
-    layers.forEach((el, i) => {
-      el.style.opacity = '0';
-      el.style.transform = 'translateY(12px)';
-      el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-      setTimeout(() => {
-        el.style.opacity = '1';
-        el.style.transform = 'translateY(0)';
-      }, 100 + i * 120);
-    });
+    // Staggered layer entrance — scoped to this component
+    if (wrapperEl) {
+      const layerEls = wrapperEl.querySelectorAll('.layer');
+      layerEls.forEach((el, i) => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(12px)';
+        el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        setTimeout(() => {
+          el.style.opacity = '1';
+          el.style.transform = 'translateY(0)';
+        }, 100 + i * 120);
+      });
+    }
 
     // Unified animation loop — drives dot position, dot color, and node highlighting
     const startTime = performance.now();
     function tick(now) {
-      const elapsed = (now - startTime) / 1000;
-      const cycleFraction = elapsed % CYCLE_DURATION;
+      try {
+        const elapsed = (now - startTime) / 1000;
+        const cycleFraction = elapsed % CYCLE_DURATION;
+        const len = fwNodes.length;
 
-      // Active node highlight + center glow color
-      activeNode = Math.floor(cycleFraction) % fwNodes.length;
-      centerGlow = fwNodes[activeNode].color;
+        // Active node highlight + center glow color
+        const idx = Math.floor(cycleFraction) % len;
+        activeNode = idx;
+        centerGlow = fwNodes[idx] ? fwNodes[idx].color : fwNodes[0].color;
 
-      // Dot position
-      const angleDeg = -90 + (cycleFraction / CYCLE_DURATION) * 360;
-      const angleRad = toRad(angleDeg);
-      dotCx = CX + R * Math.cos(angleRad);
-      dotCy = CY + R * Math.sin(angleRad);
+        // Dot position
+        const angleDeg = -90 + (cycleFraction / CYCLE_DURATION) * 360;
+        const angleRad = toRad(angleDeg);
+        dotCx = CX + R * Math.cos(angleRad);
+        dotCy = CY + R * Math.sin(angleRad);
 
-      // Dot color — lerp between current and next node
-      const nodeIdx = Math.floor(cycleFraction) % fwNodes.length;
-      const nextIdx = (nodeIdx + 1) % fwNodes.length;
-      const t = cycleFraction - Math.floor(cycleFraction);
-      dotColor = lerpColor(fwNodes[nodeIdx].color, fwNodes[nextIdx].color, t);
-
+        // Dot color — lerp between current and next node
+        const nodeIdx = idx;
+        const nextIdx = (nodeIdx + 1) % len;
+        const t = cycleFraction - Math.floor(cycleFraction);
+        if (fwNodes[nodeIdx] && fwNodes[nextIdx]) {
+          dotColor = lerpColor(fwNodes[nodeIdx].color, fwNodes[nextIdx].color, t);
+        }
+      } catch (e) {
+        // prevent animation from dying on error
+      }
       rafId = requestAnimationFrame(tick);
     }
     rafId = requestAnimationFrame(tick);
@@ -113,7 +122,7 @@
   });
 </script>
 
-<div class="ecosystem-wrapper">
+<div class="ecosystem-wrapper" bind:this={wrapperEl}>
   <div class="diagram">
 
     <!-- LEFT: Architecture Stack -->
@@ -276,7 +285,7 @@
               <!-- Outer halo — glow lives here, away from text -->
               <circle cx={node.x} cy={node.y} r="38"
                 stroke-width="1"
-                filter={activeNode === i ? 'url(#eco-glow-strong)' : undefined}
+                filter={activeNode === i ? 'url(#eco-glow-strong)' : 'none'}
                 style:fill={node.color + (activeNode === i ? '30' : '18')}
                 style:stroke={node.color + (activeNode === i ? '55' : '25')}
                 style:transition="fill 0.4s ease, stroke 0.4s ease" />
