@@ -9,12 +9,14 @@ import { getHomePermalink } from '~/utils/permalinks';
 import { trimSlash, getAsset } from '~/utils/permalinks';
 import type { CallToAction } from '~/types';
 
+
 interface Link {
   text?: string;
   href?: string;
   ariaLabel?: string;
   icon?: string;
   btc?: boolean;
+  color?: string;
 }
 
 interface MenuLink extends Link {
@@ -98,15 +100,19 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
                     {text}{' '}
                     <Icon name="tabler:chevron-down" class="w-3.5 h-3.5 ml-0.5 rtl:ml-0 rtl:mr-0.5 hidden md:inline" />
                   </button>
-                  <ul class="dropdown-menu md:backdrop-blur-md dark:md:bg-dark rounded md:absolute pl-4 md:pl-0 md:hidden font-medium md:bg-white/90 md:min-w-[200px] drop-shadow-xl">
-                    {links.map(({ text: text2, href: href2 }) => (
+                  <ul class="dropdown-menu md:backdrop-blur-md rounded md:absolute pl-4 md:pl-0 md:hidden font-medium md:min-w-[200px] drop-shadow-xl md:bg-[#0a0a0a] md:border md:border-gray-700/50">
+                    {links.map(({ text: text2, href: href2, color }) => (
                       <li>
                         <a
                           class:list={[
-                            'first:rounded-t last:rounded-b md:hover:bg-gray-100 hover:text-link dark:hover:text-white dark:hover:bg-gray-700 py-2 px-5 block whitespace-no-wrap',
+                            'first:rounded-t last:rounded-b md:hover:bg-gray-800 py-2 px-5 block whitespace-no-wrap',
                             { 'aw-link-active': href2 === currentPath },
+                            color ? 'hover:brightness-125' : 'hover:text-white',
                           ]}
                           href={href2}
+                          target={href2 && href2 !== '#' ? '_blank' : undefined}
+                          rel={href2 && href2 !== '#' ? 'noopener noreferrer' : undefined}
+                          style={color ? 'text-decoration:none!important;color:' + color + '!important' : undefined}
                         >
                           {text2}
                         </a>
@@ -154,9 +160,9 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
         </div>
         {
           actions?.length ? (
-            <span class="ml-4 rtl:ml-0 rtl:mr-4">
+            <span class="ml-4 rtl:ml-0 rtl:mr-4 flex gap-1.5">
               {actions.map((btnProps) => (
-                <Button {...btnProps} class="ml-2 py-2.5 px-5.5 md:px-6 font-semibold shadow-none text-sm w-auto" />
+                <Button {...btnProps} class="py-1.5 px-3 font-semibold shadow-none text-xs w-auto whitespace-nowrap" />
               ))}
             </span>
           ) : (

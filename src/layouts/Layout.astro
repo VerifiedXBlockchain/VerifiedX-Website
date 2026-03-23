@@ -50,5 +50,65 @@ const { language, textDirection } = I18N;
     <slot />
 
     <BasicScripts />
+
+    <!-- Toast notification container -->
+    <div id="toast-container" class="fixed top-6 left-1/2 -translate-x-1/2 z-[9999] pointer-events-none">
+      <div
+        id="toast"
+        class="pointer-events-auto opacity-0 translate-y-[-8px] transition-all duration-300 ease-out
+               px-5 py-3 rounded-lg border border-gray-700/80 bg-[#0d1117f0] backdrop-blur-md
+               shadow-[0_4px_24px_rgba(0,0,0,0.4)] text-sm font-medium text-gray-200
+               flex items-center gap-2.5"
+        role="status"
+        aria-live="polite"
+      >
+        <span class="inline-block w-2 h-2 rounded-full bg-primary animate-pulse flex-shrink-0"></span>
+        <span id="toast-message"></span>
+      </div>
+    </div>
+
+    <script>
+      function initToast() {
+        const toast = document.getElementById('toast');
+        const toastMessage = document.getElementById('toast-message');
+        let toastTimeout: ReturnType<typeof setTimeout> | null = null;
+
+        function showToast(message: string) {
+          if (!toast || !toastMessage) return;
+          if (toastTimeout) clearTimeout(toastTimeout);
+
+          toastMessage.textContent = message;
+          toast.classList.remove('opacity-0', 'translate-y-[-8px]');
+          toast.classList.add('opacity-100', 'translate-y-0');
+
+          toastTimeout = setTimeout(() => {
+            toast.classList.remove('opacity-100', 'translate-y-0');
+            toast.classList.add('opacity-0', 'translate-y-[-8px]');
+          }, 2500);
+        }
+
+        document.addEventListener('click', (e) => {
+          const link = (e.target as HTMLElement).closest('a');
+          if (!link) return;
+
+          const text = link.textContent?.trim() || '';
+          const href = link.getAttribute('href') || '';
+
+          const isActivatingSoon = (text.includes('PulseXAI') || text.includes('Prism')) && (href === '#' || href === '');
+          if (isActivatingSoon) {
+            e.preventDefault();
+            e.stopPropagation();
+            showToast(`${text.includes('Prism') ? 'Prism Privacy' : 'PulseXAI'} is activating soon`);
+            return false;
+          }
+        }, true);
+      }
+
+      // Run on initial load
+      initToast();
+
+      // Re-run after View Transitions navigation
+      document.addEventListener('astro:after-swap', initToast);
+    </script>
   </body>
 </html>
