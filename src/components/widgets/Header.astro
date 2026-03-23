@@ -110,6 +110,8 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
                             color ? 'hover:brightness-125' : 'hover:text-white',
                           ]}
                           href={href2}
+                          target={href2 && href2 !== '#' ? '_blank' : undefined}
+                          rel={href2 && href2 !== '#' ? 'noopener noreferrer' : undefined}
                           style={color ? 'text-decoration:none!important;color:' + color + '!important' : undefined}
                         >
                           {text2}

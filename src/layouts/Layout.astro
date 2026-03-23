@@ -97,9 +97,11 @@ const { language, textDirection } = I18N;
           const isActivatingSoon = (text.includes('PulseXAI') || text.includes('Prism')) && (href === '#' || href === '');
           if (isActivatingSoon) {
             e.preventDefault();
+            e.stopPropagation();
             showToast(`${text.includes('Prism') ? 'Prism Privacy' : 'PulseXAI'} is activating soon`);
+            return false;
           }
-        });
+        }, true);
       }
 
       // Run on initial load
