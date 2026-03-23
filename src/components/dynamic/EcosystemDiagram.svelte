@@ -268,7 +268,7 @@
           {/each}
 
           <!-- Traveling dot (before nodes so it renders underneath them) -->
-          <circle r="7" cx={dotCx} cy={dotCy} fill={dotColor} filter="url(#eco-glow-dot)" />
+          <circle r="7" cx={dotCx} cy={dotCy} fill={dotColor} filter="url(#eco-glow-dot)" class="traveling-dot" />
 
           <!-- Nodes -->
           {#each nodePositions as node, i}
@@ -327,6 +327,8 @@
     max-width: 1400px;
     margin: 0 auto;
     padding: 0 24px;
+    box-sizing: border-box;
+    overflow-x: hidden;
   }
 
   /* ── Two-column layout ── */
@@ -341,8 +343,10 @@
   .stack {
     display: flex;
     flex-direction: column;
+    min-width: 0;
+    max-width: 100%;
+    overflow: hidden;
   }
-
   .layer {
     position: relative;
     border-radius: 12px;
@@ -350,6 +354,8 @@
     border: 1px solid rgba(115,196,250,0.12);
     background: #0d1420;
     transition: border-color 0.3s, box-shadow 0.3s;
+    box-sizing: border-box;
+    max-width: 100%;
   }
   .layer:hover {
     border-color: rgba(115,196,250,0.35);
@@ -727,14 +733,33 @@
 
   /* ── Responsive ── */
   @media (max-width: 900px) {
-    .diagram { grid-template-columns: 1fr; }
+    .diagram { grid-template-columns: 1fr; min-width: 0; }
     .flywheel-svg-wrap { width: 500px; height: 500px; }
   }
   @media (max-width: 480px) {
-    .flywheel-svg-wrap { width: 384px; height: 384px; }
-    .chip { font-size: 13px; padding: 6px 12px; }
-    .layer-label { font-size: 12px; }
-    .caption { gap: 16px; }
-    .caption-item, .caption-sep { font-size: 13px; }
+    .ecosystem-wrapper { padding: 0 16px; max-width: 100vw; box-sizing: border-box; }
+    .stack { width: calc(100vw - 32px); }
+    .flywheel-svg-wrap { width: 100%; max-width: 384px; height: auto; aspect-ratio: 1; }
+    .layer { padding: 12px 14px; }
+    .chip { font-size: 12px; padding: 5px 8px; gap: 4px; }
+    .chips { gap: 6px; }
+    .layer-label { font-size: 11px; }
+    .caption { gap: 12px; flex-direction: column; }
+    .caption-item { font-size: 13px; }
+    .caption-sep { font-size: 13px; }
+    .caption-sep :global(svg) { transform: rotate(90deg); }
+    .arrow-pulse { animation: arrow-shuttle-vertical 2s ease-in-out infinite; }
+    .traveling-dot { filter: none !important; r: 9; }
+  }
+
+  @keyframes arrow-shuttle-vertical {
+    0%, 100% {
+      transform: rotate(90deg) translateX(0);
+      opacity: 0.4;
+    }
+    50% {
+      transform: rotate(90deg) translateX(5px);
+      opacity: 1;
+    }
   }
 </style>
