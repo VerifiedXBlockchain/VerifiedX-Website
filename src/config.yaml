@@ -18,7 +18,7 @@ metadata:
   openGraph:
     site_name: VerifiedX
     images:
-      - url: "~/assets/images/default.jpg"
+      - url: "~/assets/images/default.jpg?v=2"
         width: 1200
         height: 628
     type: website
