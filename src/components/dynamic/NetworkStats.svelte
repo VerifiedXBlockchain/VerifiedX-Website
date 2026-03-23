@@ -5,9 +5,9 @@
 
   let timer;
 
-  let data = {};
-  let loading = true;
-  let error = false;
+  let data = $state({});
+  let loading = $state(true);
+  let error = $state(false);
 
   async function fetchData() {
     try {
@@ -20,8 +20,8 @@
       } else {
         error = true;
       }
-    } catch (error) {
-      console.error(error);
+    } catch (e) {
+      console.error(e);
       error = true;
     } finally {
       loading = false;
