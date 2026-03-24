@@ -78,10 +78,11 @@ export const footerData = {
     {
       title: 'Products',
       links: [
+        { text: 'vBTC', href: `${DOCS_BASE_URL}/docs/introduction/about-vbtc` },
+        { text: 'Prism Privacy', href: '#' },
+        { text: 'SwitchBlade Wallet', href: externalLinks.webWallet },
         { text: 'Butterfly', href: 'https://www.befree.io' },
         { text: 'PulseXAI', href: '#' },
-        { text: 'Wallet', href: externalLinks.webWallet },
-        { text: 'vBTC', href: `${DOCS_BASE_URL}/docs/introduction/about-vbtc` },
       ],
     },
     {
