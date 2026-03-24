@@ -135,7 +135,7 @@
           <div class="btc-icon">&#8383;</div>
           <div>
             <div class="btc-text">Bitcoin</div>
-            <div class="btc-sub">Proof of Work &middot; Decentralized</div>
+            <div class="btc-sub">Base Layer &middot; Decentralized</div>
           </div>
         </div>
       </div>

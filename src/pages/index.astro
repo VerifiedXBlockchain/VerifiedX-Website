@@ -47,7 +47,7 @@ const metadata = {
             title: 'Send Global Payments',
             description: 'Send digital assets instantly anywhere in the world.',
             icon: 'tabler:send',
-            callToAction: { text: 'Launch Application', href: 'https://docs.verifiedx.io/docs/introduction/applications', target: '_blank', class: 'text-sm px-3 md:px-4' },
+            callToAction: { text: 'Launch Application', href: 'https://www.befree.io', target: '_blank', class: 'text-sm px-3 md:px-4' },
             classes: { icon: 'text-white bg-vfx-blue rounded-full w-10 h-10 p-2 md:w-12 md:h-12 md:p-3 mr-4 rtl:ml-4 rtl:mr-0' },
           },
           {
@@ -75,7 +75,7 @@ const metadata = {
             title: 'Build Financial Applications',
             description: 'Developers can build financial tools, marketplaces, and decentralized apps.',
             icon: 'tabler:code',
-            callToAction: { text: 'Developer Docs', href: externalLinks.docs, class: 'text-sm px-3 md:px-4' },
+            callToAction: { text: 'Developer Docs', href: externalLinks.docs, target: '_blank', class: 'text-sm px-3 md:px-4' },
             classes: { icon: 'text-white bg-vfx-purple rounded-full w-10 h-10 p-2 md:w-12 md:h-12 md:p-3 mr-4 rtl:ml-4 rtl:mr-0' },
           },
         ]}
@@ -109,7 +109,7 @@ const metadata = {
             <div>
               <p class="text-xs uppercase tracking-widest text-gray-500 mb-2 font-semibold">Retail</p>
               <div class="flex flex-wrap gap-2">
-                <Button variant="primary" href="https://docs.verifiedx.io/docs/introduction/about-vbtc" target="_blank">Mint vBTC</Button>
+                <Button variant="primary" href="https://docs.verifiedx.io/docs/core/vbtc" target="_blank">Mint vBTC</Button>
                 <Button variant="secondary" href="https://docs.verifiedx.io/docs/introduction/about-vbtc" target="_blank">How vBTC Works</Button>
               </div>
             </div>
@@ -174,8 +174,8 @@ const metadata = {
             description: 'Native wallet for interacting with VerifiedX and vBTC.',
             callToAction: {
               variant: 'purple',
-              text: 'Download Wallet',
-              href: externalLinks.webWallet,
+              text: 'Open Wallet',
+              href: 'https://wallet.verifiedx.io',
               target: '_blank',
             },
             classes: { icon: 'w-12 h-12 mb-6 text-vfx-purple' },
@@ -275,10 +275,10 @@ const metadata = {
       </div>
 
       <div class="flex flex-col sm:flex-row sm:flex-wrap gap-2 mt-8">
-        <Button variant="purple" href="https://docs.verifiedx.io/docs/documents/halborn-audit" target="_blank">Security Overview</Button>
+        <Button variant="purple" href="https://docs.verifiedx.io/docs/core/security" target="_blank">Security Overview</Button>
         <Button variant="secondary" href="https://docs.verifiedx.io/docs/documents/halborn-audit" target="_blank">Audit Reports</Button>
         <Button variant="secondary" href={externalLinks.validatingDocs} target="_blank">Run Validator</Button>
-        <Button variant="secondary" href="https://docs.verifiedx.io/docs/introduction/institutional" target="_blank">Institutional Solutions</Button>
+        <Button variant="secondary" href="https://ecosystem.verifiedx.io" target="_blank">Institutional Solutions</Button>
       </div>
     </WidgetWrapper>
   </section>
@@ -309,7 +309,7 @@ const metadata = {
       <div class="flex flex-wrap justify-center gap-3">
         <Button variant="blue" href="https://docs.verifiedx.io/docs/introduction/applications" target="_blank">Applications</Button>
         <Button variant="secondary" href={externalLinks.docs} target="_blank">Start Building</Button>
-        <Button variant="secondary" href="https://docs.verifiedx.io/docs/introduction/institutional" target="_blank">Institutional Infrastructure</Button>
+        <Button variant="secondary" href="https://docs.verifiedx.io/docs/introduction/custody-integration" target="_blank">Institutional Infrastructure</Button>
       </div>
     </WidgetWrapper>
   </section>
