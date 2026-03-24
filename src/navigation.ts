@@ -15,7 +15,7 @@ export const externalLinks = {
   integrationDocs: `${DOCS_BASE_URL}/docs/integration`,
   integrationSwaggerDocs: `${DOCS_BASE_URL}/docs/integration/swagger`,
 
-  webWallet: `https://wallet.verifiedx.io`,
+  webWallet: `${DOCS_BASE_URL}/docs/introduction/applications`,
   downloadGuiMacArm:
     'https://github.com/VerifiedXBlockchain/VerifiedX-GUI/releases/download/5.3.0/VFX-OSX-ARM-Installer.dmg',
   downloadGuiMacIntel:

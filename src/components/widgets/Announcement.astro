@@ -3,7 +3,7 @@
 ---
 
 <div
-  class="dark text-muted text-sm bg-black dark:bg-transparent dark:border-b dark:border-slate-800 dark:text-slate-400 hidden md:flex gap-1 overflow-hidden px-3 py-2 relative text-ellipsis whitespace-nowrap"
+  class="dark text-muted text-sm bg-black dark:bg-transparent dark:border-b dark:border-slate-800 dark:text-slate-400 hidden md:flex gap-1 overflow-hidden px-3 py-2 relative z-50 text-ellipsis whitespace-nowrap"
 >
   <span
     class="dark:bg-slate-700 bg-white/40 dark:text-slate-300 font-semibold px-1 py-0.5 text-xs mr-0.5 rtl:mr-0 rtl:ml-0.5 inline-block"
@@ -22,20 +22,33 @@
 </div>
 
 <script>
+  import { onNewBlock } from '~/lib/block-socket';
+
+  function updateBlockHeight(height: number) {
+    const el = document.getElementById('block-height');
+    const wrap = document.getElementById('block-height-wrap');
+    if (el && wrap) {
+      el.textContent = height.toLocaleString();
+      wrap.style.display = '';
+    }
+  }
+
+  // Initial fetch via REST API
   async function fetchBlockHeight() {
     try {
       const res = await fetch('https://data.verifiedx.io/api/metrics/');
       const data = await res.json();
-      const el = document.getElementById('block-height');
-      const wrap = document.getElementById('block-height-wrap');
-      if (el && wrap && data.latest_block != null) {
-        el.textContent = Number(data.latest_block).toLocaleString();
-        wrap.style.display = '';
+      if (data.latest_block != null) {
+        updateBlockHeight(Number(data.latest_block));
+        console.log(`[BlockHeight] REST: ${Number(data.latest_block).toLocaleString()}`);
       }
     } catch {
-      // silently fail — don't show anything
+      // silently fail
     }
   }
+
   fetchBlockHeight();
-  setInterval(fetchBlockHeight, 10000);
+
+  // Live updates via shared socket
+  onNewBlock((height) => updateBlockHeight(height));
 </script>

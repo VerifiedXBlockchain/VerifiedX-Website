@@ -2,8 +2,10 @@
   import { onMount, onDestroy } from 'svelte';
   import NetworkStat from './NetworkStat.svelte';
   import { externalLinks } from '~/navigation';
+  import { onNewBlock } from '~/lib/block-socket';
 
   let timer;
+  let unsubSocket;
 
   let data = $state({});
   let loading = $state(true);
@@ -32,9 +34,19 @@
 
   onMount(() => {
     fetchData();
-    timer = window.setInterval(fetchData, 5000);
+    // Poll REST for all metrics (longer interval since socket handles block height)
+    timer = window.setInterval(fetchData, 30000);
+
+    // Live block height from socket
+    unsubSocket = onNewBlock((height) => {
+      if (data['latest_block'] != null) {
+        data = { ...data, latest_block: height };
+      }
+    });
+
     return () => {
       if (timer) clearInterval(timer);
+      if (unsubSocket) unsubSocket();
     };
   });
 </script>
