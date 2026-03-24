@@ -236,6 +236,7 @@
     <!-- RIGHT: Flywheel -->
     <div class="flywheel-wrap">
       <div class="flywheel-svg-wrap">
+        <img class="flywheel-cube" src={cubeGif} alt="VFX" width="88" height="88" />
         <svg viewBox="-20 -20 530 530" aria-label="Bitcoin Financial Flywheel diagram">
           <defs>
             <filter id="eco-glow-strong" x="-80%" y="-80%" width="260%" height="260%">
@@ -259,10 +260,7 @@
             stroke="rgba(255,255,255,0.18)"
             stroke-width="1" />
 
-          <!-- Center cube (blend mode on foreignObject so it composites against SVG bg) -->
-          <foreignObject x={CX - 44} y={CY - 44} width="88" height="88" style="mix-blend-mode: screen;">
-            <img src={cubeGif} alt="VFX" width="88" height="88" style="display: block;" />
-          </foreignObject>
+          <!-- Center cube placeholder (actual image rendered as HTML overlay for iOS Safari compatibility) -->
 
           <!-- Ring bg -->
           <circle cx={CX} cy={CY} r={R} fill="none" stroke="rgba(115,196,250,0.07)" stroke-width="28"/>
@@ -555,8 +553,20 @@
     gap: 24px;
   }
   .flywheel-svg-wrap {
+    position: relative;
     width: 624px;
     height: 624px;
+  }
+  .flywheel-cube {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 88px;
+    height: 88px;
+    mix-blend-mode: screen;
+    pointer-events: none;
+    z-index: 1;
   }
   .flywheel-svg-wrap :global(svg) {
     width: 100%;
