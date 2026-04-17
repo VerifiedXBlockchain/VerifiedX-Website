@@ -7,6 +7,7 @@ import Button from '~/components/ui/Button.astro';
 
 import { getHomePermalink } from '~/utils/permalinks';
 import { trimSlash, getAsset } from '~/utils/permalinks';
+import { getLocaleFromPath, useTranslations } from '~/i18n';
 import type { CallToAction } from '~/types';
 
 
@@ -48,6 +49,8 @@ const {
 } = Astro.props;
 
 const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
+const locale = getLocaleFromPath(new URL(Astro.url).pathname);
+const t = useTranslations(locale);
 ---
 
 <header
@@ -83,7 +86,7 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
     </div>
     <nav
       class="items-center w-full md:w-auto hidden md:flex md:mx-5 text-default overflow-y-auto overflow-x-hidden md:overflow-y-visible md:overflow-x-auto md:justify-self-center"
-      aria-label="Main navigation"
+      aria-label={t('nav.aria_main')}
     >
       <ul
         class="flex flex-col md:flex-row md:self-center w-full md:w-auto text-base md:text-[0.9375rem] tracking-[0.01rem] font-medium md:justify-center"

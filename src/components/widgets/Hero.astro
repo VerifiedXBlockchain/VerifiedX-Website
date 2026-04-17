@@ -1,6 +1,10 @@
 ---
 import Button from '~/components/ui/Button.astro';
 import { externalLinks } from '~/navigation';
+import { getLocaleFromPath, useTranslations } from '~/i18n';
+
+const locale = getLocaleFromPath(new URL(Astro.url).pathname);
+const t = useTranslations(locale);
 ---
 
 <section class="relative bg-black not-prose" id="hero">
@@ -10,43 +14,42 @@ import { externalLinks } from '~/navigation';
         <!-- Left Side: Copy + Button Groups -->
         <div class="intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade">
           <h1 class="text-4xl md:text-5xl font-bold font-heading dark:text-gray-200 leading-tight tracking-tight mb-6">
-            The Financial Operating System for <span class="text-primary">Bitcoin</span>
+            {t('hero.heading_prefix')}<span class="text-primary">{t('hero.heading_bitcoin')}</span>
           </h1>
 
           <p class="text-xl text-muted mb-4">
-            VerifiedX is the financial operating system that turns Bitcoin into programmable financial capital.
+            {t('hero.tagline')}
           </p>
 
           <p class="text-base text-gray-400 mb-10">
-            Payments, decentralized finance, tokenized assets, recovery vaulting, and the emerging agentic economy
-            powered by a self-custodial network.
+            {t('hero.description')}
           </p>
 
           <!-- Button Group: Individuals -->
           <div class="mb-6">
-            <p class="text-xs uppercase tracking-widest text-gray-500 mb-2 font-semibold">Individuals</p>
+            <p class="text-xs uppercase tracking-widest text-gray-500 mb-2 font-semibold">{t('hero.group_individuals')}</p>
             <div class="flex flex-wrap gap-2">
-              <Button variant="blue" href="https://www.befree.io" target="_blank">Open Butterfly</Button>
-              <Button variant="secondary" href="#" target="_blank">Open PulseXAI</Button>
-              <Button variant="secondary" href={externalLinks.webWallet} target="_blank">Download Wallet</Button>
+              <Button variant="blue" href="https://www.befree.io" target="_blank">{t('hero.cta_open_butterfly')}</Button>
+              <Button variant="secondary" href="#" target="_blank">{t('hero.cta_open_pulsexai')}</Button>
+              <Button variant="secondary" href={externalLinks.webWallet} target="_blank">{t('hero.cta_download_wallet')}</Button>
             </div>
           </div>
 
           <!-- Button Group: Institutions -->
           <div class="mb-6">
-            <p class="text-xs uppercase tracking-widest text-gray-500 mb-2 font-semibold">Institutions</p>
+            <p class="text-xs uppercase tracking-widest text-gray-500 mb-2 font-semibold">{t('hero.group_institutions')}</p>
             <div class="flex flex-wrap gap-2">
-              <Button variant="secondary" href="https://docs.verifiedx.io/docs/introduction/institutional" target="_blank">Institutional Infrastructure</Button>
-              <Button variant="secondary" href="https://docs.verifiedx.io/docs/integration/vbtc" target="_blank">Integrate vBTC</Button>
+              <Button variant="secondary" href="https://docs.verifiedx.io/docs/introduction/institutional" target="_blank">{t('hero.cta_institutional_infra')}</Button>
+              <Button variant="secondary" href="https://docs.verifiedx.io/docs/integration/vbtc" target="_blank">{t('hero.cta_integrate_vbtc')}</Button>
             </div>
           </div>
 
           <!-- Button Group: Developers -->
           <div>
-            <p class="text-xs uppercase tracking-widest text-gray-500 mb-2 font-semibold">Developers</p>
+            <p class="text-xs uppercase tracking-widest text-gray-500 mb-2 font-semibold">{t('hero.group_developers')}</p>
             <div class="flex flex-wrap gap-2">
-              <Button variant="secondary" href={externalLinks.docs} target="_blank">Start Building</Button>
-              <Button variant="secondary" href={externalLinks.githubOrg} target="_blank">Code Repository</Button>
+              <Button variant="secondary" href={externalLinks.docs} target="_blank">{t('hero.cta_start_building')}</Button>
+              <Button variant="secondary" href={externalLinks.githubOrg} target="_blank">{t('hero.cta_code_repo')}</Button>
             </div>
           </div>
         </div>

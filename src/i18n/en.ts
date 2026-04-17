@@ -18,6 +18,13 @@ export const en = {
     action_open_pulsexai: 'Open PulseXAI',
     action_open_switchblade: 'Open SwitchBlade',
     action_start_building: 'Start Building',
+    aria_main: 'Main navigation',
+  },
+
+  announcement: {
+    badge_new: 'NEW',
+    switchblade_release: 'SwitchBlade Wallet v5.3.0 now available »',
+    block_height: 'Current Block Height:',
   },
 
   footer: {
@@ -39,8 +46,46 @@ export const en = {
     aria_email: 'Email',
   },
 
+  hero: {
+    heading_prefix: 'The Financial Operating System for ',
+    heading_bitcoin: 'Bitcoin',
+    tagline:
+      'VerifiedX is the financial operating system that turns Bitcoin into programmable financial capital.',
+    description:
+      'Payments, decentralized finance, tokenized assets, recovery vaulting, and the emerging agentic economy powered by a self-custodial network.',
+    group_individuals: 'Individuals',
+    group_institutions: 'Institutions',
+    group_developers: 'Developers',
+    cta_open_butterfly: 'Open Butterfly',
+    cta_open_pulsexai: 'Open PulseXAI',
+    cta_download_wallet: 'Download Wallet',
+    cta_institutional_infra: 'Institutional Infrastructure',
+    cta_integrate_vbtc: 'Integrate vBTC',
+    cta_start_building: 'Start Building',
+    cta_code_repo: 'Code Repository',
+    terminal_payments: 'Payments',
+    terminal_defi: 'DeFi',
+    terminal_wallets: 'Wallets',
+    terminal_ai: 'AI Agents',
+  },
+
+  trust: {
+    title: 'Secured by Industry-Leading Infrastructure',
+    halborn: 'Halborn Security Audits',
+    merkle: 'Merkle Science Compliance',
+    mainnet: 'Battle-Tested Mainnet',
+    validators: 'Validator Governance',
+  },
+
+  partners: {
+    heading: 'Ecosystem Partners & Integrations',
+    subheading:
+      'Trusted by leading infrastructure providers, custody platforms, and institutional partners.',
+  },
+
   home: {
     meta_title: 'VerifiedX — The Financial Operating System for Bitcoin.',
+
     capital_heading: 'Use Bitcoin as Financial Capital',
     capital_send_title: 'Send Global Payments',
     capital_send_desc: 'Send digital assets instantly anywhere in the world.',
@@ -102,7 +147,6 @@ export const en = {
     stats_launch_spyglass: 'Launch Spyglass Explorer',
 
     cta_heading: 'The Future of Self-Custodial Finance',
-    cta_body_prefix: '',
     cta_body_brand: 'VerifiedX',
     cta_body_middle: ' is building the infrastructure that enables ',
     cta_body_bitcoin: 'Bitcoin',
@@ -110,6 +154,14 @@ export const en = {
     cta_applications: 'Applications',
     cta_start_building: 'Start Building',
     cta_infrastructure: 'Institutional Infrastructure',
+  },
+
+  not_found: {
+    meta_title: 'Error 404',
+    heading: 'Error',
+    subheading: "Sorry, we couldn't find this page.",
+    body: "But don't worry, you can find plenty of other things on our homepage.",
+    back_home: 'Back to homepage',
   },
 } as const;
 

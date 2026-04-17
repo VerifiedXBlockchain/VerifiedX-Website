@@ -1,0 +1,310 @@
+---
+import Hero from '~/components/widgets/Hero.astro';
+import SecurityTrustStrip from '~/components/widgets/SecurityTrustStrip.astro';
+import { Icon } from 'astro-icon/components';
+import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
+import ItemGrid from '~/components/ui/ItemGrid.astro';
+import ItemGrid2 from '~/components/ui/ItemGrid2.astro';
+import Button from '~/components/ui/Button.astro';
+import NetworkStats from '~/components/dynamic/NetworkStats.svelte';
+import EcosystemDiagram from '~/components/dynamic/EcosystemDiagram.svelte';
+import { externalLinks } from '~/navigation';
+import Partners from '~/components/Partners.astro';
+import { getLocaleFromPath, useTranslations } from '~/i18n';
+
+const locale = getLocaleFromPath(new URL(Astro.url).pathname);
+const t = useTranslations(locale);
+---
+
+<!-- Section 3: Hero -->
+<section class="spy-section">
+  <Hero />
+</section>
+
+<!-- Section 4: Security Trust Strip -->
+<SecurityTrustStrip />
+
+<!-- Section 5: Ecosystem Partners / Integrations -->
+<section class="spy-section pt-16" id="section-ecosystem">
+  <WidgetWrapper containerClass={`max-w-6xl mx-auto`}>
+    <Partners />
+  </WidgetWrapper>
+</section>
+
+<!-- Section 6: Use Bitcoin as Financial Capital -->
+<section class="spy-section pt-16" id="section-capital">
+  <WidgetWrapper containerClass={`max-w-6xl mx-auto`}>
+    <h2 class="font-bold font-heading text-heading text-5xl text-center tracking-tight mb-10">
+      {t('home.capital_heading')}
+    </h2>
+
+    <ItemGrid
+      items={[
+        {
+          title: t('home.capital_send_title'),
+          description: t('home.capital_send_desc'),
+          icon: 'tabler:send',
+          callToAction: { text: t('home.capital_send_cta'), href: 'https://www.befree.io', target: '_blank', class: 'text-sm px-3 md:px-4' },
+          classes: { icon: 'text-white bg-vfx-blue rounded-full w-10 h-10 p-2 md:w-12 md:h-12 md:p-3 mr-4 rtl:ml-4 rtl:mr-0' },
+        },
+        {
+          title: t('home.capital_yield_title'),
+          description: t('home.capital_yield_desc'),
+          icon: 'tabler:chart-line',
+          callToAction: { text: t('home.capital_yield_cta'), href: 'https://docs.verifiedx.io/docs/introduction/about-vbtc', target: '_blank', class: 'text-sm px-3 md:px-4' },
+          classes: { icon: 'text-white bg-primary rounded-full w-10 h-10 p-2 md:w-12 md:h-12 md:p-3 mr-4 rtl:ml-4 rtl:mr-0' },
+        },
+        {
+          title: t('home.capital_private_title'),
+          description: t('home.capital_private_desc'),
+          icon: 'tabler:shield-lock',
+          callToAction: { text: t('home.capital_private_cta'), variant: 'secondary', class: 'text-sm px-3 md:px-4 opacity-50 pointer-events-none' },
+          classes: { icon: 'text-white bg-vfx-green rounded-full w-10 h-10 p-2 md:w-12 md:h-12 md:p-3 mr-4 rtl:ml-4 rtl:mr-0' },
+        },
+        {
+          title: t('home.capital_own_title'),
+          description: t('home.capital_own_desc'),
+          icon: 'tabler:fingerprint',
+          callToAction: { text: t('home.capital_own_cta'), href: externalLinks.webWallet, class: 'text-sm px-3 md:px-4' },
+          classes: { icon: 'text-white bg-[#1e3a8a] rounded-full w-10 h-10 p-2 md:w-12 md:h-12 md:p-3 mr-4 rtl:ml-4 rtl:mr-0' },
+        },
+        {
+          title: t('home.capital_build_title'),
+          description: t('home.capital_build_desc'),
+          icon: 'tabler:code',
+          callToAction: { text: t('home.capital_build_cta'), href: externalLinks.docs, target: '_blank', class: 'text-sm px-3 md:px-4' },
+          classes: { icon: 'text-white bg-vfx-purple rounded-full w-10 h-10 p-2 md:w-12 md:h-12 md:p-3 mr-4 rtl:ml-4 rtl:mr-0' },
+        },
+      ]}
+      columns={5}
+      classes={{
+        container: 'gap-6',
+        title: 'md:text-[1.1rem] min-h-[3.5rem] flex items-start leading-tight',
+        description: 'text-sm',
+        action: 'text-sm',
+        icon: 'text-white bg-primary rounded-full w-10 h-10 p-2 md:w-12 md:h-12 md:p-3 mr-4 rtl:ml-4 rtl:mr-0',
+      }}
+    />
+  </WidgetWrapper>
+</section>
+
+<!-- Section 7: vBTC -->
+<section class="spy-section pt-16" id="section-vbtc">
+  <WidgetWrapper containerClass={`max-w-7xl mx-auto`}>
+    <div class="grid grid-cols-1 md:grid-cols-[3fr_2fr] gap-12 items-center">
+      <!-- Left: Copy -->
+      <div class="intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade">
+        <h2 class="text-4xl md:text-5xl font-bold font-heading text-heading tracking-tight mb-6">
+          {t('home.vbtc_heading_prefix')}<span class="text-btc">{t('home.vbtc_heading_suffix')}</span>
+        </h2>
+        <p class="text-xl text-muted mb-8">
+          {t('home.vbtc_body')}
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-0">
+          <div>
+            <p class="text-xs uppercase tracking-widest text-gray-500 mb-2 font-semibold">{t('home.vbtc_retail')}</p>
+            <div class="flex flex-wrap gap-2">
+              <Button variant="primary" href="https://docs.verifiedx.io/docs/core/vbtc" target="_blank">{t('home.vbtc_mint')}</Button>
+              <Button variant="secondary" href="https://docs.verifiedx.io/docs/introduction/about-vbtc" target="_blank">{t('home.vbtc_how')}</Button>
+            </div>
+          </div>
+
+          <div class="mt-4 md:mt-0">
+            <p class="text-xs uppercase tracking-widest text-gray-500 mb-2 font-semibold">{t('home.vbtc_institutional')}</p>
+            <div class="flex flex-wrap gap-2">
+              <Button variant="secondary" href="https://docs.verifiedx.io/docs/documents/vbtc-institutional" target="_blank" class="px-2 md:px-3">{t('home.vbtc_overview')}</Button>
+              <Button variant="secondary" href="https://docs.verifiedx.io/docs/introduction/custody-integration" target="_blank" class="px-2 md:px-3">{t('home.vbtc_custody')}</Button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Security Flow Diagram -->
+      <div class="intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade">
+        <div
+          class="rounded-lg border border-gray-700 bg-[#0a0a0a] p-6 md:p-8 font-mono text-sm md:text-[15px] shadow-2xl"
+        >
+          <div class="flex items-center gap-2 mb-4 pb-3 border-b border-gray-800">
+            <div class="w-3 h-3 rounded-full bg-red-500/80"></div>
+            <div class="w-3 h-3 rounded-full bg-yellow-500/80"></div>
+            <div class="w-3 h-3 rounded-full bg-green-500/80"></div>
+            <span class="ml-2 text-gray-500 text-xs">vbtc://flow</span>
+          </div>
+          <pre
+            class="text-green-400 leading-relaxed whitespace-pre-wrap"><span class="text-btc font-bold">BTC Deposit</span>
+   &darr;
+<span class="text-vfx-blue">FROST MPC Threshold Signatures</span>
+   &darr;
+<span class="text-vfx-green font-bold">vBTC Mint</span>
+   &darr;
+<span class="text-gray-300">DeFi</span> / <span class="text-gray-300">Payments</span> / <span class="text-gray-300">Tokenized Agents</span> / <span class="text-gray-300">Agentic Markets</span></pre>
+        </div>
+      </div>
+    </div>
+  </WidgetWrapper>
+</section>
+
+<!-- Section 8: Self-Custodial Financial Applications -->
+<section class="spy-section pt-16" id="section-applications">
+  <WidgetWrapper containerClass={`max-w-6xl mx-auto`}>
+    <h2 class="font-bold font-heading text-heading text-5xl text-center tracking-tight mb-10">
+      {t('home.apps_heading')}
+    </h2>
+
+    <ItemGrid2
+      columns={3}
+      items={[
+        {
+          title: t('home.apps_butterfly_title'),
+          description: t('home.apps_butterfly_desc'),
+          callToAction: {
+            variant: 'blue',
+            text: t('home.apps_butterfly_cta'),
+            href: 'https://www.befree.io',
+            target: '_blank',
+          },
+        },
+        {
+          title: t('home.apps_switchblade_title'),
+          description: t('home.apps_switchblade_desc'),
+          callToAction: {
+            variant: 'purple',
+            text: t('home.apps_switchblade_cta'),
+            href: 'https://wallet.verifiedx.io',
+            target: '_blank',
+          },
+          classes: { icon: 'w-12 h-12 mb-6 text-vfx-purple' },
+        },
+        {
+          title: t('home.apps_pulsexai_title'),
+          description: t('home.apps_pulsexai_desc'),
+          callToAction: {
+            variant: 'green',
+            text: t('home.apps_pulsexai_cta'),
+            href: '#',
+          },
+          classes: { icon: 'w-12 h-12 mb-6 text-vfx-blue' },
+        },
+      ]}
+      classes={{
+        container: 'gap-4 md:gap-6',
+        panel:
+          'rounded-lg shadow-[0_4px_30px_rgba(0,0,0,0.1)] backdrop-blur border border-[#ffffff29] bg-[rgba(15,23,42,0.75)] p-6',
+        icon: 'w-12 h-12 mb-6 text-primary',
+      }}
+    />
+  </WidgetWrapper>
+</section>
+
+<!-- Section 9: Ecosystem Diagram -->
+<section class="spy-section pt-16" id="section-how-it-works">
+  <WidgetWrapper containerClass={`max-w-6xl mx-auto`}>
+    <h2 class="font-bold font-heading text-heading text-5xl text-center tracking-tight mb-10">
+      {t('home.how_heading')}
+    </h2>
+  </WidgetWrapper>
+  <EcosystemDiagram client:only="svelte" />
+</section>
+
+<!-- Section 10: Security & Institutional Infrastructure -->
+<section class="spy-section pt-16" id="section-security">
+  <WidgetWrapper containerClass={`max-w-7xl mx-auto`}>
+    <h2 class="text-4xl md:text-5xl font-bold font-heading text-heading tracking-tight mb-8">
+      {t('home.security_heading_line1')}<br />{t('home.security_heading_line2')}
+    </h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 md:items-stretch">
+      <!-- Left: Copy -->
+      <div class="intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade flex flex-col">
+        <div class="styled-content-box p-5 flex-1">
+          <p class="text-xs uppercase tracking-widest text-gray-500 font-semibold mb-4">{t('home.security_subheading')}</p>
+          <ul class="space-y-4">
+            <li class="flex items-start gap-3">
+              <Icon name="tabler:shield-check" class="w-5 h-5 text-vfx-green flex-shrink-0 mt-0.5" />
+              <span class="text-muted">{t('home.security_halborn')}</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <Icon name="tabler:search" class="w-5 h-5 text-vfx-blue flex-shrink-0 mt-0.5" />
+              <span class="text-muted">{t('home.security_merkle')}</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <Icon name="tabler:file-code" class="w-5 h-5 text-vfx-purple flex-shrink-0 mt-0.5" />
+              <span class="text-muted">{t('home.security_smart_contracts')}</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <Icon name="tabler:users-group" class="w-5 h-5 text-vfx-purple flex-shrink-0 mt-0.5" />
+              <span class="text-muted">{t('home.security_validators')}</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <Icon name="tabler:key" class="w-5 h-5 text-vfx-green flex-shrink-0 mt-0.5" />
+              <span class="text-muted">{t('home.security_selfcustody')}</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <Icon name="tabler:code" class="w-5 h-5 text-vfx-blue flex-shrink-0 mt-0.5" />
+              <span class="text-muted">{t('home.security_opensource')}</span>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Right: Network Security Diagram -->
+      <div class="intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade md:flex md:flex-col">
+        <div
+          class="rounded-lg border border-gray-700 bg-[#0a0a0a] p-6 md:p-8 font-mono text-sm md:text-base shadow-2xl h-full flex flex-col"
+        >
+          <div class="flex items-center gap-2 mb-4 pb-3 border-b border-gray-800">
+            <div class="w-3 h-3 rounded-full bg-red-500/80"></div>
+            <div class="w-3 h-3 rounded-full bg-yellow-500/80"></div>
+            <div class="w-3 h-3 rounded-full bg-green-500/80"></div>
+            <span class="ml-2 text-gray-500 text-xs">security://network</span>
+          </div>
+          <pre
+            class="text-green-400 leading-relaxed whitespace-pre"><span class="text-vfx-purple font-bold">Validators</span>
+   &darr;
+<span class="text-gray-300">Consensus</span>
+   &darr;
+<span class="text-vfx-green font-bold">Asset Security</span></pre>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex flex-col sm:flex-row sm:flex-wrap gap-2 mt-8">
+      <Button variant="purple" href="https://docs.verifiedx.io/docs/core/security" target="_blank">{t('home.security_overview')}</Button>
+      <Button variant="secondary" href="https://docs.verifiedx.io/docs/documents/halborn-audit" target="_blank">{t('home.security_audit_reports')}</Button>
+      <Button variant="secondary" href={externalLinks.validatingDocs} target="_blank">{t('home.security_run_validator')}</Button>
+      <Button variant="secondary" href="https://ecosystem.verifiedx.io" target="_blank">{t('home.security_institutional')}</Button>
+    </div>
+  </WidgetWrapper>
+</section>
+
+<!-- Section 11: Network Activity -->
+<section class="spy-section pt-16" id="section-stats">
+  <WidgetWrapper containerClass={`max-w-6xl mx-auto`}>
+    <h2 class="font-bold font-heading text-heading text-5xl text-center tracking-tight mb-10">
+      {t('home.stats_heading')}
+    </h2>
+  </WidgetWrapper>
+  <NetworkStats client:only="svelte" />
+  <div class="text-center mt-8">
+    <Button variant="blue" href={externalLinks.spyglass} target="_blank">{t('home.stats_launch_spyglass')}</Button>
+  </div>
+</section>
+
+<!-- Section 12: Closing CTA -->
+<section class="spy-section pt-16 pb-20" id="section-cta">
+  <WidgetWrapper containerClass={`max-w-4xl mx-auto text-center`}>
+    <h2 class="font-bold font-heading text-heading text-5xl tracking-tight mb-6">
+      {t('home.cta_heading')}
+    </h2>
+    <p class="text-xl text-muted max-w-3xl mx-auto mb-10">
+      <span class="text-vfx-blue font-semibold">{t('home.cta_body_brand')}</span>{t('home.cta_body_middle')}<span class="text-btc font-semibold">{t('home.cta_body_bitcoin')}</span>{t('home.cta_body_suffix')}
+    </p>
+    <div class="flex flex-wrap justify-center gap-3">
+      <Button variant="blue" href="https://docs.verifiedx.io/docs/introduction/applications" target="_blank">{t('home.cta_applications')}</Button>
+      <Button variant="secondary" href={externalLinks.docs} target="_blank">{t('home.cta_start_building')}</Button>
+      <Button variant="secondary" href="https://docs.verifiedx.io/docs/introduction/custody-integration" target="_blank">{t('home.cta_infrastructure')}</Button>
+    </div>
+  </WidgetWrapper>
+</section>
