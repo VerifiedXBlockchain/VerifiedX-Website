@@ -1,0 +1,26 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+
+// Phase 1A scaffold: Spanish home page renders the English marketing body
+// unchanged. Phase 2A will translate the body; the Footer is already wired
+// to src/i18n/es.ts via locale detection from the URL path, so navigating
+// to /es/ verifies the i18n pipeline end-to-end.
+const metadata = {
+  title: 'VerifiedX — The Financial Operating System for Bitcoin.',
+  ignoreTitleTemplate: true,
+};
+---
+
+<Layout metadata={metadata}>
+  <div class="max-w-5xl mx-auto px-4 py-24 text-center">
+    <p class="text-xs uppercase tracking-widest text-gray-500 mb-4">es · español</p>
+    <h1 class="text-4xl md:text-5xl font-bold font-heading text-heading tracking-tight mb-6">
+      VerifiedX — The Financial Operating System for Bitcoin.
+    </h1>
+    <p class="text-lg text-muted max-w-2xl mx-auto">
+      Phase 1A scaffold. Body translation lands in Phase 2A. The footer below
+      is already served from the Spanish dictionary (currently English
+      pass-through placeholders).
+    </p>
+  </div>
+</Layout>

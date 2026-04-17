@@ -1,6 +1,7 @@
 ---
 import { Icon } from 'astro-icon/components';
 import { getHomePermalink } from '~/utils/permalinks';
+import { getLocaleFromPath, useTranslations } from '~/i18n';
 
 interface Link {
   text?: string;
@@ -21,7 +22,11 @@ export interface Props {
   theme?: string;
 }
 
-const { socialLinks = [], links = [], footNote = '', theme = 'light' } = Astro.props;
+const { socialLinks = [], links = [], theme = 'light' } = Astro.props;
+
+const locale = getLocaleFromPath(new URL(Astro.url).pathname);
+const t = useTranslations(locale);
+const footNote = t('footer.copyright', { year: new Date().getFullYear() });
 ---
 
 <footer
@@ -40,7 +45,7 @@ const { socialLinks = [], links = [], footNote = '', theme = 'light' } = Astro.p
           <a class="inline-block font-bold text-xl" href={getHomePermalink()}>Verified<span class="text-vfx-blue">X</span></a>
         </div>
         <p class="text-sm text-gray-400 max-w-xs mb-4">
-          VerifiedX is the financial operating system that turns Bitcoin into programmable financial capital.
+          {t('footer.tagline')}
         </p>
         <video
           src="/vbtc.mp4"
@@ -102,9 +107,9 @@ const { socialLinks = [], links = [], footNote = '', theme = 'light' } = Astro.p
         <Fragment set:html={footNote} />
         <br />
         <div class="flex gap-2">
-          <a href="/disclaimer" class="text-xs text-muted underline">Disclaimer</a>
-          <a href="/terms-and-conditions" class="text-xs text-muted underline">Terms & Conditions</a>
-          <a href="/privacy-policy" class="text-xs text-muted underline">Privacy Policy</a>
+          <a href="/disclaimer" class="text-xs text-muted underline">{t('footer.legal_disclaimer')}</a>
+          <a href="/terms-and-conditions" class="text-xs text-muted underline">{t('footer.legal_terms')}</a>
+          <a href="/privacy-policy" class="text-xs text-muted underline">{t('footer.legal_privacy')}</a>
         </div>
       </div>
     </div>
