@@ -3,6 +3,10 @@
   import NetworkStat from './NetworkStat.svelte';
   import { externalLinks } from '~/navigation';
   import { onNewBlock } from '~/lib/block-socket';
+  import { useTranslations } from '~/i18n';
+
+  let { locale = 'en' } = $props();
+  const t = useTranslations(locale);
 
   let timer;
   let unsubSocket;
@@ -59,12 +63,12 @@
     <div class="grid grid-cols-3 gap-6 dark:text-white sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3">
       {#if loading || error}
         {#each [
-          { title: 'Latest Block', hasCta: true },
-          { title: 'Block Time', hasMetric: true },
-          { title: 'Transactions', hasMetric: true },
-          { title: 'Fees Burned', hasMetric: true },
-          { title: 'Circulating Supply', hasMetric: true, smaller: true },
-          { title: 'Active Validators', hasCta: true },
+          { title: t('stats.latest_block'), hasCta: true },
+          { title: t('stats.block_time'), hasMetric: true },
+          { title: t('stats.transactions'), hasMetric: true },
+          { title: t('stats.fees_burned'), hasMetric: true },
+          { title: t('stats.circulating_supply'), hasMetric: true, smaller: true },
+          { title: t('stats.active_validators'), hasCta: true },
         ] as card}
           <div class="col-span-3 mx-auto flex w-full sm:col-span-1 md:col-span-1 lg:col-span-1 xl:col-span-1">
             <div
@@ -105,35 +109,35 @@
         {/each}
       {:else}
         <NetworkStat
-          title="Latest Block"
+          title={t('stats.latest_block')}
           value={data['latest_block']}
-          ctaTitle="Open Spyglass"
+          ctaTitle={t('stats.open_spyglass')}
           ctaHref={externalLinks.spyglass}
           gradientDirection="to bottom right"
         />
-        <NetworkStat title="Block Time" value={10} metric="Seconds" gradientDirection="to bottom" />
+        <NetworkStat title={t('stats.block_time')} value={10} metric={t('stats.block_time_metric')} gradientDirection="to bottom" />
         <NetworkStat
-          title="Transactions"
+          title={t('stats.transactions')}
           value={data['total_transactions']}
-          metric="Total"
+          metric={t('stats.transactions_metric')}
           gradientDirection="to bottom left"
         />
 
-        <NetworkStat title="Fees Burned" value={data['total_burned']} metric="VFX" gradientDirection="to top right" />
+        <NetworkStat title={t('stats.fees_burned')} value={data['total_burned']} metric={t('stats.fees_metric')} gradientDirection="to top right" />
         <NetworkStat
-          title="Circulating Supply"
+          title={t('stats.circulating_supply')}
           value={data['circulating_supply']}
-          metric="VFX"
+          metric={t('stats.supply_metric')}
           gradientDirection="to top"
           valueIsSmaller={true}
         />
 
         <NetworkStat
-          title="Active Validators"
+          title={t('stats.active_validators')}
           value={data['active_validators']}
           gradientDirection="to top left"
           ctaHref={externalLinks.validatingDocs}
-          ctaTitle="Start Validating"
+          ctaTitle={t('stats.start_validating')}
         />
       {/if}
     </div>

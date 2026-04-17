@@ -204,7 +204,7 @@ const t = useTranslations(locale);
       {t('home.how_heading')}
     </h2>
   </WidgetWrapper>
-  <EcosystemDiagram client:only="svelte" />
+  <EcosystemDiagram client:only="svelte" locale={locale} />
 </section>
 
 <!-- Section 10: Security & Institutional Infrastructure -->
@@ -286,7 +286,7 @@ const t = useTranslations(locale);
       {t('home.stats_heading')}
     </h2>
   </WidgetWrapper>
-  <NetworkStats client:only="svelte" />
+  <NetworkStats client:only="svelte" locale={locale} />
   <div class="text-center mt-8">
     <Button variant="blue" href={externalLinks.spyglass} target="_blank">{t('home.stats_launch_spyglass')}</Button>
   </div>

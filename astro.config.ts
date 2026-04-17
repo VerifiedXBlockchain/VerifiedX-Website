@@ -36,7 +36,15 @@ export default defineConfig({
     tailwind({
       applyBaseStyles: false,
     }),
-    sitemap(),
+    sitemap({
+      i18n: {
+        defaultLocale: 'en',
+        locales: {
+          en: 'en-US',
+          es: 'es',
+        },
+      },
+    }),
     mdx(),
     svelte(),
     icon({

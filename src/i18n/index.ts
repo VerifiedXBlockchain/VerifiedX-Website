@@ -20,6 +20,23 @@ export function getLocaleFromPath(pathname: string): Locale {
   return isLocale(seg) ? seg : defaultLocale;
 }
 
+/** Strip the locale prefix from a pathname (or return it unchanged if none). */
+export function stripLocale(pathname: string): string {
+  const seg = pathname.split('/').filter(Boolean)[0];
+  if (isLocale(seg) && seg !== defaultLocale) {
+    const rest = pathname.replace(new RegExp(`^/${seg}(?=/|$)`), '');
+    return rest || '/';
+  }
+  return pathname || '/';
+}
+
+/** Build a path for `locale` that points to the same page as `pathname`. */
+export function localizePath(pathname: string, locale: Locale): string {
+  const base = stripLocale(pathname);
+  if (locale === defaultLocale) return base;
+  return base === '/' ? `/${locale}/` : `/${locale}${base}`;
+}
+
 type NestedKeyOf<T> = {
   [K in keyof T & string]: T[K] extends object ? `${K}.${NestedKeyOf<T[K]>}` : K;
 }[keyof T & string];

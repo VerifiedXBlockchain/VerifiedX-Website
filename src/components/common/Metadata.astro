@@ -9,6 +9,7 @@ import type { MetaData } from '~/types';
 import { getCanonical } from '~/utils/permalinks';
 
 import { adaptOpenGraphImages } from '~/utils/images';
+import { getLocaleFromPath, localizePath, locales } from '~/i18n';
 
 export interface Props extends MetaData {
   dontUseTitleTemplate?: boolean;
@@ -24,6 +25,29 @@ const {
   twitter = {},
 } = Astro.props;
 
+const pathname = new URL(Astro.url).pathname;
+const activeLocale = getLocaleFromPath(pathname);
+const ogLocale = activeLocale === 'es' ? 'es' : 'en';
+const alternates = locales.map((loc) => ({
+  hreflang: loc === 'en' ? 'en-US' : loc,
+  href: String(getCanonical(localizePath(pathname, loc))),
+}));
+const xDefault = String(getCanonical(localizePath(pathname, 'en')));
+
+// Per-locale fallback description for pages that don't pass their own.
+// Pages that do pass `description` in metadata (via t()) still win.
+const localizedDefaults = {
+  en: {
+    title: METADATA?.title?.default,
+    description: METADATA?.description,
+  },
+  es: {
+    title: 'VerifiedX — El sistema operativo financiero para Bitcoin',
+    description:
+      'VerifiedX es el sistema operativo financiero que convierte a Bitcoin en capital financiero programable. Pagos autocustodiales, DeFi, vBTC, agentes tokenizados e infraestructura de nivel institucional impulsada por una red descentralizada.',
+  },
+} as const;
+
 const seoProps: AstroSeoProps = merge(
   {
     title: '',
@@ -36,7 +60,7 @@ const seoProps: AstroSeoProps = merge(
       url: canonical,
       site_name: SITE?.name,
       images: [],
-      locale: I18N?.language || 'en',
+      locale: ogLocale,
       type: 'website',
     },
     twitter: {
@@ -44,11 +68,11 @@ const seoProps: AstroSeoProps = merge(
     },
   },
   {
-    title: METADATA?.title?.default,
+    title: localizedDefaults[activeLocale].title,
     titleTemplate: METADATA?.title?.template,
     noindex: typeof METADATA?.robots?.index !== 'undefined' ? !METADATA.robots.index : undefined,
     nofollow: typeof METADATA?.robots?.follow !== 'undefined' ? !METADATA.robots.follow : undefined,
-    description: METADATA?.description,
+    description: localizedDefaults[activeLocale].description,
     openGraph: METADATA?.openGraph,
     twitter: METADATA?.twitter,
   },
@@ -67,3 +91,7 @@ const seoProps: AstroSeoProps = merge(
 
 <AstroSeo {...{ ...seoProps, openGraph: await adaptOpenGraphImages(seoProps?.openGraph, Astro.site) }} />
 <meta name="keywords" content="VerifiedX, VFX, Bitcoin, vBTC, financial operating system, self-custodial, DeFi, blockchain, decentralized finance, Bitcoin sidechain, digital payments, tokenized agents, PulseXAI, Butterfly, SwitchBlade wallet, FROST MPC, institutional crypto, smart contracts, Web3" />
+{alternates.map((alt) => (
+  <link rel="alternate" hreflang={alt.hreflang} href={alt.href} />
+))}
+<link rel="alternate" hreflang="x-default" href={xDefault} />

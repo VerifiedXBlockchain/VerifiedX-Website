@@ -3,6 +3,7 @@ import { Icon } from 'astro-icon/components';
 import Logo from '~/components/Logo.astro';
 import ToggleTheme from '~/components/common/ToggleTheme.astro';
 import ToggleMenu from '~/components/common/ToggleMenu.astro';
+import LocaleSwitcher from '~/components/common/LocaleSwitcher.astro';
 import Button from '~/components/ui/Button.astro';
 
 import { getHomePermalink } from '~/utils/permalinks';
@@ -80,7 +81,8 @@ const t = useTranslations(locale);
       <a class="flex items-center" href={getHomePermalink()}>
         <Logo />
       </a>
-      <div class="flex items-center md:hidden">
+      <div class="flex items-center gap-2 md:hidden">
+        <LocaleSwitcher />
         <ToggleMenu />
       </div>
     </div>
@@ -172,6 +174,9 @@ const t = useTranslations(locale);
             ''
           )
         }
+        <span class="ml-2 rtl:ml-0 rtl:mr-2 flex-shrink-0">
+          <LocaleSwitcher />
+        </span>
       </div>
     </div>
   </div>
