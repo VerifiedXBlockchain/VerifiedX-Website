@@ -1,7 +1,7 @@
 site:
   name: VerifiedX
-  site: "https://verifiedx.io"
-  base: "/"
+  site: 'https://verifiedx.io'
+  base: '/'
   trailingSlash: false
 
   googleSiteVerificationId: orcPxI47GSa-cRvY11tUe6iGg2IO_RPvnA1q95iEM3M
@@ -9,22 +9,22 @@ site:
 # Default SEO metadata
 metadata:
   title:
-    default: "VerifiedX — The Financial Operating System for Bitcoin"
-    template: "%s — VerifiedX"
-  description: "VerifiedX is the financial operating system that turns Bitcoin into programmable financial capital. Self-custodial payments, DeFi, vBTC, tokenized agents, and institutional-grade infrastructure powered by a decentralized network."
+    default: 'VerifiedX — The Financial Operating System for Bitcoin'
+    template: '%s — VerifiedX'
+  description: 'VerifiedX is the financial operating system that turns Bitcoin into programmable financial capital. Self-custodial payments, DeFi, vBTC, tokenized agents, and institutional-grade infrastructure powered by a decentralized network.'
   robots:
     index: true
     follow: true
   openGraph:
     site_name: VerifiedX
     images:
-      - url: "~/assets/images/og-v2.jpg"
+      - url: '~/assets/images/og-v2.jpg'
         width: 1200
         height: 628
     type: website
   twitter:
-    handle: "@VFXBlockchain"
-    site: "@VFXBlockchain"
+    handle: '@VFXBlockchain'
+    site: '@VFXBlockchain'
     cardType: summary_large_image
 
 i18n:
@@ -38,25 +38,25 @@ apps:
 
     post:
       isEnabled: false
-      permalink: "/%slug%" # Variables: %slug%, %year%, %month%, %day%, %hour%, %minute%, %second%, %category%
+      permalink: '/%slug%' # Variables: %slug%, %year%, %month%, %day%, %hour%, %minute%, %second%, %category%
       robots:
         index: true
 
     list:
       isEnabled: false
-      pathname: "blog" # Blog main path, you can change this to "articles" (/articles)
+      pathname: 'blog' # Blog main path, you can change this to "articles" (/articles)
       robots:
         index: true
 
     category:
       isEnabled: false
-      pathname: "category" # Category main path /category/some-category, you can change this to "group" (/group/some-category)
+      pathname: 'category' # Category main path /category/some-category, you can change this to "group" (/group/some-category)
       robots:
         index: true
 
     tag:
       isEnabled: false
-      pathname: "tag" # Tag main path /tag/some-tag, you can change this to "topics" (/topics/some-category)
+      pathname: 'tag' # Tag main path /tag/some-tag, you can change this to "topics" (/topics/some-category)
       robots:
         index: false
 
@@ -66,8 +66,8 @@ apps:
 analytics:
   vendors:
     googleAnalytics:
-      id: "G-YXFKFZLMYT"
+      id: 'G-YXFKFZLMYT'
       partytown: false
 
 ui:
-  theme: "dark:only" # Values: "system" | "light" | "dark" | "light:only" | "dark:only"
+  theme: 'dark:only' # Values: "system" | "light" | "dark" | "light:only" | "dark:only"
