@@ -1,7 +1,6 @@
 ---
 import Image from '~/components/common/Image.astro';
 
-import { SITE } from 'astrowind:config';
 const cubeImage = '~/assets/images/cube.gif';
 ---
 
@@ -10,7 +9,14 @@ const cubeImage = '~/assets/images/cube.gif';
   style="letter-spacing: 0.5px; top: 4px; margin-left: 4px;"
 >
   <span class="flex items-center md:text-[1.5em] text-[1em]">
-    <Image src={cubeImage} alt="VerfiedX" width={60} height={60} class="logo-cube mr-1 relative w-[30px] h-[30px] md:w-[60px] md:h-[60px]" style="top: -3px;" />
+    <Image
+      src={cubeImage}
+      alt="VerfiedX"
+      width={60}
+      height={60}
+      class="logo-cube mr-1 relative w-[30px] h-[30px] md:w-[60px] md:h-[60px]"
+      style="top: -3px;"
+    />
     Verified<span class="text-vfx-blue font-semibold" style="font-size: 1.12em; position: relative; top: -1px;">X</span>
   </span>
 </div>

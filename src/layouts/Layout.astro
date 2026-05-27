@@ -87,21 +87,26 @@ const { language, textDirection } = I18N;
           }, 2500);
         }
 
-        document.addEventListener('click', (e) => {
-          const link = (e.target as HTMLElement).closest('a');
-          if (!link) return;
+        document.addEventListener(
+          'click',
+          (e) => {
+            const link = (e.target as HTMLElement).closest('a');
+            if (!link) return;
 
-          const text = link.textContent?.trim() || '';
-          const href = link.getAttribute('href') || '';
+            const text = link.textContent?.trim() || '';
+            const href = link.getAttribute('href') || '';
 
-          const isActivatingSoon = (text.includes('PulseXAI') || text.includes('Prism')) && (href === '#' || href === '');
-          if (isActivatingSoon) {
-            e.preventDefault();
-            e.stopPropagation();
-            showToast(`${text.includes('Prism') ? 'Prism Privacy' : 'PulseXAI'} is activating soon`);
-            return false;
-          }
-        }, true);
+            const isActivatingSoon =
+              (text.includes('PulseXAI') || text.includes('Prism')) && (href === '#' || href === '');
+            if (isActivatingSoon) {
+              e.preventDefault();
+              e.stopPropagation();
+              showToast(`${text.includes('Prism') ? 'Prism Privacy' : 'PulseXAI'} is activating soon`);
+              return false;
+            }
+          },
+          true
+        );
       }
 
       // Run on initial load
