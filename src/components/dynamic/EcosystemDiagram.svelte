@@ -196,7 +196,7 @@
         <div class="chips">
           <div class="chip chip-purple">
             <svg viewBox="0 0 24 24" fill="none" width="18" height="18"><path d="M12 12C10 8 6 5 3 6c0 3 2 6 5 7.5C6 15 5 17 5 19c2.5 0 5-2 7-4.5 2 2.5 4.5 4.5 7 4.5 0-2-1-4-3-5.5C19 12 21 9 21 6c-3-1-7 2-9 6z" fill="currentColor"/></svg>
-            Butterfly
+            BFLY
           </div>
           <div class="chip chip-purple">
             <svg viewBox="0 0 24 24" fill="none" width="18" height="18"><rect x="2" y="6" width="20" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M16 13a1 1 0 1 1 2 0 1 1 0 0 1-2 0z" fill="currentColor"/><path d="M2 9h20" stroke="currentColor" stroke-width="1.5"/></svg>
