@@ -9,6 +9,7 @@ These pages are needed to fill remaining placeholder links on the marketing site
 **Purpose:** Central page for accessing all VerifiedX applications and wallet downloads. This consolidates the existing download section from the current live site into a single docs page.
 
 **Should include:**
+
 - SwitchBlade Wallet downloads (MacOS ARM, MacOS Intel, Windows)
 - Web Wallet launch link (`https://wallet.verifiedx.io`)
 - CLI download link
@@ -17,12 +18,14 @@ These pages are needed to fill remaining placeholder links on the marketing site
 - Butterfly launch link (`https://www.befree.io`)
 
 **Existing download URLs (from current site):**
+
 - MacOS ARM: `https://github.com/VerifiedXBlockchain/VerifiedX-GUI/releases/download/5.3.0/VFX-OSX-ARM-Installer.dmg`
 - MacOS Intel: `https://github.com/VerifiedXBlockchain/VerifiedX-GUI/releases/download/5.3.0/VFX-OSX-Intel-Installer.dmg`
 - Windows: `https://github.com/VerifiedXBlockchain/VerifiedX-GUI/releases/download/5.3.0/VFXWalletSetup-64.exe`
 - CLI: `https://github.com/VerifiedXBlockchain/VerifiedX-Core/releases/tag/beta5.3.0`
 
 **Linked from (marketing site):**
+
 - "Launch Application" button (Use Bitcoin as Financial Capital > Send Global Payments)
 - "Applications" button (Closing CTA)
 
@@ -33,6 +36,7 @@ These pages are needed to fill remaining placeholder links on the marketing site
 **Purpose:** Overview page targeting institutional users — custody integration, infrastructure, compliance, and onboarding information. Copy is TBD but let's get the page setup.
 
 **Linked from (marketing site):**
+
 - "Institutional Infrastructure" button (Hero > Institutions)
 - "Institutions" link (Header > Solutions dropdown)
 - "Institutional Solutions" button (Institutional-Grade Infrastructure section)
@@ -46,6 +50,7 @@ These pages are needed to fill remaining placeholder links on the marketing site
 **Purpose:** Technical/business page on integrating custody solutions with VerifiedX and vBTC.
 
 **Linked from (marketing site):**
+
 - "Custody Integration" button (vBTC / Unlock section > Institutional)
 
 ---
@@ -57,6 +62,7 @@ These pages are needed to fill remaining placeholder links on the marketing site
 **Purpose:** Landing page for vBTC — a blurb explaining what vBTC is and how it works, then links out to the various vBTC-related docs pages for deeper dives.
 
 **Should link to:**
+
 - vBTC DeFi overview: `https://docs.verifiedx.io/docs/documents/vbtc-defi`
 - vBTC One Sheet: `https://docs.verifiedx.io/docs/documents/vbtc-one-sheet`
 - vBTC Institutional: `https://docs.verifiedx.io/docs/documents/vbtc-institutional`
@@ -68,6 +74,7 @@ These pages are needed to fill remaining placeholder links on the marketing site
 - Custody Integration page (page 3 above, once created)
 
 **Linked from (marketing site):**
+
 - "vBTC" link (Header > Products dropdown)
 - "vBTC" link (Footer > Products)
 - "Learn About vBTC" button (Use Bitcoin as Financial Capital)
@@ -81,6 +88,7 @@ These pages are needed to fill remaining placeholder links on the marketing site
 **Purpose:** Foundation/company overview — mission, team, story. Copy is TBD but let's get the page setup.
 
 **Linked from (marketing site):**
+
 - "About" link (Footer > Foundation)
 
 ---

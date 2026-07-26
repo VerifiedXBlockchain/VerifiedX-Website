@@ -6,7 +6,7 @@ export const en = {
     products_vbtc: 'vBTC',
     products_prism: 'Prism Privacy',
     products_switchblade: 'SwitchBlade Wallet',
-    products_butterfly: 'Butterfly',
+    products_butterfly: 'BFLY',
     products_pulsexai: 'PulseXAI',
     solutions_everyday: 'Everyday Users',
     solutions_institutions: 'Institutions',
@@ -14,7 +14,7 @@ export const en = {
     resources_docs: 'Docs',
     resources_security: 'Security',
     resources_github: 'GitHub',
-    action_open_butterfly: 'Open Butterfly',
+    action_open_butterfly: 'Open BFLY',
     action_open_pulsexai: 'Open PulseXAI',
     action_open_switchblade: 'Open SwitchBlade',
     action_start_building: 'Start Building',
@@ -28,13 +28,13 @@ export const en = {
 
   announcement: {
     badge_new: 'NEW',
-    switchblade_release: 'SwitchBlade Wallet v5.3.0 now available »',
+    switchblade_release: 'SwitchBlade Wallet v6.0.5 now available »',
     block_height: 'Current Block Height:',
   },
 
   footer: {
     tagline:
-      'VerifiedX is the financial operating system that turns Bitcoin into programmable financial capital.',
+      'VerifiedX is the financial operating system that turns Bitcoin into programmable financial capital and activates tokenized intelligent assets for the emerging agentic economy.',
     section_products: 'Products',
     section_solutions: 'Solutions',
     section_resources: 'Resources',
@@ -54,14 +54,18 @@ export const en = {
   hero: {
     heading_prefix: 'The Financial Operating System for ',
     heading_bitcoin: 'Bitcoin',
+    heading_sep1: ', ',
+    heading_intelligent: 'Intelligent Assets',
+    heading_sep2: ', and the ',
+    heading_agentic: 'Emerging Agentic Economy',
     tagline:
-      'VerifiedX is the financial operating system that turns Bitcoin into programmable financial capital.',
+      'VerifiedX is the financial operating system that turns Bitcoin into programmable financial capital and activates tokenized intelligent assets for the emerging agentic economy.',
     description:
       'Payments, decentralized finance, tokenized assets, recovery vaulting, and the emerging agentic economy powered by a self-custodial network.',
     group_individuals: 'Individuals',
     group_institutions: 'Institutions',
     group_developers: 'Developers',
-    cta_open_butterfly: 'Open Butterfly',
+    cta_open_butterfly: 'Open BFLY',
     cta_open_pulsexai: 'Open PulseXAI',
     cta_download_wallet: 'Download Wallet',
     cta_institutional_infra: 'Institutional Infrastructure',
@@ -84,8 +88,7 @@ export const en = {
 
   partners: {
     heading: 'Ecosystem Partners & Integrations',
-    subheading:
-      'Trusted by leading infrastructure providers, custody platforms, and institutional partners.',
+    subheading: 'Trusted by leading infrastructure providers, custody platforms, and institutional partners.',
   },
 
   home: {
@@ -105,8 +108,7 @@ export const en = {
     capital_own_desc: 'Self-custodial wallets ensure users control their assets.',
     capital_own_cta: 'Download Wallet',
     capital_build_title: 'Build Financial Applications',
-    capital_build_desc:
-      'Developers can build financial tools, marketplaces, and decentralized apps.',
+    capital_build_desc: 'Developers can build financial tools, marketplaces, and decentralized apps.',
     capital_build_cta: 'Developer Docs',
 
     vbtc_heading_prefix: 'Unlock the Financial Utility of ',
@@ -121,15 +123,14 @@ export const en = {
     vbtc_custody: 'Custody Integration',
 
     apps_heading: 'Self-Custodial Financial Applications',
-    apps_butterfly_title: 'Butterfly',
+    apps_butterfly_title: 'BFLY',
     apps_butterfly_desc: 'Global payments and earning powered by the VerifiedX network.',
-    apps_butterfly_cta: 'Open Butterfly',
+    apps_butterfly_cta: 'Open BFLY',
     apps_switchblade_title: 'SwitchBlade Wallet',
     apps_switchblade_desc: 'Native wallet for interacting with VerifiedX and vBTC.',
     apps_switchblade_cta: 'Open Wallet',
     apps_pulsexai_title: 'PulseXAI: Tokenized Intelligence',
-    apps_pulsexai_desc:
-      'Tokenized AI agents and markets executing strategies with generative intelligence.',
+    apps_pulsexai_desc: 'Tokenized AI agents and markets executing strategies with generative intelligence.',
     apps_pulsexai_cta: 'Open PulseXAI',
 
     how_heading: 'How It All Connects',
@@ -153,9 +154,10 @@ export const en = {
 
     cta_heading: 'The Future of Self-Custodial Finance',
     cta_body_brand: 'VerifiedX',
-    cta_body_middle: ' is building the infrastructure that enables ',
+    cta_body_middle: ' is the infrastructure that enables ',
     cta_body_bitcoin: 'Bitcoin',
-    cta_body_suffix: ' to power a global self-custodial financial ecosystem.',
+    cta_body_suffix:
+      ' and intelligent assets to be programmable and power a global self-custodial financial ecosystem.',
     cta_applications: 'Applications',
     cta_start_building: 'Start Building',
     cta_infrastructure: 'Institutional Infrastructure',
@@ -211,4 +213,10 @@ export const en = {
   },
 } as const;
 
-export type TranslationSchema = typeof en;
+/**
+ * Schema = the key tree of `en` with every leaf widened from its literal
+ * to `string`, so translations can differ from the English values while
+ * still being checked for missing/extra keys.
+ */
+type DeepStringify<T> = { [K in keyof T]: T[K] extends string ? string : DeepStringify<T[K]> };
+export type TranslationSchema = DeepStringify<typeof en>;

@@ -13,8 +13,14 @@ const t = useTranslations(locale);
       <div class="grid md:grid-cols-2 gap-12 md:gap-16 items-center">
         <!-- Left Side: Copy + Button Groups -->
         <div class="intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade">
-          <h1 class="text-4xl md:text-5xl font-bold font-heading dark:text-gray-200 leading-tight tracking-tight mb-6">
-            {t('hero.heading_prefix')}<span class="text-primary">{t('hero.heading_bitcoin')}</span>
+          <h1
+            class="text-3xl md:text-[2.5rem] font-bold font-heading dark:text-gray-200 leading-[1.15] tracking-tight mb-6"
+          >
+            {t('hero.heading_prefix')}<span class="text-primary">{t('hero.heading_bitcoin')}</span>{
+              t('hero.heading_sep1')
+            }<span class="text-vfx-blue">{t('hero.heading_intelligent')}</span>{t('hero.heading_sep2')}<span
+              class="text-vfx-green">{t('hero.heading_agentic')}</span
+            >
           </h1>
 
           <p class="text-xl text-muted mb-4">
@@ -27,29 +33,48 @@ const t = useTranslations(locale);
 
           <!-- Button Group: Individuals -->
           <div class="mb-6">
-            <p class="text-xs uppercase tracking-widest text-gray-500 mb-2 font-semibold">{t('hero.group_individuals')}</p>
+            <p class="text-xs uppercase tracking-widest text-gray-500 mb-2 font-semibold">
+              {t('hero.group_individuals')}
+            </p>
             <div class="flex flex-wrap gap-2">
-              <Button variant="blue" href="https://www.befree.io" target="_blank">{t('hero.cta_open_butterfly')}</Button>
+              <Button variant="blue" href="https://www.befree.io" target="_blank">{t('hero.cta_open_butterfly')}</Button
+              >
               <Button variant="secondary" href="#" target="_blank">{t('hero.cta_open_pulsexai')}</Button>
-              <Button variant="secondary" href={externalLinks.webWallet} target="_blank">{t('hero.cta_download_wallet')}</Button>
+              <Button variant="secondary" href={externalLinks.webWallet} target="_blank"
+                >{t('hero.cta_download_wallet')}</Button
+              >
             </div>
           </div>
 
           <!-- Button Group: Institutions -->
           <div class="mb-6">
-            <p class="text-xs uppercase tracking-widest text-gray-500 mb-2 font-semibold">{t('hero.group_institutions')}</p>
+            <p class="text-xs uppercase tracking-widest text-gray-500 mb-2 font-semibold">
+              {t('hero.group_institutions')}
+            </p>
             <div class="flex flex-wrap gap-2">
-              <Button variant="secondary" href="https://docs.verifiedx.io/docs/introduction/institutional" target="_blank">{t('hero.cta_institutional_infra')}</Button>
-              <Button variant="secondary" href="https://docs.verifiedx.io/docs/integration/vbtc" target="_blank">{t('hero.cta_integrate_vbtc')}</Button>
+              <Button
+                variant="secondary"
+                href="https://docs.verifiedx.io/docs/introduction/institutional"
+                target="_blank">{t('hero.cta_institutional_infra')}</Button
+              >
+              <Button variant="secondary" href="https://docs.verifiedx.io/docs/integration/vbtc" target="_blank"
+                >{t('hero.cta_integrate_vbtc')}</Button
+              >
             </div>
           </div>
 
           <!-- Button Group: Developers -->
           <div>
-            <p class="text-xs uppercase tracking-widest text-gray-500 mb-2 font-semibold">{t('hero.group_developers')}</p>
+            <p class="text-xs uppercase tracking-widest text-gray-500 mb-2 font-semibold">
+              {t('hero.group_developers')}
+            </p>
             <div class="flex flex-wrap gap-2">
-              <Button variant="secondary" href={externalLinks.docs} target="_blank">{t('hero.cta_start_building')}</Button>
-              <Button variant="secondary" href={externalLinks.githubOrg} target="_blank">{t('hero.cta_code_repo')}</Button>
+              <Button variant="secondary" href={externalLinks.docs} target="_blank"
+                >{t('hero.cta_start_building')}</Button
+              >
+              <Button variant="secondary" href={externalLinks.githubOrg} target="_blank"
+                >{t('hero.cta_code_repo')}</Button
+              >
             </div>
           </div>
         </div>

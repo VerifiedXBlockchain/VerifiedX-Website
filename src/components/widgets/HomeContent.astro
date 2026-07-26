@@ -44,36 +44,69 @@ const t = useTranslations(locale);
           title: t('home.capital_send_title'),
           description: t('home.capital_send_desc'),
           icon: 'tabler:send',
-          callToAction: { text: t('home.capital_send_cta'), href: 'https://www.befree.io', target: '_blank', class: 'text-sm px-3 md:px-4' },
-          classes: { icon: 'text-white bg-vfx-blue rounded-full w-10 h-10 p-2 md:w-12 md:h-12 md:p-3 mr-4 rtl:ml-4 rtl:mr-0' },
+          callToAction: {
+            text: t('home.capital_send_cta'),
+            href: 'https://www.befree.io',
+            target: '_blank',
+            class: 'text-sm px-3 md:px-4',
+          },
+          classes: {
+            icon: 'text-white bg-vfx-blue rounded-full w-10 h-10 p-2 md:w-12 md:h-12 md:p-3 mr-4 rtl:ml-4 rtl:mr-0',
+          },
         },
         {
           title: t('home.capital_yield_title'),
           description: t('home.capital_yield_desc'),
           icon: 'tabler:chart-line',
-          callToAction: { text: t('home.capital_yield_cta'), href: 'https://docs.verifiedx.io/docs/introduction/about-vbtc', target: '_blank', class: 'text-sm px-3 md:px-4' },
-          classes: { icon: 'text-white bg-primary rounded-full w-10 h-10 p-2 md:w-12 md:h-12 md:p-3 mr-4 rtl:ml-4 rtl:mr-0' },
+          callToAction: {
+            text: t('home.capital_yield_cta'),
+            href: 'https://docs.verifiedx.io/docs/introduction/about-vbtc',
+            target: '_blank',
+            class: 'text-sm px-3 md:px-4',
+          },
+          classes: {
+            icon: 'text-white bg-primary rounded-full w-10 h-10 p-2 md:w-12 md:h-12 md:p-3 mr-4 rtl:ml-4 rtl:mr-0',
+          },
         },
         {
           title: t('home.capital_private_title'),
           description: t('home.capital_private_desc'),
           icon: 'tabler:shield-lock',
-          callToAction: { text: t('home.capital_private_cta'), variant: 'secondary', class: 'text-sm px-3 md:px-4 opacity-50 pointer-events-none' },
-          classes: { icon: 'text-white bg-vfx-green rounded-full w-10 h-10 p-2 md:w-12 md:h-12 md:p-3 mr-4 rtl:ml-4 rtl:mr-0' },
+          callToAction: {
+            text: t('home.capital_private_cta'),
+            variant: 'secondary',
+            class: 'text-sm px-3 md:px-4 opacity-50 pointer-events-none',
+          },
+          classes: {
+            icon: 'text-white bg-vfx-green rounded-full w-10 h-10 p-2 md:w-12 md:h-12 md:p-3 mr-4 rtl:ml-4 rtl:mr-0',
+          },
         },
         {
           title: t('home.capital_own_title'),
           description: t('home.capital_own_desc'),
           icon: 'tabler:fingerprint',
-          callToAction: { text: t('home.capital_own_cta'), href: externalLinks.webWallet, class: 'text-sm px-3 md:px-4' },
-          classes: { icon: 'text-white bg-[#1e3a8a] rounded-full w-10 h-10 p-2 md:w-12 md:h-12 md:p-3 mr-4 rtl:ml-4 rtl:mr-0' },
+          callToAction: {
+            text: t('home.capital_own_cta'),
+            href: externalLinks.webWallet,
+            class: 'text-sm px-3 md:px-4',
+          },
+          classes: {
+            icon: 'text-white bg-[#1e3a8a] rounded-full w-10 h-10 p-2 md:w-12 md:h-12 md:p-3 mr-4 rtl:ml-4 rtl:mr-0',
+          },
         },
         {
           title: t('home.capital_build_title'),
           description: t('home.capital_build_desc'),
           icon: 'tabler:code',
-          callToAction: { text: t('home.capital_build_cta'), href: externalLinks.docs, target: '_blank', class: 'text-sm px-3 md:px-4' },
-          classes: { icon: 'text-white bg-vfx-purple rounded-full w-10 h-10 p-2 md:w-12 md:h-12 md:p-3 mr-4 rtl:ml-4 rtl:mr-0' },
+          callToAction: {
+            text: t('home.capital_build_cta'),
+            href: externalLinks.docs,
+            target: '_blank',
+            class: 'text-sm px-3 md:px-4',
+          },
+          classes: {
+            icon: 'text-white bg-vfx-purple rounded-full w-10 h-10 p-2 md:w-12 md:h-12 md:p-3 mr-4 rtl:ml-4 rtl:mr-0',
+          },
         },
       ]}
       columns={5}
@@ -105,16 +138,32 @@ const t = useTranslations(locale);
           <div>
             <p class="text-xs uppercase tracking-widest text-gray-500 mb-2 font-semibold">{t('home.vbtc_retail')}</p>
             <div class="flex flex-wrap gap-2">
-              <Button variant="primary" href="https://docs.verifiedx.io/docs/core/vbtc" target="_blank">{t('home.vbtc_mint')}</Button>
-              <Button variant="secondary" href="https://docs.verifiedx.io/docs/introduction/about-vbtc" target="_blank">{t('home.vbtc_how')}</Button>
+              <Button variant="primary" href="https://docs.verifiedx.io/docs/core/vbtc" target="_blank"
+                >{t('home.vbtc_mint')}</Button
+              >
+              <Button variant="secondary" href="https://docs.verifiedx.io/docs/introduction/about-vbtc" target="_blank"
+                >{t('home.vbtc_how')}</Button
+              >
             </div>
           </div>
 
           <div class="mt-4 md:mt-0">
-            <p class="text-xs uppercase tracking-widest text-gray-500 mb-2 font-semibold">{t('home.vbtc_institutional')}</p>
+            <p class="text-xs uppercase tracking-widest text-gray-500 mb-2 font-semibold">
+              {t('home.vbtc_institutional')}
+            </p>
             <div class="flex flex-wrap gap-2">
-              <Button variant="secondary" href="https://docs.verifiedx.io/docs/documents/vbtc-institutional" target="_blank" class="px-2 md:px-3">{t('home.vbtc_overview')}</Button>
-              <Button variant="secondary" href="https://docs.verifiedx.io/docs/introduction/custody-integration" target="_blank" class="px-2 md:px-3">{t('home.vbtc_custody')}</Button>
+              <Button
+                variant="secondary"
+                href="https://docs.verifiedx.io/docs/documents/vbtc-institutional"
+                target="_blank"
+                class="px-2 md:px-3">{t('home.vbtc_overview')}</Button
+              >
+              <Button
+                variant="secondary"
+                href="https://docs.verifiedx.io/docs/introduction/custody-integration"
+                target="_blank"
+                class="px-2 md:px-3">{t('home.vbtc_custody')}</Button
+              >
             </div>
           </div>
         </div>
@@ -216,9 +265,13 @@ const t = useTranslations(locale);
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-12 md:items-stretch">
       <!-- Left: Copy -->
-      <div class="intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade flex flex-col">
+      <div
+        class="intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade flex flex-col"
+      >
         <div class="styled-content-box p-5 flex-1">
-          <p class="text-xs uppercase tracking-widest text-gray-500 font-semibold mb-4">{t('home.security_subheading')}</p>
+          <p class="text-xs uppercase tracking-widest text-gray-500 font-semibold mb-4">
+            {t('home.security_subheading')}
+          </p>
           <ul class="space-y-4">
             <li class="flex items-start gap-3">
               <Icon name="tabler:shield-check" class="w-5 h-5 text-vfx-green flex-shrink-0 mt-0.5" />
@@ -246,11 +299,12 @@ const t = useTranslations(locale);
             </li>
           </ul>
         </div>
-
       </div>
 
       <!-- Right: Network Security Diagram -->
-      <div class="intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade md:flex md:flex-col">
+      <div
+        class="intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade md:flex md:flex-col"
+      >
         <div
           class="rounded-lg border border-gray-700 bg-[#0a0a0a] p-6 md:p-8 font-mono text-sm md:text-base shadow-2xl h-full flex flex-col"
         >
@@ -271,10 +325,18 @@ const t = useTranslations(locale);
     </div>
 
     <div class="flex flex-col sm:flex-row sm:flex-wrap gap-2 mt-8">
-      <Button variant="purple" href="https://docs.verifiedx.io/docs/core/security" target="_blank">{t('home.security_overview')}</Button>
-      <Button variant="secondary" href="https://docs.verifiedx.io/docs/documents/halborn-audit" target="_blank">{t('home.security_audit_reports')}</Button>
-      <Button variant="secondary" href={externalLinks.validatingDocs} target="_blank">{t('home.security_run_validator')}</Button>
-      <Button variant="secondary" href="https://ecosystem.verifiedx.io" target="_blank">{t('home.security_institutional')}</Button>
+      <Button variant="purple" href="https://docs.verifiedx.io/docs/core/security" target="_blank"
+        >{t('home.security_overview')}</Button
+      >
+      <Button variant="secondary" href="https://docs.verifiedx.io/docs/documents/halborn-audit" target="_blank"
+        >{t('home.security_audit_reports')}</Button
+      >
+      <Button variant="secondary" href={externalLinks.validatingDocs} target="_blank"
+        >{t('home.security_run_validator')}</Button
+      >
+      <Button variant="secondary" href="https://ecosystem.verifiedx.io" target="_blank"
+        >{t('home.security_institutional')}</Button
+      >
     </div>
   </WidgetWrapper>
 </section>
@@ -299,12 +361,18 @@ const t = useTranslations(locale);
       {t('home.cta_heading')}
     </h2>
     <p class="text-xl text-muted max-w-3xl mx-auto mb-10">
-      <span class="text-vfx-blue font-semibold">{t('home.cta_body_brand')}</span>{t('home.cta_body_middle')}<span class="text-btc font-semibold">{t('home.cta_body_bitcoin')}</span>{t('home.cta_body_suffix')}
+      <span class="text-vfx-blue font-semibold">{t('home.cta_body_brand')}</span>{t('home.cta_body_middle')}<span
+        class="text-btc font-semibold">{t('home.cta_body_bitcoin')}</span
+      >{t('home.cta_body_suffix')}
     </p>
     <div class="flex flex-wrap justify-center gap-3">
-      <Button variant="blue" href="https://docs.verifiedx.io/docs/introduction/applications" target="_blank">{t('home.cta_applications')}</Button>
+      <Button variant="blue" href="https://docs.verifiedx.io/docs/introduction/applications" target="_blank"
+        >{t('home.cta_applications')}</Button
+      >
       <Button variant="secondary" href={externalLinks.docs} target="_blank">{t('home.cta_start_building')}</Button>
-      <Button variant="secondary" href="https://docs.verifiedx.io/docs/introduction/custody-integration" target="_blank">{t('home.cta_infrastructure')}</Button>
+      <Button variant="secondary" href="https://docs.verifiedx.io/docs/introduction/custody-integration" target="_blank"
+        >{t('home.cta_infrastructure')}</Button
+      >
     </div>
   </WidgetWrapper>
 </section>

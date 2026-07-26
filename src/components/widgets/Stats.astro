@@ -1,8 +1,6 @@
 ---
 import type { Stats as Props } from '~/types';
 import WidgetWrapper from '../ui/WidgetWrapper.astro';
-import { Icon } from 'astro-icon/components';
-import Button from '~/components/ui/Button.astro';
 
 const { stats = [], id, isDark = false, classes = {}, bg = await Astro.slots.render('bg') } = Astro.props;
 ---

@@ -37,23 +37,22 @@ const locale = getLocaleFromPath(new URL(Astro.url).pathname);
       // any other path '/foo' maps to '/es/foo'.
       (function () {
         try {
-          var path = window.location.pathname || '/';
+          const path = window.location.pathname || '/';
           if (path === '/es' || path.indexOf('/es/') === 0) return; // already Spanish
-          var cookie = document.cookie.match(/(?:^|;\s*)locale_pref=([^;]+)/);
-          var pref =
-            (cookie && decodeURIComponent(cookie[1])) ||
-            (window.localStorage && localStorage.getItem('locale_pref'));
+          const cookie = document.cookie.match(/(?:^|;\s*)locale_pref=([^;]+)/);
+          const pref =
+            (cookie && decodeURIComponent(cookie[1])) || (window.localStorage && localStorage.getItem('locale_pref'));
           if (pref === 'en') return; // user picked English explicitly
-          var target = path === '/' ? '/es' : '/es' + path;
+          const target = path === '/' ? '/es' : '/es' + path;
           if (pref === 'es') {
             window.location.replace(target);
             return;
           }
-          var navLang = (navigator.language || (navigator.languages && navigator.languages[0]) || '').toLowerCase();
+          const navLang = (navigator.language || (navigator.languages && navigator.languages[0]) || '').toLowerCase();
           if (navLang.indexOf('es') === 0) {
             window.location.replace(target);
           }
-        } catch (_) {
+        } catch {
           // Any storage/navigator access error → leave the user on the default route.
         }
       })();
@@ -117,21 +116,26 @@ const locale = getLocaleFromPath(new URL(Astro.url).pathname);
           }, 2500);
         }
 
-        document.addEventListener('click', (e) => {
-          const link = (e.target as HTMLElement).closest('a');
-          if (!link) return;
+        document.addEventListener(
+          'click',
+          (e) => {
+            const link = (e.target as HTMLElement).closest('a');
+            if (!link) return;
 
-          const text = link.textContent?.trim() || '';
-          const href = link.getAttribute('href') || '';
+            const text = link.textContent?.trim() || '';
+            const href = link.getAttribute('href') || '';
 
-          const isActivatingSoon = (text.includes('PulseXAI') || text.includes('Prism')) && (href === '#' || href === '');
-          if (isActivatingSoon) {
-            e.preventDefault();
-            e.stopPropagation();
-            showToast(`${text.includes('Prism') ? 'Prism Privacy' : 'PulseXAI'} is activating soon`);
-            return false;
-          }
-        }, true);
+            const isActivatingSoon =
+              (text.includes('PulseXAI') || text.includes('Prism')) && (href === '#' || href === '');
+            if (isActivatingSoon) {
+              e.preventDefault();
+              e.stopPropagation();
+              showToast(`${text.includes('Prism') ? 'Prism Privacy' : 'PulseXAI'} is activating soon`);
+              return false;
+            }
+          },
+          true
+        );
       }
 
       // Run on initial load

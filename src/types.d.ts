@@ -193,7 +193,7 @@ export interface Disclaimer {
 
 // COMPONENTS
 export interface CallToAction extends Omit<HTMLAttributes<'a'>, 'slot'> {
-  variant?: 'primary' | 'secondary' | 'tertiary' | 'link' | 'outline-dark' | 'btc';
+  variant?: 'primary' | 'secondary' | 'tertiary' | 'link' | 'outline-dark' | 'btc' | 'blue' | 'green' | 'purple';
   text?: string;
   icon?: string;
   classes?: Record<string, string>;
@@ -235,7 +235,6 @@ export interface Hero extends Omit<Headline, 'classes'>, Omit<Widget, 'isDark' |
   actions?: string | CallToAction[];
   image?: string | unknown;
   stats?: string;
-
 }
 
 export interface Team extends Omit<Headline, 'classes'>, Widget {
@@ -306,15 +305,13 @@ export interface Content extends Omit<Headline, 'classes'>, Widget {
   callToAction?: CallToAction;
 }
 
-export interface Contact extends Omit<Headline, 'classes'>, Form, Widget { }
-
+export interface Contact extends Omit<Headline, 'classes'>, Form, Widget {}
 
 export interface ZoomableImage {
   url: string;
   title: string;
   description: string;
 }
-
 
 export interface ZoomableImageGallery {
   images: ZoomableImage[];

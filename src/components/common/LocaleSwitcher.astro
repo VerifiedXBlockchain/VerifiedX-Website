@@ -21,9 +21,7 @@ const t = useTranslations(active);
         data-locale-switch={loc}
         class:list={[
           'rounded-full px-2 py-0.5 tracking-wider uppercase transition-colors',
-          loc === active
-            ? 'bg-vfx-blue/80 text-white'
-            : 'text-gray-400 hover:text-white hover:bg-gray-700/50',
+          loc === active ? 'bg-vfx-blue/80 text-white' : 'text-gray-400 hover:text-white hover:bg-gray-700/50',
         ]}
       >
         {loc === 'en' ? t('nav.switcher_en') : t('nav.switcher_es')}
@@ -41,7 +39,7 @@ const t = useTranslations(active);
         const choice = el.getAttribute('data-locale-switch');
         document.cookie = `locale_pref=${choice}; path=/; max-age=31536000; samesite=lax`;
         localStorage.setItem('locale_pref', choice);
-      } catch (_) {
+      } catch {
         // storage may be disabled; the link still navigates correctly.
       }
     });

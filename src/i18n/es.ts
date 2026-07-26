@@ -14,7 +14,7 @@ export const es: TranslationSchema = {
     products_vbtc: 'vBTC',
     products_prism: 'Prism Privacy',
     products_switchblade: 'SwitchBlade Wallet',
-    products_butterfly: 'Butterfly',
+    products_butterfly: 'BFLY',
     products_pulsexai: 'PulseXAI',
     solutions_everyday: 'Usuarios',
     solutions_institutions: 'Instituciones',
@@ -22,7 +22,7 @@ export const es: TranslationSchema = {
     resources_docs: 'Documentación',
     resources_security: 'Seguridad',
     resources_github: 'GitHub',
-    action_open_butterfly: 'Abrir Butterfly',
+    action_open_butterfly: 'Abrir BFLY',
     action_open_pulsexai: 'Abrir PulseXAI',
     action_open_switchblade: 'Abrir SwitchBlade',
     action_start_building: 'Empezar a construir',
@@ -36,13 +36,13 @@ export const es: TranslationSchema = {
 
   announcement: {
     badge_new: 'NUEVO',
-    switchblade_release: 'SwitchBlade Wallet v5.3.0 ya disponible »',
+    switchblade_release: 'SwitchBlade Wallet v6.0.5 ya disponible »',
     block_height: 'Altura de bloque actual:',
   },
 
   footer: {
     tagline:
-      'VerifiedX es el sistema operativo financiero que convierte a Bitcoin en capital financiero programable.',
+      'VerifiedX es el sistema operativo financiero que convierte a Bitcoin en capital financiero programable y habilita activos inteligentes tokenizados para la emergente economía de agentes.',
     section_products: 'Productos',
     section_solutions: 'Soluciones',
     section_resources: 'Recursos',
@@ -62,14 +62,18 @@ export const es: TranslationSchema = {
   hero: {
     heading_prefix: 'El sistema operativo financiero para ',
     heading_bitcoin: 'Bitcoin',
+    heading_sep1: ', ',
+    heading_intelligent: 'activos inteligentes',
+    heading_sep2: ' y la ',
+    heading_agentic: 'emergente economía de agentes',
     tagline:
-      'VerifiedX es el sistema operativo financiero que convierte a Bitcoin en capital financiero programable.',
+      'VerifiedX es el sistema operativo financiero que convierte a Bitcoin en capital financiero programable y habilita activos inteligentes tokenizados para la emergente economía de agentes.',
     description:
       'Pagos, finanzas descentralizadas, activos tokenizados, recuperación segura y la emergente economía de agentes, impulsados por una red autocustodial.',
     group_individuals: 'Personas',
     group_institutions: 'Instituciones',
     group_developers: 'Desarrolladores',
-    cta_open_butterfly: 'Abrir Butterfly',
+    cta_open_butterfly: 'Abrir BFLY',
     cta_open_pulsexai: 'Abrir PulseXAI',
     cta_download_wallet: 'Descargar billetera',
     cta_institutional_infra: 'Infraestructura institucional',
@@ -129,15 +133,14 @@ export const es: TranslationSchema = {
     vbtc_custody: 'Integración de custodia',
 
     apps_heading: 'Aplicaciones financieras autocustodiales',
-    apps_butterfly_title: 'Butterfly',
+    apps_butterfly_title: 'BFLY',
     apps_butterfly_desc: 'Pagos globales y generación de rendimiento sobre la red VerifiedX.',
-    apps_butterfly_cta: 'Abrir Butterfly',
+    apps_butterfly_cta: 'Abrir BFLY',
     apps_switchblade_title: 'SwitchBlade Wallet',
     apps_switchblade_desc: 'Billetera nativa para interactuar con VerifiedX y vBTC.',
     apps_switchblade_cta: 'Abrir billetera',
     apps_pulsexai_title: 'PulseXAI: Inteligencia tokenizada',
-    apps_pulsexai_desc:
-      'Agentes de IA y mercados tokenizados que ejecutan estrategias con inteligencia generativa.',
+    apps_pulsexai_desc: 'Agentes de IA y mercados tokenizados que ejecutan estrategias con inteligencia generativa.',
     apps_pulsexai_cta: 'Abrir PulseXAI',
 
     how_heading: 'Cómo se conecta todo',
@@ -161,9 +164,10 @@ export const es: TranslationSchema = {
 
     cta_heading: 'El futuro de las finanzas autocustodiales',
     cta_body_brand: 'VerifiedX',
-    cta_body_middle: ' está construyendo la infraestructura que permite a ',
+    cta_body_middle: ' es la infraestructura que permite que ',
     cta_body_bitcoin: 'Bitcoin',
-    cta_body_suffix: ' impulsar un ecosistema financiero autocustodial global.',
+    cta_body_suffix:
+      ' y los activos inteligentes sean programables e impulsen un ecosistema financiero autocustodial global.',
     cta_applications: 'Aplicaciones',
     cta_start_building: 'Empezar a construir',
     cta_infrastructure: 'Infraestructura institucional',

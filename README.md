@@ -1,8 +1,5 @@
 # VerifiedX-Website
 
-
-
-
 ### Project structure
 
 Inside the root of the project, you'll see the following folders and files:
@@ -184,7 +181,6 @@ prefer.
 
 <br>
 
-
 <br>
 
 ## Related projects
@@ -196,4 +192,3 @@ prefer.
 
 If you have any ideas, suggestions or find any bugs, feel free to open a discussion, an issue or create a pull request.
 That would be very useful for all of us and we would be happy to listen and take action.
-
