@@ -70,7 +70,7 @@ const t = useTranslations(locale);
         'md:flex md:justify-between': position !== 'center',
       },
       {
-        'md:grid md:grid-cols-3 md:items-center': position === 'center',
+        'md:grid md:grid-cols-[auto_auto_1fr] md:items-center': position === 'center',
       },
       {
         'max-w-7xl': !isFullWidth,
@@ -87,7 +87,7 @@ const t = useTranslations(locale);
       </div>
     </div>
     <nav
-      class="items-center w-full md:w-auto hidden md:flex md:mx-5 text-default overflow-y-auto overflow-x-hidden md:overflow-y-visible md:overflow-x-auto md:justify-self-center"
+      class="items-center w-full md:w-auto hidden md:flex md:ml-2 md:mr-3 text-default overflow-y-auto overflow-x-hidden md:overflow-y-visible md:overflow-x-auto md:justify-self-start"
       aria-label={t('nav.aria_main')}
     >
       <ul
@@ -174,7 +174,7 @@ const t = useTranslations(locale);
             ''
           )
         }
-        <span class="ml-2 rtl:ml-0 rtl:mr-2 flex-shrink-0">
+        <span class="hidden md:inline-flex ml-3 rtl:ml-0 rtl:mr-3 flex-shrink-0">
           <LocaleSwitcher />
         </span>
       </div>

@@ -34,7 +34,7 @@ export function stripLocale(pathname: string): string {
 export function localizePath(pathname: string, locale: Locale): string {
   const base = stripLocale(pathname);
   if (locale === defaultLocale) return base;
-  return base === '/' ? `/${locale}/` : `/${locale}${base}`;
+  return base === '/' ? `/${locale}` : `/${locale}${base}`;
 }
 
 type NestedKeyOf<T> = {
