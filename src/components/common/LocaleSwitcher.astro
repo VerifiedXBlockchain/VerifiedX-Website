@@ -1,0 +1,47 @@
+---
+import { getLocaleFromPath, localizePath, locales, useTranslations } from '~/i18n';
+
+const pathname = new URL(Astro.url).pathname;
+const active = getLocaleFromPath(pathname);
+const t = useTranslations(active);
+---
+
+<div
+  class="locale-switcher inline-flex items-center gap-0.5 rounded-full border border-gray-700/60 bg-black/30 px-0.5 py-0.5 text-xs font-semibold"
+  role="group"
+  aria-label={t('nav.switcher_aria')}
+>
+  {
+    locales.map((loc) => (
+      <a
+        href={localizePath(pathname, loc)}
+        hreflang={loc}
+        aria-label={loc === 'en' ? t('nav.switcher_en_long') : t('nav.switcher_es_long')}
+        aria-current={loc === active ? 'true' : undefined}
+        data-locale-switch={loc}
+        class:list={[
+          'rounded-full px-2 py-0.5 tracking-wider uppercase transition-colors',
+          loc === active ? 'bg-vfx-blue/80 text-white' : 'text-gray-400 hover:text-white hover:bg-gray-700/50',
+        ]}
+      >
+        {loc === 'en' ? t('nav.switcher_en') : t('nav.switcher_es')}
+      </a>
+    ))
+  }
+</div>
+
+<script is:inline>
+  // Persist explicit choice so the first-visit browser detection in BasicScripts
+  // doesn't bounce the user back after they've made a selection.
+  document.querySelectorAll('[data-locale-switch]').forEach((el) => {
+    el.addEventListener('click', () => {
+      try {
+        const choice = el.getAttribute('data-locale-switch');
+        document.cookie = `locale_pref=${choice}; path=/; max-age=31536000; samesite=lax`;
+        localStorage.setItem('locale_pref', choice);
+      } catch {
+        // storage may be disabled; the link still navigates correctly.
+      }
+    });
+  });
+</script>

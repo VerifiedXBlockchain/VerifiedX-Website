@@ -11,6 +11,7 @@ import Metadata from '~/components/common/Metadata.astro';
 import SiteVerification from '~/components/common/SiteVerification.astro';
 import Analytics from '~/components/common/Analytics.astro';
 import BasicScripts from '~/components/common/BasicScripts.astro';
+import { getLocaleFromPath } from '~/i18n';
 
 // Comment the line below to disable View Transitions
 import { ClientRouter } from 'astro:transitions';
@@ -22,12 +23,40 @@ export interface Props {
 }
 
 const { metadata = {} } = Astro.props;
-const { language, textDirection } = I18N;
+const { textDirection } = I18N;
+const locale = getLocaleFromPath(new URL(Astro.url).pathname);
 ---
 
 <!doctype html>
-<html lang={language} dir={textDirection} class="2xl:text-[20px]">
+<html lang={locale} dir={textDirection} class="2xl:text-[20px]">
   <head>
+    <script is:inline>
+      // First-visit locale redirect. Runs synchronously before paint so the user
+      // doesn't see the English version flash. Astro's i18n routing uses /es
+      // (no trailing slash) as the Spanish root, so root '/' maps to '/es' and
+      // any other path '/foo' maps to '/es/foo'.
+      (function () {
+        try {
+          const path = window.location.pathname || '/';
+          if (path === '/es' || path.indexOf('/es/') === 0) return; // already Spanish
+          const cookie = document.cookie.match(/(?:^|;\s*)locale_pref=([^;]+)/);
+          const pref =
+            (cookie && decodeURIComponent(cookie[1])) || (window.localStorage && localStorage.getItem('locale_pref'));
+          if (pref === 'en') return; // user picked English explicitly
+          const target = path === '/' ? '/es' : '/es' + path;
+          if (pref === 'es') {
+            window.location.replace(target);
+            return;
+          }
+          const navLang = (navigator.language || (navigator.languages && navigator.languages[0]) || '').toLowerCase();
+          if (navLang.indexOf('es') === 0) {
+            window.location.replace(target);
+          }
+        } catch {
+          // Any storage/navigator access error → leave the user on the default route.
+        }
+      })();
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link

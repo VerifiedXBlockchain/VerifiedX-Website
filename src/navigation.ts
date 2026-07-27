@@ -1,3 +1,5 @@
+import { useTranslations, type Locale } from '~/i18n';
+
 const DOCS_BASE_URL = 'https://docs.verifiedx.io';
 
 export const externalLinks = {
@@ -36,87 +38,90 @@ export const externalLinks = {
   email: 'mailto:info@verifiedx.io',
 };
 
-export const headerData = {
-  links: [
-    {
-      text: 'Products',
-      links: [
-        { text: 'vBTC', href: `${DOCS_BASE_URL}/docs/introduction/about-vbtc`, color: '#f7931a' },
-        { text: 'Prism Privacy', href: '#', color: '#a78bfa' },
-        { text: 'SwitchBlade Wallet', href: externalLinks.webWallet, color: '#73C4FA' },
-        { text: 'BFLY', href: 'https://www.befree.io', color: '#34d399' },
-        { text: 'PulseXAI', href: '#', color: '#f7931a' },
-      ],
-    },
-    {
-      text: 'Solutions',
-      links: [
-        { text: 'Everyday Users', href: `${DOCS_BASE_URL}/docs/tutorials/video-tutorials/` },
-        { text: 'Institutions', href: `${DOCS_BASE_URL}/docs/introduction/institutional` },
-        { text: 'Developers', href: `${DOCS_BASE_URL}/docs/integration/` },
-      ],
-    },
-    {
-      text: 'Resources',
-      links: [
-        { text: 'Docs', href: externalLinks.docs },
-        { text: 'Security', href: `${DOCS_BASE_URL}/docs/documents/` },
-        { text: 'GitHub', href: externalLinks.githubOrg },
-      ],
-    },
-  ],
-  actions: [
-    { text: 'Open BFLY', href: 'https://www.befree.io', target: '_blank' },
-    { text: 'Open PulseXAI', href: '#', target: '_blank' },
-    { text: 'Open SwitchBlade', href: externalLinks.webWallet, target: '_blank' },
-    { text: 'Start Building', href: externalLinks.docs, target: '_blank' },
-  ],
+export const getHeaderData = (locale: Locale) => {
+  const t = useTranslations(locale);
+  return {
+    links: [
+      {
+        text: t('nav.products'),
+        links: [
+          { text: t('nav.products_vbtc'), href: `${DOCS_BASE_URL}/docs/introduction/about-vbtc`, color: '#f7931a' },
+          { text: t('nav.products_prism'), href: '#', color: '#a78bfa' },
+          { text: t('nav.products_switchblade'), href: externalLinks.webWallet, color: '#73C4FA' },
+          { text: t('nav.products_butterfly'), href: 'https://www.befree.io', color: '#34d399' },
+          { text: t('nav.products_pulsexai'), href: '#', color: '#f7931a' },
+        ],
+      },
+      {
+        text: t('nav.solutions'),
+        links: [
+          { text: t('nav.solutions_everyday'), href: `${DOCS_BASE_URL}/docs/tutorials/video-tutorials/` },
+          { text: t('nav.solutions_institutions'), href: `${DOCS_BASE_URL}/docs/introduction/institutional` },
+          { text: t('nav.solutions_developers'), href: `${DOCS_BASE_URL}/docs/integration/` },
+        ],
+      },
+      {
+        text: t('nav.resources'),
+        links: [
+          { text: t('nav.resources_docs'), href: externalLinks.docs },
+          { text: t('nav.resources_security'), href: `${DOCS_BASE_URL}/docs/documents/` },
+          { text: t('nav.resources_github'), href: externalLinks.githubOrg },
+        ],
+      },
+    ],
+    actions: [
+      { text: t('nav.action_open_butterfly'), href: 'https://www.befree.io', target: '_blank' },
+      { text: t('nav.action_open_pulsexai'), href: '#', target: '_blank' },
+      { text: t('nav.action_open_switchblade'), href: externalLinks.webWallet, target: '_blank' },
+      { text: t('nav.action_start_building'), href: externalLinks.docs, target: '_blank' },
+    ],
+  };
 };
 
-export const footerData = {
-  links: [
-    {
-      title: 'Products',
-      links: [
-        { text: 'vBTC', href: `${DOCS_BASE_URL}/docs/introduction/about-vbtc` },
-        { text: 'Prism Privacy', href: '#' },
-        { text: 'SwitchBlade Wallet', href: externalLinks.webWallet },
-        { text: 'BFLY', href: 'https://www.befree.io' },
-        { text: 'PulseXAI', href: '#' },
-      ],
-    },
-    {
-      title: 'Solutions',
-      links: [
-        { text: 'Everyday Users', href: `${DOCS_BASE_URL}/docs/tutorials/video-tutorials/` },
-        { text: 'Institutions', href: `${DOCS_BASE_URL}/docs/introduction/institutional` },
-        { text: 'Developers', href: `${DOCS_BASE_URL}/docs/integration/` },
-      ],
-    },
-    {
-      title: 'Resources',
-      links: [
-        { text: 'Docs', href: externalLinks.docs },
-        { text: 'Security', href: `${DOCS_BASE_URL}/docs/documents/` },
-        { text: 'GitHub', href: externalLinks.githubOrg },
-      ],
-    },
-    {
-      title: 'Foundation',
-      links: [
-        { text: 'About', href: `${DOCS_BASE_URL}/docs/introduction/` },
-        { text: 'Contact', href: externalLinks.email },
-      ],
-    },
-  ],
-  secondaryLinks: [],
-  socialLinks: [
-    { ariaLabel: 'X', icon: 'tabler:brand-x', href: externalLinks.twitter },
-    { ariaLabel: 'Github', icon: 'tabler:brand-github', href: externalLinks.githubOrg },
-    { ariaLabel: 'Discord', icon: 'tabler:brand-discord', href: externalLinks.discord },
-    { ariaLabel: 'Email', icon: 'tabler:mail', href: externalLinks.email },
-  ],
-  footNote: `
-   Copyright ${new Date().getFullYear()} VerifiedX &middot; All rights reserved.
-  `,
+export const getFooterData = (locale: Locale) => {
+  const t = useTranslations(locale);
+  return {
+    links: [
+      {
+        title: t('footer.section_products'),
+        links: [
+          { text: t('nav.products_vbtc'), href: `${DOCS_BASE_URL}/docs/introduction/about-vbtc` },
+          { text: t('nav.products_prism'), href: '#' },
+          { text: t('nav.products_switchblade'), href: externalLinks.webWallet },
+          { text: t('nav.products_butterfly'), href: 'https://www.befree.io' },
+          { text: t('nav.products_pulsexai'), href: '#' },
+        ],
+      },
+      {
+        title: t('footer.section_solutions'),
+        links: [
+          { text: t('nav.solutions_everyday'), href: `${DOCS_BASE_URL}/docs/tutorials/video-tutorials/` },
+          { text: t('nav.solutions_institutions'), href: `${DOCS_BASE_URL}/docs/introduction/institutional` },
+          { text: t('nav.solutions_developers'), href: `${DOCS_BASE_URL}/docs/integration/` },
+        ],
+      },
+      {
+        title: t('footer.section_resources'),
+        links: [
+          { text: t('nav.resources_docs'), href: externalLinks.docs },
+          { text: t('nav.resources_security'), href: `${DOCS_BASE_URL}/docs/documents/` },
+          { text: t('nav.resources_github'), href: externalLinks.githubOrg },
+        ],
+      },
+      {
+        title: t('footer.section_foundation'),
+        links: [
+          { text: t('footer.foundation_about'), href: `${DOCS_BASE_URL}/docs/introduction/` },
+          { text: t('footer.foundation_contact'), href: externalLinks.email },
+        ],
+      },
+    ],
+    secondaryLinks: [],
+    socialLinks: [
+      { ariaLabel: t('footer.aria_x'), icon: 'tabler:brand-x', href: externalLinks.twitter },
+      { ariaLabel: t('footer.aria_github'), icon: 'tabler:brand-github', href: externalLinks.githubOrg },
+      { ariaLabel: t('footer.aria_discord'), icon: 'tabler:brand-discord', href: externalLinks.discord },
+      { ariaLabel: t('footer.aria_email'), icon: 'tabler:mail', href: externalLinks.email },
+    ],
+  };
 };

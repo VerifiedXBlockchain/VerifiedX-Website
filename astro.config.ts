@@ -23,12 +23,29 @@ const whenExternalScripts = (items: (() => AstroIntegration) | (() => AstroInteg
 
 export default defineConfig({
   output: 'static',
+  trailingSlash: 'ignore',
+
+  i18n: {
+    defaultLocale: 'en',
+    locales: ['en', 'es'],
+    routing: {
+      prefixDefaultLocale: false,
+    },
+  },
 
   integrations: [
     tailwind({
       applyBaseStyles: false,
     }),
-    sitemap(),
+    sitemap({
+      i18n: {
+        defaultLocale: 'en',
+        locales: {
+          en: 'en-US',
+          es: 'es',
+        },
+      },
+    }),
     mdx(),
     svelte(),
     icon({

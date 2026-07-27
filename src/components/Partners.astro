@@ -2,6 +2,10 @@
 import Image from '~/components/common/Image.astro';
 import x402Logo from '~/assets/images/partners/x402.svg';
 import stripeLogo from '~/assets/images/partners/stripe.svg';
+import { getLocaleFromPath, useTranslations } from '~/i18n';
+
+const locale = getLocaleFromPath(new URL(Astro.url).pathname);
+const t = useTranslations(locale);
 
 const x402Src = typeof x402Logo === 'string' ? x402Logo : x402Logo.src;
 const stripeSrc = typeof stripeLogo === 'string' ? stripeLogo : stripeLogo.src;
@@ -57,10 +61,10 @@ const partners = [
 
 <div>
   <h2 class="font-bold font-heading text-heading text-4xl text-center tracking-tight mb-4">
-    Ecosystem Partners & Integrations
+    {t('partners.heading')}
   </h2>
   <p class="text-center text-muted mb-10 max-w-2xl mx-auto">
-    Trusted by leading infrastructure providers, custody platforms, and institutional partners.
+    {t('partners.subheading')}
   </p>
 
   <div class="flex flex-col md:flex-row md:flex-wrap gap-6 items-center md:justify-center max-w-5xl mx-auto">

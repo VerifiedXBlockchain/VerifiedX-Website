@@ -1,5 +1,9 @@
 <script>
   import { onMount, onDestroy } from 'svelte';
+  import { useTranslations } from '~/i18n';
+
+  let { locale = 'en' } = $props();
+  const t = useTranslations(locale);
 
   // Import local assets — Astro wraps these as { src, width, height } objects
   import cubeGifMeta from '../../assets/images/cube.gif';
@@ -15,12 +19,12 @@
   const CX = 245, CY = 245, R = 175;
 
   const fwNodes = [
-    { label: 'Bitcoin',    sub: 'Deposits',     color: '#f7931a', angle: -90  },
-    { label: 'vBTC',       sub: 'Minting',      color: '#73C4FA', angle: -30  },
-    { label: 'Financial',  sub: 'Activity',     color: '#a78bfa', angle: 30   },
-    { label: 'Liquidity',  sub: 'Growth',       color: '#34d399', angle: 90   },
-    { label: 'More',       sub: 'Applications', color: '#73C4FA', angle: 150  },
-    { label: 'More',       sub: 'Users',        color: '#a78bfa', angle: -150 },
+    { label: t('eco.fw_bitcoin_label'),    sub: t('eco.fw_bitcoin_sub'),     color: '#f7931a', angle: -90  },
+    { label: t('eco.fw_vbtc_label'),       sub: t('eco.fw_vbtc_sub'),        color: '#73C4FA', angle: -30  },
+    { label: t('eco.fw_financial_label'),  sub: t('eco.fw_financial_sub'),   color: '#a78bfa', angle: 30   },
+    { label: t('eco.fw_liquidity_label'),  sub: t('eco.fw_liquidity_sub'),   color: '#34d399', angle: 90   },
+    { label: t('eco.fw_more_apps_label'),  sub: t('eco.fw_more_apps_sub'),   color: '#73C4FA', angle: 150  },
+    { label: t('eco.fw_more_users_label'), sub: t('eco.fw_more_users_sub'),  color: '#a78bfa', angle: -150 },
   ];
 
   function toRad(deg) { return deg * Math.PI / 180; }
@@ -130,12 +134,12 @@
 
       <!-- Bitcoin Layer -->
       <div class="layer layer-btc">
-        <div class="layer-label">Global Asset</div>
+        <div class="layer-label">{t('eco.layer_global_asset')}</div>
         <div class="btc-inner">
           <div class="btc-icon">&#8383;</div>
           <div>
             <div class="btc-text">Bitcoin</div>
-            <div class="btc-sub">Base Layer &middot; Decentralized</div>
+            <div class="btc-sub">{t('eco.bitcoin_sub')}</div>
           </div>
         </div>
       </div>
@@ -149,12 +153,12 @@
 
       <!-- VerifiedX Network Layer -->
       <div class="layer layer-vfx">
-        <div class="layer-label">VerifiedX Network</div>
+        <div class="layer-label">{t('eco.layer_network')}</div>
         <div class="vfx-inner">
           <img class="cube" src={cubeGif} alt="" width="56" height="56" />
           <img class="wordmark" src={wordmarkImg} alt="VerifiedX" height="28" />
         </div>
-        <div class="vfx-sub">The Financial Operating System</div>
+        <div class="vfx-sub">{t('eco.layer_network_sub')}</div>
       </div>
 
       <!-- Connector (blue) -->
@@ -166,7 +170,7 @@
 
       <!-- Financial Layer -->
       <div class="layer layer-finance">
-        <div class="layer-label">Financial Layer</div>
+        <div class="layer-label">{t('eco.layer_financial')}</div>
         <div class="chips">
           <div class="chip chip-blue">
             <img src={vbtcImg} alt="vBTC" width="18" height="18" style="border-radius:3px;" />
@@ -192,7 +196,7 @@
 
       <!-- Applications Layer -->
       <div class="layer layer-apps">
-        <div class="layer-label">Applications</div>
+        <div class="layer-label">{t('eco.layer_applications')}</div>
         <div class="chips">
           <div class="chip chip-purple">
             <svg viewBox="0 0 24 24" fill="none" width="18" height="18"><path d="M12 12C10 8 6 5 3 6c0 3 2 6 5 7.5C6 15 5 17 5 19c2.5 0 5-2 7-4.5 2 2.5 4.5 4.5 7 4.5 0-2-1-4-3-5.5C19 12 21 9 21 6c-3-1-7 2-9 6z" fill="currentColor"/></svg>
@@ -228,7 +232,7 @@
             <svg class="user-icon" viewBox="0 0 24 24" fill="none" width="48" height="48"><rect x="5" y="7" width="14" height="10" rx="3" stroke="#73C4FA" stroke-width="1.5"/><circle cx="9" cy="12" r="1.5" fill="#73C4FA"/><circle cx="15" cy="12" r="1.5" fill="#73C4FA"/><path d="M12 4v3M9 17v2M15 17v2" stroke="#73C4FA" stroke-width="1.5" stroke-linecap="round"/></svg>
           {/each}
         </div>
-        <div class="users-label">Users &amp; AI Agents</div>
+        <div class="users-label">{t('eco.users_label')}</div>
       </div>
 
     </div>
@@ -237,7 +241,7 @@
     <div class="flywheel-wrap">
       <div class="flywheel-svg-wrap">
         <img class="flywheel-cube" src={cubeGif} alt="VFX" width="88" height="88" />
-        <svg viewBox="-20 -20 530 530" aria-label="Bitcoin Financial Flywheel diagram">
+        <svg viewBox="-20 -20 530 530" aria-label={t('eco.aria_flywheel')}>
           <defs>
             <filter id="eco-glow-strong" x="-80%" y="-80%" width="260%" height="260%">
               <feGaussianBlur in="SourceGraphic" stdDeviation="8" result="blur"/>
@@ -315,15 +319,15 @@
 
   <!-- Caption bar -->
   <div class="caption">
-    <div class="caption-item caption-orange"><strong>Bitcoin</strong> is the asset</div>
+    <div class="caption-item caption-orange"><strong>Bitcoin</strong> {t('eco.caption_bitcoin')}</div>
     <div class="caption-sep">
       <svg viewBox="0 0 24 24" fill="none" width="20" height="20" class="arrow-pulse arrow-pulse-1"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </div>
-    <div class="caption-item caption-blue"><strong>VerifiedX</strong> is the financial operating system</div>
+    <div class="caption-item caption-blue"><strong>VerifiedX</strong> {t('eco.caption_verifiedx')}</div>
     <div class="caption-sep">
       <svg viewBox="0 0 24 24" fill="none" width="20" height="20" class="arrow-pulse arrow-pulse-2"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </div>
-    <div class="caption-item caption-purple"><strong>Applications</strong> unlock financial activity</div>
+    <div class="caption-item caption-purple"><strong>{t('eco.layer_applications')}</strong> {t('eco.caption_apps')}</div>
   </div>
 </div>
 
