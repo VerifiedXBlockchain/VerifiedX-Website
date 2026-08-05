@@ -2,6 +2,9 @@
 import Image from '~/components/common/Image.astro';
 import x402Logo from '~/assets/images/partners/x402.svg';
 import stripeLogo from '~/assets/images/partners/stripe.svg';
+import krakenLogo from '~/assets/images/partners/kraken.svg';
+import bitgoLogo from '~/assets/images/partners/bitgo.svg';
+import bitcoinLogo from '~/assets/images/partners/bitcoin-logo-white.svg';
 import { getLocaleFromPath, useTranslations } from '~/i18n';
 
 const locale = getLocaleFromPath(new URL(Astro.url).pathname);
@@ -9,6 +12,9 @@ const t = useTranslations(locale);
 
 const x402Src = typeof x402Logo === 'string' ? x402Logo : x402Logo.src;
 const stripeSrc = typeof stripeLogo === 'string' ? stripeLogo : stripeLogo.src;
+const krakenSrc = typeof krakenLogo === 'string' ? krakenLogo : krakenLogo.src;
+const bitgoSrc = typeof bitgoLogo === 'string' ? bitgoLogo : bitgoLogo.src;
+const bitcoinSrc = typeof bitcoinLogo === 'string' ? bitcoinLogo : bitcoinLogo.src;
 
 const partners = [
   {
@@ -50,12 +56,9 @@ const partners = [
   { image: '~/assets/images/partners/banxa-logo.png', title: 'Banxa', href: 'https://banxa.com/', height: 22 },
   { isSvg: true, src: x402Src, title: 'x402', href: '#', width: 70, height: 27 },
   { isSvg: true, src: stripeSrc, title: 'Stripe', href: 'https://stripe.com/', width: 63, height: 27 },
-  {
-    image: '~/assets/images/partners/bitcoin-logo-white.png',
-    title: 'Bitcoin',
-    href: 'https://bitcoin.org/',
-    height: 26,
-  },
+  { isSvg: true, src: krakenSrc, title: 'Kraken', href: 'https://www.kraken.com/', width: 112, height: 19, offsetY: 3 },
+  { isSvg: true, src: bitgoSrc, title: 'BitGo', href: 'https://www.bitgo.com/', width: 85, height: 29, offsetX: 2, offsetY: 4 },
+  { isSvg: true, src: bitcoinSrc, title: 'Bitcoin', href: 'https://bitcoin.org/', width: 125, height: 26 },
 ];
 ---
 
@@ -82,7 +85,7 @@ const partners = [
               alt={partner.title}
               width={partner.width}
               height={partner.height}
-              style={`width: ${partner.width}px; height: ${partner.height}px; min-width: ${partner.width}px;`}
+              style={`width: ${partner.width}px; height: ${partner.height}px; min-width: ${partner.width}px;${partner.offsetX || partner.offsetY ? ` transform: translate(${partner.offsetX ?? 0}px, ${partner.offsetY ?? 0}px);` : ''}`}
             />
           ) : (
             <Image
