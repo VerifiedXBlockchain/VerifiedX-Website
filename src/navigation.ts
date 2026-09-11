@@ -19,11 +19,11 @@ export const externalLinks = {
 
   webWallet: `${DOCS_BASE_URL}/docs/introduction/applications`,
   downloadGuiMacArm:
-    'https://github.com/VerifiedXBlockchain/VerifiedX-GUI/releases/download/6.0.5/VFX-OSX-ARM-Installer.dmg',
+    'https://github.com/VerifiedXBlockchain/VerifiedX-GUI/releases/download/7.0.0/VFX-OSX-ARM-Installer.dmg',
   downloadGuiMacIntel:
-    'https://github.com/VerifiedXBlockchain/VerifiedX-GUI/releases/download/6.0.5/VFX-OSX-Intel-Installer.dmg',
+    'https://github.com/VerifiedXBlockchain/VerifiedX-GUI/releases/download/7.0.0/VFX-OSX-Intel-Installer.dmg',
   downloadGuiWindows:
-    'https://github.com/VerifiedXBlockchain/VerifiedX-GUI/releases/download/6.0.5/VFXWalletSetup-64.exe',
+    'https://github.com/VerifiedXBlockchain/VerifiedX-GUI/releases/download/7.0.0/VFXWalletSetup-64.exe',
   downloadCli: 'https://github.com/VerifiedXBlockchain/VerifiedX-Core/releases/latest',
   trilliumIde: 'https://trillium.verifiedx.io',
   githubOrg: 'https://github.com/VerifiedXBlockchain',
