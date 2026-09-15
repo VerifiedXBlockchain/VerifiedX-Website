@@ -1,6 +1,13 @@
 {
   "cleanUrls": true,
   "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/bmtv",
+      "destination": "/?utm_source=bmtv&utm_medium=host_read&utm_campaign=bmtv_2026&utm_content=on_air",
+      "permanent": false
+    }
+  ],
   "headers": [
     {
       "source": "/_astro/(.*)",

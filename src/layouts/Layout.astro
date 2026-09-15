@@ -43,7 +43,8 @@ const locale = getLocaleFromPath(new URL(Astro.url).pathname);
           const pref =
             (cookie && decodeURIComponent(cookie[1])) || (window.localStorage && localStorage.getItem('locale_pref'));
           if (pref === 'en') return; // user picked English explicitly
-          const target = path === '/' ? '/es' : '/es' + path;
+          // Keep the query string and hash so campaign tags (utm_*) survive the hop to /es.
+          const target = (path === '/' ? '/es' : '/es' + path) + window.location.search + window.location.hash;
           if (pref === 'es') {
             window.location.replace(target);
             return;
