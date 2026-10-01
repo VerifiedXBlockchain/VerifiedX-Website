@@ -28,7 +28,7 @@ export const en = {
 
   announcement: {
     badge_new: 'NEW',
-    switchblade_release: 'SwitchBlade Wallet v8.0.2 now available »',
+    switchblade_release: 'SwitchBlade Wallet v8.0.4 now available »',
     block_height: 'Current Block Height:',
   },
 

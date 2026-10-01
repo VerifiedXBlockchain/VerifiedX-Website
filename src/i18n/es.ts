@@ -36,7 +36,7 @@ export const es: TranslationSchema = {
 
   announcement: {
     badge_new: 'NUEVO',
-    switchblade_release: 'SwitchBlade Wallet v8.0.2 ya disponible »',
+    switchblade_release: 'SwitchBlade Wallet v8.0.4 ya disponible »',
     block_height: 'Altura de bloque actual:',
   },
 
