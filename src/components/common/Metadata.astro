@@ -9,7 +9,7 @@ import type { MetaData } from '~/types';
 import { getCanonical } from '~/utils/permalinks';
 
 import { adaptOpenGraphImages } from '~/utils/images';
-import { getLocaleFromPath, localizePath, locales } from '~/i18n';
+import { getLocaleFromPath, hasTranslation, localizePath, locales } from '~/i18n';
 
 export interface Props extends MetaData {
   dontUseTitleTemplate?: boolean;
@@ -28,10 +28,12 @@ const {
 const pathname = new URL(Astro.url).pathname;
 const activeLocale = getLocaleFromPath(pathname);
 const ogLocale = activeLocale === 'es' ? 'es' : 'en';
-const alternates = locales.map((loc) => ({
-  hreflang: loc === 'en' ? 'en-US' : loc,
-  href: String(getCanonical(localizePath(pathname, loc))),
-}));
+const alternates = locales
+  .filter((loc) => loc === 'en' || hasTranslation(pathname))
+  .map((loc) => ({
+    hreflang: loc === 'en' ? 'en-US' : loc,
+    href: String(getCanonical(localizePath(pathname, loc))),
+  }));
 const xDefault = String(getCanonical(localizePath(pathname, 'en')));
 
 // Per-locale fallback description for pages that don't pass their own.
