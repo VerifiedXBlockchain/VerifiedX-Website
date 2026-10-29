@@ -37,6 +37,18 @@ export function localizePath(pathname: string, locale: Locale): string {
   return base === '/' ? `/${locale}` : `/${locale}${base}`;
 }
 
+/**
+ * Paths (without a locale prefix) that have a page in every locale. The legal
+ * pages are English only, so nothing should link or redirect to an /es copy.
+ */
+const translatedPaths = ['/'];
+
+/** Whether `pathname` has a page in every locale. */
+export function hasTranslation(pathname: string): boolean {
+  const base = stripLocale(pathname);
+  return translatedPaths.includes(base.length > 1 ? base.replace(/\/$/, '') : base);
+}
+
 type NestedKeyOf<T> = {
   [K in keyof T & string]: T[K] extends object ? `${K}.${NestedKeyOf<T[K]>}` : K;
 }[keyof T & string];

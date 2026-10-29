@@ -11,7 +11,7 @@ import Metadata from '~/components/common/Metadata.astro';
 import SiteVerification from '~/components/common/SiteVerification.astro';
 import Analytics from '~/components/common/Analytics.astro';
 import BasicScripts from '~/components/common/BasicScripts.astro';
-import { getLocaleFromPath } from '~/i18n';
+import { getLocaleFromPath, hasTranslation } from '~/i18n';
 
 // Comment the line below to disable View Transitions
 import { ClientRouter } from 'astro:transitions';
@@ -24,18 +24,22 @@ export interface Props {
 
 const { metadata = {} } = Astro.props;
 const { textDirection } = I18N;
-const locale = getLocaleFromPath(new URL(Astro.url).pathname);
+const pathname = new URL(Astro.url).pathname;
+const locale = getLocaleFromPath(pathname);
+// English-only pages (legal, 404) have no /es copy to redirect to.
+const hasSpanishPage = hasTranslation(pathname);
 ---
 
 <!doctype html>
 <html lang={locale} dir={textDirection} class="2xl:text-[20px]">
   <head>
-    <script is:inline>
+    <script is:inline define:vars={{ hasSpanishPage }}>
       // First-visit locale redirect. Runs synchronously before paint so the user
       // doesn't see the English version flash. Astro's i18n routing uses /es
       // (no trailing slash) as the Spanish root, so root '/' maps to '/es' and
       // any other path '/foo' maps to '/es/foo'.
       (function () {
+        if (!hasSpanishPage) return;
         try {
           const path = window.location.pathname || '/';
           if (path === '/es' || path.indexOf('/es/') === 0) return; // already Spanish

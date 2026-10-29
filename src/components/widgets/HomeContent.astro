@@ -60,7 +60,7 @@ const t = useTranslations(locale);
           icon: 'tabler:chart-line',
           callToAction: {
             text: t('home.capital_yield_cta'),
-            href: 'https://docs.verifiedx.io/docs/introduction/about-vbtc',
+            href: 'https://docs.verifiedx.io/learn/vbtc/',
             target: '_blank',
             class: 'text-sm px-3 md:px-4',
           },
@@ -138,10 +138,10 @@ const t = useTranslations(locale);
           <div>
             <p class="text-xs uppercase tracking-widest text-gray-500 mb-2 font-semibold">{t('home.vbtc_retail')}</p>
             <div class="flex flex-wrap gap-2">
-              <Button variant="primary" href="https://docs.verifiedx.io/docs/core/vbtc" target="_blank"
+              <Button variant="primary" href="https://docs.verifiedx.io/learn/vbtc-protocol/" target="_blank"
                 >{t('home.vbtc_mint')}</Button
               >
-              <Button variant="secondary" href="https://docs.verifiedx.io/docs/introduction/about-vbtc" target="_blank"
+              <Button variant="secondary" href="https://docs.verifiedx.io/learn/vbtc/" target="_blank"
                 >{t('home.vbtc_how')}</Button
               >
             </div>
@@ -154,13 +154,13 @@ const t = useTranslations(locale);
             <div class="flex flex-wrap gap-2">
               <Button
                 variant="secondary"
-                href="https://docs.verifiedx.io/docs/documents/vbtc-institutional"
+                href="https://docs.verifiedx.io/learn/institutional/overview/"
                 target="_blank"
                 class="px-2 md:px-3">{t('home.vbtc_overview')}</Button
               >
               <Button
                 variant="secondary"
-                href="https://docs.verifiedx.io/docs/introduction/custody-integration"
+                href="https://docs.verifiedx.io/learn/institutional/custody-integration/"
                 target="_blank"
                 class="px-2 md:px-3">{t('home.vbtc_custody')}</Button
               >
@@ -325,10 +325,10 @@ const t = useTranslations(locale);
     </div>
 
     <div class="flex flex-col sm:flex-row sm:flex-wrap gap-2 mt-8">
-      <Button variant="purple" href="https://docs.verifiedx.io/docs/core/security" target="_blank"
+      <Button variant="purple" href="https://docs.verifiedx.io/learn/security/" target="_blank"
         >{t('home.security_overview')}</Button
       >
-      <Button variant="secondary" href="https://docs.verifiedx.io/docs/documents/halborn-audit" target="_blank"
+      <Button variant="secondary" href="https://docs.verifiedx.io/resources/documents/halborn-audit/" target="_blank"
         >{t('home.security_audit_reports')}</Button
       >
       <Button variant="secondary" href={externalLinks.validatingDocs} target="_blank"
@@ -366,12 +366,14 @@ const t = useTranslations(locale);
       >{t('home.cta_body_suffix')}
     </p>
     <div class="flex flex-wrap justify-center gap-3">
-      <Button variant="blue" href="https://docs.verifiedx.io/docs/introduction/applications" target="_blank"
+      <Button variant="blue" href="https://docs.verifiedx.io/learn/applications/" target="_blank"
         >{t('home.cta_applications')}</Button
       >
       <Button variant="secondary" href={externalLinks.docs} target="_blank">{t('home.cta_start_building')}</Button>
-      <Button variant="secondary" href="https://docs.verifiedx.io/docs/introduction/custody-integration" target="_blank"
-        >{t('home.cta_infrastructure')}</Button
+      <Button
+        variant="secondary"
+        href="https://docs.verifiedx.io/learn/institutional/custody-integration/"
+        target="_blank">{t('home.cta_infrastructure')}</Button
       >
     </div>
   </WidgetWrapper>
