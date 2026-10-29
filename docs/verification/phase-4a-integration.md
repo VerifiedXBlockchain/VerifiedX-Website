@@ -28,7 +28,9 @@ with zero token mismatches.
 ## Checklist
 
 ### 1. `LocaleSwitcher.astro` — UI + accessibility
+
 **PASS.**
+
 - `role="group"` + `aria-label={t('nav.switcher_aria')}` on the
   container (translated: `"Select language"` / `"Seleccionar idioma"`)
 - Each `<a>` carries:
@@ -42,11 +44,13 @@ with zero token mismatches.
   - `data-locale-switch={loc}` — selector hook for the persistence
     script
 - Visual styling: rounded pill, active state has `bg-vfx-blue/80
-  text-white`; inactive has hover. Compact two-letter labels keep the
+text-white`; inactive has hover. Compact two-letter labels keep the
   switcher narrow on mobile.
 
 ### 2. Switcher placement in `Header.astro`
+
 **PASS.** Two placements:
+
 - **Mobile** (line 84–87): inside `<div class="... md:hidden">`,
   alongside `<ToggleMenu />`. Wrapped with `gap-2` so the switcher
   and menu toggle don't collide.
@@ -54,9 +58,10 @@ with zero token mismatches.
   (`<div class="... ml-auto ...">`), wrapped in a span with
   `flex-shrink-0` so the switcher stays a fixed pill even when nav
   items wrap.
-Both placements render the same component; no duplication of logic.
+  Both placements render the same component; no duplication of logic.
 
 ### 3. `stripLocale` / `localizePath` — round-trip cases
+
 **PASS.** Eight cases, all green:
 | Call | Expected | Got |
 |---|---|---|
@@ -70,6 +75,7 @@ Both placements render the same component; no duplication of logic.
 | `localizePath('/es/foo', 'es')` | `/es/foo` | ✓ (idempotent) |
 
 `stripLocale` edge cases also pass:
+
 - `stripLocale('/')` → `/`
 - `stripLocale('/es')` (no trailing slash) → `/` (graceful)
 - `stripLocale('/es/')` → `/`
@@ -83,13 +89,15 @@ literal `/en/foo` URL would be left alone — correct because the site
 serves English at the root, not at `/en/`.
 
 ### 4. Inline browser-detect script (`Layout.astro`)
+
 **PASS — loop-safe and storage-safe.**
 Reading the script in order:
+
 1. **`is:inline` placement in `<head>`** — runs synchronously before
    paint. No FOUC, no flash of English when the user is going to be
    redirected to Spanish.
 2. **Early return on `/es/*` paths** (`if (path.indexOf('/es/') === 0
-   || path === '/es') return;`) — **this prevents the redirect loop**.
+|| path === '/es') return;`) — **this prevents the redirect loop**.
    Once on Spanish, the script never tries to redirect again.
 3. **Cookie + localStorage check before navigator.language** — if the
    user has explicitly chosen a locale (via the switcher's persistence
@@ -105,7 +113,7 @@ Reading the script in order:
 5. **`location.replace` not `.href`** — confirmed twice (line for
    pref-based redirect, line for browser-detect redirect). Replace
    does not push a history entry, so the back button takes the user
-   to the previous *site*, not the now-replaced English root —
+   to the previous _site_, not the now-replaced English root —
    exactly the right UX for an automatic redirect.
 6. **`try { ... } catch (_) { }`** wraps the entire body — if cookies
    or localStorage are blocked (Safari ITP, incognito with strict
@@ -117,11 +125,13 @@ Reading the script in order:
 not `/es//`). ✓
 
 ### 5. Persistence on switcher click (`LocaleSwitcher.astro` script)
+
 **PASS.** The inline `<script is:inline>` registers a click handler on
 every `[data-locale-switch]` link that:
+
 - Reads the chosen locale from `data-locale-switch`
 - Sets a cookie `locale_pref=<choice>; path=/; max-age=31536000;
-  samesite=lax` — 1-year expiry, root-scoped, lax samesite
+samesite=lax` — 1-year expiry, root-scoped, lax samesite
 - Mirrors to `localStorage.setItem('locale_pref', choice)`
 - Wraps in `try { ... } catch (_) { }` so storage failures don't
   break navigation
@@ -133,6 +143,7 @@ cookie and the auto-detect script respects the explicit choice. Loop
 prevention is end-to-end.
 
 ### 6. Dynamic `<html lang>` in `Layout.astro`
+
 **PASS.** Replaced `lang={language}` (from `I18N` config constant)
 with `lang={locale}` (computed from
 `getLocaleFromPath(Astro.url.pathname)`). So `/index.html` emits
@@ -142,8 +153,10 @@ kept from `I18N` (LTR for both en and es — correct, no `dir="rtl"`
 issues).
 
 ### 7. `astro.config.ts` sitemap i18n
+
 **PASS.** Syntactically correct shape per Astro sitemap integration
 docs:
+
 ```ts
 sitemap({
   i18n: {
@@ -155,23 +168,26 @@ sitemap({
   },
 }),
 ```
+
 Note: the locale-code mapping `en → en-US` and `es → es` matches the
 hreflang tags in `Metadata.astro` exactly. Consistent with the
 glossary's "neutral LatAm" target — `es` (no region) signals "any
 Spanish reader" rather than locking to Mexico/Argentina/Spain.
 
 ### 8. `Metadata.astro` hreflang + OG locale + per-locale defaults
+
 **PASS.**
+
 - Three `<link rel="alternate">` tags emitted per page:
   - `hreflang="en-US"` → English canonical
   - `hreflang="es"` → Spanish canonical
   - `hreflang="x-default"` → English canonical (fallback for
     unmatched languages)
 - `xDefault` correctly points to the en route (`localizePath(pathname,
-  'en')`) — Google's recommendation for `x-default` is the
+'en')`) — Google's recommendation for `x-default` is the
   most-broadly-applicable version.
 - OG `locale: ogLocale` (where `ogLocale = activeLocale === 'es' ?
-  'es' : 'en'`) — replaces the previous static `I18N?.language || 'en'`,
+'es' : 'en'`) — replaces the previous static `I18N?.language || 'en'`,
   so OG previews use the correct language indicator on Spanish pages.
 - `localizedDefaults` provides per-locale fallback `title` /
   `description` for any page that doesn't pass its own metadata. The
@@ -181,9 +197,11 @@ Spanish reader" rather than locking to Mexico/Argentina/Spain.
   Phase 2A.
 
 ### 9. Svelte islands — locale prop + dictionary wiring
+
 **PASS.**
 
 **`NetworkStats.svelte`:**
+
 - `let { locale = 'en' } = $props();` — Svelte 5 prop syntax with
   English fallback
 - `const t = useTranslations(locale)` — uses the same dictionary
@@ -195,6 +213,7 @@ Spanish reader" rather than locking to Mexico/Argentina/Spain.
   English titles flash before data loads
 
 **`EcosystemDiagram.svelte`:**
+
 - Same Svelte 5 prop + `useTranslations` pattern
 - 6 flywheel nodes with translated `label` + `sub` (split into pairs:
   `fw_bitcoin_label/sub`, `fw_vbtc_label/sub`, etc.)
@@ -215,7 +234,9 @@ client-side bootstrap. On `/es/`, this will serialize `"locale":"es"`
 and the Svelte runtime will pick it up.
 
 ### 10. Dictionary additions — key parity + glossary
+
 **PASS.**
+
 - `en` total leaf keys: 167 (was 127 in 2A; +40 — this matches
   expected delta given the prompt mentioned "+39", off by 1 because
   `eco.fw_more_users_sub` and `eco.fw_more_apps_sub` and
@@ -249,6 +270,7 @@ and the Svelte runtime will pick it up.
     is the correct mechanical/business sense of "flywheel")
 
 ### 11. Length sanity on new keys
+
 **PASS.** Four flags, all in non-overflow contexts:
 | Key | EN len | ES len | Delta | Context |
 |---|---|---|---|---|
@@ -261,7 +283,9 @@ None are real overflow risks. Stat cards have generous title space;
 flywheel sublabels render below their main label.
 
 ### 12. Build green
+
 **TRUSTED.** Diff scan shows no obvious regressions:
+
 - No new dependencies, only config/component changes
 - TypeScript types preserved (`TranslationSchema` still enforces es
   parity)
@@ -275,8 +299,10 @@ flywheel sublabels render below their main label.
 ## Findings
 
 ### WARNING — `eco.fw_*` flywheel "head-noun + descriptor" reshape
+
 The flywheel node labels were re-shaped between 2A and 4A. Looking at
 the en values:
+
 - `fw_bitcoin_label: "Bitcoin"`, `fw_bitcoin_sub: "Deposits"` (EN
   reads "Bitcoin" / "Deposits")
 - `fw_financial_label: "Financial"`, `fw_financial_sub: "Activity"`
@@ -287,11 +313,12 @@ the en values:
   (EN reads "More" / "Applications")
 
 ES has been re-grouped slightly:
+
 - `fw_financial_label: "Actividad"`, `fw_financial_sub: "Financiera"`
   → reads "Actividad" / "Financiera" (Spanish moves the noun first
   per N+adj order — ✓ correct grammar)
 - `fw_liquidity_label: "Crecimiento"`, `fw_liquidity_sub: "de
-  Liquidez"` → reads "Crecimiento" / "de Liquidez" (also reorders
+Liquidez"` → reads "Crecimiento" / "de Liquidez" (also reorders
   for readability — ✓)
 - `fw_more_apps_label: "Más"`, `fw_more_apps_sub: "Aplicaciones"`
   → reads "Más" / "Aplicaciones" (kept literal — ✓)
@@ -312,12 +339,15 @@ two independent strings. Same recommendation as Phase 2A's
 `security_heading_line1/line2` flag.
 
 ### INFO 1 — `eco.caption_apps` references `eco.layer_applications`
+
 The Svelte caption bar renders:
+
 ```svelte
 <div class="caption-item caption-purple">
   <strong>{t('eco.layer_applications')}</strong> {t('eco.caption_apps')}
 </div>
 ```
+
 EN: "**Applications** unlock financial activity"
 ES: "**Aplicaciones** habilitan la actividad financiera"
 
@@ -327,16 +357,19 @@ sentence structure parallels English here. Good translation; no
 issue.
 
 ### INFO 2 — Sitemap codes `en` → `en-US` but hreflang also uses `en-US`
+
 The mapping is consistent: sitemap `i18n.locales.en: 'en-US'` and
 `Metadata.astro` emits `<link rel="alternate" hreflang="en-US" ...>`
 for the English version. Google reads these together. ✓
 
 ### INFO 3 — `aria_email: "Correo"` (footer) still slightly inconsistent
+
 Carry-over from Phase 2A. Footer aria label is `Correo` in es but the
 icon is the standard email icon. Not a bug — just one of two
 defensible choices. Out of 4A scope.
 
 ### INFO 4 — `prefersDefaultLocale` cookie/storage path
+
 The persistence script writes to **both** cookie and localStorage. The
 auto-detect script reads cookie first, falls back to localStorage.
 Why both: cookie travels with the request (useful if a future SSR
@@ -355,6 +388,7 @@ Phase 4A introduces few new canonical terms (most are flywheel-art
 phrasing or stat labels). Two worth considering for promotion:
 
 ### Suggest promoting
+
 1. **Circulating Supply → Suministro circulante** — already used in
    Spyglass 2B (`metrics.json`) and now in Website 4A
    (`stats.circulating_supply`). **2-repo threshold met.**
@@ -363,17 +397,19 @@ phrasing or stat labels). Two worth considering for promotion:
    activos". The base phrase is canonical. **2-repo threshold met.**
 
 ### Pattern note (not a term)
+
 - **CTA imperatives translate to "Empezar a + infinitive"**:
   - "Start Building" → "Empezar a construir" (2A)
   - "Start Validating" → "Empezar a validar" (4A)
   - Future: "Start Earning" → "Empezar a ganar", "Start Trading" →
     "Empezar a operar" (predictable)
-  Worth codifying in glossary "Marketing (Website)" section as the
-  canonical "Start <verb>ing" pattern.
+    Worth codifying in glossary "Marketing (Website)" section as the
+    canonical "Start <verb>ing" pattern.
 
 ---
 
 ## Files Reviewed
+
 - `astro.config.ts` (+8 lines: sitemap i18n)
 - `src/components/common/LocaleSwitcher.astro` (new; 49 lines)
 - `src/components/common/Metadata.astro` (+33 lines: alternates,
@@ -389,10 +425,11 @@ phrasing or stat labels). Two worth considering for promotion:
 - `src/i18n/index.ts` (+17 lines: `stripLocale`, `localizePath`)
 - `src/layouts/Layout.astro` (+30 lines: inline detect script,
   dynamic `<html lang>`)
-- `src/i18n/en.ts` (+46 lines: nav.switcher_*×5, stats.*×12, eco.*×23)
+- `src/i18n/en.ts` (+46 lines: nav.switcher\_*×5, stats.*×12, eco.\*×23)
 - `src/i18n/es.ts` (+46 lines: matching translations)
 
 ## Not Reviewed (Out of Phase 4A Scope)
+
 - Live build output (trusted per task #41 in-progress; spot-check of
   diff shows no obvious regressions)
 - Browser-rendered switch on actual `/es/`, `/`, `/about` routes
@@ -406,11 +443,13 @@ phrasing or stat labels). Two worth considering for promotion:
 ---
 
 ## Recommendation
+
 **Proceed.** Phase 4A is complete and ready for Phase 4A executor's
 manual browser pass + the human marketing reviewer. No blocking
 issues.
 
 Before final ship of Wave 1:
+
 1. Lead can fold "Suministro circulante" and "Validadores activos"
    into the canonical glossary.
 2. Add a paired-render-contract comment in `en.ts` above
